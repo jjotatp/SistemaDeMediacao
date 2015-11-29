@@ -8,12 +8,11 @@
 .fonte-menu{
     font-family: "Metrophobic", Verdana, bold;
     font-size: 1.5em;
-    color: aquamarine;
 }
 
 .menu-lateral{
     background-color: #383838;
-    max-height:inherit;
+    max-height:none;
 }
 
 .btn-danger-med{
@@ -34,13 +33,19 @@
 }
 
 .well-novo{
-        min-height: 20px;
+    min-height: 20px;
     padding: 19px;
     margin-bottom: 20px;
     background-image: url(../imagens/topo-artigo-1.jpg);
     border: 1px solid #e3e3e3;
     border-radius: 4px;
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+}
+
+.well-home{
+/*    padding: 5px;*/
+/*    background-color: #FFFF53;*/
     box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
 }
 
@@ -71,10 +76,6 @@
     /* -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s; */
     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-}
-
-.artigo-principal{
-    background-image: url(../imagens/foto-artigo.jpg);
 }
 
 .btn-btn-legal {
@@ -166,4 +167,145 @@ right: 0;
 }
 .overlay {
 background-color: rgba(243, 24, 24, 0.75);
-}   
+}
+
+.artigo-principal{
+    background-image: url(../imagens/artigo--2.jpg);
+}
+
+h2.titulo-principal{
+    font-family: 'Oswald', sans-serif;
+    font-size: 3em;
+    color:#E8E50D;
+    padding: 5px;
+}
+
+.sub-titulo-principal{
+    color: #CD0000;
+}
+
+p.sub-texto-principal{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2em;
+    color: #fff;
+}
+
+p.texto-normal{
+    font-family: 'Montserrat', sans-serif;
+    color: #383838;
+}
+
+.casos-titulo{
+    font-family: 'Exo 2', sans-serif;
+    color: #424242;
+}
+
+.list-group-item-casos{
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #2B2B2B;
+    border: 1px solid #383838;
+    color: yellow;
+}
+
+.topo{
+    min-height: 20px;
+    padding: 29px;
+    margin-bottom: 20px;
+    background-image: url(../imagens/topo-bg.png);
+    background-repeat: repeat-x;
+    height:80px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,.30);
+}
+
+.cor-link{
+    width: auto;
+    height: auto;
+    padding-bottom: 34px;
+}
+
+.cor-link:hover{
+    width: auto;
+    height: auto;
+    background-color:#D61C1C;
+}
+
+/*
+.navbar-nav>li>a{
+    padding-top:15px;
+    padding-bottom:15px;
+    border-bottom-style: solid;
+    border-bottom-color: #fff;
+}*/
+
+.animated-flipOutX,
+.animated-flipOutY{
+    -webkit-animation-duration: .75s;
+    animation-duration: .75s;
+}
+
+.subnavbar {
+    margin-bottom: 2.5em;
+}
+
+.subnavbar-inner {
+    height: 90px;
+    background: #E8E8E8;
+    border-bottom: 3px solid #E02919;
+    padding: 10px;
+}
+
+.subnavbar .container > ul {
+    display: inline-block;
+    height: 80px;
+    padding: 0;
+    margin: 0;
+}
+
+.subnavbar .container > ul > li {
+    float: left;
+    min-width: 90px;
+    height: 60px;
+    padding: 15px;
+    margin: 0;
+    text-align: center;
+    list-style: none;
+}
+
+/*
+.subnavbar .container > ul > li.active > a {
+    border-bottom: 50px solid #FFF80E;
+    color: #FFF80E;
+    text-decoration: none;
+}
+*/
+.subnavbar .container > ul > li > a:hover {
+    border-bottom: 35px solid #BDBB0E;
+    color: #BDBB0E;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.subnavbar .container > ul > li.active > a {
+    border-bottom: 35px solid #E02919;
+    color: #E02919;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
