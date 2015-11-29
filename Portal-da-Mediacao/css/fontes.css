@@ -12,7 +12,11 @@
 
 .menu-lateral{
     background-color: #383838;
-    max-height:none;
+    min-height: 634px;
+    position: relative;
+    overflow: hidden;
+    width: auto;
+    height:100%;
 }
 
 .btn-danger-med{
