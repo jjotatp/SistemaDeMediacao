@@ -1,0 +1,21 @@
+cidades (id, nome, estado)
+
+locais(id,nome,descricao,#cidade,bairro,tipo_logradouro,logradouro,numero,CEP,data_inicio,ativo(boolean) )
+
+// pessoas(id,nome,rg,cpf,telefone,celular,#cidade,bairro,rua,numero )
+
+mediadores(id,nome,patente,#id_local,usuario,senha)? verificar
+
+solicitacoes(id,data,descricao_problema,descricao_caso,solicitante_nome,solicitante_telefone,solicitante_endereco,solicitante_email,solicitante_periodo_atendimento**,detalhes_partes,#id_local,****status_agendamento)
+
+tipos_registro(id,descricao)
+
+mediacoes(id,#id_solicitacao,numero,tema_conflito,data_registro,data_mediacao,#id_mediador,#id_tipo_registro,objeto,#id_local,documento_link,status*,resolucao*** )
+
+mediacao_partes
+(cpf,rg,nome,status_civil,profissao,nascimento_data,nascimento_cidade,sexo,nome_pai,nome_mae,endereco_logradouro,endereco_numero,endereco_bairro,endereco_cidade,telefone)
+
+noticias(id,titulo,descricao,link_imagem,link_noticia,#id_mediador,data_publicacao)
+
+testemunhos(id,nome,descricao,data)
+

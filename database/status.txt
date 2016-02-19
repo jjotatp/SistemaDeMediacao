@@ -1,0 +1,18 @@
+
+* mediacoes.status
+1 - Cancelada
+2 - Concluido	
+
+*** mediacoes.resolucao
+A - Acordo
+D - Disacordo
+
+** solicitacoes.solicitante_periodo_atendimento -- período em que o solicitante prefere ser atendido
+M - manha
+T - tarde
+N - noite
+
+**** solicitacoes.status_agendamento
+1 - Agendada
+2 - Realizada
+3 - Cancelada
