@@ -30,7 +30,7 @@ create table mediadores
 (
 	id int not null primary key identity,
 	nome varchar(100) not null,
-	patente varchar(50) not null,
+	patente varchar(50),
 	id_local int not null references locais(id),
 	usuario varchar(50),
 	senha varchar(50)
@@ -49,7 +49,9 @@ create table solicitacoes
 	solicitante_periodo_atendimento char(1),
 	check (solicitante_periodo_atendimento in ('M','T','N')),
 	detalhes_partes varchar(200) not null,
-	id_local int not null references locais(id)
+	id_local int not null references locais(id),
+	status_agendamento int,
+	check (status_agendamento in (1,2,3)) -- Agendada, Realizada, Cancelada
 );
 
 create table tipos_registro
@@ -63,9 +65,8 @@ create table mediacoes
 	id int not null primary key identity,
 	id_solicitacao int references solicitacoes(id),
 	numero varchar(20),
-	tema_conflito varchar(50),
-	data_registro date not null,
-	data_mediacao date,
+	tema_conflito varchar(50),	
+	data_mediacao date not null,
 	id_mediador int not null references mediadores(id),
 	id_tipo_registro int not null references tipos_registro(id),
 	objeto varchar(max),
@@ -73,8 +74,16 @@ create table mediacoes
 	documento_link varchar(100),
 	status int not null,
 	resolucao char(1),
-	check (status in (1,2,3,4)),
+	check (status in (1,2)),
 	check (resolucao in ('A','D')) -- Acordo e Disacordo
+);
+
+create table agendamentos
+(
+	id int not null primary key identity,
+	id_solicitacao int references solicitacoes(id),
+	descricao varchar(50),
+	data date not null
 );
 
 create table pessoas
