@@ -199,6 +199,7 @@
     <Compile Include="Models\Cidade_Model.cs" />
     <Compile Include="Models\Local_Model.cs" />
     <Compile Include="Models\Mediador_Model.cs" />
+    <Compile Include="Models\Solicitacao_Model.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -206,6 +207,7 @@
     <Folder Include="Views\CidadeModel\" />
     <Folder Include="Views\Local_Model\" />
     <Folder Include="Views\Mediador_\" />
+    <Folder Include="Views\Solicitacao_Model\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
