@@ -49,9 +49,7 @@ create table solicitacoes
 	solicitante_periodo_atendimento char(1),
 	check (solicitante_periodo_atendimento in ('M','T','N')),
 	detalhes_partes varchar(200) not null,
-	id_local int not null references locais(id),
-	status_agendamento int,
-	check (status_agendamento in (1,2,3)) -- Agendada, Realizada, Cancelada
+	id_local int not null references locais(id)
 );
 
 create table tipos_registro
@@ -109,6 +107,6 @@ create table mediacao_partes
 (
     mediacao_id int not null references mediacoes(id),
     pessoa_id varchar(14) not null references pessoas(cpf),
-	primary key(mediacao_id,pessoa_id)
+	primary key(mediacao_id,pessoa_id),
+	descricao_caso varchar(250)
 );
-

@@ -23,18 +23,10 @@
       <Column Name="CEP" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
       <Column Name="data_inicio_atividade" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="ativo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Association Name="local_solicitacao" Member="solicitacaos" ThisKey="id" OtherKey="id_local" Type="solicitacao" />
       <Association Name="local_mediador" Member="mediadors" ThisKey="id" OtherKey="id_local" Type="mediador" />
       <Association Name="local_mediacao" Member="mediacaos" ThisKey="id" OtherKey="id_local" Type="mediacao" />
+      <Association Name="local_solicitacao" Member="solicitacaos" ThisKey="id" OtherKey="id_local" Type="solicitacao" />
       <Association Name="cidade_local" Member="cidade1" ThisKey="cidade" OtherKey="id" Type="cidade" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.mediacao_partes" Member="mediacao_partes">
-    <Type Name="mediacao_parte">
-      <Column Name="mediacao_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="pessoa_id" Type="System.String" DbType="VarChar(14) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Association Name="pessoa_mediacao_parte" Member="pessoa" ThisKey="pessoa_id" OtherKey="cpf" Type="pessoa" IsForeignKey="true" />
-      <Association Name="mediacao_mediacao_parte" Member="mediacao" ThisKey="mediacao_id" OtherKey="id" Type="mediacao" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.pessoas" Member="pessoas">
@@ -66,25 +58,6 @@
       <Association Name="tipo_registro_mediacao" Member="mediacaos" ThisKey="id" OtherKey="id_tipo_registro" Type="mediacao" />
     </Type>
   </Table>
-  <Table Name="dbo.solicitacoes" Member="solicitacaos">
-    <Type Name="solicitacao">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="data" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="descricao_problema" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="descricao_caso" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
-      <Column Name="solicitante_nome" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="solicitante_telefone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="solicitante_endereco" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="solicitante_email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="solicitante_periodo_atendimento" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-      <Column Name="detalhes_partes" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
-      <Column Name="id_local" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="status_agendamento" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="solicitacao_mediacao" Member="mediacaos" ThisKey="id" OtherKey="id_solicitacao" Type="mediacao" />
-      <Association Name="solicitacao_agendamento" Member="agendamentos" ThisKey="id" OtherKey="id_solicitacao" Type="agendamento" />
-      <Association Name="local_solicitacao" Member="local" ThisKey="id_local" OtherKey="id" Type="local" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.mediadores" Member="mediadors">
     <Type Name="mediador">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -114,8 +87,8 @@
       <Association Name="mediacao_mediacao_parte" Member="mediacao_partes" ThisKey="id" OtherKey="mediacao_id" Type="mediacao_parte" />
       <Association Name="local_mediacao" Member="local" ThisKey="id_local" OtherKey="id" Type="local" IsForeignKey="true" />
       <Association Name="mediador_mediacao" Member="mediador" ThisKey="id_mediador" OtherKey="id" Type="mediador" IsForeignKey="true" />
-      <Association Name="solicitacao_mediacao" Member="solicitacao" ThisKey="id_solicitacao" OtherKey="id" Type="solicitacao" IsForeignKey="true" />
       <Association Name="tipo_registro_mediacao" Member="tipo_registro" ThisKey="id_tipo_registro" OtherKey="id" Type="tipo_registro" IsForeignKey="true" />
+      <Association Name="solicitacao_mediacao" Member="solicitacao" ThisKey="id_solicitacao" OtherKey="id" Type="solicitacao" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.agendamentos" Member="agendamentos">
@@ -125,6 +98,33 @@
       <Column Name="descricao" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="data" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
       <Association Name="solicitacao_agendamento" Member="solicitacao" ThisKey="id_solicitacao" OtherKey="id" Type="solicitacao" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.solicitacoes" Member="solicitacaos">
+    <Type Name="solicitacao">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="data" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="descricao_problema" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="descricao_caso" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="solicitante_nome" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="solicitante_telefone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="solicitante_endereco" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="solicitante_email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="solicitante_periodo_atendimento" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="detalhes_partes" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="id_local" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="solicitacao_mediacao" Member="mediacaos" ThisKey="id" OtherKey="id_solicitacao" Type="mediacao" />
+      <Association Name="solicitacao_agendamento" Member="agendamentos" ThisKey="id" OtherKey="id_solicitacao" Type="agendamento" />
+      <Association Name="local_solicitacao" Member="local" ThisKey="id_local" OtherKey="id" Type="local" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.mediacao_partes" Member="mediacao_partes">
+    <Type Name="mediacao_parte">
+      <Column Name="mediacao_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="pessoa_id" Type="System.String" DbType="VarChar(14) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="descricao_caso" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Association Name="mediacao_mediacao_parte" Member="mediacao" ThisKey="mediacao_id" OtherKey="id" Type="mediacao" IsForeignKey="true" />
+      <Association Name="pessoa_mediacao_parte" Member="pessoa" ThisKey="pessoa_id" OtherKey="cpf" Type="pessoa" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.alteraCidade" Method="alteraCidade">
@@ -155,6 +155,46 @@
     <Parameter Name="senha" Type="System.String" DbType="VarChar(50)" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="dbo.alteraAgendamento" Method="alteraAgendamento">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="id_solicitacao" Type="System.Int32" DbType="Int" />
+    <Parameter Name="descricao" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="data" Type="System.DateTime" DbType="Date" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.alteraMediacao" Method="alteraMediacao">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="id_solicitacao" Type="System.Int32" DbType="Int" />
+    <Parameter Name="numero" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="tema_conflito" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="data_mediacao" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="id_mediador" Type="System.Int32" DbType="Int" />
+    <Parameter Name="id_tipo_registro" Type="System.Int32" DbType="Int" />
+    <Parameter Name="objeto" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="id_local" Type="System.Int32" DbType="Int" />
+    <Parameter Name="documento_link" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="status" Type="System.Int32" DbType="Int" />
+    <Parameter Name="resolucao" Type="System.Char" DbType="Char(1)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.alteraPessoa" Method="alteraPessoa">
+    <Parameter Name="cpf" Type="System.String" DbType="VarChar(14)" />
+    <Parameter Name="rg" Type="System.String" DbType="VarChar(12)" />
+    <Parameter Name="nome" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="status_civil" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="profissao" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="nascimento_data" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="nascimento_cidade" Type="System.Int32" DbType="Int" />
+    <Parameter Name="sexo" Type="System.Char" DbType="Char(1)" />
+    <Parameter Name="nome_pai" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="nome_mae" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="endereco_logradouro" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="endereco_numero" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="endereco_bairro" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="endereco_cidade" Type="System.Int32" DbType="Int" />
+    <Parameter Name="telefone" Type="System.String" DbType="VarChar(20)" />
+    <Return Type="System.Int32" />
+  </Function>
   <Function Name="dbo.alteraSolicitacoes" Method="alteraSolicitacoes">
     <Parameter Name="id" Type="System.Int32" DbType="Int" />
     <Parameter Name="descricao_problema" Type="System.String" DbType="VarChar(50)" />
@@ -166,7 +206,11 @@
     <Parameter Name="solicitante_periodo_atendimento" Type="System.Char" DbType="Char(1)" />
     <Parameter Name="detalhes_partes" Type="System.String" DbType="VarChar(200)" />
     <Parameter Name="id_local" Type="System.Int32" DbType="Int" />
-    <Parameter Name="status_agendamento" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.alteraTipoRegistro" Method="alteraTipoRegistro">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="descricao" Type="System.String" DbType="VarChar(50)" />
     <Return Type="System.Int32" />
   </Function>
 </Database>
