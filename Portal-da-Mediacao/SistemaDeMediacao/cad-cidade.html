@@ -139,13 +139,13 @@
                 <div id="navigation">
                     <!-- Navigation Menu-->
                     <ul class="navigation-menu">
-                        <li class="has-submenu">
+                        <li class="has-submenu active">
                             <a href="index.html"><i class="ion-home "></i>Início</a>
                         </li>
                         <li class="has-submenu">
                             <a href="solicitacoes.html"><i class="ion-chatbubble"></i>Solicitações</a>
                         </li>
-                        <li class="has-submenu active">
+                        <li class="has-submenu">
                             <a href="agendamentos.html"><i class="ion-chatbubble-working"></i>Agendamentos</a>
                         </li>
                         <li class="has-submenu">
@@ -175,79 +175,36 @@
              ======================= -->
         <div class="wrapper">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-8">
-                        <div class="card-box">
-                            <h4 class="text-dark  header-title m-t-0">Mediaçõs</h4>
-                            <p class="text-muted m-b-25 font-13">
-                                Lista com mediações e seus status
-                                <input type="text" placeholder="Buscar..." class="form-control">
-                            </p>
-
-                            
-                        </div>
-                    </div>
-                    <!-- end col -8 -->
-
-                    <div class="col-lg-4">
-                        <div class="card-box widget-user">
-                            <div>
-                                <img class="img-responsive" alt="user" src="image/mais.png">
-                                <div class="wid-u-info">
-                                    <a href="#"><h4 class="m-t-0 m-b-5">Nova Mediação</h4></a>
-                                    <p class="text-muted m-b-5 font-13">Abra uma nova mediação</p>
-                                    <a href="cad-Mediacao.html"> <span class="label label-warning">Abrir</span></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-box widget-user">
-                            <div>
-                                <img class="img-responsive" alt="user" src="image/historico.png">
-                                <div class="wid-u-info">
-                                    <a href="#"><h4 class="m-t-0 m-b-5">Histórico</h4></a>
-                                    <p class="text-muted m-b-5 font-13">Histórido de Agendamento</p>
-                                    <a href="#"> <span class="label label-dark">Histórico</span></a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card-box widget-user">
-                            <div>
-                                <img class="img-responsive" alt="user" src="image/calendario.png">
-                                <div class="wid-u-info">
-                                    <a href="#"><h4 class="m-t-0 m-b-5">Agenda Inesperada</h4></a>
-                                    <p class="text-muted m-b-5 font-13">Faça um agendamento</p>
-                                    <a role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><span class="label label-default">Agendar</span></a>
-                                    
-                                    <br>
-                                    <div class="collapse" id="collapseExample">
-                                      
-                                        <div class="form-group">
-                                                <label class="col-lg-4 control-label">Dia e Hora:</label>
-                                                <div class="col-lg-8">
-                                                    <input type="text" class="form-control input-daterange-timepicker" name="daterange" value="01/01/2015 1:30 PM - 01/01/2015 2:00 PM"/>
-                                                </div>
+                <h3>Cadastro - Cidade</h3>
+                <p>Faça o cadastro de Mediadores</p>
+                <div class="panel-body">
+                            <form class="form-horizontal">
+                                <fieldset>
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="nome">Nome</label>
+                                        <div class="col-md-6">
+                                            <input name="nome" class="form-control input-md" id="nome" type="text" placeholder="Nome da Cidade">
                                         </div>
-                                        <br><br><br>
-                                        <div class="form-group">
-                                            <label class="col-md-4 control-label" for="descricao">Descrição</label>
-                                            <div class="col-md-8">
-                                            <textarea name="descricao" class="form-control" id="descricao">Descrição do caso...</textarea>
-                                            </div>
-                                        </div>
-                                        <br><br><br>
-                                        <center>
-                                        <button class="btn btn-success btn-rounded">Realizar Agendamento</button>
-                                        </center>
-                                    
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="nome">Estado</label>
+                                        <div class="col-md-6">
+                                            <input name="nome" class="form-control input-md" id="nome" type="text" placeholder="Estado">
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    
+                                    
+                                        <div class="col-md-offset-3">
+                                    <button class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5" type="button">Cadastrar</button>
+                                    <button class="btn btn-warning btn-rounded w-md waves-effect waves-light m-b-5" type="button">Listar</button>
+                                    </div>
+                                </fieldset>
+                    </form>
+                </div   >
             </div>
         </div>
 
