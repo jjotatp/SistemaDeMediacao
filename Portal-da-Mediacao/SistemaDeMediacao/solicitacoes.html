@@ -22,6 +22,12 @@
         <link href="assets/css/pages.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
+    
+        <link href="assets/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+		<link href="assets/plugins/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+		<link href="assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
+		<link href="assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+        <link href="assets/plugins/switchery/switchery.min.css" rel="stylesheet" />
 
         <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -146,7 +152,7 @@
                             <a href="#"><i class="ion-chatbubble"></i>Solicitações</a>
                         </li>
                         <li class="has-submenu">
-                            <a href="mediacao.html"><i class="ion-person-stalker"></i>Mediações</a>
+                            <a href="agendamentos.html"><i class="ion-person-stalker"></i>Agendamentos</a>
                         </li>
                         <li class="has-submenu">
                             <a href="#"><i class="ion-calendar "></i>Noticias</a>
@@ -197,35 +203,11 @@
                                 <table class="table">
 
                                     <tbody>
-                                    <tr>
-                                        <td>Gabriela Angela</td>
-                                        <td><span class="label label-inverse">Pendente</span></td>
-                                        <td><a href="#"><a href="#"><span class="label label-danger">CANCELAR</span></a></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>Guilherme Silveira</td>
-                                        <td><span class="label label-inverse">Pendente</span></td>
-                                        <td><a href="#"><a href="#"><span class="label label-danger">CANCELAR</span></a></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>André Naves</td>
-                                        <td><span class="label label-inverse">Pendente</span></td>
-                                        <td><a href="#"><a href="#"><span class="label label-danger">CANCELAR</span></a></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>Pedro Camargo</td>
-                                        <td><span class="label label-inverse">Pendente</span></td>
-                                        <td><a href="#"><a href="#"><span class="label label-danger">CANCELAR</span></a></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>Matheus Silva</td>
-                                        <td><span class="label label-inverse">Pendente</span></td>
-                                        <td><a href="#"><a href="#"><span class="label label-danger">CANCELAR</span></a></td>
-                                    </tr>
+                                    <tr><td>Gabriela Angela</td></tr>
+                                    <tr><td>Guilherme Silveira</td></tr>
+                                    <tr><td>André Naves</td></tr>
+                                    <tr><td>Pedro Camargo</td></tr>
+                                    <tr><td>Matheus Silva</td></tr>
                                     </tbody>
                                     </table>
                                 </div>
@@ -313,22 +295,34 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <button class="col-md-offset-4 btn btn-rounded btn-inverse" data-toggle="modal" data-target=".bs-example-modal-lg">INICIAR MEDIAÇÃO</button>
+                                        <label class="col-md-4 control-label" for=""></label>
+                                        <div class="col-md-6">
+                                    <a role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><span class="label label-default">Agendar</span></a>
+                                        </div>
+                                    </div>
+                                            <br>
+                                    <div class="collapse" id="collapseExample">
+                                      
+                                        <div class="form-group">
+                                                <label class="col-lg-4 control-label">Dia e Hora:</label>
+                                                <div class="col-lg-8">
+                                                    <input type="text" class="form-control input-daterange-timepicker" name="daterange" value="01/01/2015 1:30 PM - 01/01/2015 2:00 PM"/>
+                                                </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label" for="descricao">Um pouco do Caso</label>
+                                            <div class="col-md-6">
+                                            <textarea name="descricao" class="form-control" id="descricao">Descrição do caso...</textarea>
+                                            </div>
+                                        </div>
+                                        <center>
+                                        <button class="btn btn-success btn-rounded">Realizar Agendamento</button>
+                                        </center>
+                                    
                                     </div>
 
-                                    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-                                        <div class="modal-dialog modal-lg">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                    <h4 class="modal-title" id="myLargeModalLabel">Large modal</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    ...
-                                                </div>
-                                            </div><!-- /.modal-content -->
-                                        </div><!-- /.modal-dialog -->
-                                    </div>
+                                    
 
                                 </fieldset>
                             </form>
@@ -394,9 +388,7 @@
 
         </script>
 
-        <!-- Modal-Effect -->
-        <script src="assets/plugins/custombox/dist/custombox.min.js"></script>
-        <script src="assets/plugins/custombox/dist/legacy.min.js"></script>
+        
 
 
     </body>
