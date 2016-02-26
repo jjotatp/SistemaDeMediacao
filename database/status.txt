@@ -1,7 +1,7 @@
 
 * mediacoes.status
-1 - Cancelada
-2 - Concluido	
+1 - CONCLUIDA
+2 - CANCELADA	
 
 *** mediacoes.resolucao
 A - Acordo
