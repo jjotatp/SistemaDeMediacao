@@ -49,8 +49,6 @@
 
 
     <body>
-
-
         <!-- Navigation Bar-->
         <header id="topnav">
             <div class="topbar-main">
@@ -169,11 +167,11 @@
             </div>
             </div>
         </header>
-
-<asp:ContentPlaceHolder ID="p" runat="server">
-    <!-- CONTEUDO DO SISTEMA -->
-</asp:ContentPlaceHolder>
-   
+        <form id="form1" class="form-horizontal" runat="server">
+        <asp:ContentPlaceHolder ID="p" runat="server">
+            <!-- CONTEUDO DO SISTEMA -->
+        </asp:ContentPlaceHolder>
+        </form>
          <footer class="footer text-right">
             <div class="container">
                 <div class="row">
@@ -183,9 +181,7 @@
                 </div>
             </div>
         </footer>
-        <!-- End Footer -->
-
-
+        <!-- End Footer -->               
         <!-- jQuery  -->
         <script src="Content/js/jquery.min.js"></script>
         <script src="Content/js/bootstrap.min.js"></script>
@@ -223,7 +219,6 @@
             };
 
         </script>
-
     </body>
 
 <!-- Mirrored from coderthemes.com/minton_1.2/blue_hori/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 16 Feb 2016 00:10:53 GMT -->

@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
-using med_admin.Controllers;
+using BackEnd.Controllers;
 using System.Data.Linq;
 
-namespace med_admin.Models
+namespace BackEnd.Models
 {
-    public class Agendamento_Model : Controller
+    public class Agendamento_Model
     {
         public dbDataContext getDataContext() { dbDataContext db = new dbDataContext(); return db; }
 
@@ -62,12 +61,6 @@ namespace med_admin.Models
                 Table<agendamento> tb = db.GetTable<agendamento>();
                 return tb.First(p => p.id == id);
             }
-        }
-
-        // GET: Agendamento_Model
-        public ActionResult Index()
-        {
-            return View();
         }
     }
 }

@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
-using med_admin.Controllers;
+using BackEnd.Controllers;
 using System.Data.Linq;
 
-namespace med_admin.Models
+namespace BackEnd.Models
 {
-    public class TipoRegistro_Model : Controller
+    public class TipoRegistro_Model
     {
 
         public dbDataContext getDataContext() { dbDataContext db = new dbDataContext(); return db; }
@@ -20,20 +19,30 @@ namespace med_admin.Models
             return tb;
         }
 
-        public int Inserir(tipo_registro a)
+        public bool InserirAtualizar(tipo_registro a)
         {
-            // função para cadastrar cidade
+            // função para cadastrar tipo_registro
             try
             {
                 Table<tipo_registro> tb = getTable();
-                tb.InsertOnSubmit(a);
-                tb.Context.SubmitChanges();
+                dbDataContext db = getDataContext();
 
-                return a.id;
+                if (a.id == 0)
+                {
+                    tb.InsertOnSubmit(a);
+                    tb.Context.SubmitChanges();
+                }
+                else
+                {
+                    db.alteraTipoRegistro(a.id, a.descricao);
+                    tb.Context.SubmitChanges();
+                }
+
+                return true;
             }
             catch
             {
-                return 0;
+                return false;
             }
         }
 
@@ -65,10 +74,5 @@ namespace med_admin.Models
             }
         }
 
-        // GET: TipoRegistro_Model
-        public ActionResult Index()
-        {
-            return View();
-        }
     }
 }

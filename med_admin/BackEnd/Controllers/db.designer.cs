@@ -23,7 +23,7 @@ namespace BackEnd.Controllers
 	
 	
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="med_admin")]
-	public partial class bdDataContext : System.Data.Linq.DataContext
+	public partial class dbDataContext : System.Data.Linq.DataContext
 	{
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
@@ -59,31 +59,31 @@ namespace BackEnd.Controllers
     partial void Deletetipo_registro(tipo_registro instance);
     #endregion
 		
-		public bdDataContext() : 
+		public dbDataContext() : 
 				base(global::BackEnd.Properties.Settings.Default.med_adminConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public bdDataContext(string connection) : 
+		public dbDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public bdDataContext(System.Data.IDbConnection connection) : 
+		public dbDataContext(System.Data.IDbConnection connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public bdDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public dbDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public bdDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public dbDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
@@ -338,7 +338,7 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="solicitacoe_agendamento", Storage="_solicitacao", ThisKey="id_solicitacao", OtherKey="id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="solicitacao_agendamento", Storage="_solicitacao", ThisKey="id_solicitacao", OtherKey="id", IsForeignKey=true)]
 		public solicitacao solicitacao
 		{
 			get
@@ -491,7 +491,7 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="cidade_locai", Storage="_locals", ThisKey="id", OtherKey="cidade")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="cidade_local", Storage="_locals", ThisKey="id", OtherKey="cidade")]
 		public EntitySet<local> locals
 		{
 			get
@@ -884,7 +884,7 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="locai_mediacoe", Storage="_mediacaos", ThisKey="id", OtherKey="id_local")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="local_mediacao", Storage="_mediacaos", ThisKey="id", OtherKey="id_local")]
 		public EntitySet<mediacao> mediacaos
 		{
 			get
@@ -897,7 +897,7 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="locai_mediadore", Storage="_mediadors", ThisKey="id", OtherKey="id_local")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="local_mediador", Storage="_mediadors", ThisKey="id", OtherKey="id_local")]
 		public EntitySet<mediador> mediadors
 		{
 			get
@@ -910,7 +910,7 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="locai_solicitacoe", Storage="_solicitacaos", ThisKey="id", OtherKey="id_local")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="local_solicitacao", Storage="_solicitacaos", ThisKey="id", OtherKey="id_local")]
 		public EntitySet<solicitacao> solicitacaos
 		{
 			get
@@ -923,7 +923,7 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="cidade_locai", Storage="_cidade1", ThisKey="cidade", OtherKey="id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="cidade_local", Storage="_cidade1", ThisKey="cidade", OtherKey="id", IsForeignKey=true)]
 		public cidade cidade1
 		{
 			get
@@ -1117,7 +1117,7 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="mediacoe_mediacao_parte", Storage="_mediacao", ThisKey="mediacao_id", OtherKey="id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="mediacao_mediacao_parte", Storage="_mediacao", ThisKey="mediacao_id", OtherKey="id", IsForeignKey=true)]
 		public mediacao mediacao
 		{
 			get
@@ -1542,7 +1542,7 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="mediacoe_mediacao_parte", Storage="_mediacao_partes", ThisKey="id", OtherKey="mediacao_id")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="mediacao_mediacao_parte", Storage="_mediacao_partes", ThisKey="id", OtherKey="mediacao_id")]
 		public EntitySet<mediacao_parte> mediacao_partes
 		{
 			get
@@ -1555,7 +1555,7 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="locai_mediacoe", Storage="_local", ThisKey="id_local", OtherKey="id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="local_mediacao", Storage="_local", ThisKey="id_local", OtherKey="id", IsForeignKey=true)]
 		public local local
 		{
 			get
@@ -1589,7 +1589,7 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="mediadore_mediacoe", Storage="_mediador", ThisKey="id_mediador", OtherKey="id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="mediador_mediacao", Storage="_mediador", ThisKey="id_mediador", OtherKey="id", IsForeignKey=true)]
 		public mediador mediador
 		{
 			get
@@ -1623,7 +1623,7 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="solicitacoe_mediacoe", Storage="_solicitacao", ThisKey="id_solicitacao", OtherKey="id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="solicitacao_mediacao", Storage="_solicitacao", ThisKey="id_solicitacao", OtherKey="id", IsForeignKey=true)]
 		public solicitacao solicitacao
 		{
 			get
@@ -1657,7 +1657,7 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tipos_registro_mediacoe", Storage="_tipo_registro", ThisKey="id_tipo_registro", OtherKey="id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tipo_registro_mediacao", Storage="_tipo_registro", ThisKey="id_tipo_registro", OtherKey="id", IsForeignKey=true)]
 		public tipo_registro tipo_registro
 		{
 			get
@@ -1895,7 +1895,7 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="mediadore_mediacoe", Storage="_mediacaos", ThisKey="id", OtherKey="id_mediador")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="mediador_mediacao", Storage="_mediacaos", ThisKey="id", OtherKey="id_mediador")]
 		public EntitySet<mediacao> mediacaos
 		{
 			get
@@ -1908,7 +1908,7 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="locai_mediadore", Storage="_local", ThisKey="id_local", OtherKey="id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="local_mediador", Storage="_local", ThisKey="id_local", OtherKey="id", IsForeignKey=true)]
 		public local local
 		{
 			get
@@ -2777,7 +2777,7 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="solicitacoe_agendamento", Storage="_agendamentos", ThisKey="id", OtherKey="id_solicitacao")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="solicitacao_agendamento", Storage="_agendamentos", ThisKey="id", OtherKey="id_solicitacao")]
 		public EntitySet<agendamento> agendamentos
 		{
 			get
@@ -2790,7 +2790,7 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="solicitacoe_mediacoe", Storage="_mediacaos", ThisKey="id", OtherKey="id_solicitacao")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="solicitacao_mediacao", Storage="_mediacaos", ThisKey="id", OtherKey="id_solicitacao")]
 		public EntitySet<mediacao> mediacaos
 		{
 			get
@@ -2803,7 +2803,7 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="locai_solicitacoe", Storage="_local", ThisKey="id_local", OtherKey="id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="local_solicitacao", Storage="_local", ThisKey="id_local", OtherKey="id", IsForeignKey=true)]
 		public local local
 		{
 			get
@@ -2950,7 +2950,7 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tipos_registro_mediacoe", Storage="_mediacaos", ThisKey="id", OtherKey="id_tipo_registro")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tipo_registro_mediacao", Storage="_mediacaos", ThisKey="id", OtherKey="id_tipo_registro")]
 		public EntitySet<mediacao> mediacaos
 		{
 			get

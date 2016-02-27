@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
 using System.Data.Linq.Mapping;
-using med_admin.Controllers;
+using BackEnd.Controllers;
 using System.Data.Linq;
 
-namespace med_admin.Models
+namespace BackEnd.Models
 {
-    public class Mediacao_Model : Controller
+    public class Mediacao_Model
     {
         public dbDataContext getDataContext() { dbDataContext db = new dbDataContext(); return db; }
 
@@ -125,10 +124,5 @@ namespace med_admin.Models
             catch { return false; }
         }
 
-        // GET: Mediacao_Model
-        public ActionResult Index()
-        {
-            return View();
-        }
     }
 }

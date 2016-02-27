@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
-using med_admin.Controllers;
+using BackEnd.Controllers;
 using System.Data.Linq;
 
-namespace med_admin.Models
+namespace BackEnd.Models
 {
-    public class Pessoa_Model : Controller
+    public class Pessoa_Model
     {
         public dbDataContext getDataContext() { dbDataContext db = new dbDataContext(); return db; }
 
@@ -64,12 +63,6 @@ namespace med_admin.Models
                 Table<pessoa> tb = db.GetTable<pessoa>();
                 return tb.First(p => p.cpf == cpf);
             }
-        }
-
-        // GET: Pessoa_Model
-        public ActionResult Index()
-        {
-            return View();
         }
     }
 }

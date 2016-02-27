@@ -1,0 +1,6 @@
+C:\programas\Sistema de mediacao\trunk\med_admin\BackEnd\bin\Debug\BackEnd.dll.config
+C:\programas\Sistema de mediacao\trunk\med_admin\BackEnd\bin\Debug\BackEnd.dll
+C:\programas\Sistema de mediacao\trunk\med_admin\BackEnd\bin\Debug\BackEnd.pdb
+C:\programas\Sistema de mediacao\trunk\med_admin\BackEnd\obj\Debug\BackEnd.csprojResolveAssemblyReference.cache
+C:\programas\Sistema de mediacao\trunk\med_admin\BackEnd\obj\Debug\BackEnd.dll
+C:\programas\Sistema de mediacao\trunk\med_admin\BackEnd\obj\Debug\BackEnd.pdb

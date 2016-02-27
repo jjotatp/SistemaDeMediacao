@@ -41,10 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\bd.designer.cs">
+    <Compile Include="Controllers\db.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>bd.dbml</DependentUpon>
+      <DependentUpon>db.dbml</DependentUpon>
     </Compile>
     <Compile Include="Models\Agendamento_Model.cs" />
     <Compile Include="Models\Cidade_Model.cs" />
@@ -63,9 +63,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Controllers\bd.dbml">
+    <None Include="Controllers\db.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>bd.designer.cs</LastGenOutput>
+      <LastGenOutput>db.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\Settings.settings">
@@ -77,8 +77,8 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Controllers\bd.dbml.layout">
-      <DependentUpon>bd.dbml</DependentUpon>
+    <None Include="Controllers\db.dbml.layout">
+      <DependentUpon>db.dbml</DependentUpon>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

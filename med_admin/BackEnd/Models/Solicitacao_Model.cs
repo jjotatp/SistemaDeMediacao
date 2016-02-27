@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
-using med_admin.Controllers;
+using BackEnd.Controllers;
 using System.Data.Linq;
 
 
-namespace med_admin.Models
+namespace BackEnd.Models
 {
-    public class Solicitacao_Model : Controller
+    public class Solicitacao_Model
     {
         public dbDataContext getDataContext() { dbDataContext db = new dbDataContext(); return db; }
 
@@ -67,12 +66,6 @@ namespace med_admin.Models
                 Table<solicitacao> tb = db.GetTable<solicitacao>();
                 return tb.First(p => p.id == id);
             }
-        }
-
-        // GET: Solicitacao_Model
-        public ActionResult Index()
-        {
-            return View();
         }
     }
 }

@@ -31,3 +31,5 @@ C:\programas\Sistema de mediacao\trunk\med_admin\FrontEnd\bin\Microsoft.CodeDom.
 C:\programas\Sistema de mediacao\trunk\med_admin\FrontEnd\obj\Debug\FrontEnd.csprojResolveAssemblyReference.cache
 C:\programas\Sistema de mediacao\trunk\med_admin\FrontEnd\obj\Debug\FrontEnd.dll
 C:\programas\Sistema de mediacao\trunk\med_admin\FrontEnd\obj\Debug\FrontEnd.pdb
+C:\programas\Sistema de mediacao\trunk\med_admin\FrontEnd\bin\BackEnd.dll
+C:\programas\Sistema de mediacao\trunk\med_admin\FrontEnd\bin\BackEnd.pdb
