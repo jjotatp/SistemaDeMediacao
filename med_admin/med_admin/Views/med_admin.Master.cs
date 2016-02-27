@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace med_admin.Views
 {
-    public partial class Site1 : System.Web.UI.MasterPage
+    public partial class med_admin: System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

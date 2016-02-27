@@ -10,7 +10,7 @@
 namespace med_admin.Views {
     
     
-    public partial class Site1 {
+    public partial class med_admin {
         
         /// <summary>
         /// p control.
