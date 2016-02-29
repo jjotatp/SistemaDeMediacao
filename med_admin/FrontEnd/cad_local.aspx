@@ -1,7 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/med_admin.Master" AutoEventWireup="true"
 CodeBehind="cad_local.aspx.cs" Inherits="FrontEnd.cad_local" %>
+<%@ MasterType VirtualPath="~/med_admin.master"  %>
     <asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">
-        <div class="wrapper">
+        <div class="">
             <div class="container">
                 <h3>
                     Cadastro - Local
@@ -9,6 +10,7 @@ CodeBehind="cad_local.aspx.cs" Inherits="FrontEnd.cad_local" %>
                 <p>
                     Faça o cadastro dos Locais de Mediação
                 </p>
+                <input runat="server" class="" ID="txtID" visible="false" />                                
                 <div class="panel-body">
                     <fieldset>
                         <!-- Text input-->
@@ -27,8 +29,7 @@ CodeBehind="cad_local.aspx.cs" Inherits="FrontEnd.cad_local" %>
                                 Descrição
                             </label>
                             <div class="col-md-6">
-                                <textarea name="descricao" class="form-control" id="txtDescricao" runat="server">
-                                    Descrição do local
+                                <textarea name="descricao" class="form-control" id="txtDescricao" runat="server" placeholder="Descrição do local">                                    
                                 </textarea>
                             </div>
                         </div>
@@ -97,11 +98,11 @@ CodeBehind="cad_local.aspx.cs" Inherits="FrontEnd.cad_local" %>
                         </div>
                         <div class="col-md-offset-3">
                             <asp:Button runat="server" id="btnSalvar" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5"
-                            OnClick="" Text="Cadastrar" OnClick="btnSalvar_Click" />
+                            Text="Cadastrar" OnClick="btnSalvar_Click" />
                             <asp:Button runat="server" id="btnListar" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5"
-                            OnClick="" Text="Listar" />
+                            Text="Listar" />
                             <asp:Button runat="server" id="btnLimpar" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5"
-                            OnClick="" Text="Limpar" />
+                            OnClick="btnLimpar_Click" Text="Limpar" />
                         </div>
                     </fieldset>
                 </div>

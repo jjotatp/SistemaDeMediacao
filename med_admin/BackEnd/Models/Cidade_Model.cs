@@ -54,5 +54,14 @@ namespace BackEnd.Models
                 return tb.First(p => p.id == id);
             }
         }
+
+        public List<cidade> Listar()
+        {
+            using (dbDataContext db = getDataContext())
+            {
+                Table<cidade> tabelaCidade = getTable();
+                return tabelaCidade.ToList();
+            }
+        }
     }
 }

@@ -22,13 +22,13 @@ namespace FrontEnd {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// pnlAlert control.
+        /// pnlAlerta control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pnlAlert;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pnlAlerta;
         
         /// <summary>
         /// lblTextoAlerta control.
@@ -38,6 +38,24 @@ namespace FrontEnd {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTextoAlerta;
+        
+        /// <summary>
+        /// pnlSucesso control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pnlSucesso;
+        
+        /// <summary>
+        /// lblTextoSucesso control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTextoSucesso;
         
         /// <summary>
         /// p control.
