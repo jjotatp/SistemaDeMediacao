@@ -13,5 +13,13 @@ namespace FrontEnd
         {
 
         }
+
+
+        public void Alerta(String msg)
+        {
+            lblTextoAlerta.Text = msg;
+            pnlAlert.Style.Remove("display");            
+        }
+
     }
 }

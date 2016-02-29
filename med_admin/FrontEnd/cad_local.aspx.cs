@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using BackEnd.Controllers;
+using BackEnd.Models;
 
 namespace FrontEnd
 {
@@ -12,6 +9,33 @@ namespace FrontEnd
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected void btnSalvar_Click(object sender, EventArgs e)
+        {
+            // cadastrar cidade
+            local local = new local();
+            local.nome = txtNome.Text;
+            local.descricao = txtDescricao.InnerText;
+            local.id_cidade = Int32.Parse(ddCidade.SelectedValue);
+            local.bairro = txtBairro.Value;
+            local.logradouro = txtLogradouro.Value;
+            local.numero = txtNumero.Value;
+            local.CEP = txtCEP.Text;            
+            local.data_inicio_atividade = DateTime.Parse(txtDataInicioAtividade.Value);
+            local.ativo = cbbAtivo.Checked;
+
+            Local_Model model = new Local_Model();
+
+            // se tiver ID preenche o parâmetro
+            if (Request.QueryString["ID"] != null)
+                local.id = int.Parse(Request.QueryString["ID"]);
+
+            // faz a inserção ou atualização do cadastro da cidade
+            if (model.InserirAtualizar(local))
+                Response.Redirect("cad_local.aspx");
+
+            
         }
     }
 }

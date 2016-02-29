@@ -35,7 +35,7 @@ namespace FrontEnd
             cidade.nome = txtNome.Text;
             cidade.estado = ddUF.Text;
 
-            CidadeModel model = new CidadeModel();
+            Cidade_Model model = new Cidade_Model();
             if (txtNome.Text != "")
             {
                 // se tiver ID preenche o parâmetro
