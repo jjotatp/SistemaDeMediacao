@@ -10,10 +10,18 @@ CodeBehind="cad_local.aspx.cs" Inherits="FrontEnd.cad_local" %>
                 <p>
                     Faça o cadastro dos Locais de Mediação
                 </p>
-                <input runat="server" class="" ID="txtID" visible="false" />                                
+                                               
                 <div class="panel-body">
                     <fieldset>
                         <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">
+                                ID
+                            </label>
+                            <div class="col-md-1">                            
+                                <asp:Label runat="server" class="alert-info form-control" ID="txtID" ></asp:Label>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="nome">
                                 Nome
@@ -100,7 +108,7 @@ CodeBehind="cad_local.aspx.cs" Inherits="FrontEnd.cad_local" %>
                             <asp:Button runat="server" id="btnSalvar" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5"
                             Text="Cadastrar" OnClick="btnSalvar_Click" />
                             <asp:Button runat="server" id="btnListar" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5"
-                            Text="Listar" />
+                            OnClick="btnListar_Click" Text="Listar" />
                             <asp:Button runat="server" id="btnLimpar" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5"
                             OnClick="btnLimpar_Click" Text="Limpar" />
                         </div>

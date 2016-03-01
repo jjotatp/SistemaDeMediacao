@@ -17,6 +17,15 @@ namespace FrontEnd
             // Sucesso é mensagem verde
         }
 
+        public void EditaCadastro(GridViewCommandEventArgs e, int id, String telaCadastro)
+        {            
+            // deve verificar se o botão EDITAR foi clicado
+            if (e.CommandName == "Editar")
+            {
+                String url = telaCadastro + ".aspx?ID=" + id.ToString();
+                Response.Redirect(url);
+            }
+        }
 
         public void Alerta(String msg)
         {

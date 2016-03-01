@@ -55,5 +55,24 @@ namespace BackEnd.Models
                 return tb.First(p => p.id == id);
             }
         }
+
+        public List<local> Listar()
+        {
+            using (dbDataContext db = getDataContext())
+            {
+                Table<local> tb = getTable();
+                return tb.ToList();
+            }
+        }
+
+        public List<local> ListarPorNome(string Nome)
+        {
+            using (dbDataContext db = getDataContext())
+            {
+                String sSql = "select * from locais l where l.nome like '%" + Nome + "%' ";
+                var query = db.ExecuteQuery<local>(sSql);
+                return query.ToList();
+            }
+        }
     }
 }

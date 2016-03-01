@@ -63,5 +63,16 @@ namespace BackEnd.Models
                 return tabelaCidade.ToList();
             }
         }
+
+        public List<cidade> ListarPorNome(string Nome)
+        {
+            using (dbDataContext db = getDataContext())
+            {
+
+                String sSql = "select * from cidades C where C.nome like '%" + Nome + "%' ";
+                var query = db.ExecuteQuery<cidade>(sSql);
+                return query.ToList();
+            }
+        }
     }
 }

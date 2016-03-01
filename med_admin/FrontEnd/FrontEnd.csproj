@@ -94,6 +94,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="lista_cidade.aspx" />
+    <Content Include="lista_local.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -373,6 +375,20 @@
     </Compile>
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="lista_cidade.aspx.cs">
+      <DependentUpon>lista_cidade.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="lista_cidade.aspx.designer.cs">
+      <DependentUpon>lista_cidade.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="lista_local.aspx.cs">
+      <DependentUpon>lista_local.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="lista_local.aspx.designer.cs">
+      <DependentUpon>lista_local.aspx</DependentUpon>
     </Compile>
     <Compile Include="med_admin.Master.cs">
       <DependentUpon>med_admin.Master</DependentUpon>

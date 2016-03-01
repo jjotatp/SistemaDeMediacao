@@ -8,54 +8,69 @@ namespace FrontEnd
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // carrega cidades
-            Cidade_Model c = new Cidade_Model();
-            ddCidade.DataSource = c.Listar();
-            ddCidade.DataValueField = "id";
-            ddCidade.DataTextField = "nome";
-            ddCidade.DataBind();
-            ddCidade.SelectedIndex = 0;
-
-            // declara ID e verifica se existe ID no txtID ou no endereço
-            int id = 0;
-
-            if ( (txtID.Value != "") && !IsPostBack)
+            if (!IsPostBack)
             {
-                // recupera o id
-                id = int.Parse(txtID.Value);
-            }
+                // carrega cidades
+                Cidade_Model c = new Cidade_Model();
+                ddCidade.DataSource = c.Listar();
+                ddCidade.DataValueField = "id";
+                ddCidade.DataTextField = "nome";
+                ddCidade.DataBind();
+                ddCidade.SelectedIndex = 0;
 
-            if ((Request.QueryString["ID"] != null && !IsPostBack))
-            {
-                //recupera o id
-                id = int.Parse(Request.QueryString["ID"]);
-                txtID.Value = id.ToString();
-            }
+                // declara ID e verifica se existe ID no txtID ou no endereço
+                int id = 0;
 
-            // se houver ID informado, então carrega o registro do ID informado
-            if ( id != 0)
-            {
-                try {
-                    // declara o objeto model
-                    Local_Model model = new Local_Model();
-                    //recupera o produto do id informado
-                    local local = model.Obter(id);
-
-                    //preencher caixas de texto com valores de produto
-                    txtID.Value = local.id.ToString();
-                    txtNome.Text = local.nome;
-                    txtDescricao.Value = local.descricao;
-                    txtNumero.Value = local.numero;
-                    txtLogradouro.Value = local.logradouro;
-                    txtBairro.Value = local.bairro;
-                    txtDataInicioAtividade.Value = local.data_inicio_atividade.ToString();
-                    txtCEP.Text = local.CEP;
-                    cbbAtivo.Checked = local.ativo;
-                    ddCidade.SelectedValue = local.id_cidade.ToString();
-                }
-                catch (Exception)
+                if (txtID.Text != "Novo")
                 {
-                    Master.Alerta("Registro não encontrado.");
+                    // recupera o id
+                    try
+                    {
+                        id = int.Parse(txtID.Text);
+                    }
+                    catch (Exception)
+                    {
+                        Master.Alerta("Erro ao carregar o cadastro.");
+                    }
+                }
+
+                if (Request.QueryString["ID"] != null)
+                {
+                    //recupera o id
+                    id = int.Parse(Request.QueryString["ID"]);
+                    txtID.Text = id.ToString();
+                }
+
+                // se houver ID informado, então carrega o registro do ID informado
+                if (id != 0)
+                {
+                    try
+                    {
+                        // declara o objeto model
+                        Local_Model model = new Local_Model();
+                        //recupera o produto do id informado
+                        local local = model.Obter(id);
+
+                        //preencher caixas de texto com valores de produto
+                        txtID.Text = local.id.ToString();
+                        txtNome.Text = local.nome;
+                        txtDescricao.Value = local.descricao;
+                        txtNumero.Value = local.numero;
+                        txtLogradouro.Value = local.logradouro;
+                        txtBairro.Value = local.bairro;
+                        txtDataInicioAtividade.Value = local.data_inicio_atividade.ToString();
+                        txtCEP.Text = local.CEP;
+                        cbbAtivo.Checked = local.ativo;
+                        ddCidade.SelectedValue = local.id_cidade.ToString();
+                    }
+                    catch (Exception)
+                    {
+                        Master.Alerta("Registro não encontrado.");
+                    }
+                }
+                else
+                {
+                    txtID.Text = "Novo";
                 }
             }
         }
@@ -77,22 +92,23 @@ namespace FrontEnd
 
                 Local_Model model = new Local_Model();
 
-                // se tiver ID no campo oculto preenche o parâmetro
-                if (txtID.Value != "")
-                    local.id = int.Parse(txtID.Value);
+                // se tiver ID preenche o parâmetro
+                if (txtID.Text != "Novo")
+                    local.id = int.Parse(txtID.Text);
 
                 // faz a inserção ou atualização do cadastro da cidade
                 if (model.InserirAtualizar(local))
+                {
+                    txtID.Text = local.id.ToString();
                     Master.Sucesso("Registro salvo com sucesso.");
-
-                else
+                }else
                     Master.Alerta("Erro ao salvar o registro");
             }            
         }
 
         protected void LimparCampos()
         {
-            txtID.Value = "";
+            txtID.Text = "Novo";
             txtNome.Text = "";
             txtDescricao.Value = "";
             txtNumero.Value = "";
@@ -132,6 +148,11 @@ namespace FrontEnd
         protected void btnLimpar_Click(object sender, EventArgs e)
         {
             Response.Redirect("cad_local.aspx");
+        }
+
+        protected void btnListar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("lista_local.aspx");
         }
     }
 }
