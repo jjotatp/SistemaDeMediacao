@@ -74,5 +74,24 @@ namespace BackEnd.Models
             }
         }
 
+        public List<tipo_registro> Listar()
+        {
+            using (dbDataContext db = getDataContext())
+            {
+                Table<tipo_registro> tb = getTable();
+                return tb.ToList();
+            }
+        }
+
+        public List<tipo_registro> ListarPorDescricao(string s)
+        {
+            using (dbDataContext db = getDataContext())
+            {
+                String sSql = "select * from tipos_registro t where t.descricao like '%" + s + "%' ";
+                var query = db.ExecuteQuery<tipo_registro>(sSql);
+                return query.ToList();
+            }
+        }
+
     }
 }

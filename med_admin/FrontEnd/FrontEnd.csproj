@@ -96,6 +96,7 @@
   <ItemGroup>
     <Content Include="lista_cidade.aspx" />
     <Content Include="lista_local.aspx" />
+    <Content Include="lista_tipo_registro.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -389,6 +390,13 @@
     </Compile>
     <Compile Include="lista_local.aspx.designer.cs">
       <DependentUpon>lista_local.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="lista_tipo_registro.aspx.cs">
+      <DependentUpon>lista_tipo_registro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="lista_tipo_registro.aspx.designer.cs">
+      <DependentUpon>lista_tipo_registro.aspx</DependentUpon>
     </Compile>
     <Compile Include="med_admin.Master.cs">
       <DependentUpon>med_admin.Master</DependentUpon>

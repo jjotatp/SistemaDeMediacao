@@ -91,7 +91,7 @@ namespace FrontEnd {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtDataInicioAtividade;
+        protected global::System.Web.UI.WebControls.TextBox txtDataInicioAtividade;
         
         /// <summary>
         /// cbbAtivo control.

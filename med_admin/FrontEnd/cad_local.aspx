@@ -93,9 +93,13 @@ CodeBehind="cad_local.aspx.cs" Inherits="FrontEnd.cad_local" %>
                                 Início das Atividades
                             </label>
                             <div class="col-md-6">
-                                <input class="form-control input-md" id="txtDataInicioAtividade" type="date" runat="server" />
+                                <%--<input class="form-control input-md" id="txtDataInicioAtividade" type="date" runat="server" />--%>
+                                <asp:TextBox runat="server" TextMode="DateTime" CssClass="form-control input-md" id="txtDataInicioAtividade"></asp:TextBox>
                             </div>
                         </div>
+
+                        
+
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="nome">
                                 Ativo?
@@ -106,7 +110,7 @@ CodeBehind="cad_local.aspx.cs" Inherits="FrontEnd.cad_local" %>
                         </div>
                         <div class="col-md-offset-3">
                             <asp:Button runat="server" id="btnSalvar" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5"
-                            Text="Cadastrar" OnClick="btnSalvar_Click" />
+                            OnClick="btnSalvar_Click" Text="Salvar"/>
                             <asp:Button runat="server" id="btnListar" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5"
                             OnClick="btnListar_Click" Text="Listar" />
                             <asp:Button runat="server" id="btnLimpar" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5"

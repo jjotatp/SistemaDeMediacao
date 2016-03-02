@@ -53,5 +53,24 @@ namespace BackEnd.Models
                 return tb.First(p => p.id == id);
             }
         }
+
+        public List<mediador> Listar()
+        {
+            using (dbDataContext db = getDataContext())
+            {
+                Table<mediador> tb = getTable();
+                return tb.ToList();
+            }
+        }
+
+        public List<mediador> ListarPorNome(string Nome)
+        {
+            using (dbDataContext db = getDataContext())
+            {
+                String sSql = "select * from mediadores m where m.nome like '%" + Nome + "%' ";
+                var query = db.ExecuteQuery<mediador>(sSql);
+                return query.ToList();
+            }
+        }
     }
 }

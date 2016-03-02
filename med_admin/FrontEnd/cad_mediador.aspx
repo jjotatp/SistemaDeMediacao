@@ -1,62 +1,66 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/med_admin.Master" AutoEventWireup="true" CodeBehind="cad_mediador.aspx.cs" Inherits="FrontEnd.cad_mediador" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">
-    <div class="wrapper">
-            <div class="container">
-                <h3>Cadastro - Mediador</h3>
-                <p>Faça o cadastro de Mediadores</p>
-                <div class="panel-body">
-                            <form class="form-horizontal">
-                                <fieldset>
-                                    <!-- Text input-->
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label" for="nome">Nome</label>
-                                        <div class="col-md-6">
-                                            <input name="nome" class="form-control input-md" id="nome" type="text" placeholder="Nome">
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label" for="nome">Patente</label>
-                                        <div class="col-md-6">
-                                            <input name="patente" class="form-control input-md" id="patente" type="text" placeholder="Patente">
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label" for="nome">Usuário</label>
-                                        <div class="col-md-6">
-                                            <input name="usuario" class="form-control input-md" id="usuario" type="text" placeholder="Usuário">
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label" for="nome">Senha</label>
-                                        <div class="col-md-6">
-                                            <input name="senha" class="form-control input-md" id="senha" type="password" placeholder="Senha">
-                                        </div>
-                                    </div>
-                                    
-                                        
-                                    <div class="form-group">
-                                      <label class="col-md-4 control-label" for="sel1">Local</label>
-                                        <div class="col-md-6">
-                                      <select class="form-control" id="sel1">
-                                        <option>Local 1</option>
-                                        <option>Local 2</option>
-                                        <option>Local 3</option>
-                                        <option>Local 4</option>
-                                      </select>
-                                        </div>
-                                    </div>
-                                    
-                                    
-                                        <div class="col-md-offset-3">
-                                    <button class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5" type="button">Cadastras</button>
-                                    <button class="btn btn-warning btn-rounded w-md waves-effect waves-light m-b-5" type="button">Listar</button>
-                                    </div>
-                                </fieldset>
-                    </form>
+<asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">  
+<%@ MasterType VirtualPath="~/med_admin.master"  %>  
+    <div class="container">
+        <h3>Cadastro - Mediador</h3>
+        <p>Faça o cadastro de Mediadores</p>
+        <div class="panel-body">                            
+            <fieldset>
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="nome">Nome</label>
+                    <div class="col-md-6">
+                        <input name="nome" class="form-control input-md" id="txtNome" type="text" placeholder="Nome" runat="server">
+                    </div>
                 </div>
-            </div>
+                                    
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="nome">Patente</label>
+                    <div class="col-md-6">
+                        <input name="patente" class="form-control input-md" id="txtPatente" type="text" placeholder="Patente" runat="server">
+                    </div>
+                </div>
+                                    
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="nome">Usuário</label>
+                    <div class="col-md-6">
+                        <input runat="server" class="form-control input-md" id="txtUsuario" type="text" placeholder="Nome de usuário">
+                    </div>
+                </div>
+                                    
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="nome">Senha</label>
+                    <div class="col-md-6">
+                        <input class="form-control input-md" id="txtSenha" type="password" placeholder="Digite sua senha" runat="server">
+                    </div>
+                </div>
+                      
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="nome">Confirmar Senha</label>
+                    <div class="col-md-6">
+                        <input class="form-control input-md" id="txtConfirmarSenha" type="password" runat="server" placeholder="Digite novamente sua senha">
+                    </div>
+                </div>              
+                                        
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="sel1">Local</label>
+                    <div class="col-md-6">
+                        <asp:DropDownList runat="server" ID="ddLocal" CssClass="form-control"
+                                placeholder="Selecione...">
+                        </asp:DropDownList>
+                    </div>
+                </div>
+                                    
+                                    
+                <div class="col-md-offset-3">
+                    <asp:Button runat="server" id="btnSalvar" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5"
+                    OnClick="" Text="Salvar" />
+                    <asp:Button runat="server" id="btnListar" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5"
+                    OnClick="" Text="Listar" />
+                    <asp:Button runat="server" id="btnLimpar" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5"
+                    OnClick="" Text="Limpar" />
+                </div>
+            </fieldset>                  
         </div>
+    </div>        
 </asp:Content>

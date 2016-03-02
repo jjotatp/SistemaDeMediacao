@@ -58,10 +58,10 @@ namespace FrontEnd
                         txtNumero.Value = local.numero;
                         txtLogradouro.Value = local.logradouro;
                         txtBairro.Value = local.bairro;
-                        txtDataInicioAtividade.Value = local.data_inicio_atividade.ToString();
+                        txtDataInicioAtividade.Text = local.data_inicio_atividade.ToString();
                         txtCEP.Text = local.CEP;
                         cbbAtivo.Checked = local.ativo;
-                        ddCidade.SelectedValue = local.id_cidade.ToString();
+                        ddCidade.SelectedValue = local.id_cidade.ToString();                        
                     }
                     catch (Exception)
                     {
@@ -87,7 +87,7 @@ namespace FrontEnd
                 local.logradouro = txtLogradouro.Value;
                 local.numero = txtNumero.Value;
                 local.CEP = txtCEP.Text;
-                local.data_inicio_atividade = DateTime.Parse(txtDataInicioAtividade.Value);
+                local.data_inicio_atividade = DateTime.Parse(txtDataInicioAtividade.Text);
                 local.ativo = cbbAtivo.Checked;
 
                 Local_Model model = new Local_Model();
@@ -114,7 +114,7 @@ namespace FrontEnd
             txtNumero.Value = "";
             txtLogradouro.Value = "";
             txtBairro.Value = "";
-            txtDataInicioAtividade.Value = "";
+            txtDataInicioAtividade.Text = "";
             txtCEP.Text = "";
             cbbAtivo.Checked = true;
         }
