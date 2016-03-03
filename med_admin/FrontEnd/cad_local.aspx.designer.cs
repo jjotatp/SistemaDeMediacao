@@ -37,7 +37,7 @@ namespace FrontEnd {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescricao;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtDescricao;
         
         /// <summary>
         /// ddCidade control.

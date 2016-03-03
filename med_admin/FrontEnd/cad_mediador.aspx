@@ -8,6 +8,14 @@
             <fieldset>
                 <!-- Text input-->
                 <div class="form-group">
+                    <label class="col-md-4 control-label">
+                        ID
+                    </label>
+                    <div class="col-md-1">
+                        <asp:Label runat="server" class="alert-info form-control" ID="txtID" ></asp:Label>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-md-4 control-label" for="nome">Nome</label>
                     <div class="col-md-6">
                         <input name="nome" class="form-control input-md" id="txtNome" type="text" placeholder="Nome" runat="server">
@@ -23,7 +31,7 @@
                                     
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="nome">Usuário</label>
-                    <div class="col-md-6">
+                    <div class="col-md-6">                        
                         <input runat="server" class="form-control input-md" id="txtUsuario" type="text" placeholder="Nome de usuário">
                     </div>
                 </div>
@@ -54,11 +62,11 @@
                                     
                 <div class="col-md-offset-3">
                     <asp:Button runat="server" id="btnSalvar" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5"
-                    OnClick="" Text="Salvar" />
+                    OnClick="btnSalvar_Click" Text="Salvar" />
                     <asp:Button runat="server" id="btnListar" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5"
-                    OnClick="" Text="Listar" />
+                    OnClick="btnListar_Click" Text="Listar" />
                     <asp:Button runat="server" id="btnLimpar" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5"
-                    OnClick="" Text="Limpar" />
+                    OnClick="btnLimpar_Click" Text="Limpar" />
                 </div>
             </fieldset>                  
         </div>

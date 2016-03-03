@@ -72,5 +72,19 @@ namespace BackEnd.Models
                 return query.ToList();
             }
         }
+
+        public mediador ObterUsuario(string usuario)
+        {
+            using (dbDataContext db = getDataContext())
+            {
+                mediador d = new mediador();
+                Table<mediador> tb = getTable();
+                try {
+                    tb.First(p => p.usuario == usuario);
+                }
+                catch {}
+                return d;
+            }
+        }
     }
 }

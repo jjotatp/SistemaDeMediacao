@@ -10,6 +10,14 @@ namespace FrontEnd
         {
             if (!IsPostBack)
             {
+                // tamanho dos campos de acordo com o banco de dados
+                txtNome.MaxLength = 100;
+                txtDescricao.MaxLength = 50;
+                txtBairro.MaxLength = 50;
+                txtLogradouro.MaxLength = 100;
+                txtNumero.MaxLength = 10;
+                txtCEP.MaxLength = 15;
+            
                 // carrega cidades
                 Cidade_Model c = new Cidade_Model();
                 ddCidade.DataSource = c.Listar();
@@ -81,7 +89,7 @@ namespace FrontEnd
             if ( Valida() ) {
                 local local = new local();
                 local.nome = txtNome.Text;
-                local.descricao = txtDescricao.InnerText;
+                local.descricao = txtDescricao.Value;
                 local.id_cidade = Int32.Parse(ddCidade.SelectedValue);
                 local.bairro = txtBairro.Value;
                 local.logradouro = txtLogradouro.Value;

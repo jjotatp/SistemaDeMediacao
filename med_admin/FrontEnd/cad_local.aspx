@@ -37,8 +37,7 @@ CodeBehind="cad_local.aspx.cs" Inherits="FrontEnd.cad_local" %>
                                 Descrição
                             </label>
                             <div class="col-md-6">
-                                <textarea name="descricao" class="form-control" id="txtDescricao" runat="server" placeholder="Descrição do local">                                    
-                                </textarea>
+                                <input name="descricao" class="form-control" id="txtDescricao" runat="server" placeholder="Descrição do local" />
                             </div>
                         </div>
                         <div class="form-group">

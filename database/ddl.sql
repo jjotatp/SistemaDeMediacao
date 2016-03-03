@@ -18,7 +18,7 @@ create table locais
 	descricao varchar(50) not null,
 	id_cidade int not null references cidades(id),
 	bairro varchar(50) not null,
-	logradouro varchar(100) not null,
+	logradouro varchar(100) not null,	
 	numero varchar(10) not null,
 	CEP varchar(15) not null,
 	data_inicio_atividade date,
@@ -31,7 +31,7 @@ create table mediadores
 	nome varchar(100) not null,
 	patente varchar(50),
 	id_local int not null references locais(id),
-	usuario varchar(50),
+	usuario varchar(50) unique,
 	senha varchar(50)
 );
 
