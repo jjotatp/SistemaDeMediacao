@@ -17,15 +17,20 @@ namespace FrontEnd
                 // LIMITE MAXIMO DE CARACTERES DO NOME DA CIDADE
                 txtNomeCidade.MaxLength = 100;
 
-                Cidade_Model model = new Cidade_Model();
-
-                // asp:repeater
-                gdvCidades.DataSource = model.Listar();
-                gdvCidades.DataBind();
-
-                gdvCidades.UseAccessibleHeader = true;
-                gdvCidades.HeaderRow.TableSection = TableRowSection.TableHeader;
+                PreencherGrid();
             }
+        }
+
+        protected void PreencherGrid()
+        {
+            Cidade_Model model = new Cidade_Model();
+
+            // asp:repeater
+            gdvCidades.DataSource = model.Listar();
+            gdvCidades.DataBind();
+
+            gdvCidades.UseAccessibleHeader = true;
+            gdvCidades.HeaderRow.TableSection = TableRowSection.TableHeader;
         }
 
         protected void btnBuscarCidade_Click(object sender, EventArgs e)
@@ -38,17 +43,26 @@ namespace FrontEnd
 
         protected void gdvCidades_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            // recupera a linha clicada no gridview
-            int linha = Convert.ToInt32(e.CommandArgument);
-            // recupera o id na linha clicada
-            Int32 id = (Int32)gdvCidades.DataKeys[linha].Value;
-            //função que abre o registro em modo de edição
-            Master.EditaCadastro(e, id, "cad_cidade");
+            if (e.CommandName == "Editar")
+            {
+                // recupera a linha clicada no gridview
+                int linha = Convert.ToInt32(e.CommandArgument);
+                // recupera o id na linha clicada
+                Int32 id = (Int32)gdvCidades.DataKeys[linha].Value;
+                //função que abre o registro em modo de edição
+                Master.EditaCadastro(e, id, "cad_cidade");
+            }
         }
 
         protected void btnVoltar_Click(object sender, EventArgs e)
         {
             Response.Redirect("cad_cidade.aspx");
+        }
+
+        protected void gdvCidades_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gdvCidades.PageIndex = e.NewPageIndex;
+            PreencherGrid();
         }
     }
 }

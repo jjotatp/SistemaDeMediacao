@@ -40,6 +40,15 @@ namespace FrontEnd {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtPatente;
         
         /// <summary>
+        /// ddLocal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddLocal;
+        
+        /// <summary>
         /// txtUsuario control.
         /// </summary>
         /// <remarks>
@@ -65,15 +74,6 @@ namespace FrontEnd {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputPassword txtConfirmarSenha;
-        
-        /// <summary>
-        /// ddLocal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddLocal;
         
         /// <summary>
         /// btnSalvar control.

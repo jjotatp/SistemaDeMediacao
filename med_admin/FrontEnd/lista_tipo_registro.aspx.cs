@@ -17,16 +17,20 @@ namespace FrontEnd
             {
                 // LIMITE MAXIMO DE CARACTERES DO TIPO REGISTRO
                 txtDescricao.MaxLength = 50;
-
-                TipoRegistro_Model model = new TipoRegistro_Model();
-
-                // asp:repeater
-                gdvLista.DataSource = model.Listar();
-                gdvLista.DataBind();
-
-                gdvLista.UseAccessibleHeader = true;
-                gdvLista.HeaderRow.TableSection = TableRowSection.TableHeader;
+                PreencherGrid();
             }
+        }
+
+        protected void PreencherGrid()
+        {
+            TipoRegistro_Model model = new TipoRegistro_Model();
+
+            // asp:repeater
+            gdvLista.DataSource = model.Listar();
+            gdvLista.DataBind();
+
+            gdvLista.UseAccessibleHeader = true;
+            gdvLista.HeaderRow.TableSection = TableRowSection.TableHeader;
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)
@@ -50,6 +54,12 @@ namespace FrontEnd
             Int32 id = (Int32)gdvLista.DataKeys[linha].Value;
             //função que abre o registro em modo de edição
             Master.EditaCadastro(e, id, "cad_tipo_registro");
+        }
+
+        protected void gdvLista_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gdvLista.PageIndex = e.NewPageIndex;
+            PreencherGrid();
         }
     }
 }

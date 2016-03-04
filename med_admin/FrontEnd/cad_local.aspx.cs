@@ -95,7 +95,10 @@ namespace FrontEnd
                 local.logradouro = txtLogradouro.Value;
                 local.numero = txtNumero.Value;
                 local.CEP = txtCEP.Text;
-                local.data_inicio_atividade = DateTime.Parse(txtDataInicioAtividade.Text);
+                if (txtDataInicioAtividade.Text != "")
+                {
+                    local.data_inicio_atividade = DateTime.Parse(txtDataInicioAtividade.Text);
+                }                
                 local.ativo = cbbAtivo.Checked;
 
                 Local_Model model = new Local_Model();

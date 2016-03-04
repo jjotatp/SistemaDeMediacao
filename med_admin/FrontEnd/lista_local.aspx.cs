@@ -17,15 +17,19 @@ namespace FrontEnd
             {
                 txtNome.MaxLength = 100;
 
-                Local_Model model = new Local_Model();
-
-                // asp:repeater
-                gdvLista.DataSource = model.Listar();
-                gdvLista.DataBind();
-
-                gdvLista.UseAccessibleHeader = true;
-                gdvLista.HeaderRow.TableSection = TableRowSection.TableHeader;
+                PreencherGrid();               
             }
+        }
+
+        protected void PreencherGrid()
+        {
+            Local_Model model = new Local_Model();
+
+            gdvLista.DataSource = model.Listar();
+            gdvLista.DataBind();
+
+            gdvLista.UseAccessibleHeader = true;
+            gdvLista.HeaderRow.TableSection = TableRowSection.TableHeader;
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)
@@ -38,17 +42,26 @@ namespace FrontEnd
 
         protected void gdvLista_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            // recupera a linha clicada no gridview
-            int linha = Convert.ToInt32(e.CommandArgument);
-            // recupera o id na linha clicada
-            Int32 id = (Int32)gdvLista.DataKeys[linha].Value;
-            //função que abre o registro em modo de edição
-            Master.EditaCadastro(e, id, "cad_local");
+            if (e.CommandName == "Editar")
+            {
+                // recupera a linha clicada no gridview
+                int linha = Convert.ToInt32(e.CommandArgument);
+                // recupera o id na linha clicada
+                Int32 id = (Int32)gdvLista.DataKeys[linha].Value;
+                //função que abre o registro em modo de edição
+                Master.EditaCadastro(e, id, "cad_local");
+            }
         }
 
         protected void btnVoltar_Click(object sender, EventArgs e)
         {
             Response.Redirect("cad_local.aspx");
+        }
+
+        protected void gdvLista_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gdvLista.PageIndex = e.NewPageIndex;
+            PreencherGrid();
         }
     }
 }

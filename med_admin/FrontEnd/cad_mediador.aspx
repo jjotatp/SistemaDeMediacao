@@ -28,6 +28,15 @@
                         <input name="patente" class="form-control input-md" id="txtPatente" type="text" placeholder="Patente" runat="server">
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="sel1">Local</label>
+                    <div class="col-md-6">
+                        <asp:DropDownList runat="server" ID="ddLocal" CssClass="form-control"
+                                placeholder="Selecione...">
+                        </asp:DropDownList>
+                    </div>
+                </div>
                                     
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="nome">Usuário</label>
@@ -50,14 +59,7 @@
                     </div>
                 </div>              
                                         
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="sel1">Local</label>
-                    <div class="col-md-6">
-                        <asp:DropDownList runat="server" ID="ddLocal" CssClass="form-control"
-                                placeholder="Selecione...">
-                        </asp:DropDownList>
-                    </div>
-                </div>
+
                                     
                                     
                 <div class="col-md-offset-3">

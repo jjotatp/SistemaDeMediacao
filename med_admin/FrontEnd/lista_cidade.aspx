@@ -27,7 +27,8 @@
 
         <div class="col-md-12">
         <asp:GridView ID="gdvCidades" runat="server" CssClass="table table-hover table-striped" GridLines="None"
-                    AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="id" OnRowCommand="gdvCidades_RowCommand">
+                    AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="id" OnRowCommand="gdvCidades_RowCommand"
+                        PageSize="5" OnPageIndexChanging="gdvCidades_PageIndexChanging">
             <Columns>
                 <asp:TemplateField HeaderText="ID">
                     <ItemTemplate>
@@ -51,6 +52,12 @@
                 </asp:ButtonField>
                 
             </Columns>
+            <PagerSettings Mode="NextPrevious"
+                Position="Bottom"                                
+                PageButtonCount="5"
+                NextPageText="<div class='form-control btn-default'><b> Próxima Página </b></div>"
+                PreviousPageText="<div class='form-control btn-default'><b> Página Anterior </b></div>" />            
+            <PagerStyle HorizontalAlign="Center" />
         </asp:GridView>
      </div>       
   </div>

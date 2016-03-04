@@ -25,24 +25,24 @@
                     <div class="col-md-12">
                     <div class="col-md-4">
                         <div class="card-box widget-user">
-                            <div>
-                                <img class="img-responsive" alt="user" src="image/mais.png">
+                            <a href="cad_mediacao.aspx">
+                                <img class="img-responsive" alt="user" src="Content/images/mais.png">
                                 <div class="wid-u-info">
-                                    <a href="#"><h4 class="m-t-0 m-b-5">Nova Mediação</h4></a>
+                                    <h4 class="m-t-0 m-b-5">Nova Mediação</h4>
                                     <p class="text-muted m-b-5 font-13">Abra uma nova mediação</p>
-                                    <a href="cad_mediacao.aspx"> <span class="label label-warning">Abrir</span></a>
+                                    <span class="label label-warning">Abrir</span>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                         </div>
                         
                         <div class="col-md-4">
                         <div class="card-box widget-user">
                             <div>
-                                <img class="img-responsive" alt="user" src="image/historico.png">
+                                <img class="img-responsive" alt="user" src="Content/images/historico.png">
                                 <div class="wid-u-info">
-                                    <a href="#"><h4 class="m-t-0 m-b-5">Histórico</h4></a>
-                                    <p class="text-muted m-b-5 font-13">Histórido de Agendamento</p>
+                                    <a href="#"><h4 class="m-t-0 m-b-5">Mediações Arquivadas</h4></a>
+                                    <p class="text-muted m-b-5 font-13">Histórico de Mediações</p>
                                     <a href="#"> <span class="label label-dark">Histórico</span></a>
                                 </div>
                             </div>
@@ -52,11 +52,13 @@
                         <div class="col-md-4">  
                         <div class="card-box widget-user">
                             <div>
-                                <img class="img-responsive" alt="user" src="image/calendario.png">
+                                <img class="img-responsive" alt="user" src="Content/images/calendario.png">
                                 <div class="wid-u-info">
-                                    <a href="#"><h4 class="m-t-0 m-b-5">Agenda Inesperada</h4></a>
+                                    <a href="#"><h4 class="m-t-0 m-b-5">Agendamentos</h4></a>
                                     <p class="text-muted m-b-5 font-13">Faça um agendamento</p>
-                                    <a role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><span class="label label-default">Agendar</span></a>
+                                    <a role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                        <span class="label label-default">Agendar</span>
+                                    </a>
                                     
                                     <br>
                                     <div class="collapse" id="collapseExample">

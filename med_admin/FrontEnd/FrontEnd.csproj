@@ -94,8 +94,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\images\calendario.png" />
+    <Content Include="Content\images\historico.png" />
+    <Content Include="Content\images\lixeira.png" />
+    <Content Include="Content\images\mais.png" />
     <Content Include="lista_cidade.aspx" />
     <Content Include="lista_local.aspx" />
+    <Content Include="lista_mediador.aspx" />
     <Content Include="lista_tipo_registro.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
@@ -390,6 +395,13 @@
     </Compile>
     <Compile Include="lista_local.aspx.designer.cs">
       <DependentUpon>lista_local.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="lista_mediador.aspx.cs">
+      <DependentUpon>lista_mediador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="lista_mediador.aspx.designer.cs">
+      <DependentUpon>lista_mediador.aspx</DependentUpon>
     </Compile>
     <Compile Include="lista_tipo_registro.aspx.cs">
       <DependentUpon>lista_tipo_registro.aspx</DependentUpon>

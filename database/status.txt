@@ -11,8 +11,3 @@ D - Disacordo
 M - manha
 T - tarde
 N - noite
-
-**** solicitacoes.status_agendamento
-1 - Agendada
-2 - Realizada
-3 - Cancelada
