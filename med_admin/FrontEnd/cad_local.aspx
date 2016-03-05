@@ -82,9 +82,8 @@ CodeBehind="cad_local.aspx.cs" Inherits="FrontEnd.cad_local" %>
                                 CEP
                             </label>
                             <div class="col-md-6">
-                                <asp:TextBox ID="txtCEP" CssClass="form-control input-md" runat="server"
-                                placeholder="CEP">
-                                </asp:TextBox>
+                                <asp:TextBox ID="txtCEP" CssClass="form-control input-md" runat="server" onkeypress="formataCEP(this,event);"
+                                placeholder="digite seu CEP"></asp:TextBox>
                             </div>
                         </div>
                         <div class="form-group">
@@ -93,12 +92,11 @@ CodeBehind="cad_local.aspx.cs" Inherits="FrontEnd.cad_local" %>
                             </label>
                             <div class="col-md-6">
                                 <%--<input class="form-control input-md" id="txtDataInicioAtividade" type="date" runat="server" />--%>
-                                <asp:TextBox runat="server" TextMode="DateTime" CssClass="form-control input-md" id="txtDataInicioAtividade"></asp:TextBox>
+                                <asp:TextBox runat="server" TextMode="DateTime" CssClass="form-control input-md"
+                                    id="txtDataInicioAtividade" onkeypress="formataData(this,event);"></asp:TextBox>
                             </div>
                         </div>
-
                         
-
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="nome">
                                 Ativo?

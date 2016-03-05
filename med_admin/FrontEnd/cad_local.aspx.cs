@@ -16,7 +16,8 @@ namespace FrontEnd
                 txtBairro.MaxLength = 50;
                 txtLogradouro.MaxLength = 100;
                 txtNumero.MaxLength = 10;
-                txtCEP.MaxLength = 15;
+                txtCEP.MaxLength = 9;
+                txtDataInicioAtividade.MaxLength = 10;
             
                 // carrega cidades
                 Cidade_Model c = new Cidade_Model();
@@ -66,7 +67,7 @@ namespace FrontEnd
                         txtNumero.Value = local.numero;
                         txtLogradouro.Value = local.logradouro;
                         txtBairro.Value = local.bairro;
-                        txtDataInicioAtividade.Text = local.data_inicio_atividade.ToString();
+                        txtDataInicioAtividade.Text = DateTime.Parse(local.data_inicio_atividade.ToString()).ToShortDateString(); ;
                         txtCEP.Text = local.CEP;
                         cbbAtivo.Checked = local.ativo;
                         ddCidade.SelectedValue = local.id_cidade.ToString();                        
@@ -115,19 +116,6 @@ namespace FrontEnd
                 }else
                     Master.Alerta("Erro ao salvar o registro");
             }            
-        }
-
-        protected void LimparCampos()
-        {
-            txtID.Text = "Novo";
-            txtNome.Text = "";
-            txtDescricao.Value = "";
-            txtNumero.Value = "";
-            txtLogradouro.Value = "";
-            txtBairro.Value = "";
-            txtDataInicioAtividade.Text = "";
-            txtCEP.Text = "";
-            cbbAtivo.Checked = true;
         }
 
         protected bool Valida()

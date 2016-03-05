@@ -48,7 +48,8 @@ create table solicitacoes
 	solicitante_periodo_atendimento char(1),
 	check (solicitante_periodo_atendimento in ('M','T','N')),
 	detalhes_partes varchar(200) not null,
-	id_local int not null references locais(id)
+	id_local int references locais(id),
+	id_cidade_abertura int not null references cidades(id)
 );
 
 create table tipos_registro

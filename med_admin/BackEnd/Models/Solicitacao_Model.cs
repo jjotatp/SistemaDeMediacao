@@ -47,7 +47,7 @@ namespace BackEnd.Models
 
                 db.alteraSolicitacoes(a.id, a.descricao_problema, a.descricao_caso, a.solicitante_nome,
                                     a.solicitante_telefone, a.solicitante_endereco, a.solicitante_email,
-                                    a.solicitante_periodo_atendimento, a.detalhes_partes, a.id_local);
+                                    a.solicitante_periodo_atendimento, a.detalhes_partes, a.id_local);                
 
                 tb.Context.SubmitChanges();
 
@@ -65,6 +65,56 @@ namespace BackEnd.Models
             {
                 Table<solicitacao> tb = db.GetTable<solicitacao>();
                 return tb.First(p => p.id == id);
+            }
+        }
+
+        public List<solicitacao> Listar()
+        {
+            using (dbDataContext db = getDataContext())
+            {
+                Table<solicitacao> tb = getTable();
+                return tb.ToList();
+            }
+        }
+
+        public List<solicitacao> ListarPorTexto(String nomeCampo,String valorParametro)
+        {
+            using (dbDataContext db = getDataContext())
+            {
+                valorParametro = "%" + valorParametro + "%";
+                String sSql = "select * from solicitacoes s where s."+nomeCampo+" like {0} ";
+                var query = db.ExecuteQuery<solicitacao>(sSql,valorParametro);
+                return query.ToList();
+            }
+        }
+
+        public List<solicitacao> ListarPorData(DateTime valorParametro)
+        {
+            using (dbDataContext db = getDataContext())
+            {
+                String sSql = "select * from solicitacoes s where s.data = {0} ";
+                var query = db.ExecuteQuery<solicitacao>(sSql, valorParametro);
+                return query.ToList();
+            }
+        }
+
+        public List<solicitacao> ListarPorLocal(int idLocal)
+        {
+            using (dbDataContext db = getDataContext())
+            {
+                String sSql = "select * from solicitacoes s where s.id_local = {0} ";
+                var query = db.ExecuteQuery<solicitacao>(sSql, idLocal);
+                return query.ToList();
+            }
+        }
+
+        public List<solicitacao> ListarPorCidade(int idCidade)
+        {
+            using (dbDataContext db = getDataContext())
+            {
+                String sSql = "select * from solicitacoes s where s.id_cidade_abertura = {0} ";
+                var query = db.ExecuteQuery<solicitacao>(sSql, idCidade);
+                return query.ToList();
             }
         }
     }

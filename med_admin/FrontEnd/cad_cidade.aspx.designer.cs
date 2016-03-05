@@ -31,13 +31,13 @@ namespace FrontEnd {
         protected global::System.Web.UI.WebControls.TextBox txtNome;
         
         /// <summary>
-        /// ddUF control.
+        /// ddEstado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddUF;
+        protected global::System.Web.UI.WebControls.DropDownList ddEstado;
         
         /// <summary>
         /// btnSalvar control.

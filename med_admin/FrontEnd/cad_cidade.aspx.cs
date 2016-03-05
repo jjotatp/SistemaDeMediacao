@@ -10,6 +10,37 @@ namespace FrontEnd
         {
             if (!IsPostBack)
             {
+                ddEstado.Items.Clear();
+
+                ddEstado.Items.Add("AC");
+                ddEstado.Items.Add("AC");     
+                ddEstado.Items.Add("AL");        
+                ddEstado.Items.Add("AP");               
+                ddEstado.Items.Add("AM");                    
+                ddEstado.Items.Add("BA");                         
+                ddEstado.Items.Add("CE");                              
+                ddEstado.Items.Add("DF");                                   
+                ddEstado.Items.Add("ES");                                        
+                ddEstado.Items.Add("GO");                                             
+                ddEstado.Items.Add("MA");                                                  
+                ddEstado.Items.Add("MT");                                                       
+                ddEstado.Items.Add("MS");                                                            
+                ddEstado.Items.Add("MG");                                                                 
+                ddEstado.Items.Add("PA");                                                                      
+                ddEstado.Items.Add("PB");                                                                           
+                ddEstado.Items.Add("PR");                                                                                
+                ddEstado.Items.Add("PE");                                                                                     
+                ddEstado.Items.Add("PI");                                                                                          
+                ddEstado.Items.Add("RJ");                                                                                               
+                ddEstado.Items.Add("RN");                                                                                                    
+                ddEstado.Items.Add("RS");                                                                                                         
+                ddEstado.Items.Add("RO");                                                                                                              
+                ddEstado.Items.Add("RR");                                                                                                                   
+                ddEstado.Items.Add("SC");                                                                                                                        
+                ddEstado.Items.Add("SP");                                                                                                                             
+                ddEstado.Items.Add("SE");                                                                                                                                  
+                ddEstado.Items.Add("TO");
+
                 // MAXIMO DE CARACTERES NOME DA CIDADE
                 txtNome.MaxLength = 100;
 
@@ -45,10 +76,11 @@ namespace FrontEnd
                         Cidade_Model model = new Cidade_Model();
                         //recupera o produto do id informado
                         cidade cidade = model.Obter(id);
-
+                         
                         //preencher caixas de texto com valores de produto
                         txtNome.Text = cidade.nome;
-                        ddUF.Items.FindByText(cidade.estado);
+                        ddEstado.SelectedIndex = ddEstado.Items.IndexOf(ddEstado.Items.FindByValue(cidade.estado));
+                        //ddEstado.Items.FindByText(cidade.estado);
                     }
                     catch (Exception)
                     {
@@ -67,7 +99,7 @@ namespace FrontEnd
             // cadastrar cidade
             cidade cidade = new cidade();
             cidade.nome = txtNome.Text;
-            cidade.estado = ddUF.Text;
+            cidade.estado = ddEstado.Text;
 
             Cidade_Model model = new Cidade_Model();
             if (txtNome.Text != "")
@@ -96,13 +128,7 @@ namespace FrontEnd
             Response.Redirect("cad_cidade.aspx");
         }
 
-        protected void LimpaCampos()
-        {
-            txtNome.Text = "";
-            ddUF.SelectedIndex = 0;
-        }
-
-        protected void btnListar_Click1(object sender, EventArgs e)
+        protected void btnListar_Click(object sender, EventArgs e)
         {
             Response.Redirect("lista_cidade.aspx");
         }
