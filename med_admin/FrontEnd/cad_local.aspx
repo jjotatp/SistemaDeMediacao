@@ -5,10 +5,10 @@ CodeBehind="cad_local.aspx.cs" Inherits="FrontEnd.cad_local" %>
         <div class="">
             <div class="container">
                 <h3>
-                    Cadastro - Local
+                    Cadastro - Centro de Mediação
                 </h3>
                 <p>
-                    Faça o cadastro dos Locais de Mediação
+                    Faça o cadastro dos Centros de Mediação
                 </p>
                                                
                 <div class="panel-body">

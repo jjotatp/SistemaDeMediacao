@@ -16,16 +16,19 @@
             </div>
             <div class="panel-heading">
                 <div class="form-group">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <asp:DropDownList ID="ddTipoBusca" CssClass="form-control" runat="server">
-                            <asp:ListItem>Por Cidade</asp:ListItem>
-                            <asp:ListItem>Por Local</asp:ListItem>
-                            <asp:ListItem>Por Nome</asp:ListItem>
-                            <asp:ListItem>Por Data</asp:ListItem>
+                            <asp:ListItem>Cidade</asp:ListItem>
+                            <asp:ListItem>Centro de mediação</asp:ListItem>
+                            <asp:ListItem>Nome</asp:ListItem>
+                            <asp:ListItem>Data</asp:ListItem>
                         </asp:DropDownList>
                     </div>
-                    <div class="col-md-8">                    
+                    <div class="col-md-7">                    
                         <input type="text" id="txtBusca" runat="server" placeholder="Buscar..." class="form-control">
+                    </div>
+                    <div class="col-md-2">
+                        <asp:Button ID="btnBuscar" runat="server" CssClass="btn btn-primary" Text="Buscar" OnClick="btnBuscar_Click"/>
                     </div>
                 </div>
             </div>
@@ -34,14 +37,24 @@
                     AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="id" OnRowCommand="gdvLista_RowCommand"
                         PageSize="8" OnPageIndexChanging="gdvLista_PageIndexChanging">
             <Columns>
-                <asp:TemplateField HeaderText="Nome do solicitante">
+                <asp:TemplateField HeaderText="Nome">
                     <ItemTemplate>
-                        <%#Eval("solicitante_nome   ") %>
+                        <%#Eval("Nome") %>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Centro de mediação">
+                    <ItemTemplate>
+                        <%# Eval("Local") %>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Data">
+                    <ItemTemplate>
+                        <%#DateTime.Parse(Eval("Data").ToString()).ToShortDateString() %>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Cidade">
                     <ItemTemplate>
-                        <%#Eval("cidade.nome") %>
+                        <%#Eval("Cidade") %>
                     </ItemTemplate>
                 </asp:TemplateField>                
                                
@@ -92,7 +105,7 @@
                 <h3 class="panel-title">
                     <i class="ion-chatbubble">
                     </i>
-                    Descrição
+                    Detalhes da solicitação
                 </h3>
             </div>
             <div class="panel-body">                
@@ -165,7 +178,7 @@
                     <!-- Text input-->
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="">
-                            Dia(as) e Horário(os) disponíveis
+                            Período disponível
                         </label>
                         <div class="col-md-8">
                             <input readonly="readonly" id="txtPeriodo" class="form-control input-md" runat="server" type="text">
@@ -174,22 +187,38 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="">
                         </label>
-                        <div class="col-md-3">
-                            <a role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false"
-                            aria-controls="collapseExample"><span class="label label-default">Agendar</span></a>
-                        </div>
-                        <div class="col-md-2">                                
-                            <asp:Button ID="btnAtender" CssClass="btn btn-success" runat="server" Text="Atender" 
-                                ToolTip="Define que a solicitação será atendida nesse local"/>
-                        </div>
-                        <div class="col-md-2">                                
+                        <div class="col-md-8">
+                            <a role="button" data-toggle="collapse" href="#collapseAgendar" aria-expanded="false"
+                            aria-controls="collapseExample"><span class="btn btn-default">Agendar</span></a>                        
+                            <%--<asp:Button ID="btnTransferir" CssClass="btn btn-success" runat="server" Text="Transferir" 
+                                ToolTip="Permite selecionar o local para a solicitação ser atendida."/>                --%> 
+                            <a role="button" data-toggle="collapse" href="#collapseTransferir" aria-expanded="false" 
+                                title="Permite selecionar o centro de mediação que a solicitação deve ser atendida."
+                            aria-controls="collapseExample"><span class="btn btn-success">Transferir</span></a>                                 
                             <asp:Button ID="btnExcluir" CssClass="btn btn-danger" runat="server" Text="Excluir" 
                                 ToolTip="Exclui a solicitação do sistema"/>
                         </div>
                     </div>
 
                     <br>
-                    <div class="collapse" id="collapseExample">
+                    <div class="collapse" id="collapseTransferir">
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label">
+                                Transferir para:
+                            </label>
+                            <div class="col-lg-8">
+                                <asp:DropDownList runat="server" ID="ddLocal" CssClass="form-control"
+                                placeholder="Selecione...">
+                                </asp:DropDownList>
+                            </div>                            
+                        </div>
+                        <center>
+                            <button class="btn btn-success btn-rounded">
+                                Confirmar Transferência
+                            </button>
+                        </center>
+                    </div>
+                    <div class="collapse" id="collapseAgendar">
                         <div class="form-group">
                             <label class="col-lg-4 control-label">
                                 Dia e Hora:

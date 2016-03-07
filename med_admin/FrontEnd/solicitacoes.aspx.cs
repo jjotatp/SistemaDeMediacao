@@ -24,7 +24,7 @@ namespace FrontEnd
         {
             Solicitacao_Model model = new Solicitacao_Model();
 
-            gdvLista.DataSource = model.Listar();
+            gdvLista.DataSource = model.ListarPorTexto("Nome","");
             gdvLista.DataBind();
 
             gdvLista.UseAccessibleHeader = true;
@@ -40,6 +40,30 @@ namespace FrontEnd
         {
             gdvLista.PageIndex = e.NewPageIndex;
             PreencherGrid();
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            Solicitacao_Model model = new Solicitacao_Model();
+
+            if (ddTipoBusca.Text == "Nome")
+            {
+                gdvLista.DataSource = model.ListarPorTexto("Nome", txtBusca.Value);                
+            }
+            else if (ddTipoBusca.Text == "Data")
+            {
+                gdvLista.DataSource = model.ListarPorData(DateTime.Parse(txtBusca.Value));                
+            }
+            else if(ddTipoBusca.Text == "Cidade")
+            {
+                gdvLista.DataSource = model.ListarPorTexto("Cidade",txtBusca.Value);                
+            }
+            else
+            {
+                gdvLista.DataSource = model.ListarPorTexto("Local",txtBusca.Value);
+            }
+            gdvLista.DataBind();
+
         }
     }
 }

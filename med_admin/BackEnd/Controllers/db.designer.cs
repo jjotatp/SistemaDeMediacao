@@ -161,6 +161,14 @@ namespace BackEnd.Controllers
 			}
 		}
 		
+		public System.Data.Linq.Table<v_solicitacao> v_solicitacaos
+		{
+			get
+			{
+				return this.GetTable<v_solicitacao>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.alteraAgendamento")]
 		public int alteraAgendamento([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_solicitacao, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string descricao, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> data)
 		{
@@ -338,7 +346,7 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="solicitacoe_agendamento", Storage="_solicitacao", ThisKey="id_solicitacao", OtherKey="id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="solicitacao_agendamento", Storage="_solicitacao", ThisKey="id_solicitacao", OtherKey="id", IsForeignKey=true)]
 		public solicitacao solicitacao
 		{
 			get
@@ -533,7 +541,7 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="cidade_solicitacoe", Storage="_solicitacaos", ThisKey="id", OtherKey="id_cidade_abertura")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="cidade_solicitacao", Storage="_solicitacaos", ThisKey="id", OtherKey="id_cidade_abertura")]
 		public EntitySet<solicitacao> solicitacaos
 		{
 			get
@@ -914,7 +922,7 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="local_solicitacoe", Storage="_solicitacaos", ThisKey="id", OtherKey="id_local")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="local_solicitacao", Storage="_solicitacaos", ThisKey="id", OtherKey="id_local")]
 		public EntitySet<solicitacao> solicitacaos
 		{
 			get
@@ -1661,7 +1669,7 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="solicitacoe_mediacao", Storage="_solicitacao", ThisKey="id_solicitacao", OtherKey="id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="solicitacao_mediacao", Storage="_solicitacao", ThisKey="id_solicitacao", OtherKey="id", IsForeignKey=true)]
 		public solicitacao solicitacao
 		{
 			get
@@ -2926,7 +2934,7 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="solicitacoe_agendamento", Storage="_agendamentos", ThisKey="id", OtherKey="id_solicitacao")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="solicitacao_agendamento", Storage="_agendamentos", ThisKey="id", OtherKey="id_solicitacao")]
 		public EntitySet<agendamento> agendamentos
 		{
 			get
@@ -2939,7 +2947,7 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="solicitacoe_mediacao", Storage="_mediacaos", ThisKey="id", OtherKey="id_solicitacao")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="solicitacao_mediacao", Storage="_mediacaos", ThisKey="id", OtherKey="id_solicitacao")]
 		public EntitySet<mediacao> mediacaos
 		{
 			get
@@ -2952,7 +2960,7 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="cidade_solicitacoe", Storage="_cidade", ThisKey="id_cidade_abertura", OtherKey="id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="cidade_solicitacao", Storage="_cidade", ThisKey="id_cidade_abertura", OtherKey="id", IsForeignKey=true)]
 		public cidade cidade
 		{
 			get
@@ -2986,7 +2994,7 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="local_solicitacoe", Storage="_local", ThisKey="id_local", OtherKey="id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="local_solicitacao", Storage="_local", ThisKey="id_local", OtherKey="id", IsForeignKey=true)]
 		public local local
 		{
 			get
@@ -3062,6 +3070,105 @@ namespace BackEnd.Controllers
 		{
 			this.SendPropertyChanging();
 			entity.solicitacao = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.v_solicitacoes")]
+	public partial class v_solicitacao
+	{
+		
+		private int _ID;
+		
+		private string _Nome;
+		
+		private string _Local;
+		
+		private System.DateTime _Data;
+		
+		private string _Cidade;
+		
+		public v_solicitacao()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nome", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string Nome
+		{
+			get
+			{
+				return this._Nome;
+			}
+			set
+			{
+				if ((this._Nome != value))
+				{
+					this._Nome = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Local", DbType="VarChar(100)")]
+		public string Local
+		{
+			get
+			{
+				return this._Local;
+			}
+			set
+			{
+				if ((this._Local != value))
+				{
+					this._Local = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data", DbType="Date NOT NULL")]
+		public System.DateTime Data
+		{
+			get
+			{
+				return this._Data;
+			}
+			set
+			{
+				if ((this._Data != value))
+				{
+					this._Data = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cidade", DbType="VarChar(100)")]
+		public string Cidade
+		{
+			get
+			{
+				return this._Cidade;
+			}
+			set
+			{
+				if ((this._Cidade != value))
+				{
+					this._Cidade = value;
+				}
+			}
 		}
 	}
 }

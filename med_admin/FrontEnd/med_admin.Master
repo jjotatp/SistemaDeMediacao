@@ -56,7 +56,7 @@
 
                     <!-- Logo container-->
                     <div class="logo">
-                        <a href="index.aspx" class="logo"><i class="ion-gear-b"></i> <span>Sistema | <small>Portal de Medação</small></span> </a>
+                        <a href="index.aspx" class="logo"><i class="ion-gear-b"></i> <span>Sistema | <small>Portal de Medação</small> | Centro de mediação: 17º BPMI 1ª Cia PM </span> </a>
                     </div>
                     <!-- End Logo container-->
 
@@ -156,7 +156,7 @@
                             <ul class="submenu">
                                 <li><a href="cad_mediador.aspx">Mediador</a></li>
                                 <li><a href="cad_tipo_registro.aspx">Tipo de Registro</a></li>
-                                <li><a href="cad_local.aspx">Local</a></li>
+                                <li><a href="cad_local.aspx">Centro de Mediação</a></li>
                                 <li><a href="cad_cidade.aspx">Cidade</a></li>
                             </ul>
                         </li>

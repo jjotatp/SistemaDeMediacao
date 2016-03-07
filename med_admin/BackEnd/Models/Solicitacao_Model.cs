@@ -77,13 +77,14 @@ namespace BackEnd.Models
             }
         }
 
-        public List<solicitacao> ListarPorTexto(String nomeCampo,String valorParametro)
+        public List<v_solicitacao> ListarPorTexto(String nomeCampo,String valorParametro)
         {
             using (dbDataContext db = getDataContext())
             {
                 valorParametro = "%" + valorParametro + "%";
-                String sSql = "select * from solicitacoes s where s."+nomeCampo+" like {0} ";
-                var query = db.ExecuteQuery<solicitacao>(sSql,valorParametro);
+                String sSql = " select * from v_solicitacoes " +
+                               " where " + nomeCampo + " like {0}";
+                var query = db.ExecuteQuery<v_solicitacao>(sSql,valorParametro);
                 return query.ToList();
             }
         }
@@ -92,30 +93,12 @@ namespace BackEnd.Models
         {
             using (dbDataContext db = getDataContext())
             {
-                String sSql = "select * from solicitacoes s where s.data = {0} ";
+                String sSql = " select s.id ID,s.solicitante_nome Nome, l.nome Local, s.data Data, c.nome Cidade from solicitacoes s " +
+                               " left join cidades c on (s.id_cidade_abertura = c.id) " +
+                               " left join locais l on (s.id_local = l.id) where s.data = {0}";
                 var query = db.ExecuteQuery<solicitacao>(sSql, valorParametro);
                 return query.ToList();
             }
-        }
-
-        public List<solicitacao> ListarPorLocal(int idLocal)
-        {
-            using (dbDataContext db = getDataContext())
-            {
-                String sSql = "select * from solicitacoes s where s.id_local = {0} ";
-                var query = db.ExecuteQuery<solicitacao>(sSql, idLocal);
-                return query.ToList();
-            }
-        }
-
-        public List<solicitacao> ListarPorCidade(int idCidade)
-        {
-            using (dbDataContext db = getDataContext())
-            {
-                String sSql = "select * from solicitacoes s where s.id_cidade_abertura = {0} ";
-                var query = db.ExecuteQuery<solicitacao>(sSql, idCidade);
-                return query.ToList();
-            }
-        }
+        }        
     }
 }

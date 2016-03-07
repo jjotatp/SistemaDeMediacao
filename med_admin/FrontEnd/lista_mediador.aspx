@@ -45,7 +45,7 @@
                         <%#Eval("patente") %>
                     </ItemTemplate>
                 </asp:TemplateField> 
-                <asp:TemplateField HeaderText="Local" >
+                <asp:TemplateField HeaderText="Centro de mediação" >
                     <ItemTemplate>
                         <%#Eval("local.nome") %>
                     </ItemTemplate>

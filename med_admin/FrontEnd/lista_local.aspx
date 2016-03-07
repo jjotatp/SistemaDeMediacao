@@ -4,10 +4,10 @@
     <div class="container">
         <div class="col-md-12">
             <h3>
-                Listagem - Locais
+                Listagem - Centros de Mediação
             </h3>
             <p>
-                Lista dos locais cadastrados
+                Lista dos centros de mediação cadastrados
             </p>
         </div>
         <br />
