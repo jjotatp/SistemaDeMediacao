@@ -19,7 +19,7 @@
                     <div class="col-md-3">
                         <asp:DropDownList ID="ddTipoBusca" CssClass="form-control" runat="server">
                             <asp:ListItem>Cidade</asp:ListItem>
-                            <asp:ListItem>Centro de mediação</asp:ListItem>
+                            <asp:ListItem>Núcleo de mediação</asp:ListItem>
                             <asp:ListItem>Nome</asp:ListItem>
                             <asp:ListItem>Data</asp:ListItem>
                         </asp:DropDownList>
@@ -37,12 +37,17 @@
                     AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="id" OnRowCommand="gdvLista_RowCommand"
                         PageSize="8" OnPageIndexChanging="gdvLista_PageIndexChanging">
             <Columns>
+                <asp:TemplateField HeaderText="ID" >
+                    <ItemTemplate>
+                        <%#Eval("ID") %>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderText="Nome">
                     <ItemTemplate>
                         <%#Eval("Nome") %>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Centro de mediação">
+                <asp:TemplateField HeaderText="Núcleo de mediação">
                     <ItemTemplate>
                         <%# Eval("Local") %>
                     </ItemTemplate>
@@ -109,6 +114,7 @@
                 </h3>
             </div>
             <div class="panel-body">                
+                <div id="pnlDados" runat="server">
                 <fieldset>
                     <!-- Text input-->
                     <div class="form-group">
@@ -149,7 +155,7 @@
                     <!-- Text input-->
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="descricao">
-                            Descrição do caso
+                            Problema principal
                         </label>
                         <div class="col-md-8">
                             <input id="txtDescricaoProblema" class="form-control" runat="server" readonly="readonly" />                                
@@ -193,7 +199,7 @@
                             <%--<asp:Button ID="btnTransferir" CssClass="btn btn-success" runat="server" Text="Transferir" 
                                 ToolTip="Permite selecionar o local para a solicitação ser atendida."/>                --%> 
                             <a role="button" data-toggle="collapse" href="#collapseTransferir" aria-expanded="false" 
-                                title="Permite selecionar o centro de mediação que a solicitação deve ser atendida."
+                                title="Permite selecionar o núcleo de mediação que a solicitação deve ser atendida."
                             aria-controls="collapseExample"><span class="btn btn-success">Transferir</span></a>                                 
                             <asp:Button ID="btnExcluir" CssClass="btn btn-danger" runat="server" Text="Excluir" 
                                 ToolTip="Exclui a solicitação do sistema"/>
@@ -242,7 +248,8 @@
                             </button>
                         </center>
                     </div>
-                </fieldset>            
+                </fieldset> 
+                </div>           
             </div>
         </div>
     </div>

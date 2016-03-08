@@ -67,8 +67,9 @@ namespace BackEnd.Models
         {
             using (dbDataContext db = getDataContext())
             {
-                String sSql = "select * from mediadores m where m.nome like '%" + Nome + "%' ";
-                var query = db.ExecuteQuery<mediador>(sSql);
+                Nome = "%" + Nome + "%";
+                String sSql = "select * from mediadores m where m.nome like {0}";
+                var query = db.ExecuteQuery<mediador>(sSql,Nome);
                 return query.ToList();
             }
         }

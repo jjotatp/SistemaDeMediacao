@@ -100,5 +100,18 @@ namespace BackEnd.Models
                 return query.ToList();
             }
         }        
+
+        public String RetornaPeriodo(char? periodo)
+        {
+            String valor;
+            switch (periodo)
+            {
+                case 'M': valor = "Manhã"; break;                    
+                case 'T': valor = "Tarde"; break;
+                case 'N': valor = "Noite"; break;
+                default : valor = ""; break;
+            }
+            return valor;
+        }
     }
 }

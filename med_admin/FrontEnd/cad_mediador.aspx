@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="sel1">Centro de mediação</label>
+                    <label class="col-md-4 control-label" for="sel1">Núcleo de mediação</label>
                     <div class="col-md-6">
                         <asp:DropDownList runat="server" ID="ddLocal" CssClass="form-control"
                                 placeholder="Selecione...">

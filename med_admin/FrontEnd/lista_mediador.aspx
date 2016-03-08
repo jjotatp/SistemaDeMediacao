@@ -4,10 +4,10 @@
     <div class="container">
         <div class="col-md-12">
             <h3>
-                Listagem - Locais
+                Listagem - Mediadores
             </h3>
             <p>
-                Lista dos locais cadastrados
+                Lista dos mediadores cadastrados
             </p>
         </div>
         <br />
@@ -45,7 +45,7 @@
                         <%#Eval("patente") %>
                     </ItemTemplate>
                 </asp:TemplateField> 
-                <asp:TemplateField HeaderText="Centro de mediação" >
+                <asp:TemplateField HeaderText="Núcleo de mediação" >
                     <ItemTemplate>
                         <%#Eval("local.nome") %>
                     </ItemTemplate>

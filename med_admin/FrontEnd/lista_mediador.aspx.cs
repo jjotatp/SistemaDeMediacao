@@ -41,12 +41,15 @@ namespace FrontEnd
 
         protected void gdvLista_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            // recupera a linha clicada no gridview
-            int linha = Convert.ToInt32(e.CommandArgument);
-            // recupera o id na linha clicada
-            Int32 id = (Int32)gdvLista.DataKeys[linha].Value;
-            //função que abre o registro em modo de edição
-            Master.EditaCadastro(e, id, "cad_mediador");
+            if (e.CommandName == "Editar")
+            {
+                // recupera a linha clicada no gridview
+                int linha = Convert.ToInt32(e.CommandArgument);
+                // recupera o id na linha clicada
+                Int32 id = (Int32)gdvLista.DataKeys[linha].Value;
+                //função que abre o registro em modo de edição
+                Master.EditaCadastro(e, id, "cad_mediador");
+            }
         }
 
         protected void btnVoltar_Click(object sender, EventArgs e)
