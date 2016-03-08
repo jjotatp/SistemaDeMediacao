@@ -55,7 +55,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="col-md-5 arte-principal"></div>
+                    <div class="col-md-5 arte-principal-artigo"></div>
                     <div class="col-md-5 espaco">
                         <p class="pre-titulo">Sub Titulo...</p>
                         <p class="titulo">Titulo do Artigo</p>
@@ -73,6 +73,7 @@
                 <p><a href="solicitacao.html" class="btn btn-danger" role="button">Solicitação</a> </p>
                 <br>
             </div>
+            
         </div>
     </section>
 
@@ -112,5 +113,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
+
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 </body>
 </html>
