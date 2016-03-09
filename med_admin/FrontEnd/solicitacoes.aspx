@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/med_admin.Master" AutoEventWireup="true" CodeBehind="solicitacoes.aspx.cs" Inherits="FrontEnd.solicitacoes" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">
+    <%@ MasterType VirtualPath="~/med_admin.master"  %>  
     <div class="container">
     <div class="col-md-7">
         <div class="panel panel-color panel-danger">
@@ -118,6 +119,15 @@
                 <fieldset>
                     <!-- Text input-->
                     <div class="form-group">
+                        <label class="col-md-4 control-label" for="id">
+                            ID
+                        </label>
+                        <div class="col-md-8">
+                            <input id="txtId" class="form-control input-md" runat="server" readonly="readonly">
+                        </div>
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group">
                         <label class="col-md-4 control-label" for="nome">
                             Nome
                         </label>
@@ -202,7 +212,8 @@
                                 title="Permite selecionar o núcleo de mediação que a solicitação deve ser atendida."
                             aria-controls="collapseExample"><span class="btn btn-success">Transferir</span></a>                                 
                             <asp:Button ID="btnExcluir" CssClass="btn btn-danger" runat="server" Text="Excluir" 
-                                ToolTip="Exclui a solicitação do sistema"/>
+                                ToolTip="Exclui a solicitação do sistema" OnClientClick="javascript:return confirm('Tem certeza que deseja excluir a solicitação?');"
+                                OnClick="btnExcluir_Click"/>
                         </div>
                     </div>
 
@@ -219,9 +230,9 @@
                             </div>                            
                         </div>
                         <center>
-                            <button class="btn btn-success btn-rounded">
-                                Confirmar Transferência
-                            </button>
+                            <asp:Button ID="btnConfirmaTransferencia" runat="server" Text="Confirmar Transferência" 
+                                CssClass="btn btn-success btn-rounded" OnClientClick="javascript:return confirm('Tem certeza que deseja transferir a solicitação?');" 
+                                OnClick="btnConfirmaTransferencia_Click"></asp:Button>                            
                         </center>
                     </div>
                     <div class="collapse" id="collapseAgendar">

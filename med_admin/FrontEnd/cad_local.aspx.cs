@@ -18,6 +18,7 @@ namespace FrontEnd
                 txtNumero.MaxLength = 10;
                 txtCEP.MaxLength = 9;
                 txtDataInicioAtividade.MaxLength = 10;
+                txtTelefone.MaxLength = 20;
             
                 // carrega cidades
                 Cidade_Model c = new Cidade_Model();
@@ -69,6 +70,7 @@ namespace FrontEnd
                         txtBairro.Value = local.bairro;
                         txtDataInicioAtividade.Text = DateTime.Parse(local.data_inicio_atividade.ToString()).ToShortDateString(); ;
                         txtCEP.Text = local.CEP;
+                        txtTelefone.Text = local.telefone;
                         cbbAtivo.Checked = local.ativo;
                         ddCidade.SelectedValue = local.id_cidade.ToString();                        
                     }
@@ -96,6 +98,7 @@ namespace FrontEnd
                 local.logradouro = txtLogradouro.Value;
                 local.numero = txtNumero.Value;
                 local.CEP = txtCEP.Text;
+                local.telefone = txtTelefone.Text;
                 if (txtDataInicioAtividade.Text != "")
                 {
                     local.data_inicio_atividade = DateTime.Parse(txtDataInicioAtividade.Text);

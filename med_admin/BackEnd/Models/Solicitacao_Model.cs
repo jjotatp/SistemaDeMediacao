@@ -7,9 +7,12 @@ using System.Data.Linq;
 
 
 namespace BackEnd.Models
-{
+{    
+
     public class Solicitacao_Model
     {
+        public String message;
+
         public dbDataContext getDataContext() { dbDataContext db = new dbDataContext(); return db; }
 
         public Table<solicitacao> getTable()
@@ -31,9 +34,10 @@ namespace BackEnd.Models
 
                 return a.id;
             }
-            catch
+            catch(Exception e)
             {
-                return 0;
+                message = e.Message;
+                return 0;                
             }
         }
 
@@ -53,8 +57,9 @@ namespace BackEnd.Models
 
                 return true;
             }
-            catch
+            catch (Exception e)
             {
+                message = e.Message;
                 return false;
             }
         }
@@ -63,8 +68,18 @@ namespace BackEnd.Models
         {
             using (dbDataContext db = getDataContext())
             {
-                Table<solicitacao> tb = db.GetTable<solicitacao>();
-                return tb.First(p => p.id == id);
+                solicitacao s = new solicitacao();
+                try
+                {
+                    Table<solicitacao> tb = db.GetTable<solicitacao>();
+                    s = tb.First(p => p.id == id);
+                    return s;
+                }
+                catch (Exception e)
+                {
+                    message = e.Message;
+                    return s;
+                }
             }
         }
 
@@ -112,6 +127,41 @@ namespace BackEnd.Models
                 default : valor = ""; break;
             }
             return valor;
+        }
+
+        public bool TransferirSolicitacao(int id_solicitacao,int id_local)
+        {
+            // carrega a solicitação e atualizar
+            try
+            {
+                solicitacao s = new solicitacao();
+                s = Obter(id_solicitacao);
+                s.id_local = id_local;
+                Alterar(s);
+                return true;
+            }
+            catch (Exception e)
+            {
+                message = e.Message;
+                return false;
+            }            
+        }
+
+        public bool Excluir(solicitacao s)
+        {
+            try
+            {
+                String sql = "delete from solicitacoes where id = {0}";
+                dbDataContext db = getDataContext();
+                db.ExecuteCommand(sql, s.id);
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                message = e.Message;
+                return false;
+            }
         }
     }
 }

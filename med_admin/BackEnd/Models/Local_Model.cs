@@ -35,7 +35,7 @@ namespace BackEnd.Models
                 else
                 {
                     db.alteraLocal(a.id, a.nome, a.descricao, a.id_cidade, a.bairro, a.logradouro,
-                                    a.numero, a.CEP, a.data_inicio_atividade);
+                                    a.numero, a.CEP, a.data_inicio_atividade, a.telefone);
                     tb.Context.SubmitChanges();
                 }
 

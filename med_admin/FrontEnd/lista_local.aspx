@@ -60,6 +60,11 @@
                         <%#Eval("logradouro") %>
                     </ItemTemplate>
                 </asp:TemplateField>                
+                <asp:TemplateField HeaderText="Telefone" >
+                    <ItemTemplate>
+                        <%#Eval("telefone") %>
+                    </ItemTemplate>
+                </asp:TemplateField>        
                 <asp:TemplateField HeaderText="Número" >
                     <ItemTemplate>
                         <%#Eval("numero") %>

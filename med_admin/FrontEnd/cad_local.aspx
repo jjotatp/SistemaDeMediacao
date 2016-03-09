@@ -96,6 +96,16 @@ CodeBehind="cad_local.aspx.cs" Inherits="FrontEnd.cad_local" %>
                                     id="txtDataInicioAtividade" onkeypress="formataData(this,event);"></asp:TextBox>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="nome">
+                                Telefone
+                            </label>
+                            <div class="col-md-6">
+                                <%--<input class="form-control input-md" id="txtDataInicioAtividade" type="date" runat="server" />--%>
+                                <asp:TextBox runat="server" CssClass="form-control input-md"
+                                    id="txtTelefone" onkeypress="formataTelefone(this,event);"></asp:TextBox>
+                            </div>
+                        </div>
                         
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="nome">

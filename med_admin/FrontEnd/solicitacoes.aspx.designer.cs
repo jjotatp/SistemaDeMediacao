@@ -58,6 +58,15 @@ namespace FrontEnd {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl pnlDados;
         
         /// <summary>
+        /// txtId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtId;
+        
+        /// <summary>
         /// txtNome control.
         /// </summary>
         /// <remarks>
@@ -148,6 +157,15 @@ namespace FrontEnd {
         protected global::System.Web.UI.WebControls.DropDownList ddLocal;
         
         /// <summary>
+        /// btnConfirmaTransferencia control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnConfirmaTransferencia;
+        
+        /// <summary>
         /// txtDescricaoAgendamento control.
         /// </summary>
         /// <remarks>
@@ -155,5 +173,17 @@ namespace FrontEnd {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtDescricaoAgendamento;
+        
+        /// <summary>
+        /// Master property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new FrontEnd.med_admin Master {
+            get {
+                return ((FrontEnd.med_admin)(base.Master));
+            }
+        }
     }
 }
