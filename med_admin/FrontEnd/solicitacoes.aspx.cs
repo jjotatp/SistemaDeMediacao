@@ -159,5 +159,67 @@ namespace FrontEnd
             txtDadosOutraParte.Value = "";
             txtPeriodo.Value = "";
         }
+
+        protected void btnAgendar_Click(object sender, EventArgs e)
+        {
+            if (ValidaAgendamento())
+            {
+                Agendamento_Model model = new Agendamento_Model();
+
+                agendamento a = new agendamento();
+
+                String sData;
+
+                sData = txtData.Value + " " + txtHora.Value + ":00";
+
+                a.data = DateTime.Parse(sData);
+                a.descricao = txtDescricaoAgendamento.Value;
+                a.id_solicitacao = int.Parse(txtId.Value);
+                if (model.VerificarDisponibilidade(a))
+                {
+                    if (model.Inserir(a))
+                    {
+                        Master.Sucesso("Horário agendado com sucesso.");
+                    }
+                    else
+                    {
+                        Master.Alerta("Erro ao agendar horário. Erro: " + model.message);
+                    }
+                }
+                else
+                {
+                    // se model.message estiver vazio, então ele retornou false pois o horário está vago,
+                    // se nao, houve erro na consulta
+                    if( model.message == "")
+                    {
+                        Master.Alerta("O horário escolhido já está agendado, selecione outro horário.");
+                    }
+                    else
+                    {
+                        Master.Alerta("Erro ao agendar horário. Erro: " + model.message);
+                    }
+                }
+            }
+        }
+
+        public bool ValidaAgendamento()
+        {
+            if (txtData.Value == "")
+            {
+                Master.Alerta("Data inválida ou não informada.");
+                return false;
+            }
+            if (txtHora.Value == "")
+            {
+                Master.Alerta("Hora inválida ou não informada.");
+                return false;
+            }
+            if (txtDescricaoAgendamento.Value == "")
+            {
+                Master.Alerta("Descrição do agendamento inválida ou não informada.");
+                return false;
+            }
+            return true;
+        }
     }
 }

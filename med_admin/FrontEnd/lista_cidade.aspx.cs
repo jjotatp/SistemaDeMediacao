@@ -29,8 +29,10 @@ namespace FrontEnd
             gdvCidades.DataSource = model.Listar();
             gdvCidades.DataBind();
 
-            gdvCidades.UseAccessibleHeader = true;
-            gdvCidades.HeaderRow.TableSection = TableRowSection.TableHeader;
+            if (gdvCidades.Rows.Count > 0) { 
+                gdvCidades.UseAccessibleHeader = true;
+                gdvCidades.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
         }
 
         protected void btnBuscarCidade_Click(object sender, EventArgs e)

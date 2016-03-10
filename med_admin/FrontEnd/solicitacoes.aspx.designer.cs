@@ -166,6 +166,24 @@ namespace FrontEnd {
         protected global::System.Web.UI.WebControls.Button btnConfirmaTransferencia;
         
         /// <summary>
+        /// txtData control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtData;
+        
+        /// <summary>
+        /// txtHora control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtHora;
+        
+        /// <summary>
         /// txtDescricaoAgendamento control.
         /// </summary>
         /// <remarks>
@@ -173,6 +191,15 @@ namespace FrontEnd {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtDescricaoAgendamento;
+        
+        /// <summary>
+        /// btnAgendar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAgendar;
         
         /// <summary>
         /// Master property.

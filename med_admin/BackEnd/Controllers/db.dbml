@@ -1,14 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="med_admin" Class="dbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=GUI-NOTE;Initial Catalog=med_admin;Integrated Security=True" SettingsObjectName="BackEnd.Properties.Settings" SettingsPropertyName="med_adminConnectionString1" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.agendamentos" Member="agendamentos">
-    <Type Name="agendamento">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="id_solicitacao" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="descricao" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="data" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Association Name="solicitacao_agendamento" Member="solicitacao" ThisKey="id_solicitacao" OtherKey="id" Type="solicitacao" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.cidades" Member="cidades">
     <Type Name="cidade">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -105,8 +96,8 @@
       <Column Name="detalhes_partes" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
       <Column Name="id_local" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="id_cidade_abertura" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="solicitacao_agendamento" Member="agendamentos" ThisKey="id" OtherKey="id_solicitacao" Type="agendamento" />
       <Association Name="solicitacao_mediacao" Member="mediacaos" ThisKey="id" OtherKey="id_solicitacao" Type="mediacao" />
+      <Association Name="solicitacao_agendamento" Member="agendamentos" ThisKey="id" OtherKey="id_solicitacao" Type="agendamento" />
       <Association Name="cidade_solicitacao" Member="cidade" ThisKey="id_cidade_abertura" OtherKey="id" Type="cidade" IsForeignKey="true" />
       <Association Name="local_solicitacao" Member="local" ThisKey="id_local" OtherKey="id" Type="local" IsForeignKey="true" />
     </Type>
@@ -137,6 +128,15 @@
       <Association Name="local_mediador" Member="mediadors" ThisKey="id" OtherKey="id_local" Type="mediador" />
       <Association Name="local_solicitacao" Member="solicitacaos" ThisKey="id" OtherKey="id_local" Type="solicitacao" />
       <Association Name="cidade_local" Member="cidade" ThisKey="id_cidade" OtherKey="id" Type="cidade" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.agendamentos" Member="agendamentos">
+    <Type Name="agendamento">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_solicitacao" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="descricao" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="data" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="solicitacao_agendamento" Member="solicitacao" ThisKey="id_solicitacao" OtherKey="id" Type="solicitacao" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.alteraAgendamento" Method="alteraAgendamento">

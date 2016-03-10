@@ -9,6 +9,8 @@ namespace BackEnd.Models
 {
     public class Agendamento_Model
     {
+        public String message;
+
         public dbDataContext getDataContext() { dbDataContext db = new dbDataContext(); return db; }
 
         public Table<agendamento> getTable()
@@ -18,7 +20,7 @@ namespace BackEnd.Models
             return tb;
         }
 
-        public int Inserir(agendamento a)
+        public bool Inserir(agendamento a)
         {
             // função para cadastrar cidade
             try
@@ -27,11 +29,12 @@ namespace BackEnd.Models
                 tb.InsertOnSubmit(a);
                 tb.Context.SubmitChanges();
 
-                return a.id;
+                return true;
             }
-            catch
+            catch (Exception e)
             {
-                return 0;
+                message = e.Message;
+                return false;
             }
         }
 
@@ -48,8 +51,9 @@ namespace BackEnd.Models
 
                 return true;
             }
-            catch
+            catch (Exception e)
             {
+                message = e.Message;
                 return false;
             }
         }
@@ -60,6 +64,47 @@ namespace BackEnd.Models
             {
                 Table<agendamento> tb = db.GetTable<agendamento>();
                 return tb.First(p => p.id == id);
+            }
+        }
+
+        public bool Excluir(agendamento a)
+        {
+            try
+            {
+                String sql = "delete from agendamentos where id = {0}";
+                dbDataContext db = getDataContext();
+                db.ExecuteCommand(sql, a.id);
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                message = e.Message;
+                return false;
+            }
+        }
+
+        public bool VerificarDisponibilidade(agendamento a)
+        {// verifica se a próxima hora a partir do horário do agendamento está livre. Retorna TRUE se o horário estiver livre
+            // retorna FALSE se o horário estiver já ocupado
+            // e retorna FALSE + MESSAGE se houver erro na busca
+            try
+            {
+                String sql = "select * from agendamentos where data between {0} and {1}";
+                dbDataContext db = getDataContext();
+                DateTime DataMaxima = a.data.AddHours(1);
+                var qry = db.ExecuteQuery<agendamento>(sql, a.data,DataMaxima);
+
+                message = "";
+                if (qry.Count() < 1)
+                    return true;
+                else
+                    return false;                
+            }
+            catch (Exception e)
+            {
+                message = e.Message;
+                return false;
             }
         }
     }

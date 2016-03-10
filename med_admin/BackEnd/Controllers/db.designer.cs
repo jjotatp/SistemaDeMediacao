@@ -30,9 +30,6 @@ namespace BackEnd.Controllers
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void Insertagendamento(agendamento instance);
-    partial void Updateagendamento(agendamento instance);
-    partial void Deleteagendamento(agendamento instance);
     partial void Insertcidade(cidade instance);
     partial void Updatecidade(cidade instance);
     partial void Deletecidade(cidade instance);
@@ -57,6 +54,9 @@ namespace BackEnd.Controllers
     partial void Insertlocal(local instance);
     partial void Updatelocal(local instance);
     partial void Deletelocal(local instance);
+    partial void Insertagendamento(agendamento instance);
+    partial void Updateagendamento(agendamento instance);
+    partial void Deleteagendamento(agendamento instance);
     #endregion
 		
 		public dbDataContext() : 
@@ -87,14 +87,6 @@ namespace BackEnd.Controllers
 				base(connection, mappingSource)
 		{
 			OnCreated();
-		}
-		
-		public System.Data.Linq.Table<agendamento> agendamentos
-		{
-			get
-			{
-				return this.GetTable<agendamento>();
-			}
 		}
 		
 		public System.Data.Linq.Table<cidade> cidades
@@ -169,6 +161,14 @@ namespace BackEnd.Controllers
 			}
 		}
 		
+		public System.Data.Linq.Table<agendamento> agendamentos
+		{
+			get
+			{
+				return this.GetTable<agendamento>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.alteraAgendamento")]
 		public int alteraAgendamento([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_solicitacao, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string descricao, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> data)
 		{
@@ -223,181 +223,6 @@ namespace BackEnd.Controllers
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id, nome, descricao, id_cidade, bairro, logradouro, numero, cEP, data_inicio_atividade, telefone);
 			return ((int)(result.ReturnValue));
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.agendamentos")]
-	public partial class agendamento : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private System.Nullable<int> _id_solicitacao;
-		
-		private string _descricao;
-		
-		private System.DateTime _data;
-		
-		private EntityRef<solicitacao> _solicitacao;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void Onid_solicitacaoChanging(System.Nullable<int> value);
-    partial void Onid_solicitacaoChanged();
-    partial void OndescricaoChanging(string value);
-    partial void OndescricaoChanged();
-    partial void OndataChanging(System.DateTime value);
-    partial void OndataChanged();
-    #endregion
-		
-		public agendamento()
-		{
-			this._solicitacao = default(EntityRef<solicitacao>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_solicitacao", DbType="Int")]
-		public System.Nullable<int> id_solicitacao
-		{
-			get
-			{
-				return this._id_solicitacao;
-			}
-			set
-			{
-				if ((this._id_solicitacao != value))
-				{
-					if (this._solicitacao.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_solicitacaoChanging(value);
-					this.SendPropertyChanging();
-					this._id_solicitacao = value;
-					this.SendPropertyChanged("id_solicitacao");
-					this.Onid_solicitacaoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_descricao", DbType="VarChar(50)")]
-		public string descricao
-		{
-			get
-			{
-				return this._descricao;
-			}
-			set
-			{
-				if ((this._descricao != value))
-				{
-					this.OndescricaoChanging(value);
-					this.SendPropertyChanging();
-					this._descricao = value;
-					this.SendPropertyChanged("descricao");
-					this.OndescricaoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_data", DbType="Date NOT NULL")]
-		public System.DateTime data
-		{
-			get
-			{
-				return this._data;
-			}
-			set
-			{
-				if ((this._data != value))
-				{
-					this.OndataChanging(value);
-					this.SendPropertyChanging();
-					this._data = value;
-					this.SendPropertyChanged("data");
-					this.OndataChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="solicitacao_agendamento", Storage="_solicitacao", ThisKey="id_solicitacao", OtherKey="id", IsForeignKey=true)]
-		public solicitacao solicitacao
-		{
-			get
-			{
-				return this._solicitacao.Entity;
-			}
-			set
-			{
-				solicitacao previousValue = this._solicitacao.Entity;
-				if (((previousValue != value) 
-							|| (this._solicitacao.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._solicitacao.Entity = null;
-						previousValue.agendamentos.Remove(this);
-					}
-					this._solicitacao.Entity = value;
-					if ((value != null))
-					{
-						value.agendamentos.Add(this);
-						this._id_solicitacao = value.id;
-					}
-					else
-					{
-						this._id_solicitacao = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("solicitacao");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 	
@@ -2236,9 +2061,9 @@ namespace BackEnd.Controllers
 		
 		private int _id_cidade_abertura;
 		
-		private EntitySet<agendamento> _agendamentos;
-		
 		private EntitySet<mediacao> _mediacaos;
+		
+		private EntitySet<agendamento> _agendamentos;
 		
 		private EntityRef<cidade> _cidade;
 		
@@ -2276,8 +2101,8 @@ namespace BackEnd.Controllers
 		
 		public solicitacao()
 		{
-			this._agendamentos = new EntitySet<agendamento>(new Action<agendamento>(this.attach_agendamentos), new Action<agendamento>(this.detach_agendamentos));
 			this._mediacaos = new EntitySet<mediacao>(new Action<mediacao>(this.attach_mediacaos), new Action<mediacao>(this.detach_mediacaos));
+			this._agendamentos = new EntitySet<agendamento>(new Action<agendamento>(this.attach_agendamentos), new Action<agendamento>(this.detach_agendamentos));
 			this._cidade = default(EntityRef<cidade>);
 			this._local = default(EntityRef<local>);
 			OnCreated();
@@ -2531,19 +2356,6 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="solicitacao_agendamento", Storage="_agendamentos", ThisKey="id", OtherKey="id_solicitacao")]
-		public EntitySet<agendamento> agendamentos
-		{
-			get
-			{
-				return this._agendamentos;
-			}
-			set
-			{
-				this._agendamentos.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="solicitacao_mediacao", Storage="_mediacaos", ThisKey="id", OtherKey="id_solicitacao")]
 		public EntitySet<mediacao> mediacaos
 		{
@@ -2554,6 +2366,19 @@ namespace BackEnd.Controllers
 			set
 			{
 				this._mediacaos.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="solicitacao_agendamento", Storage="_agendamentos", ThisKey="id", OtherKey="id_solicitacao")]
+		public EntitySet<agendamento> agendamentos
+		{
+			get
+			{
+				return this._agendamentos;
+			}
+			set
+			{
+				this._agendamentos.Assign(value);
 			}
 		}
 		
@@ -2645,18 +2470,6 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		private void attach_agendamentos(agendamento entity)
-		{
-			this.SendPropertyChanging();
-			entity.solicitacao = this;
-		}
-		
-		private void detach_agendamentos(agendamento entity)
-		{
-			this.SendPropertyChanging();
-			entity.solicitacao = null;
-		}
-		
 		private void attach_mediacaos(mediacao entity)
 		{
 			this.SendPropertyChanging();
@@ -2664,6 +2477,18 @@ namespace BackEnd.Controllers
 		}
 		
 		private void detach_mediacaos(mediacao entity)
+		{
+			this.SendPropertyChanging();
+			entity.solicitacao = null;
+		}
+		
+		private void attach_agendamentos(agendamento entity)
+		{
+			this.SendPropertyChanging();
+			entity.solicitacao = this;
+		}
+		
+		private void detach_agendamentos(agendamento entity)
 		{
 			this.SendPropertyChanging();
 			entity.solicitacao = null;
@@ -3193,6 +3018,181 @@ namespace BackEnd.Controllers
 		{
 			this.SendPropertyChanging();
 			entity.local = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.agendamentos")]
+	public partial class agendamento : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private System.Nullable<int> _id_solicitacao;
+		
+		private string _descricao;
+		
+		private System.DateTime _data;
+		
+		private EntityRef<solicitacao> _solicitacao;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onid_solicitacaoChanging(System.Nullable<int> value);
+    partial void Onid_solicitacaoChanged();
+    partial void OndescricaoChanging(string value);
+    partial void OndescricaoChanged();
+    partial void OndataChanging(System.DateTime value);
+    partial void OndataChanged();
+    #endregion
+		
+		public agendamento()
+		{
+			this._solicitacao = default(EntityRef<solicitacao>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_solicitacao", DbType="Int")]
+		public System.Nullable<int> id_solicitacao
+		{
+			get
+			{
+				return this._id_solicitacao;
+			}
+			set
+			{
+				if ((this._id_solicitacao != value))
+				{
+					if (this._solicitacao.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_solicitacaoChanging(value);
+					this.SendPropertyChanging();
+					this._id_solicitacao = value;
+					this.SendPropertyChanged("id_solicitacao");
+					this.Onid_solicitacaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_descricao", DbType="VarChar(50)")]
+		public string descricao
+		{
+			get
+			{
+				return this._descricao;
+			}
+			set
+			{
+				if ((this._descricao != value))
+				{
+					this.OndescricaoChanging(value);
+					this.SendPropertyChanging();
+					this._descricao = value;
+					this.SendPropertyChanged("descricao");
+					this.OndescricaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_data", DbType="DateTime NOT NULL")]
+		public System.DateTime data
+		{
+			get
+			{
+				return this._data;
+			}
+			set
+			{
+				if ((this._data != value))
+				{
+					this.OndataChanging(value);
+					this.SendPropertyChanging();
+					this._data = value;
+					this.SendPropertyChanged("data");
+					this.OndataChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="solicitacao_agendamento", Storage="_solicitacao", ThisKey="id_solicitacao", OtherKey="id", IsForeignKey=true)]
+		public solicitacao solicitacao
+		{
+			get
+			{
+				return this._solicitacao.Entity;
+			}
+			set
+			{
+				solicitacao previousValue = this._solicitacao.Entity;
+				if (((previousValue != value) 
+							|| (this._solicitacao.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._solicitacao.Entity = null;
+						previousValue.agendamentos.Remove(this);
+					}
+					this._solicitacao.Entity = value;
+					if ((value != null))
+					{
+						value.agendamentos.Add(this);
+						this._id_solicitacao = value.id;
+					}
+					else
+					{
+						this._id_solicitacao = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("solicitacao");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

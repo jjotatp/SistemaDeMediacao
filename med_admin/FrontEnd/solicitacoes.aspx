@@ -238,11 +238,13 @@
                     <div class="collapse" id="collapseAgendar">
                         <div class="form-group">
                             <label class="col-lg-4 control-label">
-                                Dia e Hora:
+                                Data e Hora:
                             </label>
-                            <div class="col-lg-8">
-                                <input type="text" class="form-control input-daterange-timepicker" name="daterange"
-                                value="01/01/2015 1:30 PM - 01/01/2015 2:00 PM" />
+                            <div class="col-lg-5">
+                                <input type="date"  class="form-control" onkeyup="formataData(this,event);" runat="server" id="txtData"  MaxLength="10"/>
+                            </div>
+                            <div class="col-lg-3">
+                                <input type="time"  class="form-control" maxlength="5" runat="server" id="txtHora"/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -253,10 +255,9 @@
                                 <input id="txtDescricaoAgendamento" class="form-control input-md" runat="server">
                             </div>
                         </div>
-                        <center>
-                            <button class="btn btn-success btn-rounded">
-                                Realizar Agendamento
-                            </button>
+                        <center>                           
+                            <asp:Button ID="btnAgendar" runat="server" Text="Realizar Agendamento"
+                                CssClass="btn btn-success btn-rounded" OnClick="btnAgendar_Click"></asp:Button>  
                         </center>
                     </div>
                 </fieldset> 

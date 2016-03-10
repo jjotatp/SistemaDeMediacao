@@ -28,8 +28,11 @@ namespace FrontEnd
             gdvLista.DataSource = model.Listar();
             gdvLista.DataBind();
 
-            gdvLista.UseAccessibleHeader = true;
-            gdvLista.HeaderRow.TableSection = TableRowSection.TableHeader;
+            if (gdvLista.Rows.Count > 0)
+            {
+                gdvLista.UseAccessibleHeader = true;
+                gdvLista.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)
