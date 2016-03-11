@@ -215,9 +215,7 @@
                                 ToolTip="Exclui a solicitação do sistema" OnClientClick="javascript:return confirm('Tem certeza que deseja excluir a solicitação?');"
                                 OnClick="btnExcluir_Click"/>
                         </div>
-                    </div>
-
-                    <br>
+                    </div>                    
                     <div class="collapse" id="collapseTransferir">
                         <div class="form-group">
                             <label class="col-lg-4 control-label">
@@ -234,19 +232,31 @@
                                 CssClass="btn btn-success btn-rounded" OnClientClick="javascript:return confirm('Tem certeza que deseja transferir a solicitação?');" 
                                 OnClick="btnConfirmaTransferencia_Click"></asp:Button>                            
                         </center>
-                    </div>
+                        <br />
+                    </div>                    
                     <div class="collapse" id="collapseAgendar">
                         <div class="form-group">
                             <label class="col-lg-4 control-label">
-                                Data e Hora:
+                                Data
                             </label>
                             <div class="col-lg-5">
                                 <input type="date"  class="form-control" onkeyup="formataData(this,event);" runat="server" id="txtData"  MaxLength="10"/>
-                            </div>
-                            <div class="col-lg-3">
-                                <input type="time"  class="form-control" maxlength="5" runat="server" id="txtHora"/>
-                            </div>
+                            </div>                            
                         </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label">
+                                Horário de
+                            </label>                            
+                            <div class="col-lg-3">
+                                <input type="time" class="form-control" runat="server" id="txtHoraInicial"  MaxLength="5"/>
+                            </div>                            
+                            <label class="col-lg-1 control-label">
+                                até
+                            </label>
+                            <div class="col-lg-3">
+                                <input type="time" class="form-control" runat="server" id="txtHoraFinal"  MaxLength="5"/>
+                            </div>              
+                        </div>                        
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="descricao">
                                 Descrição

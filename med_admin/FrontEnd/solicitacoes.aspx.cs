@@ -103,47 +103,53 @@ namespace FrontEnd
 
         protected void btnConfirmaTransferencia_Click(object sender, EventArgs e)
         {
-            // confirma a transferência da solicitação para um local específico
-            Solicitacao_Model model = new Solicitacao_Model();
-
-            int id_local,id_solicitacao;
-
-            id_local = int.Parse(ddLocal.SelectedValue);
-            id_solicitacao = int.Parse(txtId.Value);
-
-            // transfere a solicitação para o local/núcleo definido
-            if ( model.TransferirSolicitacao(id_solicitacao, id_local))
+            if (ValidaSolicitacao())
             {
-                Master.Sucesso("Solicitação transferida.");
-                PreencherGrid();              
+                // confirma a transferência da solicitação para um local específico
+                Solicitacao_Model model = new Solicitacao_Model();
+
+                int id_local, id_solicitacao;
+
+                id_local = int.Parse(ddLocal.SelectedValue);
+                id_solicitacao = int.Parse(txtId.Value);
+
+                // transfere a solicitação para o local/núcleo definido
+                if (model.TransferirSolicitacao(id_solicitacao, id_local))
+                {
+                    Master.Sucesso("Solicitação transferida.");
+                    PreencherGrid();
+                }
+                else
+                {
+                    Master.Alerta("Erro ao transferir Erro:" + model.message);
+                }
             }
-            else
-            {
-                Master.Alerta("Erro ao transferir Erro:" + model.message);
-            } 
         }
 
         protected void btnExcluir_Click(object sender, EventArgs e)
         {
-            Solicitacao_Model model = new Solicitacao_Model();
-
-            solicitacao s = new solicitacao();
-
-            int id_solicitacao;
-
-            id_solicitacao = int.Parse(txtId.Value);
-
-            s = model.Obter(id_solicitacao);
-
-            if (model.Excluir(s))
+            if (ValidaSolicitacao())
             {
-                LimparCampos();
-                Master.Sucesso("Solicitação excluída.");
-                PreencherGrid();                
-            }
-            else
-            {
-                Master.Alerta("Erro ao excluir a solicitação. Erro:"+model.message);
+                Solicitacao_Model model = new Solicitacao_Model();
+
+                solicitacao s = new solicitacao();
+
+                int id_solicitacao;
+
+                id_solicitacao = int.Parse(txtId.Value);
+
+                s = model.Obter(id_solicitacao);
+
+                if (model.Excluir(s))
+                {
+                    LimparCampos();
+                    Master.Sucesso("Solicitação excluída.");
+                    PreencherGrid();
+                }
+                else
+                {
+                    Master.Alerta("Erro ao excluir a solicitação. Erro:" + model.message);
+                }
             }
         }
 
@@ -168,13 +174,15 @@ namespace FrontEnd
 
                 agendamento a = new agendamento();
 
-                String sData;
+                DateTime dDataInicial,dDataFinal;
 
-                sData = txtData.Value + " " + txtHora.Value + ":00";
-
-                a.data = DateTime.Parse(sData);
+                dDataInicial = DateTime.Parse(txtData.Value + " " + txtHoraInicial.Value + ":00");
+                dDataFinal = DateTime.Parse(txtData.Value + " " + txtHoraFinal.Value + ":00");
+                
                 a.descricao = txtDescricaoAgendamento.Value;
                 a.id_solicitacao = int.Parse(txtId.Value);
+                a.data_inicial = dDataInicial;
+                a.data_final = dDataFinal;
                 if (model.VerificarDisponibilidade(a))
                 {
                     if (model.Inserir(a))
@@ -204,22 +212,52 @@ namespace FrontEnd
 
         public bool ValidaAgendamento()
         {
-            if (txtData.Value == "")
+            // se a solicitação não foi carregada, não entra no IF e retorna false
+            if (ValidaSolicitacao())
             {
-                Master.Alerta("Data inválida ou não informada.");
-                return false;
+                if (txtData.Value == "")
+                {
+                    Master.Alerta("Data inválida ou não informada.");
+                    return false;
+                }
+                if (txtHoraInicial.Value == "")
+                {
+                    Master.Alerta("Hora inicial inválida ou não informada.");
+                    return false;
+                }
+                if (txtHoraFinal.Value == "")
+                {
+                    Master.Alerta("Hora final ou não informada.");
+                    return false;
+                }
+                // se a data incial for maior que a data final, gera erro
+                if ( TimeSpan.Parse(txtHoraInicial.Value) > TimeSpan.Parse(txtHoraFinal.Value) )
+                {
+                    Master.Alerta("Hora inicial maior que a hora final.");
+                    return false;
+                }
+                if (txtDescricaoAgendamento.Value == "")
+                {
+                    Master.Alerta("Descrição do agendamento inválida ou não informada.");
+                    return false;
+                }
+                return true;
             }
-            if (txtHora.Value == "")
+            else
             {
-                Master.Alerta("Hora inválida ou não informada.");
                 return false;
-            }
-            if (txtDescricaoAgendamento.Value == "")
+            }            
+        }
+
+        public bool ValidaSolicitacao()
+        {
+            if (txtId.Value == "")
             {
-                Master.Alerta("Descrição do agendamento inválida ou não informada.");
+                Master.Alerta("Solicitação não selecionada.");
                 return false;
             }
             return true;
-        }
+        }        
+            
     }
 }

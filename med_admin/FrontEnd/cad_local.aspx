@@ -112,7 +112,7 @@ CodeBehind="cad_local.aspx.cs" Inherits="FrontEnd.cad_local" %>
                                 Ativo?
                             </label>
                             <div class="col-md-6">
-                                <input class="form-control input-md" id="cbbAtivo" type="checkbox" runat="server" />
+                                <input type="checkbox" id="cbbAtivo" runat="server" data-toggle="toggle" data-on="Ativo" data-off="Inativo"/>
                             </div>
                         </div>
                         <div class="col-md-offset-3">
@@ -127,4 +127,8 @@ CodeBehind="cad_local.aspx.cs" Inherits="FrontEnd.cad_local" %>
                 </div>
             </div>
         </div>
+
+        <script>          
+        </script>
+
     </asp:Content>

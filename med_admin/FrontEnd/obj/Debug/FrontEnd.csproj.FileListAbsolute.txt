@@ -33,3 +33,5 @@ C:\programas\Sistema de mediacao\trunk\med_admin\FrontEnd\obj\Debug\FrontEnd.dll
 C:\programas\Sistema de mediacao\trunk\med_admin\FrontEnd\obj\Debug\FrontEnd.pdb
 C:\programas\Sistema de mediacao\trunk\med_admin\FrontEnd\bin\BackEnd.dll
 C:\programas\Sistema de mediacao\trunk\med_admin\FrontEnd\bin\BackEnd.pdb
+C:\programas\Sistema de mediacao\trunk\med_admin\FrontEnd\bin\DHTMLX.dll
+C:\programas\Sistema de mediacao\trunk\med_admin\FrontEnd\bin\DHTMLX.xml

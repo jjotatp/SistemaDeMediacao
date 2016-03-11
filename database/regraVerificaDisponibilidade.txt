@@ -1,0 +1,7 @@
+regra função VerificaDisponibilidade
+
+a data_inicial deve ser diferente de todas as outras datas iniciais
+a data_inicial não deve estar contida em um intervalo de data_inicial e data_final de outro registro
+
+a data_final deve ser diferente de todas as outras datas finais
+a data_final não deve estar contida em um intervalo de data_inicial e data_final de outro registro

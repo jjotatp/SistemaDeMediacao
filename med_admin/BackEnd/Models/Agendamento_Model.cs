@@ -46,7 +46,7 @@ namespace BackEnd.Models
                 dbDataContext db = getDataContext();
                 Table<agendamento> tb = getTable();
 
-                db.alteraAgendamento(a.id, a.id_solicitacao, a.descricao, a.data);
+                db.alteraAgendamento(a.id, a.id_solicitacao, a.descricao, a.data_inicial, a.data_final);
                 tb.Context.SubmitChanges();
 
                 return true;
@@ -90,11 +90,12 @@ namespace BackEnd.Models
             // e retorna FALSE + MESSAGE se houver erro na busca
             try
             {
-                String sql = "select * from agendamentos where data between {0} and {1}";
-                dbDataContext db = getDataContext();
-                DateTime DataMaxima = a.data.AddHours(1);
-                var qry = db.ExecuteQuery<agendamento>(sql, a.data,DataMaxima);
-
+                String sql = "select * from agendamentos where " +
+                             "( data_inicial between {0} and {1} ) or ( data_final between {0} and {1} ) " +
+                             "or ( data_inicial = {2} ) or ( data_final = {3} )";
+                dbDataContext db = getDataContext();                
+                var qry = db.ExecuteQuery<agendamento>(sql, a.data_inicial.AddMinutes(1),a.data_final.AddMinutes(-1)
+                                            ,a.data_inicial,a.data_final);
                 message = "";
                 if (qry.Count() < 1)
                     return true;

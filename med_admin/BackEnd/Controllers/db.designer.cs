@@ -169,13 +169,6 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.alteraAgendamento")]
-		public int alteraAgendamento([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_solicitacao, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string descricao, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> data)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id, id_solicitacao, descricao, data);
-			return ((int)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.alteraCidade")]
 		public int alteraCidade([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string nome, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string estado)
 		{
@@ -222,6 +215,13 @@ namespace BackEnd.Controllers
 		public int alteraLocal([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string nome, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string descricao, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_cidade, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string bairro, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string logradouro, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string numero, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CEP", DbType="VarChar(15)")] string cEP, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> data_inicio_atividade, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(20)")] string telefone)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id, nome, descricao, id_cidade, bairro, logradouro, numero, cEP, data_inicio_atividade, telefone);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.alteraAgendamento")]
+		public int alteraAgendamento([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_solicitacao, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string descricao, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> data_inicial, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> data_final)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id, id_solicitacao, descricao, data_inicial, data_final);
 			return ((int)(result.ReturnValue));
 		}
 	}
@@ -3033,7 +3033,9 @@ namespace BackEnd.Controllers
 		
 		private string _descricao;
 		
-		private System.DateTime _data;
+		private System.DateTime _data_inicial;
+		
+		private System.DateTime _data_final;
 		
 		private EntityRef<solicitacao> _solicitacao;
 		
@@ -3047,8 +3049,10 @@ namespace BackEnd.Controllers
     partial void Onid_solicitacaoChanged();
     partial void OndescricaoChanging(string value);
     partial void OndescricaoChanged();
-    partial void OndataChanging(System.DateTime value);
-    partial void OndataChanged();
+    partial void Ondata_inicialChanging(System.DateTime value);
+    partial void Ondata_inicialChanged();
+    partial void Ondata_finalChanging(System.DateTime value);
+    partial void Ondata_finalChanged();
     #endregion
 		
 		public agendamento()
@@ -3121,22 +3125,42 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_data", DbType="DateTime NOT NULL")]
-		public System.DateTime data
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_data_inicial", DbType="DateTime NOT NULL")]
+		public System.DateTime data_inicial
 		{
 			get
 			{
-				return this._data;
+				return this._data_inicial;
 			}
 			set
 			{
-				if ((this._data != value))
+				if ((this._data_inicial != value))
 				{
-					this.OndataChanging(value);
+					this.Ondata_inicialChanging(value);
 					this.SendPropertyChanging();
-					this._data = value;
-					this.SendPropertyChanged("data");
-					this.OndataChanged();
+					this._data_inicial = value;
+					this.SendPropertyChanged("data_inicial");
+					this.Ondata_inicialChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_data_final", DbType="DateTime NOT NULL")]
+		public System.DateTime data_final
+		{
+			get
+			{
+				return this._data_final;
+			}
+			set
+			{
+				if ((this._data_final != value))
+				{
+					this.Ondata_finalChanging(value);
+					this.SendPropertyChanging();
+					this._data_final = value;
+					this.SendPropertyChanged("data_final");
+					this.Ondata_finalChanged();
 				}
 			}
 		}

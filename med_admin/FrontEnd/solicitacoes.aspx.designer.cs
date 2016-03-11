@@ -175,13 +175,22 @@ namespace FrontEnd {
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtData;
         
         /// <summary>
-        /// txtHora control.
+        /// txtHoraInicial control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtHora;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtHoraInicial;
+        
+        /// <summary>
+        /// txtHoraFinal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtHoraFinal;
         
         /// <summary>
         /// txtDescricaoAgendamento control.
