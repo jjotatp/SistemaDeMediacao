@@ -108,5 +108,26 @@ namespace BackEnd.Models
                 return false;
             }
         }
+
+        public List<agendamento> ListarDia(DateTime Dia)
+        {
+            List<agendamento> lista = new List<agendamento>();
+            try
+            {
+                dbDataContext db = getDataContext();
+                string sSql;
+                sSql = " select * from agendamentos " +
+                        " where data_inicial between '" + Dia.ToShortDateString() + "' and '" + (Dia.AddDays(1)).ToShortDateString() + "' " +
+                        " order by data_inicial";
+                var query = db.ExecuteQuery<agendamento>(sSql);
+                lista = query.ToList();
+                return lista;
+            }
+            catch (Exception e)
+            {
+                message = e.Message;
+                return lista;
+            }
+        }
     }
 }

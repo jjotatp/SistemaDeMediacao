@@ -5,28 +5,69 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-using DHTMLX.Scheduler;
+using BackEnd.Controllers;
+using BackEnd.Models;
 
 namespace FrontEnd
 {
     public partial class agenda : System.Web.UI.Page
-    {
-        public DHXScheduler Scheduler { get; set; }
+    {       
         protected void Page_Load(object sender, EventArgs e)
         {
-            // instancia o SCHEDULER
-            this.Scheduler = new DHXScheduler();
+            if (!IsPostBack)
+            {
+                //PessoaModel p = new PessoaModel();
+                //// atribui uma lista de dentistas para o DropDown
+                //ddDentistas.DataSource = p.ListarDentistas();
+                //ddDentistas.DataValueField = "id";
+                //ddDentistas.DataTextField = "nome";
+                //ddDentistas.DataBind();
+                //ddDentistas.SelectedIndex = 0;
 
-            //Scheduler.InitialDate = DateTime.Now;
-            //Scheduler.Config.first_hour = 8;
-            //Scheduler.Config.last_hour = 19;
-            //Scheduler.Config.time_step = 30;
-            //Scheduler.Config.limit_time_select = true;
+                // pega a data de hoje
+                txtData.Value = DateTime.Now.ToShortDateString();
+            }
 
-            Scheduler.DataAction = "Data.ashx";
-            Scheduler.SaveAction = "Save.ashx";
-            Scheduler.LoadData = true;
-            Scheduler.EnableDataprocessor = true;
+            // verifica qual foi o botão que fez o PostBack e realiza as alterações
+            string parameter = Request["__EVENTARGUMENT"];
+            if (parameter == "anterior")
+            {
+                if (txtData.Value != "")
+                    txtData.Value = DateTime.Parse(txtData.Value).AddDays(-1).ToShortDateString();
+            }
+            else if (parameter == "posterior")
+            {
+                if (txtData.Value != "")
+                    txtData.Value = DateTime.Parse(txtData.Value).AddDays(1).ToShortDateString();
+            }
+            // exibe a data em formato longo, ou seja, por escrito
+            if (txtData.Value != "")
+                txtTexto.Text = DateTime.Parse(txtData.Value).ToLongDateString();
+            Agendamento_Model agenda = new Agendamento_Model();
+            // carrega a agenda do dentista na data selecionada
+            gvAgenda.DataSource = agenda.ListarDia(DateTime.Parse(txtData.Value));
+                //dModel.Agenda(Int32.Parse(ddDentistas.SelectedValue), DateTime.Parse(txtData.Value));
+            gvAgenda.DataBind();
+        }
+
+        protected void btnAgendar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("agendamento.aspx");
+        }
+
+        protected void btnCarregaAgenda_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void gvAgenda_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            // recupera a linha clicada no gridview
+            int linha = Convert.ToInt32(e.CommandArgument);
+            // recupera o id do procedimento na linha clicada
+            Int32 id = (Int32)gvAgenda.DataKeys[linha].Value;
+            String tipo = gvAgenda.DataKeys[linha][1].ToString();
+            
         }
     }
 }
