@@ -165,8 +165,7 @@
                 </div>
             </div>
             </div>            
-        </header>        
-        <form id="form1" class="form-horizontal" runat="server">  
+        </header>                
         <div class="wrapper">
             <div class="container">
                 <div class="alert alert-danger alert-dismissible fade in" role="alert" id="pnlAlerta" style="display:none" runat="server"> 
@@ -189,8 +188,7 @@
         </div>
         <asp:ContentPlaceHolder ID="p" runat="server">
             <!-- CONTEUDO DO SISTEMA -->
-        </asp:ContentPlaceHolder>
-        </form>
+        </asp:ContentPlaceHolder>        
          <footer class="footer text-right">
             <div class="container">
                 <div class="row">

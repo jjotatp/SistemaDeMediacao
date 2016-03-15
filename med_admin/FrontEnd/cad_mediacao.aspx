@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/med_admin.Master" AutoEventWireup="true"
 CodeBehind="cad_mediacao.aspx.cs" Inherits="FrontEnd.cad_mediacao" %>
     <asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">
+        <form id="form1" class="form-horizontal" runat="server">          
         <div class="container">
             <div style="text-align: center;" class="col-md-10 col-md-offset-1">
                 <h1>
@@ -289,4 +290,5 @@ CodeBehind="cad_mediacao.aspx.cs" Inherits="FrontEnd.cad_mediacao" %>
                 </button>
             </div>
         </div>
+        </form>
     </asp:Content>

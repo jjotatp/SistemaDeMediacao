@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/med_admin.Master" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="FrontEnd.index" %>
 <%@ MasterType VirtualPath="~/med_admin.master"  %>
 <asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">
+    <form id="form1" class="form-horizontal" runat="server">           
     <div class="">
             <div class="container">
                 <div class="col-md-6 col-md-offset-3">
@@ -89,4 +90,5 @@
                 </div>
             </div>
         </div>
+        </form>
 </asp:Content>

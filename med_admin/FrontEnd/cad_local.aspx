@@ -2,6 +2,7 @@
 CodeBehind="cad_local.aspx.cs" Inherits="FrontEnd.cad_local" %>
 <%@ MasterType VirtualPath="~/med_admin.master"  %>
     <asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">
+        <form id="form1" class="form-horizontal" runat="server">          
         <div class="">
             <div class="container">
                 <h3>
@@ -127,7 +128,7 @@ CodeBehind="cad_local.aspx.cs" Inherits="FrontEnd.cad_local" %>
                 </div>
             </div>
         </div>
-
+        </form>
         <script>          
         </script>
 

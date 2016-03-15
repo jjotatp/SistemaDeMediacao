@@ -13,6 +13,15 @@ namespace FrontEnd {
     public partial class agenda {
         
         /// <summary>
+        /// form1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        
+        /// <summary>
         /// clData control.
         /// </summary>
         /// <remarks>
@@ -55,7 +64,7 @@ namespace FrontEnd {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtDescricaoAgendamento;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescricaoAgendamento;
         
         /// <summary>
         /// btnAgendar control.
@@ -67,13 +76,13 @@ namespace FrontEnd {
         protected global::System.Web.UI.WebControls.Button btnAgendar;
         
         /// <summary>
-        /// Button1 control.
+        /// btnAnterior control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button btnAnterior;
         
         /// <summary>
         /// txtData control.
@@ -82,7 +91,7 @@ namespace FrontEnd {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtData;
+        protected global::System.Web.UI.WebControls.TextBox txtData;
         
         /// <summary>
         /// btnPosterior control.

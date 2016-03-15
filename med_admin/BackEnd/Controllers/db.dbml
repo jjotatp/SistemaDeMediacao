@@ -140,14 +140,6 @@
       <Association Name="solicitacao_agendamento" Member="solicitacao" ThisKey="id_solicitacao" OtherKey="id" Type="solicitacao" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Events" Member="Events">
-    <Type Name="Event">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="text" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
-      <Column Name="start_date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="end_date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
   <Function Name="dbo.alteraCidade" Method="alteraCidade">
     <Parameter Name="id" Type="System.Int32" DbType="Int" />
     <Parameter Name="nome" Type="System.String" DbType="VarChar(100)" />

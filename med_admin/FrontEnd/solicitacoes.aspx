@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/med_admin.Master" AutoEventWireup="true" CodeBehind="solicitacoes.aspx.cs" Inherits="FrontEnd.solicitacoes" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">
     <%@ MasterType VirtualPath="~/med_admin.master"  %>  
+    <form id="form1" class="form-horizontal" runat="server">           
     <div class="container">
     <div class="col-md-7">
         <div class="panel panel-color panel-danger">
@@ -276,4 +277,5 @@
         </div>
     </div>
 </div>
+</form>
 </asp:Content>

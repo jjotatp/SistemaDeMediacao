@@ -27,7 +27,7 @@ namespace FrontEnd
 
                 // pega a data de hoje
                 clData.SelectedDate = DateTime.Today;                
-                txtData.Value = DateTime.Now.ToShortDateString();
+                txtData.Text = DateTime.Now.ToShortDateString();
             }            
 
             CarregarAgenda();
@@ -35,13 +35,20 @@ namespace FrontEnd
 
         protected void CarregarAgenda()
         {
-            if (txtData.Value != "")
-                txtTexto.Text = DateTime.Parse(txtData.Value).ToLongDateString();
-            txtDataAgendar.Value = DateTime.Parse(txtData.Value).ToString("yyyy-MM-dd");
-            clData.SelectedDate = DateTime.Parse(txtData.Value);
+            // se a data não foi informada, pega a data de hoje
+            if (txtData.Text == "")            
+                txtData.Text = DateTime.Now.ToShortDateString();
+            // passa a data para o título da lista, exemplo: "Domingo, 19 de fevereiro de 2016"
+            txtTexto.Text = DateTime.Parse(txtData.Text).ToLongDateString();
+            // passa a data carregada para o campo do formulário agendar, para quando o usuário for agendar um horário,
+            // a data de hoje já esteja preenchida
+            txtDataAgendar.Value = DateTime.Parse(txtData.Text).ToString("yyyy-MM-dd");
+            // passa a data carregada para o calendário, para garantir que ele fique sincronizado com o txtData
+            clData.SelectedDate = DateTime.Parse(txtData.Text);
+
             Agendamento_Model agenda = new Agendamento_Model();
-            // carrega a agenda do dentista na data selecionada
-            gvAgenda.DataSource = agenda.ListarDia(DateTime.Parse(txtData.Value));
+            // carrega a agenda naquele dia
+            gvAgenda.DataSource = agenda.ListarDia(DateTime.Parse(txtData.Text));
             gvAgenda.DataBind();
             if (gvAgenda.Rows.Count > 0)
             {
@@ -55,28 +62,44 @@ namespace FrontEnd
             // recupera a linha clicada no gridview
             int linha = Convert.ToInt32(e.CommandArgument);
             // recupera o id do procedimento na linha clicada
-            Int32 id = (Int32)gvAgenda.DataKeys[linha].Value;
-            String tipo = gvAgenda.DataKeys[linha][1].ToString();
-            
+            Int32 id = (Int32)gvAgenda.DataKeys[linha].Value;           
+
+            if (e.CommandName == "Apagar")
+            {
+                agendamento a = new agendamento();
+                Agendamento_Model model = new Agendamento_Model();
+                // busca o agendamento selecionado
+                a = model.Obter(id);
+
+                if ( model.Excluir(a))
+                {
+                    Master.Sucesso("Agendamento excluído com sucesso");
+                    CarregarAgenda();
+                }
+                else
+                {
+                    Master.Alerta("Erro ao excluír o agendamento. Erro:" + model.message);
+                }
+            }
         }
 
         protected void btnAnterior_Click(object sender, EventArgs e)
         {
-            if (txtData.Value != "")
-                txtData.Value = DateTime.Parse(txtData.Value).AddDays(-1).ToShortDateString();            
+            if (txtData.Text != "")
+                txtData.Text = DateTime.Parse(txtData.Text).AddDays(-1).ToShortDateString();            
             CarregarAgenda();
         }
 
         protected void btnPosterior_Click(object sender, EventArgs e)
         {
-            if (txtData.Value != "")
-                txtData.Value = DateTime.Parse(txtData.Value).AddDays(1).ToShortDateString();            
+            if (txtData.Text != "")
+                txtData.Text = DateTime.Parse(txtData.Text).AddDays(1).ToShortDateString();            
             CarregarAgenda();
         }
 
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)
         {
-            txtData.Value = clData.SelectedDate.ToShortDateString();
+            txtData.Text = clData.SelectedDate.ToShortDateString();
             CarregarAgenda();
         }
 
@@ -90,8 +113,8 @@ namespace FrontEnd
 
                 DateTime dDataInicial, dDataFinal;
 
-                dDataInicial = DateTime.Parse(txtData.Value + " " + txtHoraInicial.Value + ":00");
-                dDataFinal = DateTime.Parse(txtData.Value + " " + txtHoraFinal.Value + ":00");
+                dDataInicial = DateTime.Parse(txtData.Text + " " + txtHoraInicial.Value + ":00");
+                dDataFinal = DateTime.Parse(txtData.Text + " " + txtHoraFinal.Value + ":00");
 
                 a.descricao = txtDescricaoAgendamento.Value;                
                 a.data_inicial = dDataInicial;
@@ -126,7 +149,7 @@ namespace FrontEnd
 
         public bool ValidaAgendamento()
         {
-            if (txtData.Value == "")
+            if (txtData.Text == "")
             {
                 Master.Alerta("Data inválida ou não informada.");
                 return false;
