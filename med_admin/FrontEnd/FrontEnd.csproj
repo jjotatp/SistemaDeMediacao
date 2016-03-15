@@ -103,6 +103,8 @@
     <Content Include="Content\images\lixeira.png" />
     <Content Include="Content\images\mais.png" />
     <Content Include="Content\js\bootstrap-toggle.min.js" />
+    <Content Include="Content\js\jquery-2.2.1.min.js" />
+    <Content Include="Content\js\jquery-ui.min.js" />
     <Content Include="Content\js\mascara.js" />
     <Content Include="lista_cidade.aspx" />
     <Content Include="lista_local.aspx" />

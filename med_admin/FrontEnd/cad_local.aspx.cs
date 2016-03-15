@@ -68,7 +68,7 @@ namespace FrontEnd
                         txtNumero.Value = local.numero;
                         txtLogradouro.Value = local.logradouro;
                         txtBairro.Value = local.bairro;
-                        txtDataInicioAtividade.Text = DateTime.Parse(local.data_inicio_atividade.ToString()).ToShortDateString(); ;
+                        txtDataInicioAtividade.Text = DateTime.Parse(local.data_inicio_atividade.ToString()).ToShortDateString();
                         txtCEP.Text = local.CEP;
                         txtTelefone.Text = local.telefone;
                         cbbAtivo.Checked = local.ativo;
