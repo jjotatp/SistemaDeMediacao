@@ -1,0 +1,6 @@
+<center>
+                            <asp:Calendar ID="clData" runat="server" CssClass="table-condensed" OnSelectionChanged="Calendar1_SelectionChanged" SelectionMode="Day" BorderStyle="None" DayHeaderStyle-BackColor="#D8B221" TitleStyle-BackColor="#FFCA00"></asp:Calendar>
+                        </center>
+
+<a role="button" data-toggle="collapse" href="#collapseAgendar" aria-expanded="false"
+                                aria-controls="collapseExample" onclick="AtribuiDataAgendar();"><span class="btn btn-success btn-block">Agendar</span></a>
