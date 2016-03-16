@@ -110,6 +110,8 @@
     <Content Include="lista_local.aspx" />
     <Content Include="lista_mediador.aspx" />
     <Content Include="lista_tipo_registro.aspx" />
+    <Content Include="noticias.aspx" />
+    <Content Include="noticia_publicar.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -439,6 +441,20 @@
     </Compile>
     <Compile Include="med_admin.Master.designer.cs">
       <DependentUpon>med_admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="noticias.aspx.cs">
+      <DependentUpon>noticias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="noticias.aspx.designer.cs">
+      <DependentUpon>noticias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="noticia_publicar.aspx.cs">
+      <DependentUpon>noticia_publicar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="noticia_publicar.aspx.designer.cs">
+      <DependentUpon>noticia_publicar.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="solicitacoes.aspx.cs">

@@ -15,7 +15,15 @@ mediacoes(id,#id_solicitacao,numero,tema_conflito,data_registro,data_mediacao,#i
 mediacao_partes
 (cpf,rg,nome,status_civil,profissao,nascimento_data,nascimento_cidade,sexo,nome_pai,nome_mae,endereco_logradouro,endereco_numero,endereco_bairro,endereco_cidade,telefone)
 
-noticias(id,titulo,descricao,link_imagem,link_noticia,#id_mediador,data_publicacao)
+noticias(
+	id int not null primary key identity,
+	capa_noticia image,
+	data_postagem datetime not null,
+	titulo_postagem varchar(50) not null,
+	corpo_noticia varchar(500) not null,
+	id_mediador int not null references mediadores(id),
+	id_local int not null references locais(id)
+)
 
 testemunhos(id,nome,descricao,data)
 

@@ -110,3 +110,22 @@ create table mediacao_partes
 	primary key(mediacao_id,pessoa_id),
 	descricao_caso varchar(250)
 );
+
+create table noticias
+(
+	id int not null primary key identity,
+	capa_noticia image,
+	data_postagem datetime not null,
+	titulo_postagem varchar(50) not null,
+	corpo_noticia varchar(500) not null,
+	id_mediador int not null references mediadores(id),
+	id_local int not null references locais(id)
+);
+
+create table noticia_fotos
+(
+	id int not null identity,
+	id_noticia int not null references noticias(id),
+	foto image,
+	primary key(id,id_noticia)
+);

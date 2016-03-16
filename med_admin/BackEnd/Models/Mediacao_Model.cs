@@ -28,7 +28,7 @@ namespace BackEnd.Models
 
         public int Inserir(mediacao a)
         {
-            // função para cadastrar cidade
+            // função para cadastrar
             try
             {
                 Table<mediacao> tb = getTable();
