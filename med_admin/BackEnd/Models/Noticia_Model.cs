@@ -46,10 +46,10 @@ namespace BackEnd.Models
             try
             {
                 dbDataContext db = getDataContext();
-                Table<noticia_foto> tb = db.GetTable<noticia_foto>();
-                noticia_foto n = new noticia_foto();
+                Table<noticia_imagem> tb = db.GetTable<noticia_imagem>();
+                noticia_imagem n = new noticia_imagem();
                 n.id_noticia = a.id;
-                n.foto = imagem;
+                n.imagem = imagem;
 
                 tb.InsertOnSubmit(n);
                 tb.Context.SubmitChanges();

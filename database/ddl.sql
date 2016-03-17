@@ -122,10 +122,12 @@ create table noticias
 	id_local int not null references locais(id)
 );
 
-create table noticia_fotos
+create table noticia_imagens
 (
 	id int not null identity,
 	id_noticia int not null references noticias(id),
-	foto image,
+	imagem_nome varchar(50) not null,
+	imagem_caminho varchar(max) not null,
 	primary key(id,id_noticia)
 );
+

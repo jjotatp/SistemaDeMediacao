@@ -60,9 +60,9 @@ namespace BackEnd.Controllers
     partial void Insertnoticia(noticia instance);
     partial void Updatenoticia(noticia instance);
     partial void Deletenoticia(noticia instance);
-    partial void Insertnoticia_foto(noticia_foto instance);
-    partial void Updatenoticia_foto(noticia_foto instance);
-    partial void Deletenoticia_foto(noticia_foto instance);
+    partial void Insertnoticia_imagen(noticia_imagen instance);
+    partial void Updatenoticia_imagen(noticia_imagen instance);
+    partial void Deletenoticia_imagen(noticia_imagen instance);
     #endregion
 		
 		public dbDataContext() : 
@@ -183,11 +183,11 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		public System.Data.Linq.Table<noticia_foto> noticia_fotos
+		public System.Data.Linq.Table<noticia_imagen> noticia_imagens
 		{
 			get
 			{
-				return this.GetTable<noticia_foto>();
+				return this.GetTable<noticia_imagen>();
 			}
 		}
 		
@@ -3318,7 +3318,7 @@ namespace BackEnd.Controllers
 		
 		private int _id_local;
 		
-		private EntitySet<noticia_foto> _noticia_fotos;
+		private EntitySet<noticia_imagen> _noticia_imagens;
 		
 		private EntityRef<local> _local;
 		
@@ -3346,7 +3346,7 @@ namespace BackEnd.Controllers
 		
 		public noticia()
 		{
-			this._noticia_fotos = new EntitySet<noticia_foto>(new Action<noticia_foto>(this.attach_noticia_fotos), new Action<noticia_foto>(this.detach_noticia_fotos));
+			this._noticia_imagens = new EntitySet<noticia_imagen>(new Action<noticia_imagen>(this.attach_noticia_imagens), new Action<noticia_imagen>(this.detach_noticia_imagens));
 			this._local = default(EntityRef<local>);
 			this._mediador = default(EntityRef<mediador>);
 			OnCreated();
@@ -3500,16 +3500,16 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="noticia_noticia_foto", Storage="_noticia_fotos", ThisKey="id", OtherKey="id_noticia")]
-		public EntitySet<noticia_foto> noticia_fotos
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="noticia_noticia_imagen", Storage="_noticia_imagens", ThisKey="id", OtherKey="id_noticia")]
+		public EntitySet<noticia_imagen> noticia_imagens
 		{
 			get
 			{
-				return this._noticia_fotos;
+				return this._noticia_imagens;
 			}
 			set
 			{
-				this._noticia_fotos.Assign(value);
+				this._noticia_imagens.Assign(value);
 			}
 		}
 		
@@ -3601,21 +3601,21 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		private void attach_noticia_fotos(noticia_foto entity)
+		private void attach_noticia_imagens(noticia_imagen entity)
 		{
 			this.SendPropertyChanging();
 			entity.noticia = this;
 		}
 		
-		private void detach_noticia_fotos(noticia_foto entity)
+		private void detach_noticia_imagens(noticia_imagen entity)
 		{
 			this.SendPropertyChanging();
 			entity.noticia = null;
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.noticia_fotos")]
-	public partial class noticia_foto : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.noticia_imagens")]
+	public partial class noticia_imagen : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -3624,7 +3624,9 @@ namespace BackEnd.Controllers
 		
 		private int _id_noticia;
 		
-		private System.Data.Linq.Binary _foto;
+		private string _imagem_nome;
+		
+		private string _imagem_caminho;
 		
 		private EntityRef<noticia> _noticia;
 		
@@ -3636,11 +3638,13 @@ namespace BackEnd.Controllers
     partial void OnidChanged();
     partial void Onid_noticiaChanging(int value);
     partial void Onid_noticiaChanged();
-    partial void OnfotoChanging(System.Data.Linq.Binary value);
-    partial void OnfotoChanged();
+    partial void Onimagem_nomeChanging(string value);
+    partial void Onimagem_nomeChanged();
+    partial void Onimagem_caminhoChanging(string value);
+    partial void Onimagem_caminhoChanged();
     #endregion
 		
-		public noticia_foto()
+		public noticia_imagen()
 		{
 			this._noticia = default(EntityRef<noticia>);
 			OnCreated();
@@ -3690,27 +3694,47 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_foto", DbType="Image", UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary foto
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_imagem_nome", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string imagem_nome
 		{
 			get
 			{
-				return this._foto;
+				return this._imagem_nome;
 			}
 			set
 			{
-				if ((this._foto != value))
+				if ((this._imagem_nome != value))
 				{
-					this.OnfotoChanging(value);
+					this.Onimagem_nomeChanging(value);
 					this.SendPropertyChanging();
-					this._foto = value;
-					this.SendPropertyChanged("foto");
-					this.OnfotoChanged();
+					this._imagem_nome = value;
+					this.SendPropertyChanged("imagem_nome");
+					this.Onimagem_nomeChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="noticia_noticia_foto", Storage="_noticia", ThisKey="id_noticia", OtherKey="id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_imagem_caminho", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string imagem_caminho
+		{
+			get
+			{
+				return this._imagem_caminho;
+			}
+			set
+			{
+				if ((this._imagem_caminho != value))
+				{
+					this.Onimagem_caminhoChanging(value);
+					this.SendPropertyChanging();
+					this._imagem_caminho = value;
+					this.SendPropertyChanged("imagem_caminho");
+					this.Onimagem_caminhoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="noticia_noticia_imagen", Storage="_noticia", ThisKey="id_noticia", OtherKey="id", IsForeignKey=true)]
 		public noticia noticia
 		{
 			get
@@ -3727,12 +3751,12 @@ namespace BackEnd.Controllers
 					if ((previousValue != null))
 					{
 						this._noticia.Entity = null;
-						previousValue.noticia_fotos.Remove(this);
+						previousValue.noticia_imagens.Remove(this);
 					}
 					this._noticia.Entity = value;
 					if ((value != null))
 					{
-						value.noticia_fotos.Add(this);
+						value.noticia_imagens.Add(this);
 						this._id_noticia = value.id;
 					}
 					else

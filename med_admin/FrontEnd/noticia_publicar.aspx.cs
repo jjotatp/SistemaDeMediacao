@@ -13,5 +13,25 @@ namespace FrontEnd
         {
 
         }
+
+        protected void btnCarregarImagem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void gdvListaImagens_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+
+        }
+
+        protected void gdvListaImagens_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+
+        }
+
+        protected void uplImagemCarregada_DataBinding(object sender, EventArgs e)
+        {
+
+        }
     }
 }
