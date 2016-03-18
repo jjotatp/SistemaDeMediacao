@@ -85,7 +85,7 @@ namespace BackEnd.Models
                 Table<mediador> tb = getTable();
                 try
                 {
-                    tb.First(p => p.usuario == usuario);
+                    d = tb.First(p => p.usuario == usuario);
                 }
                 catch (Exception e)
                 {
@@ -93,6 +93,15 @@ namespace BackEnd.Models
                 }
                 return d;
             }
+        }
+
+        public mediador ObterUsuarioLogin(String usuario, String senha)
+        {            
+            Table<mediador> tb = getTable();
+            var med = ( from p in tb
+                        where p.usuario == usuario && p.senha == senha
+                        select p).SingleOrDefault();                                   
+            return med;        
         }
     }
 }

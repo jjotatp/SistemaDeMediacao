@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/med_admin.Master" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="FrontEnd.index" %>
 <%@ MasterType VirtualPath="~/med_admin.master"  %>
-<asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">
-    <form id="form1" class="form-horizontal" runat="server">           
+<asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">        
     <div class="">
             <div class="container">
                 <div class="col-md-6 col-md-offset-3">
@@ -10,8 +9,8 @@
                             <h3 class="panel-title">Olá, seja bem vindo ao Gerenciador do Portal de Mediação</h3>
                         </div>
                         <div class="panel-body">
-                            <p>Nele será possível reslizar todo o gerenciamento do sistema</p>
-                            <p>Você poderá;</p>
+                            <p>Nele será possível realizar todo o gerenciamento do sistema</p>
+                            <p>Você poderá:</p>
                             <ul>
                                 <li>Gerenciar Mediações</li>
                                 <li>Listar Mediações</li>
@@ -89,6 +88,5 @@
                     </div>
                 </div>
             </div>
-        </div>
-        </form>
+        </div>        
 </asp:Content>

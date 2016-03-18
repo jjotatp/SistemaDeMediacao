@@ -1,7 +1,6 @@
 ﻿    <%@ Page Title="" Language="C#" MasterPageFile="~/med_admin.Master" AutoEventWireup="true" CodeBehind="agenda.aspx.cs" Inherits="FrontEnd.agenda" %>
 <%@ MasterType VirtualPath="~/med_admin.master"  %>
-<asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">
-    <form id="form1" class="form-horizontal" runat="server">           
+<asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">           
     <div class="col-md-3">
         <div class="panel panel-default">             
             <div class="panel-heading clearfix">
@@ -120,8 +119,7 @@
             <%} %>
             </div>                                                                                
         </div>
-    </div>                 	    
-    </form>
+    </div>                 	        
     <script type="text/javascript"> 
         $(".deleteLink").click(function() {
           return confirm('Tem certeza que deseja excluir o agendamento?');

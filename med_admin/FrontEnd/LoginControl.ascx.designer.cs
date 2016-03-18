@@ -10,72 +10,87 @@
 namespace FrontEnd {
     
     
-    public partial class cad_cidade {
+    public partial class LoginControl {
         
         /// <summary>
-        /// txtID control.
+        /// pnlLogado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtID;
+        protected global::System.Web.UI.WebControls.Panel pnlLogado;
         
         /// <summary>
-        /// txtNome control.
+        /// lblNomeUsuario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNome;
+        protected global::System.Web.UI.WebControls.Label lblNomeUsuario;
         
         /// <summary>
-        /// ddEstado control.
+        /// btnSairLogado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddEstado;
+        protected global::System.Web.UI.WebControls.Button btnSairLogado;
         
         /// <summary>
-        /// btnSalvar control.
+        /// pnlNaoLogado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSalvar;
+        protected global::System.Web.UI.WebControls.Panel pnlNaoLogado;
         
         /// <summary>
-        /// btnListar control.
+        /// txtUsuario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnListar;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtUsuario;
         
         /// <summary>
-        /// btnLimpar control.
+        /// txtSenha control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLimpar;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword txtSenha;
         
         /// <summary>
-        /// Master property.
+        /// btnEntrar control.
         /// </summary>
         /// <remarks>
-        /// Auto-generated property.
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        public new FrontEnd.med_admin Master {
-            get {
-                return ((FrontEnd.med_admin)(base.Master));
-            }
-        }
+        protected global::System.Web.UI.WebControls.Button btnEntrar;
+        
+        /// <summary>
+        /// pnlAlertaLogin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pnlAlertaLogin;
+        
+        /// <summary>
+        /// lblTextoAlertaLogin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTextoAlertaLogin;
     }
 }

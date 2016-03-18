@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/med_admin.Master" AutoEventWireup="true" CodeBehind="noticia_publicar.aspx.cs" Inherits="FrontEnd.noticia_publicar" %>
 <%@ MasterType VirtualPath="~/med_admin.master"  %>
-<asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">        
-    <form class="form-horizontal" id="form1" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">            
         <div class="container">
             <div class="row">
                 <div class="col-md-5">                                         
@@ -41,7 +40,6 @@
                 <div class="clearfix pull-right m-t-15">
                     <asp:Button CssClass="btn btn-success btn-rounded" runat="server" ID="btnSalvarNoticia" OnClick="btnSalvarNoticia_Click" />
                     <%--<button type="button" class="btn btn-success btn-rounded">Enviar</button>--%>
-                </div>                          
-    </form>    
+                </div>                              
         
 </asp:Content>

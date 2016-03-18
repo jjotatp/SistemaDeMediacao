@@ -1,8 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/med_admin.Master" AutoEventWireup="true"
 CodeBehind="cad_local.aspx.cs" Inherits="FrontEnd.cad_local" %>
 <%@ MasterType VirtualPath="~/med_admin.master"  %>
-    <asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">
-        <form id="form1" class="form-horizontal" runat="server">          
+    <asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">              
         <div class="">
             <div class="container">
                 <h3>
@@ -127,8 +126,7 @@ CodeBehind="cad_local.aspx.cs" Inherits="FrontEnd.cad_local" %>
                     </fieldset>
                 </div>
             </div>
-        </div>
-        </form>
+        </div>        
         <script>          
         </script>
 

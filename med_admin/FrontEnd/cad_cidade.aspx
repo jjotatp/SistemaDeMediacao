@@ -1,8 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/med_admin.Master" AutoEventWireup="true"
 CodeBehind="cad_cidade.aspx.cs" Inherits="FrontEnd.cad_cidade" %>
 <%@ MasterType VirtualPath="~/med_admin.master"  %>
-    <asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">   
-        <form id="form1" class="form-horizontal" runat="server">               
+    <asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">                         
         <div class="container">
             <h3>
                 Cadastro - Cidade
@@ -50,6 +49,5 @@ CodeBehind="cad_cidade.aspx.cs" Inherits="FrontEnd.cad_cidade" %>
                     </div>
                 </fieldset>
             </div>
-        </div>    
-        </form>    
+        </div>              
     </asp:Content>

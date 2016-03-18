@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/med_admin.Master" AutoEventWireup="true" CodeBehind="cad_tipo_registro.aspx.cs" Inherits="FrontEnd.cad_tipo_registro" %>
 <%@ MasterType VirtualPath="~/med_admin.master"  %>
-<asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">    
-    <form id="form1" class="form-horizontal" runat="server">           
+<asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">            
     <div class="container">
         <h3>Cadastro - Tipos de Registro</h3>
                                     
@@ -36,6 +35,4 @@
             </fieldset>            
         </div>
     </div>
-</form>
-
 </asp:Content>

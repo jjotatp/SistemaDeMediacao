@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/med_admin.Master" AutoEventWireup="true" CodeBehind="lista_cidade.aspx.cs" Inherits="FrontEnd.lista_cidade" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">    
-    <%@ MasterType VirtualPath="~/med_admin.master"  %>
-    <form id="form1" class="form-horizontal" runat="server">           
+    <%@ MasterType VirtualPath="~/med_admin.master"  %>            
     <div class="container">
         <div class="col-md-12">
             <h3>
@@ -62,5 +61,4 @@
         </asp:GridView>
      </div>       
   </div>
-  </form>
 </asp:Content>

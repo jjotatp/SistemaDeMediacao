@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/med_admin.Master" AutoEventWireup="true" CodeBehind="cad_mediador.aspx.cs" Inherits="FrontEnd.cad_mediador" %>
 <%@ MasterType VirtualPath="~/med_admin.master"  %> 
-<asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">  
-    <form id="form1" class="form-horizontal" runat="server">           
+<asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">          
     <div class="container">
         <h3>Cadastro - Mediador</h3>
         <p>Faça o cadastro de Mediadores</p>
@@ -73,6 +72,5 @@
                 </div>
             </fieldset>                  
         </div>
-    </div>        
-        </form>
+    </div>                
 </asp:Content>

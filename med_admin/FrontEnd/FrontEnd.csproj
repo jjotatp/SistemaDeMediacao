@@ -114,6 +114,7 @@
     <Content Include="lista_local.aspx" />
     <Content Include="lista_mediador.aspx" />
     <Content Include="lista_tipo_registro.aspx" />
+    <Content Include="LoginControl.ascx" />
     <Content Include="noticias.aspx" />
     <Content Include="noticia_publicar.aspx" />
     <Content Include="packages.config" />
@@ -441,6 +442,13 @@
     </Compile>
     <Compile Include="lista_tipo_registro.aspx.designer.cs">
       <DependentUpon>lista_tipo_registro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LoginControl.ascx.cs">
+      <DependentUpon>LoginControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoginControl.ascx.designer.cs">
+      <DependentUpon>LoginControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="med_admin.Master.cs">
       <DependentUpon>med_admin.Master</DependentUpon>
