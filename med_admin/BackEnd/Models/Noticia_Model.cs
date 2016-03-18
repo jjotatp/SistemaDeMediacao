@@ -38,29 +38,6 @@ namespace BackEnd.Models
                 message = e.Message;
                 return false;                
             }
-        }
-
-        public bool InsereImagem(noticia a, Binary imagem)
-        {
-            // função que insere uma imagem na notícia especificada
-            try
-            {
-                dbDataContext db = getDataContext();
-                Table<noticia_imagem> tb = db.GetTable<noticia_imagem>();
-                noticia_imagem n = new noticia_imagem();
-                n.id_noticia = a.id;
-                n.imagem = imagem;
-
-                tb.InsertOnSubmit(n);
-                tb.Context.SubmitChanges();
-
-                return true;
-            }
-            catch (Exception e)
-            {
-                message = e.Message;
-                return false;
-            }
-        }
+        }        
     }
 }

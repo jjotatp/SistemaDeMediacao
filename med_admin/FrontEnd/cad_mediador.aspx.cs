@@ -149,7 +149,7 @@ namespace FrontEnd
 
                 med.nome = txtNome.Value;
                 med.patente = txtPatente.Value;
-                med.id_local = int.Parse(ddLocal.SelectedValue);
+                med.id_local = Int32.Parse(ddLocal.SelectedValue);                
                 med.usuario = txtUsuario.Value;
 
                 med.senha = txtSenha.Value;
@@ -169,7 +169,7 @@ namespace FrontEnd
                     Master.Sucesso("Registro salvo com sucesso.");
                 }
                 else
-                    Master.Alerta("Erro ao salvar o registro");
+                    Master.Alerta("Erro ao salvar o registro. Erro: "+model.message);
             }
         }
     }

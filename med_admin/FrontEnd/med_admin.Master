@@ -22,9 +22,11 @@
         <link href="Content/css/components.css" rel="stylesheet" type="text/css" />
         <link href="Content/css/icons.css" rel="stylesheet" type="text/css" />
         <link href="Content/css/pages.css" rel="stylesheet" type="text/css" />
-        <link href="Content/css/menu.css" rel="stylesheet" type="text/css" />
-        <link href="Content/css/responsive.css" rel="stylesheet" type="text/css" />
+        <link href="Content/css/menu.css" rel="stylesheet" type="text/css" />        
         <link href="Content/css/bootstrap-toggle.min.css" rel="stylesheet" />
+        <link href="Content/css/responsive.css" rel="stylesheet" type="text/css" />        
+
+        <link href="Content/plugins/summernote/dist/summernote.css" rel="stylesheet" />
 
         <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -201,18 +203,45 @@
         <!-- End Footer -->                      
 
         <!-- jQuery  -->
+        <%--<script src="Content/js/modernizr-2.6.2.min.js"></script>--%>
+
         <script src="Content/js/jquery.min.js"></script>
         <script src="Content/js/jquery-2.2.1.min.js"></script>
         <script src="Content/js/bootstrap.min.js"></script>
-        <script src="Content/js/jquery-ui.min.js"></script>
-
-        <!-- Custom main Js -->
-        <script src="Content/js/jquery.core.js"></script>
-        <script src="Content/js/jquery.app.js"></script>                
+        <%--<script src="Content/js/jquery-ui.min.js"></script>           --%>
 
         <!-- Mascara.js -->
         <script src="Content/js/mascara.js"></script>
-        <script src="Content/js/bootstrap-toggle.min.js"></script>        
+        <script src="Content/js/bootstrap-toggle.min.js"></script>                     
+           
+        <!-- Summernote -->
+        <script src="Content/plugins/summernote/dist/summernote.min.js"></script>
+        
+        <!-- Custom main Js -->
+        <script src="Content/js/jquery.core.js"></script>
+        <script src="Content/js/jquery.app.js"></script>             
+       
+        <script src="Content/plugins/dropzone/dist/dropzone.js"></script>
+                
+        <script>
+
+            jQuery(document).ready(function(){
+
+                $('.summernote').summernote({
+                    height: 200,                 // set editor height
+                    minHeight: null,             // set minimum height of editor
+                    maxHeight: null,             // set maximum height of editor
+                    focus: false,                 // set focus to editable area after initializing summernote                   
+                    lang: 'pt-BR'
+                });
+
+                $('.inline-editor').summernote({
+                    airMode: true
+                });
+
+            });
+        </script>        
+
         <script type="text/javascript">
             jQuery(document).ready(function ($) {
                 setTimeout(function () {

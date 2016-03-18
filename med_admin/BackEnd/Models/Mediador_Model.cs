@@ -9,6 +9,8 @@ namespace BackEnd.Models
 {
     public class Mediador_Model
     {
+        public String message;
+
         public dbDataContext getDataContext() { dbDataContext db = new dbDataContext(); return db; }
 
         public Table<mediador> getTable()
@@ -39,8 +41,9 @@ namespace BackEnd.Models
 
                 return true;
             }
-            catch
+            catch (Exception e)
             {
+                message = e.Message;
                 return false;
             }
         }
@@ -80,10 +83,14 @@ namespace BackEnd.Models
             {
                 mediador d = new mediador();
                 Table<mediador> tb = getTable();
-                try {
+                try
+                {
                     tb.First(p => p.usuario == usuario);
                 }
-                catch {}
+                catch (Exception e)
+                {
+                    message = e.Message;                    
+                }
                 return d;
             }
         }
