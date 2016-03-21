@@ -101,15 +101,16 @@ namespace FrontEnd
                 Master.Alerta("Usuário inválido ou não informado");
                 return false;
             }
-            // BUSCAR O MEDIADOR E VERIFICAR SE EXISTE COM ESSE NOME DE USUARIO, SE EXISTER FALA QUE USUÁRIO JA É UTILIZADO            
-            m = model.ObterUsuario(txtUsuario.Value);
-            if (m.id != 0)
-            {
-                Master.Alerta("Usuário já cadastrado, escolha um nome de usuário diferente.");
-                return false;
-            }
+            // APENAS VERIFICA SE EXISTE SE NÃO FOR EDIÇÃO            
             if (txtID.Text == "Novo")
             {
+                // BUSCAR O MEDIADOR E VERIFICAR SE EXISTE COM ESSE NOME DE USUARIO, SE EXISTER FALA QUE USUÁRIO JA É UTILIZADO            
+                m = model.ObterUsuario(txtUsuario.Value);
+                if (m.id != 0)
+                {
+                    Master.Alerta("Usuário já cadastrado, escolha um nome de usuário diferente.");
+                    return false;
+                }
                 if (txtSenha.Value == "")
                 {
                     Master.Alerta("Senha inválida ou não informada");
@@ -140,20 +141,21 @@ namespace FrontEnd
             //se a função valida retornar True, então permite cadastrar ou alterar o registro
             if (Valida())
             {
-                mediador med = new mediador();
+                mediador med = new mediador();                
+
+                med.nome = txtNome.Value;
+                med.patente = txtPatente.Value;
+                med.id_local = Int32.Parse(ddLocal.SelectedValue);
+                med.usuario = txtUsuario.Value;
+                med.senha = txtSenha.Value;
+
                 Mediador_Model model = new Mediador_Model();
 
                 // se tiver ID preenche o parâmetro
                 if (txtID.Text != "Novo")
                     med.id = int.Parse(txtID.Text);
 
-                med.nome = txtNome.Value;
-                med.patente = txtPatente.Value;
-                med.id_local = Int32.Parse(ddLocal.SelectedValue);                
-                med.usuario = txtUsuario.Value;
-
-                med.senha = txtSenha.Value;
-                if (txtID.Text == "Novo")
+                if (txtID.Text != "Novo")
                 {
                     if (txtSenha.Value == "")
                     {   // SE for uma alteração E a senha não for digitada,
@@ -162,10 +164,11 @@ namespace FrontEnd
                     }
                 }                                    
 
-                // faz a inserção ou atualização do cadastro da cidade
+                // faz a inserção ou atualização do cadastro
                 if (model.InserirAtualizar(med))
                 {
-                    txtID.Text = med.id.ToString();
+                    // busca o id no banco pois a procedure cadMediador não retorna o id do registro
+                    txtID.Text = model.ObterUsuario(med.usuario).id.ToString();
                     Master.Sucesso("Registro salvo com sucesso.");
                 }
                 else

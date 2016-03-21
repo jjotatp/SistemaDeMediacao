@@ -30,7 +30,7 @@ namespace BackEnd.Models
 
                 if (a.id == 0)
                 {
-                    tb.InsertOnSubmit(a);
+                    db.cadMediador(a.nome, a.patente, a.id_local, a.usuario, a.senha);
                     tb.Context.SubmitChanges();
                 }
                 else
@@ -72,8 +72,8 @@ namespace BackEnd.Models
             {
                 Nome = "%" + Nome + "%";
                 String sSql = "select * from mediadores m where m.nome like {0}";
-                var query = db.ExecuteQuery<mediador>(sSql,Nome);
-                return query.ToList();
+                var query = db.ExecuteQuery<mediador>(sSql, Nome);
+                return query.ToList(); 
             }
         }
 

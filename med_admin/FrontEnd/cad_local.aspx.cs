@@ -17,7 +17,7 @@ namespace FrontEnd
                 txtLogradouro.MaxLength = 100;
                 txtNumero.MaxLength = 10;
                 txtCEP.MaxLength = 9;
-                txtDataInicioAtividade.MaxLength = 10;
+                //txtDataInicioAtividade.MaxLength = 10;
                 txtTelefone.MaxLength = 20;
             
                 // carrega cidades
@@ -68,7 +68,7 @@ namespace FrontEnd
                         txtNumero.Value = local.numero;
                         txtLogradouro.Value = local.logradouro;
                         txtBairro.Value = local.bairro;
-                        txtDataInicioAtividade.Text = DateTime.Parse(local.data_inicio_atividade.ToString()).ToShortDateString();
+                        txtDataInicioAtividade.Value = DateTime.Parse(local.data_inicio_atividade.ToString()).ToString("yyyy-MM-dd");                        
                         txtCEP.Text = local.CEP;
                         txtTelefone.Text = local.telefone;
                         cbbAtivo.Checked = local.ativo;
@@ -93,15 +93,15 @@ namespace FrontEnd
                 local local = new local();
                 local.nome = txtNome.Text;
                 local.descricao = txtDescricao.Value;
-                local.id_cidade = Int32.Parse(ddCidade.SelectedValue);
-                local.bairro = txtBairro.Value;
+                local.CEP = txtCEP.Text;
                 local.logradouro = txtLogradouro.Value;
                 local.numero = txtNumero.Value;
-                local.CEP = txtCEP.Text;
+                local.bairro = txtBairro.Value;
+                local.id_cidade = Int32.Parse(ddCidade.SelectedValue);                                                
                 local.telefone = txtTelefone.Text;
-                if (txtDataInicioAtividade.Text != "")
+                if (txtDataInicioAtividade.Value != "")
                 {
-                    local.data_inicio_atividade = DateTime.Parse(txtDataInicioAtividade.Text);
+                    local.data_inicio_atividade = DateTime.Parse(txtDataInicioAtividade.Value);
                 }                
                 local.ativo = cbbAtivo.Checked;
 
@@ -128,6 +128,11 @@ namespace FrontEnd
                 Master.Alerta("Nome inválido ou não informado");
                 return false;
             }
+            if (txtCEP.Text == "")
+            {
+                Master.Alerta("CEP inválido ou não informado");
+                return false;
+            }
             if (txtLogradouro.Value == "")
             {
                 Master.Alerta("Logradouro inválido ou não informado");
@@ -136,11 +141,6 @@ namespace FrontEnd
             if (txtNumero.Value == "")
             {
                 Master.Alerta("Número inválido ou não informado");
-                return false;
-            }
-            if (txtCEP.Text == "")
-            {
-                Master.Alerta("CEP inválido ou não informado");
                 return false;
             }
             

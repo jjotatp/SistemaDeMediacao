@@ -17,6 +17,7 @@ namespace FrontEnd
             {
                 txtNome.MaxLength = 100;
             }
+            PreencherGrid();
         }
 
         protected void PreencherGrid()

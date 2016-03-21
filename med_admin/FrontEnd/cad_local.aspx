@@ -41,22 +41,12 @@ CodeBehind="cad_local.aspx.cs" Inherits="FrontEnd.cad_local" %>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-4 control-label">
-                                Cidade
-                            </label>
-                            <div class="col-md-6">
-                                <asp:DropDownList runat="server" ID="ddCidade" CssClass="form-control"
-                                placeholder="Selecione...">
-                                </asp:DropDownList>
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label class="col-md-4 control-label" for="nome">
-                                Bairro
+                                CEP
                             </label>
                             <div class="col-md-6">
-                                <input class="form-control input-md" id="txtBairro" type="text" placeholder="Bairro"
-                                runat="server">
+                                <asp:TextBox ID="txtCEP" CssClass="form-control input-md" runat="server" onkeypress="formataCEP(this,event);"
+                                placeholder="digite seu CEP"></asp:TextBox>
                             </div>
                         </div>
                         <div class="form-group">
@@ -79,11 +69,21 @@ CodeBehind="cad_local.aspx.cs" Inherits="FrontEnd.cad_local" %>
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="nome">
-                                CEP
+                                Bairro
                             </label>
                             <div class="col-md-6">
-                                <asp:TextBox ID="txtCEP" CssClass="form-control input-md" runat="server" onkeypress="formataCEP(this,event);"
-                                placeholder="digite seu CEP"></asp:TextBox>
+                                <input class="form-control input-md" id="txtBairro" type="text" placeholder="Bairro"
+                                runat="server">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">
+                                Cidade
+                            </label>
+                            <div class="col-md-6">
+                                <asp:DropDownList runat="server" ID="ddCidade" CssClass="form-control"
+                                placeholder="Selecione...">
+                                </asp:DropDownList>
                             </div>
                         </div>
                         <div class="form-group">
@@ -91,9 +91,9 @@ CodeBehind="cad_local.aspx.cs" Inherits="FrontEnd.cad_local" %>
                                 Início das Atividades
                             </label>
                             <div class="col-md-6">
-                                <%--<input class="form-control input-md" id="txtDataInicioAtividade" type="date" runat="server" />--%>
-                                <asp:TextBox runat="server" TextMode="DateTime" CssClass="form-control input-md"
-                                    id="txtDataInicioAtividade" onkeypress="formataData(this,event);"></asp:TextBox>
+                                <input class="form-control input-md" id="txtDataInicioAtividade" type="date" runat="server" />
+ <%--                               <asp:TextBox runat="server" TextMode="DateTime" CssClass="form-control input-md"
+                                    id="txtDataInicioAtividade" onkeypress="formataData(this,event);"></asp:TextBox>--%>
                             </div>
                         </div>
                         <div class="form-group">

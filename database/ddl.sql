@@ -31,8 +31,8 @@ create table mediadores
 	nome varchar(100) not null,
 	patente varchar(50),
 	id_local int not null references locais(id),
-	usuario varchar(50),
-	senha varchar(50)
+	usuario varchar(50) unique not null,
+	senha varchar(50) not null
 );
 
 create table solicitacoes

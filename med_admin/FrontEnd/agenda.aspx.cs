@@ -39,10 +39,7 @@ namespace FrontEnd
             if (txtData.Text == "")            
                 txtData.Text = DateTime.Now.ToShortDateString();
             // passa a data para o título da lista, exemplo: "Domingo, 19 de fevereiro de 2016"
-            txtTexto.Text = DateTime.Parse(txtData.Text).ToLongDateString();
-            // passa a data carregada para o campo do formulário agendar, para quando o usuário for agendar um horário,
-            // a data de hoje já esteja preenchida
-            txtDataAgendar.Value = DateTime.Parse(txtData.Text).ToString("yyyy-MM-dd");
+            txtTexto.Text = DateTime.Parse(txtData.Text).ToLongDateString();            
             // passa a data carregada para o calendário, para garantir que ele fique sincronizado com o txtData
             clData.SelectedDate = DateTime.Parse(txtData.Text);
 
@@ -103,6 +100,14 @@ namespace FrontEnd
             CarregarAgenda();
         }
 
+        protected void LimparAgendamento()
+        {
+            txtDataAgendar.Value = "";
+            txtHoraInicial.Value = "";
+            txtHoraFinal.Value = "";
+            txtDescricaoAgendamento.Value = "";
+        }
+
         protected void btnAgendar_Click(object sender, EventArgs e)
         {
             if (ValidaAgendamento())
@@ -113,8 +118,8 @@ namespace FrontEnd
 
                 DateTime dDataInicial, dDataFinal;
 
-                dDataInicial = DateTime.Parse(txtData.Text + " " + txtHoraInicial.Value + ":00");
-                dDataFinal = DateTime.Parse(txtData.Text + " " + txtHoraFinal.Value + ":00");
+                dDataInicial = DateTime.Parse(txtDataAgendar.Value + " " + txtHoraInicial.Value + ":00");
+                dDataFinal = DateTime.Parse(txtDataAgendar.Value + " " + txtHoraFinal.Value + ":00");                
 
                 a.descricao = txtDescricaoAgendamento.Value;                
                 a.data_inicial = dDataInicial;
@@ -124,6 +129,7 @@ namespace FrontEnd
                     if (model.Inserir(a))
                     {
                         Master.Sucesso("Horário agendado com sucesso.");
+                        LimparAgendamento();
                         CarregarAgenda();
                     }
                     else

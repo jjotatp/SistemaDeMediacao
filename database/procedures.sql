@@ -202,3 +202,24 @@ begin
 end
 go
 
+--================================================
+
+select * from mediadores
+
+create procedure cadMediador
+(
+	@nome varchar(100),
+	@patente varchar(100),
+	@id_local int,
+	@usuario varchar(50),
+	@senha varchar(50)
+)
+as
+begin
+	insert into mediadores
+	(nome, patente, id_local, usuario, senha)
+	values
+	(@nome,@patente,@id_local,@usuario,@senha)
+end
+go
+
