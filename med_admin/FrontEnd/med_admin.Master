@@ -1,6 +1,6 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="med_admin.master.cs" Inherits="FrontEnd.med_admin" %>
 
-<<%@ Register TagPrefix="lgn" TagName="Login" Src="~/LoginControl.ascx" %>
+<%@ Register TagPrefix="lgn" TagName="Login" Src="~/LoginControl.ascx" %>
 
 <!DOCTYPE html>
 
@@ -51,7 +51,7 @@
     </head>
 
 
-    <body>
+    <body class="wrapper">
         <!-- Navigation Bar-->               
         <form id="form1" class="form-horizontal" runat="server"> 
         <header id="topnav">
@@ -96,7 +96,7 @@
             </div>
             </div>            
         </header>                
-        <div class="wrapper">
+        <div class="">
             <div class="container">
                 <div class="alert alert-danger alert-dismissible fade in" role="alert" id="pnlAlerta" style="display:none" runat="server"> 
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">

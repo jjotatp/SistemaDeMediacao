@@ -24,7 +24,7 @@ namespace FrontEnd
                 pnlLogado.Visible = true;
                 pnlNaoLogado.Visible = false;
                 lblNomeUsuario.Text = mediador.nome;
-                // DEVE TAMBÉM CARREGAR O NOME DO LOCAL DO MEDIADOR DA SESSÃO
+                lblNucleoLogado.Text = mediador.local.nome + " - " + mediador.local.cidade.nome;                
             }
             else
             {

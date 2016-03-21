@@ -18,15 +18,17 @@ Inherits="FrontEnd.LoginControl" %>
             <div class="container">
                 <!-- Logo container-->
                 <div class="logo">
-                    <a href="index.aspx" class="logo"><i class="ion-gear-b"></i> <span>Sistema | <small>Portal de Medação</small> | Núcleo de mediação: NomeDoNucleo </span> </a>
+                    <a href="index.aspx" class="logo"><i class="ion-gear-b"></i> <span>Med Admin | Núcleo de mediação: <asp:Label id="lblNucleoLogado" runat="server" /> </span> </a>
                 </div>
                 <!-- End Logo container-->
                 <div class="menu-extras">
-                    <ul class="nav navbar-nav navbar-right pull-right">                                                   
-                        <asp:Label id="lblNomeUsuario" runat="server" />
-                        &nbsp;
-                        <asp:Button id="btnSairLogado" runat="server" CssClass="btn btn-danger"
-                        Text="Sair" OnClick="btnSairLogado_Click" />                                                       
+                    <ul class="nav navbar-nav navbar-right pull-right"> 
+                        <li>
+                            <span><asp:Label id="lblNomeUsuario" runat="server" CssClass="text-white"/></span>
+                            &nbsp;
+                            <asp:Button id="btnSairLogado" runat="server" CssClass="btn btn-danger"
+                            Text="Sair" OnClick="btnSairLogado_Click" />                                                       
+                        </li>                                                  
                     </ul>                    
                 </div>
             </div>            
