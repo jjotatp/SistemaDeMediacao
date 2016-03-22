@@ -64,12 +64,31 @@ namespace FrontEnd
             String caminho = @"..\Images\";
             String nome = Path.GetFileName(imgImagemCarregada.ImageUrl);
 
+            // declara objeto noticia
             noticia n = new noticia();
-
+            // declara objeto noticia_model
             Noticia_Model model = new Noticia_Model();
+            // pega o mediador logado
+            mediador med = Session["med"] as mediador;
 
             n.titulo_postagem = txtTituloNoticia.Text;
-            n.corpo_noticia = edtNoticia.Value;            
+            n.corpo_noticia = edtNoticia.Value;
+            n.data_postagem = DateTime.Now;
+            n.id_local = med.id_local;
+            n.id_mediador = med.id;
+            n.imagem_caminho = caminho;
+            n.imagem_nome = nome;
+            
+            if (model.Inserir(n))
+            {
+                Master.Sucesso("Notícia postada!");
+                Response.Redirect("noticias.aspx");
+            }
+            else
+            {
+                Master.Alerta("Erro: " + model.message);
+            }
+
         }
     }
 }

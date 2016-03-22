@@ -78,7 +78,7 @@
                             <a href="agenda.aspx"><i class="ion-chatbubble-working"></i>Agendamentos</a>
                         </li>
                         <li class="has-submenu">
-                            <a href="#"><i class="ion-calendar "></i>Noticias</a>
+                            <a href="noticias.aspx"><i class="ion-calendar "></i>Noticias</a>
                         </li>
                         <li class="has-submenu">
                             <a href="#"><i class="ion-person-stalker"></i>Cadastros</a>

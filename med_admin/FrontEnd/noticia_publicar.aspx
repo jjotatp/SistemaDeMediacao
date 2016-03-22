@@ -25,7 +25,7 @@
                                 </div>
                                 <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">                                                                       
                                     <ContentTemplate>                                                
-                                        <textarea runat="server" class="form-control" id="edtNoticia" style="height: 200px;"/>
+                                        <textarea runat="server" class="form-control" id="edtNoticia" style="height: 200px;" maxlength="500"/>
                                     </ContentTemplate>
                                     <Triggers> 
                                         <asp:PostBackTrigger ControlID="btnSalvarNoticia" /> 
@@ -38,7 +38,8 @@
                 </div>
 
                 <div class="clearfix pull-right m-t-15">
-                    <asp:Button CssClass="btn btn-success btn-rounded" runat="server" ID="btnSalvarNoticia" OnClick="btnSalvarNoticia_Click" />
+                    <asp:Button CssClass="btn btn-success btn-rounded" runat="server" ID="btnSalvarNoticia" OnClick="btnSalvarNoticia_Click" Text="Publicar Notícia"
+                        OnClientClick="javascript:return confirm('Você confirma a publicação dessa notícia?');"/>
                     <%--<button type="button" class="btn btn-success btn-rounded">Enviar</button>--%>
                 </div>                              
         

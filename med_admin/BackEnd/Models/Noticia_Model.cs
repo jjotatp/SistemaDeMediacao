@@ -38,6 +38,16 @@ namespace BackEnd.Models
                 message = e.Message;
                 return false;                
             }
-        }        
+        }
+
+        public List<noticia> Listar()
+        {
+            using (dbDataContext db = getDataContext())
+            {
+                Table<noticia> tb = getTable();
+                return tb.ToList();
+            }
+        }
+
     }
 }
