@@ -114,8 +114,13 @@
                     Detalhes da solicitação
                 </h3>
             </div>
-            <div class="panel-body">                
-                <div id="pnlDados" runat="server">
+            <div class="panel-body">                    
+                <div class="alert alert-warning" role="alert" id="pnlAcaoSoli" runat="server" style="display:none">
+                    <strong>
+                        <asp:Label ID="lblDescAcaoSoli" runat="server" Text="Solicitação já agendada." Font-Size="10" Visible="true"/>
+                    </strong>
+                </div> 
+                <asp:Panel id="pnlDados" runat="server">                    
                 <fieldset>
                     <!-- Text input-->
                     <div class="form-group">
@@ -271,7 +276,7 @@
                         </center>
                     </div>
                 </fieldset> 
-                </div>           
+                </asp:Panel>           
             </div>
         </div>
     </div>

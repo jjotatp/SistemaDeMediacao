@@ -7,7 +7,7 @@ using System.Data.Linq;
 
 
 namespace BackEnd.Models
-{    
+{
 
     public class Solicitacao_Model
     {
@@ -34,10 +34,10 @@ namespace BackEnd.Models
 
                 return a.id;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 message = e.Message;
-                return 0;                
+                return 0;
             }
         }
 
@@ -51,7 +51,7 @@ namespace BackEnd.Models
 
                 db.alteraSolicitacoes(a.id, a.descricao_problema, a.descricao_caso, a.solicitante_nome,
                                     a.solicitante_telefone, a.solicitante_endereco, a.solicitante_email,
-                                    a.solicitante_periodo_atendimento, a.detalhes_partes, a.id_local);                
+                                    a.solicitante_periodo_atendimento, a.detalhes_partes, a.id_local);
 
                 tb.Context.SubmitChanges();
 
@@ -92,14 +92,14 @@ namespace BackEnd.Models
             }
         }
 
-        public List<v_solicitacao> ListarPorTexto(String nomeCampo,String valorParametro)
+        public List<v_solicitacao> ListarPorTexto(String nomeCampo, String valorParametro)
         {
             using (dbDataContext db = getDataContext())
             {
                 valorParametro = "%" + valorParametro + "%";
                 String sSql = " select * from v_solicitacoes " +
                                " where " + nomeCampo + " like {0}";
-                var query = db.ExecuteQuery<v_solicitacao>(sSql,valorParametro);
+                var query = db.ExecuteQuery<v_solicitacao>(sSql, valorParametro);
                 return query.ToList();
             }
         }
@@ -114,22 +114,22 @@ namespace BackEnd.Models
                 var query = db.ExecuteQuery<solicitacao>(sSql, valorParametro);
                 return query.ToList();
             }
-        }        
+        }
 
         public String RetornaPeriodo(char? periodo)
         {
             String valor;
             switch (periodo)
             {
-                case 'M': valor = "Manhã"; break;                    
+                case 'M': valor = "Manhã"; break;
                 case 'T': valor = "Tarde"; break;
                 case 'N': valor = "Noite"; break;
-                default : valor = ""; break;
+                default: valor = ""; break;
             }
             return valor;
         }
 
-        public bool TransferirSolicitacao(int id_solicitacao,int id_local)
+        public bool TransferirSolicitacao(int id_solicitacao, int id_local)
         {
             // carrega a solicitação e atualizar
             try
@@ -144,7 +144,7 @@ namespace BackEnd.Models
             {
                 message = e.Message;
                 return false;
-            }            
+            }
         }
 
         public bool Excluir(solicitacao s)
@@ -161,6 +161,23 @@ namespace BackEnd.Models
             {
                 message = e.Message;
                 return false;
+            }
+        }
+
+        public List<agendamento> CarregaAgendamentos(solicitacao s)
+        {            
+            try
+            {
+                String sql = "select * from agendamentos where id_solicitacao = {0}";
+                dbDataContext db = getDataContext();
+                var query = db.ExecuteQuery<agendamento>(sql, s.id);
+                                
+                return query.ToList();
+            }
+            catch (Exception e)
+            {
+                message = e.Message;
+                return null;
             }
         }
     }

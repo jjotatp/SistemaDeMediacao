@@ -18,7 +18,8 @@ namespace FrontEnd
             {
                 // carrega os dados na lista de solicitações
                 PreencherGrid();
-                PreencherCentros();                
+                PreencherCentros();
+                OcultaDescSoli();
             }                      
         }        
 
@@ -67,6 +68,7 @@ namespace FrontEnd
         {
             if (e.CommandName == "Visualizar")
             {
+                OcultaDescSoli();
                 // recupera a linha clicada no gridview
                 int linha = Convert.ToInt32(e.CommandArgument);
                 // recupera o id na linha clicada
@@ -76,7 +78,7 @@ namespace FrontEnd
 
                 solicitacao s = new solicitacao();
 
-                s = model.Obter(id);
+                s = model.Obter(id);                
 
                 txtId.Value = id.ToString();
                 txtNome.Value = s.solicitante_nome;
@@ -86,7 +88,13 @@ namespace FrontEnd
                 txtDescricaoProblema.Value = s.descricao_problema;
                 txtDescricaoCaso.Value = s.descricao_caso;
                 txtDadosOutraParte.Value = s.detalhes_partes;
-                txtPeriodo.Value = model.RetornaPeriodo(s.solicitante_periodo_atendimento);                               
+                txtPeriodo.Value = model.RetornaPeriodo(s.solicitante_periodo_atendimento);
+                                
+                pnlDados.Enabled = !(model.CarregaAgendamentos(s).Count > 0);                
+                if (!pnlDados.Enabled)
+                {
+                    InsereDescSoli("Solicitação já agendada.");
+                }
             }
         }
 
@@ -188,6 +196,8 @@ namespace FrontEnd
                     if (model.Inserir(a))
                     {
                         Master.Sucesso("Horário agendado com sucesso.");
+                        LimpaCamposAgendamento();
+                        InsereDescSoli("Solicitação já agendada.");
                     }
                     else
                     {
@@ -209,6 +219,19 @@ namespace FrontEnd
                 }
             }
         }
+
+        protected void InsereDescSoli(String msg)
+        {
+            lblDescAcaoSoli.Text = msg;
+            pnlAcaoSoli.Style.Remove("display");
+        }
+
+        public void OcultaDescSoli()
+        {
+            pnlAcaoSoli.Style.Add("display", "none");
+            lblDescAcaoSoli.Text = "";
+        }
+
 
         public bool ValidaAgendamento()
         {
@@ -258,6 +281,14 @@ namespace FrontEnd
             }
             return true;
         }        
+
+        protected void LimpaCamposAgendamento()
+        {
+            txtData.Value = "";
+            txtHoraInicial.Value = "";
+            txtHoraFinal.Value = "";
+            txtDescricaoAgendamento.Value = "";
+        }
             
     }
 }
