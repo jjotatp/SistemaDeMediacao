@@ -48,7 +48,7 @@
                             Info
                         </label>
                         <div class="col-md-10">
-                            <textarea id="txtDescricaoAgendamento" class="form-control input-md" runat="server" placeholder="Descrever a situa"></textarea>
+                            <textarea id="txtDescricaoAgendamento" class="form-control input-md" runat="server" placeholder="Descrever o agendamento" maxlength="50"></textarea>
                         </div>
                     </div>
                     <center>                           

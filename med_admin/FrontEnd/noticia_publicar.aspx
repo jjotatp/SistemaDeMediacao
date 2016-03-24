@@ -21,11 +21,11 @@
                             <h4 class="m-t-0 header-title"><b>Conteúdo da Notícia</b></h4>                                                                                
                                 <div class="input-group">
                                   <span class="input-group-addon">Título</span>
-                                  <asp:TextBox runat="server" ID="txtTituloNoticia" CssClass="form-control"></asp:TextBox>
+                                  <asp:TextBox runat="server" ID="txtTituloNoticia" CssClass="form-control" required="required" MaxLength="50"></asp:TextBox>
                                 </div>
                                 <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">                                                                       
                                     <ContentTemplate>                                                
-                                        <textarea runat="server" class="form-control" id="edtNoticia" style="height: 200px;" maxlength="500"/>
+                                        <textarea runat="server" class="form-control" id="edtNoticia" style="height: 200px;" maxlength="500" required="required"/>
                                     </ContentTemplate>
                                     <Triggers> 
                                         <asp:PostBackTrigger ControlID="btnSalvarNoticia" /> 
@@ -36,11 +36,12 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="clearfix pull-right m-t-15">
-                    <asp:Button CssClass="btn btn-success btn-rounded" runat="server" ID="btnSalvarNoticia" OnClick="btnSalvarNoticia_Click" Text="Publicar Notícia"
-                        OnClientClick="javascript:return confirm('Você confirma a publicação dessa notícia?');"/>
-                    <%--<button type="button" class="btn btn-success btn-rounded">Enviar</button>--%>
-                </div>                              
+                <center>
+                    <div class="clearfix">
+                        <asp:Button CssClass="btn btn-success btn-rounded" runat="server" ID="btnSalvarNoticia" OnClick="btnSalvarNoticia_Click" Text="Publicar Notícia"
+                            OnClientClick="javascript:return confirm('Você confirma a publicação dessa notícia?');"/>
+                        <%--<button type="button" class="btn btn-success btn-rounded">Enviar</button>--%>
+                    </div>                              
+                </center>
         
 </asp:Content>

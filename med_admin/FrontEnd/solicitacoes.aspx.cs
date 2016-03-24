@@ -20,6 +20,7 @@ namespace FrontEnd
                 PreencherGrid();
                 PreencherCentros();
                 OcultaDescSoli();
+                
             }                      
         }        
 
@@ -45,7 +46,15 @@ namespace FrontEnd
             }
             else if (ddTipoBusca.Text == "Data")
             {
-                gdvLista.DataSource = model.ListarPorData(DateTime.Parse(txtBusca.Value));
+                DateTime data = new DateTime();
+                if (DateTime.TryParse(txtData.Value, out data))
+                {
+                    gdvLista.DataSource = model.ListarPorData(data);
+                }
+                else
+                {
+                    Master.Alerta("Data inválida.");
+                }
             }
             else if (ddTipoBusca.Text == "Cidade")
             {
