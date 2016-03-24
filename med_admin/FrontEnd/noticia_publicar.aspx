@@ -39,7 +39,7 @@
                 <center>
                     <div class="clearfix">
                         <asp:Button CssClass="btn btn-success btn-rounded" runat="server" ID="btnSalvarNoticia" OnClick="btnSalvarNoticia_Click" Text="Publicar Notícia"
-                            OnClientClick="javascript:return confirm('Você confirma a publicação dessa notícia?');"/>
+                            OnClientClick="javascript:return confirm('Você confirma a publicação dessa notícia?');"/>                        
                         <%--<button type="button" class="btn btn-success btn-rounded">Enviar</button>--%>
                     </div>                              
                 </center>

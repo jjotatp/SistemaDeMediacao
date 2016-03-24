@@ -156,6 +156,19 @@
       <Association Name="tipo_registro_mediacao" Member="mediacaos" ThisKey="id" OtherKey="id_tipo_registro" Type="mediacao" />
     </Type>
   </Table>
+  <Table Name="dbo.v_nucleos" Member="v_nucleos">
+    <Type Name="v_nucleo">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nome" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Descrição" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Cidade" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Bairro" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Logradouro" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Número" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="ativo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Function Name="dbo.alteraCidade" Method="alteraCidade">
     <Parameter Name="id" Type="System.Int32" DbType="Int" />
     <Parameter Name="nome" Type="System.String" DbType="VarChar(100)" />
@@ -222,19 +235,6 @@
     <Parameter Name="descricao" Type="System.String" DbType="VarChar(50)" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.alteraLocal" Method="alteraLocal">
-    <Parameter Name="id" Type="System.Int32" DbType="Int" />
-    <Parameter Name="nome" Type="System.String" DbType="VarChar(100)" />
-    <Parameter Name="descricao" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="id_cidade" Type="System.Int32" DbType="Int" />
-    <Parameter Name="bairro" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="logradouro" Type="System.String" DbType="VarChar(100)" />
-    <Parameter Name="numero" Type="System.String" DbType="VarChar(10)" />
-    <Parameter Name="CEP" Parameter="cEP" Type="System.String" DbType="VarChar(15)" />
-    <Parameter Name="data_inicio_atividade" Type="System.DateTime" DbType="Date" />
-    <Parameter Name="telefone" Type="System.String" DbType="VarChar(20)" />
-    <Return Type="System.Int32" />
-  </Function>
   <Function Name="dbo.alteraAgendamento" Method="alteraAgendamento">
     <Parameter Name="id" Type="System.Int32" DbType="Int" />
     <Parameter Name="id_solicitacao" Type="System.Int32" DbType="Int" />
@@ -249,6 +249,20 @@
     <Parameter Name="id_local" Type="System.Int32" DbType="Int" />
     <Parameter Name="usuario" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="senha" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.alteraLocal" Method="alteraLocal">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nome" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="descricao" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="id_cidade" Type="System.Int32" DbType="Int" />
+    <Parameter Name="bairro" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="logradouro" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="numero" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="CEP" Parameter="cEP" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="data_inicio_atividade" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="telefone" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="ativo" Type="System.Boolean" DbType="Bit" />
     <Return Type="System.Int32" />
   </Function>
 </Database>

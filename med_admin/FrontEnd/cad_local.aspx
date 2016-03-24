@@ -109,7 +109,7 @@ CodeBehind="cad_local.aspx.cs" Inherits="FrontEnd.cad_local" %>
                         
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="nome">
-                                Ativo?
+                                Status
                             </label>
                             <div class="col-md-6">
                                 <input type="checkbox" id="cbbAtivo" runat="server" data-toggle="toggle" data-on="Ativo" data-off="Inativo"/>

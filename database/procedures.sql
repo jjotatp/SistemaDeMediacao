@@ -23,7 +23,9 @@ create procedure alteraLocal
 	@logradouro varchar(100) ,
 	@numero varchar(10) ,
 	@CEP varchar(15) ,
-	@data_inicio_atividade date
+	@data_inicio_atividade date,
+	@telefone varchar(20),
+	@ativo bit
 )
 as
 begin
@@ -36,7 +38,9 @@ begin
 	logradouro = @logradouro,
 	numero = @numero,
 	cep = @cep,
-	data_inicio_atividade = @data_inicio_atividade
+	data_inicio_atividade = @data_inicio_atividade,
+	telefone = @telefone,
+	ativo = @ativo
 	where id = @id;	
 end
 go

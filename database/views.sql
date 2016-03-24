@@ -6,3 +6,14 @@ as
 go
 
 select * from v_solicitacoes
+
+create view v_nucleos
+as
+	select l.id ID, l.nome Nome, l.descricao 'Descrição', c.nome 'Cidade',	l.bairro Bairro,
+			l.logradouro Logradouro, l.telefone Telefone, l.numero 'Número', l.ativo
+	from locais l
+	left join cidades c on (l.id_cidade = c.id)
+
+go
+
+select * from v_nucleos

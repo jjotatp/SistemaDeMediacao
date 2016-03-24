@@ -110,7 +110,7 @@
         <classShapeMoniker Id="b914aac2-3722-4983-8ff7-608203da1c1f" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 7.91750325520833); (12 : 7.91750325520833)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.5 : 7.91750325520833); (7.16666666666667 : 7.91750325520833 : JumpStart); (7.33333333333333 : 7.91750325520833 : JumpEnd); (12 : 7.91750325520833)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbDataContext/local/local_mediacao" />
       <nodes>
         <classShapeMoniker Id="468b0d2f-0dbe-4ae6-9958-7e4599de0677" />
@@ -145,7 +145,7 @@
         <classShapeMoniker Id="efddbc66-8b69-42a3-955b-d35a22fb6d8b" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 5.46875); (9 : 5.46875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.5 : 7.68674967447917); (7.16666666666667 : 7.68674967447917 : JumpStart); (7.33333333333333 : 7.68674967447917 : JumpEnd); (9 : 7.68674967447917)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbDataContext/local/local_noticia" />
       <nodes>
         <classShapeMoniker Id="468b0d2f-0dbe-4ae6-9958-7e4599de0677" />
@@ -173,5 +173,11 @@
         <classShapeMoniker Id="83dccb75-2289-4e67-97b4-0d6911232943" />
       </nodes>
     </associationConnector>
+    <classShape Id="a45e716a-4d57-49f7-9b4d-6825821d6bb9" absoluteBounds="6, 2.125, 2, 2.5401025390625">
+      <DataClassMoniker Name="/dbDataContext/v_nucleo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="02ba2a27-a9ab-451f-9627-bc157e764023" absoluteBounds="6.015, 2.585, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

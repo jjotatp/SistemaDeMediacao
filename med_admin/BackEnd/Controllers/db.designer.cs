@@ -180,6 +180,14 @@ namespace BackEnd.Controllers
 			}
 		}
 		
+		public System.Data.Linq.Table<v_nucleo> v_nucleos
+		{
+			get
+			{
+				return this.GetTable<v_nucleo>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.alteraCidade")]
 		public int alteraCidade([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string nome, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string estado)
 		{
@@ -222,13 +230,6 @@ namespace BackEnd.Controllers
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.alteraLocal")]
-		public int alteraLocal([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string nome, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string descricao, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_cidade, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string bairro, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string logradouro, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string numero, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CEP", DbType="VarChar(15)")] string cEP, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> data_inicio_atividade, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(20)")] string telefone)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id, nome, descricao, id_cidade, bairro, logradouro, numero, cEP, data_inicio_atividade, telefone);
-			return ((int)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.alteraAgendamento")]
 		public int alteraAgendamento([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_solicitacao, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string descricao, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> data_inicial, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> data_final)
 		{
@@ -240,6 +241,13 @@ namespace BackEnd.Controllers
 		public int cadMediador([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string nome, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string patente, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_local, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string usuario, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string senha)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), nome, patente, id_local, usuario, senha);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.alteraLocal")]
+		public int alteraLocal([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string nome, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string descricao, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_cidade, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string bairro, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string logradouro, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string numero, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CEP", DbType="VarChar(15)")] string cEP, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> data_inicio_atividade, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(20)")] string telefone, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> ativo)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id, nome, descricao, id_cidade, bairro, logradouro, numero, cEP, data_inicio_atividade, telefone, ativo);
 			return ((int)(result.ReturnValue));
 		}
 	}
@@ -3603,6 +3611,177 @@ namespace BackEnd.Controllers
 		{
 			this.SendPropertyChanging();
 			entity.tipo_registro = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.v_nucleos")]
+	public partial class v_nucleo
+	{
+		
+		private int _ID;
+		
+		private string _Nome;
+		
+		private string _Descrição;
+		
+		private string _Cidade;
+		
+		private string _Bairro;
+		
+		private string _Logradouro;
+		
+		private string _Telefone;
+		
+		private string _Número;
+		
+		private bool _ativo;
+		
+		public v_nucleo()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nome", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string Nome
+		{
+			get
+			{
+				return this._Nome;
+			}
+			set
+			{
+				if ((this._Nome != value))
+				{
+					this._Nome = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descrição", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Descrição
+		{
+			get
+			{
+				return this._Descrição;
+			}
+			set
+			{
+				if ((this._Descrição != value))
+				{
+					this._Descrição = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cidade", DbType="VarChar(100)")]
+		public string Cidade
+		{
+			get
+			{
+				return this._Cidade;
+			}
+			set
+			{
+				if ((this._Cidade != value))
+				{
+					this._Cidade = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Bairro", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Bairro
+		{
+			get
+			{
+				return this._Bairro;
+			}
+			set
+			{
+				if ((this._Bairro != value))
+				{
+					this._Bairro = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Logradouro", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string Logradouro
+		{
+			get
+			{
+				return this._Logradouro;
+			}
+			set
+			{
+				if ((this._Logradouro != value))
+				{
+					this._Logradouro = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Telefone", DbType="VarChar(20)")]
+		public string Telefone
+		{
+			get
+			{
+				return this._Telefone;
+			}
+			set
+			{
+				if ((this._Telefone != value))
+				{
+					this._Telefone = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Número", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
+		public string Número
+		{
+			get
+			{
+				return this._Número;
+			}
+			set
+			{
+				if ((this._Número != value))
+				{
+					this._Número = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ativo", DbType="Bit NOT NULL")]
+		public bool ativo
+		{
+			get
+			{
+				return this._ativo;
+			}
+			set
+			{
+				if ((this._ativo != value))
+				{
+					this._ativo = value;
+				}
+			}
 		}
 	}
 }

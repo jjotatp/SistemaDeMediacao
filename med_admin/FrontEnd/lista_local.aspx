@@ -14,10 +14,14 @@
         <div class="col-md-5">
             <asp:TextBox ID="txtNome" runat="server" CssClass="form-control" placeholder="Digite o nome e realize a busca"></asp:TextBox>
         </div>
+        <div class="col-md-2">
+            <asp:CheckBox id="cbSomenteAtivo" runat="server" CssClass="checkbox checkbox-info" Checked="true" Text="Listar somente ativos"/>
+        </div>
         <div class="col-md-4">
             <asp:Button ID="btnBuscar" runat="server" CssClass="btn btn-primary" Text="Buscar" OnClick="btnBuscar_Click"/>
             <asp:Button ID="btnVoltar" runat="server" CssClass="btn btn-warning" Text="Voltar" OnClick="btnVoltar_Click"/>
         </div>
+        
         
         <br />
         <br />
@@ -27,52 +31,57 @@
 
         <div class="col-md-12">
         <asp:GridView ID="gdvLista" runat="server" CssClass="table table-hover table-striped" GridLines="None"
-                    AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="id" OnRowCommand="gdvLista_RowCommand"
+                    AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="ID" OnRowCommand="gdvLista_RowCommand"
                     PageSize="5" OnPageIndexChanging="gdvLista_PageIndexChanging">
             <Columns>
                 <asp:TemplateField HeaderText="ID">
                     <ItemTemplate>
-                        <%#Eval("id") %>
+                        <%#Eval("ID") %>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Nome">
                     <ItemTemplate>
-                        <%#Eval("nome") %>
+                        <%#Eval("Nome") %>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Descrição" >
                     <ItemTemplate>
-                        <%#Eval("descricao") %>
+                        <%#Eval("Descrição") %>
                     </ItemTemplate>
                 </asp:TemplateField> 
                 <asp:TemplateField HeaderText="Cidade" >
                     <ItemTemplate>
-                        <%#Eval("cidade.nome") %>
+                        <%#Eval("Cidade") %>
                     </ItemTemplate>
                 </asp:TemplateField> 
                 <asp:TemplateField HeaderText="Bairro" >
                     <ItemTemplate>
-                        <%#Eval("bairro") %>
+                        <%#Eval("Bairro") %>
                     </ItemTemplate>
                 </asp:TemplateField> 
                 <asp:TemplateField HeaderText="Logradouro" >
                     <ItemTemplate>
-                        <%#Eval("logradouro") %>
+                        <%#Eval("Logradouro") %>
                     </ItemTemplate>
                 </asp:TemplateField>                
                 <asp:TemplateField HeaderText="Telefone" >
                     <ItemTemplate>
-                        <%#Eval("telefone") %>
+                        <%#Eval("Telefone") %>
                     </ItemTemplate>
                 </asp:TemplateField>        
                 <asp:TemplateField HeaderText="Número" >
                     <ItemTemplate>
-                        <%#Eval("numero") %>
+                        <%#Eval("Número") %>
                     </ItemTemplate>
                 </asp:TemplateField> 
-                <asp:TemplateField HeaderText="Ativo?" >
+                <asp:TemplateField HeaderText="Status" >
                     <ItemTemplate>
-                        <%# Eval("ativo") %>
+                        <%# (Boolean.Parse(Eval("ativo").ToString())) ? "Ativo" : "Inativo" %>
+                        <%--<% if ( Eval("ativo").ToString() ) { %> 
+                        Ativo 
+                        <% } else { %> 
+                        Inativo 
+                        <% } %>--%>
                     </ItemTemplate>
                 </asp:TemplateField> 
 

@@ -22,6 +22,7 @@ create table locais
 	numero varchar(10) not null,
 	CEP varchar(15) not null,
 	data_inicio_atividade date,
+	telefone varchar(20),
 	ativo bit not null 
 );
 

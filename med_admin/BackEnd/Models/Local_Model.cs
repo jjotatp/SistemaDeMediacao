@@ -9,6 +9,7 @@ namespace BackEnd.Models
 {
     public class Local_Model 
     {
+        public String message;       
 
         public dbDataContext getDataContext() { dbDataContext db = new dbDataContext(); return db; }
 
@@ -33,16 +34,17 @@ namespace BackEnd.Models
                     tb.Context.SubmitChanges();
                 }
                 else
-                {
+                {                                                            
                     db.alteraLocal(a.id, a.nome, a.descricao, a.id_cidade, a.bairro, a.logradouro,
-                                    a.numero, a.CEP, a.data_inicio_atividade, a.telefone);
-                    tb.Context.SubmitChanges();
+                                    a.numero, a.CEP, a.data_inicio_atividade, a.telefone, a.ativo);
+                    tb.Context.SubmitChanges();                    
                 }
 
                 return true;
             }
-            catch
+            catch (Exception e)
             {
+                message = e.Message;
                 return false;
             }
         }       
@@ -61,18 +63,34 @@ namespace BackEnd.Models
             using (dbDataContext db = getDataContext())
             {
                 Table<local> tb = getTable();
-                return tb.ToList();
-            }
-        }
-
-        public List<local> ListarPorNome(string Nome)
-        {
-            using (dbDataContext db = getDataContext())
-            {
-                String sSql = "select * from locais l where l.nome like '%" + Nome + "%' ";
-                var query = db.ExecuteQuery<local>(sSql);
+                var query = db.ExecuteQuery<local>("select * from locais where ativo = 1");
                 return query.ToList();
             }
         }
+
+        public List<v_nucleo> ListarPorNome(String Nome, Boolean SomenteAtivos)
+        {
+            message = "";
+            try
+            {
+                using (dbDataContext db = getDataContext())
+                {
+                    Nome = "%" + Nome + "%";
+                    string sSql = " select * from v_nucleos where ( Nome like {0} ) ";
+                    if (SomenteAtivos)
+                    {
+                         sSql = sSql + " and ( ativo = 1 )";
+                    }                    
+                    var query = db.ExecuteQuery<v_nucleo>(sSql, Nome);
+                    return query.ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                message = e.Message;
+                return null;
+            }
+
+        }        
     }
 }

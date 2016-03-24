@@ -25,7 +25,7 @@ namespace FrontEnd
         {
             Local_Model model = new Local_Model();
 
-            gdvLista.DataSource = model.Listar();
+            gdvLista.DataSource = model.ListarPorNome(txtNome.Text,cbSomenteAtivo.Checked);
             gdvLista.DataBind();
 
             if (gdvLista.Rows.Count > 0)
@@ -37,10 +37,7 @@ namespace FrontEnd
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
-            Local_Model model = new Local_Model();
-
-            gdvLista.DataSource = model.ListarPorNome(txtNome.Text);
-            gdvLista.DataBind();
+            PreencherGrid();
         }
 
         protected void gdvLista_RowCommand(object sender, GridViewCommandEventArgs e)
