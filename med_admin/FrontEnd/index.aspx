@@ -39,12 +39,14 @@
                         <div class="col-md-4">
                         <div class="card-box widget-user">
                             <div>
-                                <img class="img-responsive" alt="user" src="Content/images/historico.png">
-                                <div class="wid-u-info">
-                                    <a href="#"><h4 class="m-t-0 m-b-5">Mediações Arquivadas</h4></a>
-                                    <p class="text-muted m-b-5 font-13">Histórico de Mediações</p>
-                                    <a href="#"> <span class="label label-dark">Histórico</span></a>
-                                </div>
+                                <a href="lista_mediacoes.aspx">
+                                    <img class="img-responsive" alt="user" src="Content/images/historico.png">
+                                    <div class="wid-u-info">                                    
+                                        <h4 class="m-t-0 m-b-5">Mediações Arquivadas</h4>
+                                        <p class="text-muted m-b-5 font-13">Histórico de Mediações</p>
+                                        <span class="label label-dark">Histórico</span>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                         </div>
@@ -52,35 +54,15 @@
                         <div class="col-md-4">  
                         <div class="card-box widget-user">
                             <div>
-                                <img class="img-responsive" alt="user" src="Content/images/calendario.png">
-                                <div class="wid-u-info">
-                                    <a href="#"><h4 class="m-t-0 m-b-5">Agendamentos</h4></a>
-                                    <p class="text-muted m-b-5 font-13">Faça um agendamento</p>
-                                    <a role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                        <span class="label label-default">Agendar</span>
-                                    </a>
+                                <a href="agenda.aspx">
+                                    <img class="img-responsive" alt="user" src="Content/images/calendario.png">
+                                    <div class="wid-u-info">
+                                        <h4 class="m-t-0 m-b-5">Agendamentos</h4>
+                                        <p class="text-muted m-b-5 font-13">Faça um agendamento</p>
                                     
-                                    <br>
-                                    <div class="collapse" id="collapseExample">
-                                      
-                                        <div class="form-group">
-                                                <label class="col-lg-4 control-label">Dia e Hora:</label>
-                                                <div class="col-lg-8">
-                                                    <input type="text" class="form-control input-daterange-timepicker" name="daterange" value="01/01/2015 1:30 PM - 01/01/2015 2:00 PM"/>
-                                                </div>
-                                        </div>
-                                        <br><br><br>
-                                        <div class="form-group">
-                                            <label class="col-md-4 control-label" for="descricao">Descrição</label>
-                                            <div class="col-md-8">
-                                            <textarea name="descricao" class="form-control" id="descricao">Descrição do caso...</textarea>
-                                            </div>
-                                        </div>
-                                        <br><br><br>                                       
-                                        <button class="btn btn-success btn-rounded center">Realizar Agendamento</button>                                      
-                                    
+                                        <span class="label label-default">Agendar</span>                                       
                                     </div>
-                                </div>
+                                </a>                                                                                                           
                             </div>
                         </div>
                         </div>
