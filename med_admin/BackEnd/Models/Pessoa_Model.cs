@@ -64,5 +64,16 @@ namespace BackEnd.Models
                 return tb.First(p => p.cpf == cpf);
             }
         }
+
+        public bool ValidaCPF(string cpf)
+        {
+            using (dbDataContext db = getDataContext())
+            {
+
+                String sSql = "select P.* from pessoas P where P.cpf = {0} ";
+                var query = db.ExecuteQuery<pessoa>(sSql,cpf);
+                return (query.Count() < 1);
+            }
+        }
     }
 }

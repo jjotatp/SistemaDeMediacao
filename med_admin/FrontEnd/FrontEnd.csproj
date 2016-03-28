@@ -97,6 +97,7 @@
   <ItemGroup>
     <Content Include="agenda.aspx" />
     <Content Include="cad_mediacao.aspx" />
+    <Content Include="cad_pessoa.aspx" />
     <Content Include="Content\css\bootstrap-toggle.min.css" />
     <Content Include="Content\images\calendario.png" />
     <Content Include="Content\images\historico.png" />
@@ -400,6 +401,13 @@
     </Compile>
     <Compile Include="cad_mediador.aspx.designer.cs">
       <DependentUpon>cad_mediador.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="cad_pessoa.aspx.cs">
+      <DependentUpon>cad_pessoa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cad_pessoa.aspx.designer.cs">
+      <DependentUpon>cad_pessoa.aspx</DependentUpon>
     </Compile>
     <Compile Include="cad_tipo_registro.aspx.cs">
       <DependentUpon>cad_tipo_registro.aspx</DependentUpon>

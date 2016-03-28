@@ -93,7 +93,7 @@
                             <a href="lista_mediacoes.aspx"><i class="ion-folder"></i>Histórico</a>
                         </li>
                         <li class="has-submenu">
-                            <a href="cad_mediacao.aspx"><i class="ion-document"></i>Nova Mediação</a>
+                            <a href="cad_pessoa.aspx"><i class="ion-document"></i>Nova Mediação</a>
                         </li>
 
                     </ul>
