@@ -37,7 +37,7 @@ namespace FrontEnd {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtRG;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtRG;
         
         /// <summary>
         /// txtNome control.
@@ -121,13 +121,13 @@ namespace FrontEnd {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtLogradouro;
         
         /// <summary>
-        /// txtNúmero control.
+        /// txtNumero control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtNúmero;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtNumero;
         
         /// <summary>
         /// txtBairro control.

@@ -9,6 +9,8 @@ namespace BackEnd.Models
 {
     public class Pessoa_Model
     {
+        public String message;
+
         public dbDataContext getDataContext() { dbDataContext db = new dbDataContext(); return db; }
 
         public Table<pessoa> getTable()
@@ -29,8 +31,9 @@ namespace BackEnd.Models
 
                 return true;
             }
-            catch
+            catch (Exception e)
             {
+                message = e.Message;
                 return false;
             }
         }
@@ -50,8 +53,9 @@ namespace BackEnd.Models
 
                 return true;
             }
-            catch
+            catch (Exception e)
             {
+                message = e.Message;
                 return false;
             }
         }
@@ -74,6 +78,6 @@ namespace BackEnd.Models
                 var query = db.ExecuteQuery<pessoa>(sSql,cpf);
                 return (query.Count() < 1);
             }
-        }
+        }        
     }
 }
