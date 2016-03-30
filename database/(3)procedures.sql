@@ -152,7 +152,8 @@ create procedure alteraAgendamento
 	@id int,
 	@id_solicitacao int,
 	@descricao varchar(50),
-	@data date
+	@data_inicial date,
+	@data_final date
 )
 as
 begin
@@ -160,7 +161,8 @@ begin
 	set
 	id_solicitacao = @id_solicitacao,
 	descricao = @descricao,
-	data = @data
+	data_inicial = @data_inicial,
+	data_final = @data_final
 	where id = @id;
 end
 go

@@ -82,7 +82,8 @@ create table agendamentos
 	id int not null primary key identity,
 	id_solicitacao int references solicitacoes(id),
 	descricao varchar(50),
-	data datetime not null
+	data_inicial datetime not null,
+	data_final datetime not null
 );
 
 create table pessoas
