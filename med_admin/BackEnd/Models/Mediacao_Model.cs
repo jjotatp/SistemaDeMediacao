@@ -10,6 +10,8 @@ namespace BackEnd.Models
 {
     public class Mediacao_Model
     {
+        public string message;
+
         public dbDataContext getDataContext() { dbDataContext db = new dbDataContext(); return db; }
 
         public Table<mediacao> getTable()
@@ -26,7 +28,7 @@ namespace BackEnd.Models
             return tb;
         }
 
-        public int Inserir(mediacao a)
+        public bool Inserir(mediacao a)
         {
             // função para cadastrar
             try
@@ -35,11 +37,12 @@ namespace BackEnd.Models
                 tb.InsertOnSubmit(a);
                 tb.Context.SubmitChanges();
 
-                return a.id;
+                return true;
             }
-            catch
+            catch (Exception e)
             {
-                return 0;
+                message = e.Message;
+                return false;
             }
         }
 
@@ -57,8 +60,9 @@ namespace BackEnd.Models
 
                 return true;
             }
-            catch
+            catch (Exception e)
             {
+                message = e.Message;
                 return false;
             }
         }
@@ -98,8 +102,9 @@ namespace BackEnd.Models
                     return false;
                 }
             }
-            catch
+            catch (Exception e)
             {
+                message = e.Message;
                 return false;
             }
         }
@@ -121,7 +126,11 @@ namespace BackEnd.Models
                 }
 
             }
-            catch { return false; }
+            catch (Exception e)
+            {
+                message = e.Message;
+                return false;
+            }
         }
 
     }

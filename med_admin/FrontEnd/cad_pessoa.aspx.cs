@@ -89,6 +89,8 @@ namespace FrontEnd
                 txtTelefone.Value = p.telefone;                
 
                 Master.Sucesso("Dados carregados com sucesso");
+
+                txtRG.Focus();
             }
         }
 
@@ -119,13 +121,9 @@ namespace FrontEnd
                 {
                     lista = new List<pessoa>();
                 }
-                //verifica se a pessoa já está adicionada na lista 
-                if (lista.First(c => c.cpf == p.cpf) != null)
-                {
-                    // se a pessoa já estiver na lista, remove, garantindo que ela será inserida na lista
-                    // com os dados atualizados corretamente
-                    lista.Remove(p);                    
-                }
+                //verifica se a pessoa já está adicionada na lista
+                // e se tiver, remove para atualizar
+                RemoveDuplicado(p);                
                 // adiciona a pessoa na lista
                 lista.Add(p);
                 // atribui a lista para a sessão novamente
@@ -198,6 +196,36 @@ namespace FrontEnd
             { // se cadastrou corretamente, vai para a tela de mediação prosseguir com o cadastro
                 Response.Redirect("cad_mediacao.aspx");
             }
+        }
+
+        protected bool RemoveDuplicado(pessoa p)
+        {
+            try
+            {
+                List<pessoa> lista = new List<pessoa>();
+                lista = Session["mediacao_partes"] as List<pessoa>;
+
+                // verifica se a sessão está vazia, se sim, cria a lista manualmente
+                if (lista == null)
+                {
+                    lista = new List<pessoa>();
+                }
+
+                foreach (pessoa b in lista)
+                {
+                    if (b.cpf == p.cpf)
+                    {
+                        lista.Remove(b);
+                        return true;
+                    }                        
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
+
         }
     }
 }

@@ -13,13 +13,22 @@ namespace FrontEnd {
     public partial class cad_mediacao {
         
         /// <summary>
-        /// txtTemaConflito control.
+        /// pnlDepoimentos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtTemaConflito;
+        protected global::System.Web.UI.WebControls.Panel pnlDepoimentos;
+        
+        /// <summary>
+        /// txtNumero control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtNumero;
         
         /// <summary>
         /// txtData control.
@@ -40,13 +49,13 @@ namespace FrontEnd {
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtHora;
         
         /// <summary>
-        /// txtNumero control.
+        /// txtTemaConflito control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtNumero;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtTemaConflito;
         
         /// <summary>
         /// ddTipoRegistro control.
@@ -58,48 +67,30 @@ namespace FrontEnd {
         protected global::System.Web.UI.WebControls.DropDownList ddTipoRegistro;
         
         /// <summary>
+        /// ddResolucao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddResolucao;
+        
+        /// <summary>
         /// txtObjetoMediacao control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtObjetoMediacao;
+        protected global::System.Web.UI.WebControls.TextBox txtObjetoMediacao;
         
         /// <summary>
-        /// txtNome_1 control.
+        /// btnGerarTermo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtNome_1;
-        
-        /// <summary>
-        /// txtCidadeNatal_1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtCidadeNatal_1;
-        
-        /// <summary>
-        /// rdbSexo_1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rdbSexo_1;
-        
-        /// <summary>
-        /// txtNomePai_1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtNomePai_1;
+        protected global::System.Web.UI.WebControls.Button btnGerarTermo;
     }
 }
