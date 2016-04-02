@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/med_admin.Master" AutoEventWireup="true"
 CodeBehind="cad_mediacao.aspx.cs" Inherits="FrontEnd.cad_mediacao" %>
+<%@ MasterType VirtualPath="~/med_admin.master" %>
     <asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">              
         <div class="container">
             <div style="text-align: center;" class="col-md-10 col-md-offset-1">
@@ -15,7 +16,8 @@ CodeBehind="cad_mediacao.aspx.cs" Inherits="FrontEnd.cad_mediacao" %>
                             Declaração das partes envolvidas
                         </h4>
                     </div>
-                    <asp:Panel CssClass="panel-body" ID="pnlDepoimentos" runat="server">                              
+                    <asp:Panel CssClass="panel-body" ID="pnlDepoimentos" runat="server"> 
+                        <asp:PlaceHolder runat="server" ID="TextBoxPlaceHolder"></asp:PlaceHolder>                             
                         <%--<% foreach (BackEnd.Controllers.pessoa p in lista)
                            { %>                                           
                                 <div class="form-group">
@@ -75,7 +77,7 @@ CodeBehind="cad_mediacao.aspx.cs" Inherits="FrontEnd.cad_mediacao" %>
                                 Tipo de Registro
                             </label>
                             <div class="col-sm-9">
-                                <asp:DropDownList ID="ddTipoRegistro" runat="server" CssClass="form-control" required="required"></asp:DropDownList>     
+                                <asp:DropDownList ID="ddTipoRegistro" runat="server" CssClass="form-control"></asp:DropDownList>     
                             </div>
                         </div>      
                         <div class="form-group">
@@ -85,7 +87,7 @@ CodeBehind="cad_mediacao.aspx.cs" Inherits="FrontEnd.cad_mediacao" %>
                             <div class="col-sm-9">
                                 <asp:DropDownList ID="ddResolucao" runat="server" CssClass="form-control">
                                     <asp:ListItem Selected="True" Text="Acordo entre as partes" Value="A"></asp:ListItem>
-                                    <asp:ListItem Selected="True" Text="Desacordo entre as partes" Value="D"></asp:ListItem>
+                                    <asp:ListItem Text="Desacordo entre as partes" Value="D"></asp:ListItem>
                                 </asp:DropDownList>     
                             </div>
                         </div>                                                 
@@ -103,7 +105,7 @@ CodeBehind="cad_mediacao.aspx.cs" Inherits="FrontEnd.cad_mediacao" %>
         </div>          
         <div class="form-group">
             <div style="text-align: center;" class="col-md-10 col-md-offset-1">                
-                <asp:Button CssClass="btn btn-danger w-lg btn-rounded" runat="server" ID="btnGerarTermo" OnClick="btnGerarTermo_Click"/>
+                <asp:Button CssClass="btn btn-danger w-lg btn-rounded" runat="server" ID="btnGerarTermo" Text="Gerar Termo" OnClick="btnGerarTermo_Click"/>
             </div>
         </div>        
     </asp:Content>

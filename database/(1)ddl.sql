@@ -108,9 +108,9 @@ create table pessoas
 create table mediacao_partes
 (
     mediacao_id int not null references mediacoes(id),
-    pessoa_id varchar(14) not null references pessoas(cpf),
-	primary key(mediacao_id,pessoa_id),
-	descricao_caso varchar(250)
+    pessoa_id varchar(14) not null references pessoas(cpf),    
+    descricao_caso varchar(250),
+    primary key(mediacao_id,pessoa_id)
 );
 
 create table noticias

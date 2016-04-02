@@ -14,20 +14,30 @@ namespace FrontEnd
     {
         public List<pessoa> lista = new List<pessoa>();
 
+        protected override void CreateChildControls()
+        {
+            base.CreateChildControls();
+            GerarCampos();
+        }
+
+        protected void Page_PreInit(object sender, EventArgs e)
+        {
+            
+            lista = Session["mediacao_partes"] as List<pessoa>;
+            // se a lista da sessão estiver vazia, então redireciona para cadastro de pessoas
+            if (lista == null)
+            {
+                Response.Redirect("cad_pessoa.aspx");
+            }
+            
+            //RecarregarCampos();            
+        }
+
         // ======================================================== PAGE LOAD =====================================================
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-            {
-                lista = Session["mediacao_partes"] as List<pessoa>;
-                // se a lista da sessão estiver vazia, então redireciona para cadastro de pessoas
-                if (lista == null)
-                {
-                    Response.Redirect("cad_pessoa.aspx");
-                }
-
-                GerarCampos();
-
+            {                
                 TipoRegistro_Model model = new TipoRegistro_Model();
                 ddTipoRegistro.DataSource = model.Listar();
                 ddTipoRegistro.DataValueField = "id";
@@ -36,7 +46,14 @@ namespace FrontEnd
                 ddTipoRegistro.SelectedIndex = 0;
 
                 txtTemaConflito.MaxLength = 50;
-                txtNumero.MaxLength = 20;                
+                txtNumero.MaxLength = 20;
+
+                txtData.Value = DateTime.Parse(DateTime.Now.ToString()).ToString("yyyy-MM-dd");
+                txtHora.Value = DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString();
+            }
+            else
+            {
+                
             }
         }
 
@@ -48,6 +65,27 @@ namespace FrontEnd
                 return collection ?? new List<string>();
             }
             set { ViewState["TextBoxIdCollection"] = value; }
+        }                
+
+        protected bool RecarregarCampos()
+        {
+            try
+            {
+                foreach (string textboxId in TextBoxIdCollection)
+                {
+                    var textbox = new TextBox { ID = textboxId };
+                    textbox.CssClass = "form-control";
+                    textbox.TextMode = TextBoxMode.MultiLine;
+                    textbox.Rows = 3;
+                    textbox.Attributes.Add("name", textboxId.Remove(0, 2));
+                    TextBoxPlaceHolder.Controls.Add(textbox);
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         protected bool GerarCampos()
@@ -73,10 +111,11 @@ namespace FrontEnd
                     txt.ID = p.cpf;
                     txt.CssClass = "form-control";
                     txt.TextMode = TextBoxMode.MultiLine;
-                    txt.Rows = 3;
-
-                    pnlDepoimentos.Controls.Add(lbl);
-                    pnlDepoimentos.Controls.Add(txt);
+                    txt.Attributes.Add("name", p.cpf);
+                    txt.Rows = 3;                                        
+                    
+                    TextBoxPlaceHolder.Controls.Add(lbl);
+                    TextBoxPlaceHolder.Controls.Add(txt);
 
                     collection.Add("p_" + txt.ID);
                 }
@@ -84,8 +123,9 @@ namespace FrontEnd
 
                 return true;
             } 
-            catch
+            catch (Exception e)
             {
+                Master.Alerta(e.Message);
                 return false;
             }
         }
@@ -93,7 +133,7 @@ namespace FrontEnd
         protected void PegarCampos() // DEVE SER MODIFICADA
         {
             // PEGA OS COMPONENTES QUE FORAM ADICIONADOS            
-            foreach (Control ctr in pnlDepoimentos.Controls)
+            foreach (Control ctr in TextBoxPlaceHolder.Controls)
             {
                 if (ctr is TextBox)
                 {
@@ -103,30 +143,90 @@ namespace FrontEnd
         }
 
         protected void btnGerarTermo_Click(object sender, EventArgs e)
-        {
-            // função que irá salvar os dados da mediação no banco e gerar o termo de mediação
-            Mediacao_Model model = new Mediacao_Model();
+        {   
+            FinalizarMediacao();            
+        }
 
-            mediacao m = new mediacao();
-
-            // pega o mediador logado
-            mediador med = Session["med"] as mediador;
-
-            m.numero = txtNumero.Value;
-            m.tema_conflito = txtTemaConflito.Value;
-            m.id_tipo_registro = Int32.Parse(ddTipoRegistro.SelectedValue);
-            m.data_mediacao = DateTime.Parse(txtData.Value + " " + txtHora.Value + ":00");
-            m.id_mediador = med.id;
-            m.id_local = med.id_local;
-            m.objeto = txtObjetoMediacao.Text;
-            m.resolucao = Char.Parse(ddResolucao.SelectedValue);
-            m.status = 1;
-            
-            if (model.Inserir(m))
+        protected bool FinalizarMediacao()
+        {            
+            if (ValidarDepoimentos())
             {
+                // função que irá salvar os dados da mediação no banco e gerar o termo de mediação                   
+                Mediacao_Model model = new Mediacao_Model();
+
+                mediacao m = new mediacao();
+
+                // pega o mediador logado
+                mediador med = Session["med"] as mediador;
+
+                m.numero = txtNumero.Value;
+                m.tema_conflito = txtTemaConflito.Value;
+                m.id_tipo_registro = Int32.Parse(ddTipoRegistro.SelectedValue);
+                m.data_mediacao = DateTime.Parse(txtData.Value + " " + txtHora.Value + ":00");
+                m.id_mediador = med.id;
+                m.id_local = med.id_local;
+                m.objeto = txtObjetoMediacao.Text;
+                m.resolucao = Char.Parse(ddResolucao.SelectedValue);
+                m.status = 1;
+
+                mediacao_parte mp = null;
+
                 // após inserir a mediação, é necessário inserir as partes
-                //CONTINUAR DAQUI
+                
+                List<mediacao_parte> mpLista = new List<mediacao_parte>();                
+                foreach (Control ctr in TextBoxPlaceHolder.Controls)
+                {                
+                    if (ctr is TextBox)
+                    {                       
+                        // percorre a lista de pessoas verificando de qual pessoa é aquele depoimento                        
+                        foreach (pessoa p in lista)
+                        {
+                            if (ctr.ID.Contains(p.cpf))
+                            {
+                                mp = new mediacao_parte();
+                                // depoimento da pessoa                        
+                                mp.descricao_caso = ((TextBox)ctr).Text;                                
+                                // quando encontrar a pessoa do depoimento então passa o CPF para o Identificador
+                                mp.pessoa_id = p.cpf;
+                                mpLista.Add(mp);                                
+                            }
+                        }
+                    }                
+                }
+
+                if (model.InserirMediacaoTotal(m, mpLista))
+                {
+                    return true;
+                }
+                else
+                {
+                    Master.Alerta("Erro: " + model.message);
+                    return false;
+                }
             }
+            else
+            {                
+                return false;
+            }
+        }
+
+        protected bool ValidarDepoimentos()
+        {
+            // função que verifica se os depoimentos foram digitados
+            //  se algum não foi digitado, exibe mensagem
+            foreach (Control ctr in TextBoxPlaceHolder.Controls)
+            {
+                if (ctr is TextBox)
+                {
+                    if (((TextBox)ctr).Text == "")
+                    {
+                        Master.Alerta("O depoimento de uma das partes está vazio");
+                        ctr.Focus();
+                        return false;
+                    }                    
+                }
+            }
+            return true;
         }
     }
 }
