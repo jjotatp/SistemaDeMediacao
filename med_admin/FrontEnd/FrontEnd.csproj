@@ -99,11 +99,15 @@
     <Content Include="cad_mediacao.aspx" />
     <Content Include="cad_pessoa.aspx" />
     <Content Include="Content\css\bootstrap-toggle.min.css" />
+    <Content Include="Content\css\ion.rangeSlider.css" />
+    <Content Include="Content\css\ion.rangeSlider.skinFlat.css" />
+    <Content Include="Content\css\sprite-skin-flat.png" />
     <Content Include="Content\images\calendario.png" />
     <Content Include="Content\images\historico.png" />
     <Content Include="Content\images\lixeira.png" />
     <Content Include="Content\images\mais.png" />
     <Content Include="Content\js\bootstrap-toggle.min.js" />
+    <Content Include="Content\js\ion.rangeSlider.min.js" />
     <Content Include="Content\js\jquery-2.2.1.min.js" />
     <Content Include="Content\js\jquery-ui.min.js" />
     <Content Include="Content\js\mascara.js" />

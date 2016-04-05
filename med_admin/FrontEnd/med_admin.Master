@@ -26,10 +26,10 @@
         <link href="Content/css/pages.css" rel="stylesheet" type="text/css" />
         <link href="Content/css/menu.css" rel="stylesheet" type="text/css" />        
         <link href="Content/css/bootstrap-toggle.min.css" rel="stylesheet" />
-        <link href="Content/css/responsive.css" rel="stylesheet" type="text/css" />        
+        <link href="Content/css/responsive.css" rel="stylesheet" type="text/css" />                
 
-        <link href="Content/plugins/summernote/dist/summernote.css" rel="stylesheet" />
-
+        <link href="Content/css/ion.rangeSlider.css" rel="stylesheet" />
+        <link href="Content/css/ion.rangeSlider.skinFlat.css" rel="stylesheet" />
         <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -149,35 +149,23 @@
 
         <!-- Mascara.js -->
         <script src="Content/js/mascara.js"></script>
-        <script src="Content/js/bootstrap-toggle.min.js"></script>                     
-           
-        <!-- Summernote -->
-        <script src="Content/plugins/summernote/dist/summernote.min.js"></script>
+        <script src="Content/js/bootstrap-toggle.min.js"></script>                             
         
         <!-- Custom main Js -->
         <script src="Content/js/jquery.core.js"></script>
         <script src="Content/js/jquery.app.js"></script>             
        
-        <script src="Content/plugins/dropzone/dist/dropzone.js"></script>
-                
-        <script>
+        <script src="Content/plugins/dropzone/dist/dropzone.js"></script>        
 
-            jQuery(document).ready(function(){
-
-                $('.summernote').summernote({
-                    height: 200,                 // set editor height
-                    minHeight: null,             // set minimum height of editor
-                    maxHeight: null,             // set maximum height of editor
-                    focus: false,                 // set focus to editable area after initializing summernote                   
-                    lang: 'pt-BR'
+        <script src="Content/js/ion.rangeSlider.min.js"></script>
+        <script type="text/javascript">
+            jQuery(document).ready(function () {
+                jQuery(".rangeSlide").ionRangeSlider({
+                    min: 1,
+                    max: 4
                 });
-
-                $('.inline-editor').summernote({
-                    airMode: true
-                });
-
             });
-        </script>        
+        </script>            
 
         <script type="text/javascript">
             jQuery(document).ready(function ($) {

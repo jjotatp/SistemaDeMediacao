@@ -65,7 +65,7 @@ create table mediacoes
 	id_solicitacao int references solicitacoes(id),
 	numero varchar(20),
 	tema_conflito varchar(50),	
-	data_mediacao date not null,
+	data_mediacao datetime not null,
 	id_mediador int not null references mediadores(id),
 	id_tipo_registro int not null references tipos_registro(id),
 	objeto varchar(max),

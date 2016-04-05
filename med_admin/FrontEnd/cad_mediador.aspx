@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/med_admin.Master" AutoEventWireup="true" CodeBehind="cad_mediador.aspx.cs" Inherits="FrontEnd.cad_mediador" %>
 <%@ MasterType VirtualPath="~/med_admin.master"  %> 
-<asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">          
+<asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">             
     <div class="container">
         <h3>Cadastro - Mediador</h3>
         <p>Faça o cadastro de Mediadores</p>
@@ -37,7 +37,56 @@
                         </asp:DropDownList>
                     </div>
                 </div>
-                                    
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="nome">Nível de permissão</label>
+                    <div class="col-md-4">
+                        <asp:DropDownList runat="server" ID="ddNivelPermissao" CssClass="form-control"
+                                placeholder="Selecione...">
+                            <asp:ListItem Enabled="true" Text="Básico"></asp:ListItem>
+                            <asp:ListItem Text="Padrão"></asp:ListItem>
+                            <asp:ListItem Text="Avançado"></asp:ListItem>
+                            <asp:ListItem Text="Administrador"></asp:ListItem>
+                        </asp:DropDownList>
+                    </div>              
+                    <button type="button" class="btn btn-xs glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#myModal"></button>
+                </div>              
+                <!-- Modal -->                                                
+                <div id="myModal" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <%--<button type="button" class="close" data-dismiss="modal">&times;</button>--%>
+                        <h3 class="modal-title">Níveis de permissão</h3>
+                      </div>
+                      <div class="modal-body">
+                        <h4>Básico</h4>
+                        <p>Mediadores com a permissão de nível básico terão acesso ao módulo de solicitações (apenas agendamento), módulo de agendamentos (sem exclusão) e módulo de mediações.
+                        </p><br />
+
+                        <h4>Padrão</h4>
+                        <p>Mediadores com a permissão de nível padrão terão acesso as permissões do nível anterior, módulo de controle (apenas cidade e tipo de registro) e permissão de exclusão de solicitações e agendamentos.                            
+                        </p><br />
+
+                        <h4>Avançado</h4>
+                        <p>Mediadores com a permissão de nível avançado terão acesso as permissões dos níveis anteriores, módulo de notícias, módulo de configurações do portal, módulo de controle (exceto mediadores) e relatórios.
+                        </p><br />
+
+                        <h4>Administrador</h4>
+                        <p>Mediadores com a permissão de nível administrador terão acesso total ao sistema, incluindo controle de mediadores, sendo possível alterar as senhas dos cadastrados.
+                        </p>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                <!-- End Modal -->
+                            
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="nome">Usuário</label>
                     <div class="col-md-6">                        
@@ -58,10 +107,7 @@
                         <input class="form-control input-md" id="txtConfirmarSenha" type="password" runat="server" placeholder="Digite novamente sua senha">
                     </div>
                 </div>              
-                                        
-
-                                    
-                                    
+                                                                                                               
                 <div class="col-md-offset-3">
                     <asp:Button runat="server" id="btnSalvar" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5"
                     OnClick="btnSalvar_Click" Text="Salvar" />
@@ -72,5 +118,29 @@
                 </div>
             </fieldset>                  
         </div>
-    </div>                
+    </div>    
+    <script type="text/javascript">
+        function mudarNivel(newValue) {
+            var permissao;
+
+            switch (newValue) {
+                case 1:
+                    permissao = "Permissão nível 1: Básica";
+                    break;
+                case 2:
+                    permissao = "Permissão nivel 2: Padrão";
+                    break;
+                case 3:
+                    permissao = "Permissão nivel 2: Avançado";
+                    break;
+                case 4:
+                    permissao = "Permissão nivel 4: Administrador";
+                    break;
+                default:
+                    permissao = "";
+            }
+            document.getElementsByClassName("nivel").innerHTML = newValue;
+            //$(".nivel").val(permissao);
+        }
+    </script>
 </asp:Content>

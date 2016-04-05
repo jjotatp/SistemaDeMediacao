@@ -1,0 +1,1 @@
+alter table mediacoes alter column data_mediacao datetime not null

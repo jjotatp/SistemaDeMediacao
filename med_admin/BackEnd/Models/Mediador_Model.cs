@@ -30,12 +30,12 @@ namespace BackEnd.Models
 
                 if (a.id == 0)
                 {
-                    db.cadMediador(a.nome, a.patente, a.id_local, a.usuario, a.senha);
+                    db.cadMediador(a.nome, a.patente, a.id_local, a.usuario, a.senha, a.nivel_permissao);
                     tb.Context.SubmitChanges();
                 }
                 else
                 {
-                    db.alteraMediador(a.id, a.nome, a.patente, a.id_local, a.usuario, a.senha);
+                    db.alteraMediador(a.id, a.nome, a.patente, a.id_local, a.usuario, a.senha, a.nivel_permissao);
                     tb.Context.SubmitChanges();
                 }
 

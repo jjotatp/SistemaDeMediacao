@@ -38,12 +38,6 @@
         <elementListCompartment Id="ef984514-5ec8-497d-82aa-ad3695934b6e" absoluteBounds="12.015, 5.46, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="efddbc66-8b69-42a3-955b-d35a22fb6d8b" absoluteBounds="6.25, 5.625, 2, 1.9631982421875005">
-      <DataClassMoniker Name="/dbDataContext/mediador" />
-      <nestedChildShapes>
-        <elementListCompartment Id="7ea020d3-7d09-4ba6-b584-d954efffd44f" absoluteBounds="6.265, 6.085, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="6bc018f5-fb18-4147-8651-c9bd8b9adfd3" absoluteBounds="9, 5.375, 2, 2.3478011067708326">
       <DataClassMoniker Name="/dbDataContext/noticia" />
       <nestedChildShapes>
@@ -110,17 +104,10 @@
         <classShapeMoniker Id="b914aac2-3722-4983-8ff7-608203da1c1f" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 7.91750325520833); (7.16666666666667 : 7.91750325520833 : JumpStart); (7.33333333333333 : 7.91750325520833 : JumpEnd); (12 : 7.91750325520833)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.5 : 7.91750325520833); (12 : 7.91750325520833)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/dbDataContext/local/local_mediacao" />
       <nodes>
         <classShapeMoniker Id="468b0d2f-0dbe-4ae6-9958-7e4599de0677" />
-        <classShapeMoniker Id="8fa549fc-6a6d-49a4-940c-bff9037a3f14" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(7.25 : 7.5881982421875); (7.25 : 8.04850754557292); (12 : 8.04850754557292)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/dbDataContext/mediador/mediador_mediacao" />
-      <nodes>
-        <classShapeMoniker Id="efddbc66-8b69-42a3-955b-d35a22fb6d8b" />
         <classShapeMoniker Id="8fa549fc-6a6d-49a4-940c-bff9037a3f14" />
       </nodes>
     </associationConnector>
@@ -138,35 +125,21 @@
         <classShapeMoniker Id="8fa549fc-6a6d-49a4-940c-bff9037a3f14" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 6.60659912109375); (6.25 : 6.60659912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/dbDataContext/local/local_mediador" />
-      <nodes>
-        <classShapeMoniker Id="468b0d2f-0dbe-4ae6-9958-7e4599de0677" />
-        <classShapeMoniker Id="efddbc66-8b69-42a3-955b-d35a22fb6d8b" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 7.68674967447917); (7.16666666666667 : 7.68674967447917 : JumpStart); (7.33333333333333 : 7.68674967447917 : JumpEnd); (9 : 7.68674967447917)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.5 : 7.470400390625); (9 : 7.470400390625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/dbDataContext/local/local_noticia" />
       <nodes>
         <classShapeMoniker Id="468b0d2f-0dbe-4ae6-9958-7e4599de0677" />
         <classShapeMoniker Id="6bc018f5-fb18-4147-8651-c9bd8b9adfd3" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.25 : 6.60659912109375); (9 : 6.60659912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/dbDataContext/mediador/mediador_noticia" />
-      <nodes>
-        <classShapeMoniker Id="efddbc66-8b69-42a3-955b-d35a22fb6d8b" />
-        <classShapeMoniker Id="6bc018f5-fb18-4147-8651-c9bd8b9adfd3" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 8.4374995); (7.25 : 8.4374995); (7.25 : 8.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 8.4374995); (7.25 : 8.4374995); (7.25 : 8.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/dbDataContext/cidade/cidade_solicitacao" />
       <nodes>
         <classShapeMoniker Id="e37fbe57-ec77-432c-b464-9b38d6eae4a7" />
         <classShapeMoniker Id="83dccb75-2289-4e67-97b4-0d6911232943" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 8.04970540364583); (5.875 : 8.42470540364583); (5.875 : 10.3085034179688); (6.25 : 10.3085034179688)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.5 : 8.04970540364583); (5.875 : 8.42470540364583); (5.875 : 10.3085034179688); (6.25 : 10.3085034179688)]" fixedFrom="NotFixed" fixedTo="Algorithm">
       <AssociationMoniker Name="/dbDataContext/local/local_solicitacao" />
       <nodes>
         <classShapeMoniker Id="468b0d2f-0dbe-4ae6-9958-7e4599de0677" />
@@ -179,5 +152,32 @@
         <elementListCompartment Id="02ba2a27-a9ab-451f-9627-bc157e764023" absoluteBounds="6.015, 2.585, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="6c7d3b67-2307-4d07-9c94-4559573a6872" absoluteBounds="6.125, 5, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/dbDataContext/mediador" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2c8a8b8d-d28b-4249-a971-1090110785ee" absoluteBounds="6.14, 5.46, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.125 : 5.296875); (12 : 5.296875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbDataContext/mediador/mediadore_mediacao" />
+      <nodes>
+        <classShapeMoniker Id="6c7d3b67-2307-4d07-9c94-4559573a6872" />
+        <classShapeMoniker Id="8fa549fc-6a6d-49a4-940c-bff9037a3f14" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.125 : 6.26524983723958); (9 : 6.26524983723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbDataContext/mediador/mediadore_noticia" />
+      <nodes>
+        <classShapeMoniker Id="6c7d3b67-2307-4d07-9c94-4559573a6872" />
+        <classShapeMoniker Id="6bc018f5-fb18-4147-8651-c9bd8b9adfd3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 6.14024983723958); (6.125 : 6.14024983723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbDataContext/local/local_mediadore" />
+      <nodes>
+        <classShapeMoniker Id="468b0d2f-0dbe-4ae6-9958-7e4599de0677" />
+        <classShapeMoniker Id="6c7d3b67-2307-4d07-9c94-4559573a6872" />
+      </nodes>
+    </associationConnector>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>
