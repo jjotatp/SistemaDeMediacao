@@ -43,13 +43,13 @@
                     <div class="col-md-4">
                         <asp:DropDownList runat="server" ID="ddNivelPermissao" CssClass="form-control"
                                 placeholder="Selecione...">
-                            <asp:ListItem Enabled="true" Text="Básico"></asp:ListItem>
-                            <asp:ListItem Text="Padrão"></asp:ListItem>
-                            <asp:ListItem Text="Avançado"></asp:ListItem>
-                            <asp:ListItem Text="Administrador"></asp:ListItem>
+                            <asp:ListItem Enabled="true" Value="1" Text="Básico"></asp:ListItem>
+                            <asp:ListItem Text="Padrão" Value="2"></asp:ListItem>
+                            <asp:ListItem Text="Avançado" Value="3"></asp:ListItem>
+                            <asp:ListItem Text="Administrador" Value="4"></asp:ListItem>
                         </asp:DropDownList>
                     </div>              
-                    <button type="button" class="btn btn-xs glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#myModal"></button>
+                    <button type="button" class="btn glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#myModal"></button>
                 </div>              
                 <!-- Modal -->                                                
                 <div id="myModal" class="modal fade" role="dialog">

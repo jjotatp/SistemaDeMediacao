@@ -69,6 +69,7 @@ namespace FrontEnd
                         txtNome.Value = med.nome;
                         txtPatente.Value = med.patente;
                         ddLocal.SelectedValue = med.id_local.ToString();
+                        ddNivelPermissao.SelectedValue = med.nivel_permissao.ToString();
                         txtUsuario.Value = med.usuario;
                         txtSenha.Value = "";
                         txtConfirmarSenha.Value = "";
@@ -146,6 +147,7 @@ namespace FrontEnd
                 med.nome = txtNome.Value;
                 med.patente = txtPatente.Value;
                 med.id_local = Int32.Parse(ddLocal.SelectedValue);
+                med.nivel_permissao = Int32.Parse(ddNivelPermissao.SelectedValue);
                 med.usuario = txtUsuario.Value;
                 med.senha = txtSenha.Value;
 

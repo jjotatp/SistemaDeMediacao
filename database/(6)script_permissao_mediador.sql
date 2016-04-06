@@ -1,7 +1,12 @@
 -- ===== ADICIONA CAMPO DE NIVEL DE PERMISSAO NO CADASTRO DO MEDIADOR
 
 alter table mediadores add nivel_permissao int not null default 1,
-	check (nivel_permissao in (1,2,3))
+	check (nivel_permissao in (1,2,3,4))
+
+-- 1 - Básica
+-- 2 - Padrão
+-- 3 - Avançada
+-- 4 - Administrador
 
 ALTER TRIGGER tg_insere_mediador 
 ON mediadores 
