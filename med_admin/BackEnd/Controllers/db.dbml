@@ -16,6 +16,7 @@
       <Column Name="descricao" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="data_inicial" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="data_final" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="agendamento_mediacoe" Member="mediacaos" Storage="_mediacoes" ThisKey="id" OtherKey="id_agendamento" Type="mediacao" />
       <Association Name="solicitacao_agendamento" Member="solicitacao" ThisKey="id_solicitacao" OtherKey="id" Type="solicitacao" IsForeignKey="true" />
     </Type>
   </Table>
@@ -43,10 +44,10 @@
       <Column Name="data_inicio_atividade" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="ativo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="telefone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Association Name="local_mediacao" Member="mediacaos" ThisKey="id" OtherKey="id_local" Type="mediacao" />
       <Association Name="local_noticia" Member="noticias" ThisKey="id" OtherKey="id_local" Type="noticia" />
       <Association Name="local_solicitacao" Member="solicitacaos" ThisKey="id" OtherKey="id_local" Type="solicitacao" />
-      <Association Name="local_mediadore" Member="mediadors" ThisKey="id" OtherKey="id_local" Type="mediador" />
+      <Association Name="local_mediador" Member="mediadors" ThisKey="id" OtherKey="id_local" Type="mediador" />
+      <Association Name="local_mediacoe" Member="mediacaos" Storage="_mediacoes" ThisKey="id" OtherKey="id_local" Type="mediacao" />
       <Association Name="cidade_local" Member="cidade" ThisKey="id_cidade" OtherKey="id" Type="cidade" IsForeignKey="true" />
     </Type>
   </Table>
@@ -55,29 +56,8 @@
       <Column Name="mediacao_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="pessoa_id" Type="System.String" DbType="VarChar(14) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="descricao_caso" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
-      <Association Name="mediacao_mediacao_parte" Member="mediacao" ThisKey="mediacao_id" OtherKey="id" Type="mediacao" IsForeignKey="true" />
       <Association Name="pessoa_mediacao_parte" Member="pessoa" ThisKey="pessoa_id" OtherKey="cpf" Type="pessoa" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.mediacoes" Member="mediacaos">
-    <Type Name="mediacao">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="id_solicitacao" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="numero" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="tema_conflito" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="data_mediacao" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="id_mediador" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="id_tipo_registro" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="objeto" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="id_local" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="documento_link" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="resolucao" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-      <Association Name="mediacao_mediacao_parte" Member="mediacao_partes" ThisKey="id" OtherKey="mediacao_id" Type="mediacao_parte" />
-      <Association Name="local_mediacao" Member="local" ThisKey="id_local" OtherKey="id" Type="local" IsForeignKey="true" />
-      <Association Name="solicitacao_mediacao" Member="solicitacao" ThisKey="id_solicitacao" OtherKey="id" Type="solicitacao" IsForeignKey="true" />
-      <Association Name="tipo_registro_mediacao" Member="tipo_registro" ThisKey="id_tipo_registro" OtherKey="id" Type="tipo_registro" IsForeignKey="true" />
-      <Association Name="mediadore_mediacao" Member="mediador" ThisKey="id_mediador" OtherKey="id" Type="mediador" IsForeignKey="true" />
+      <Association Name="mediacoe_mediacao_parte" Member="mediacao" Storage="_mediacoe" ThisKey="mediacao_id" OtherKey="id" Type="mediacao" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.noticias" Member="noticias">
@@ -91,7 +71,7 @@
       <Column Name="id_mediador" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="id_local" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="local_noticia" Member="local" ThisKey="id_local" OtherKey="id" Type="local" IsForeignKey="true" />
-      <Association Name="mediadore_noticia" Member="mediador" ThisKey="id_mediador" OtherKey="id" Type="mediador" IsForeignKey="true" />
+      <Association Name="mediador_noticia" Member="mediador" ThisKey="id_mediador" OtherKey="id" Type="mediador" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.pessoas" Member="pessoas">
@@ -131,7 +111,6 @@
       <Column Name="id_local" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="id_cidade_abertura" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="solicitacao_agendamento" Member="agendamentos" ThisKey="id" OtherKey="id_solicitacao" Type="agendamento" />
-      <Association Name="solicitacao_mediacao" Member="mediacaos" ThisKey="id" OtherKey="id_solicitacao" Type="mediacao" />
       <Association Name="cidade_solicitacao" Member="cidade" ThisKey="id_cidade_abertura" OtherKey="id" Type="cidade" IsForeignKey="true" />
       <Association Name="local_solicitacao" Member="local" ThisKey="id_local" OtherKey="id" Type="local" IsForeignKey="true" />
     </Type>
@@ -140,7 +119,7 @@
     <Type Name="tipo_registro">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="descricao" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="tipo_registro_mediacao" Member="mediacaos" ThisKey="id" OtherKey="id_tipo_registro" Type="mediacao" />
+      <Association Name="tipo_registro_mediacoe" Member="mediacaos" Storage="_mediacoes" ThisKey="id" OtherKey="id_tipo_registro" Type="mediacao" />
     </Type>
   </Table>
   <Table Name="dbo.v_nucleos" Member="v_nucleos">
@@ -165,30 +144,36 @@
       <Column Name="usuario" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="senha" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="nivel_permissao" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="mediadore_mediacao" Member="mediacaos" ThisKey="id" OtherKey="id_mediador" Type="mediacao" />
-      <Association Name="mediadore_noticia" Member="noticias" ThisKey="id" OtherKey="id_mediador" Type="noticia" />
-      <Association Name="local_mediadore" Member="local" ThisKey="id_local" OtherKey="id" Type="local" IsForeignKey="true" />
+      <Association Name="mediador_noticia" Member="noticias" ThisKey="id" OtherKey="id_mediador" Type="noticia" />
+      <Association Name="mediador_mediacoe" Member="mediacaos" Storage="_mediacoes" ThisKey="id" OtherKey="id_mediador" Type="mediacao" />
+      <Association Name="local_mediador" Member="local" ThisKey="id_local" OtherKey="id" Type="local" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.mediacoes" Member="mediacaos">
+    <Type Name="mediacao">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="numero" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="tema_conflito" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="data_mediacao" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="id_mediador" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_tipo_registro" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="objeto" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="id_local" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="documento_link" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="resolucao" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="id_agendamento" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="mediacoe_mediacao_parte" Member="mediacao_partes" ThisKey="id" OtherKey="mediacao_id" Type="mediacao_parte" />
+      <Association Name="agendamento_mediacoe" Member="agendamento" ThisKey="id_agendamento" OtherKey="id" Type="agendamento" IsForeignKey="true" />
+      <Association Name="local_mediacoe" Member="local" ThisKey="id_local" OtherKey="id" Type="local" IsForeignKey="true" />
+      <Association Name="mediador_mediacoe" Member="mediador" ThisKey="id_mediador" OtherKey="id" Type="mediador" IsForeignKey="true" />
+      <Association Name="tipo_registro_mediacoe" Member="tipo_registro" ThisKey="id_tipo_registro" OtherKey="id" Type="tipo_registro" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.alteraCidade" Method="alteraCidade">
     <Parameter Name="id" Type="System.Int32" DbType="Int" />
     <Parameter Name="nome" Type="System.String" DbType="VarChar(100)" />
     <Parameter Name="estado" Type="System.String" DbType="VarChar(100)" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.alteraMediacao" Method="alteraMediacao">
-    <Parameter Name="id" Type="System.Int32" DbType="Int" />
-    <Parameter Name="id_solicitacao" Type="System.Int32" DbType="Int" />
-    <Parameter Name="numero" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="tema_conflito" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="data_mediacao" Type="System.DateTime" DbType="Date" />
-    <Parameter Name="id_mediador" Type="System.Int32" DbType="Int" />
-    <Parameter Name="id_tipo_registro" Type="System.Int32" DbType="Int" />
-    <Parameter Name="objeto" Type="System.String" DbType="VarChar(MAX)" />
-    <Parameter Name="id_local" Type="System.Int32" DbType="Int" />
-    <Parameter Name="documento_link" Type="System.String" DbType="VarChar(100)" />
-    <Parameter Name="status" Type="System.Int32" DbType="Int" />
-    <Parameter Name="resolucao" Type="System.Char" DbType="Char(1)" />
     <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.alteraPessoa" Method="alteraPessoa">
@@ -266,6 +251,21 @@
     <Parameter Name="usuario" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="senha" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="nivel" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.alteraMediacao" Method="alteraMediacao">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="id_agendamento" Type="System.Int32" DbType="Int" />
+    <Parameter Name="numero" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="tema_conflito" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="data_mediacao" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="id_mediador" Type="System.Int32" DbType="Int" />
+    <Parameter Name="id_tipo_registro" Type="System.Int32" DbType="Int" />
+    <Parameter Name="objeto" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="id_local" Type="System.Int32" DbType="Int" />
+    <Parameter Name="documento_link" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="status" Type="System.Int32" DbType="Int" />
+    <Parameter Name="resolucao" Type="System.Char" DbType="Char(1)" />
     <Return Type="System.Int32" />
   </Function>
 </Database>

@@ -62,7 +62,6 @@ create table tipos_registro
 create table mediacoes
 (
 	id int not null primary key identity,
-	id_solicitacao int references solicitacoes(id),
 	numero varchar(20),
 	tema_conflito varchar(50),	
 	data_mediacao datetime not null,

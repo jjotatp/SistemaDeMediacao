@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BackEnd.Controllers;
 
 namespace FrontEnd
 {
@@ -51,5 +52,24 @@ namespace FrontEnd
             lblTextoSucesso.Text = "";
         }
 
+        public int GetNivelPermissao()
+        {
+            // função que pega o mediador logado e verifica seu nível de permissão
+            try
+            {
+                int nivel = 0;
+                mediador mediador = Session["med"] as mediador;
+
+                if (mediador != null)
+                {
+                    nivel = mediador.nivel_permissao;
+                }
+                return nivel;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
     }
 }

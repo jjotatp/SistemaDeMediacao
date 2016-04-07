@@ -13,6 +13,15 @@ namespace FrontEnd {
     public partial class agenda {
         
         /// <summary>
+        /// txtTexto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtTexto;
+        
+        /// <summary>
         /// clData control.
         /// </summary>
         /// <remarks>
@@ -67,40 +76,13 @@ namespace FrontEnd {
         protected global::System.Web.UI.WebControls.Button btnAgendar;
         
         /// <summary>
-        /// btnAnterior control.
+        /// lblTituloLista control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAnterior;
-        
-        /// <summary>
-        /// txtData control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtData;
-        
-        /// <summary>
-        /// btnPosterior control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPosterior;
-        
-        /// <summary>
-        /// txtTexto control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtTexto;
+        protected global::System.Web.UI.WebControls.Label lblTituloLista;
         
         /// <summary>
         /// gvAgenda control.

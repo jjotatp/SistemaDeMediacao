@@ -17,17 +17,8 @@ namespace FrontEnd
         {
             if (!IsPostBack)
             {
-                //PessoaModel p = new PessoaModel();
-                //// atribui uma lista de dentistas para o DropDown
-                //ddDentistas.DataSource = p.ListarDentistas();
-                //ddDentistas.DataValueField = "id";
-                //ddDentistas.DataTextField = "nome";
-                //ddDentistas.DataBind();
-                //ddDentistas.SelectedIndex = 0;
-
                 // pega a data de hoje
                 clData.SelectedDate = DateTime.Today;                
-                txtData.Text = DateTime.Now.ToShortDateString();
             }            
 
             CarregarAgenda();
@@ -35,17 +26,12 @@ namespace FrontEnd
 
         protected void CarregarAgenda()
         {
-            // se a data não foi informada, pega a data de hoje
-            if (txtData.Text == "")            
-                txtData.Text = DateTime.Now.ToShortDateString();
-            // passa a data para o título da lista, exemplo: "Domingo, 19 de fevereiro de 2016"
-            txtTexto.Text = DateTime.Parse(txtData.Text).ToLongDateString();            
-            // passa a data carregada para o calendário, para garantir que ele fique sincronizado com o txtData
-            clData.SelectedDate = DateTime.Parse(txtData.Text);
+            // passa a data para o título, exemplo: "Domingo, 19 de fevereiro de 2016"
+            txtTexto.Text = clData.SelectedDate.ToLongDateString();
 
             Agendamento_Model agenda = new Agendamento_Model();
             // carrega a agenda naquele dia
-            gvAgenda.DataSource = agenda.ListarDia(DateTime.Parse(txtData.Text));
+            gvAgenda.DataSource = agenda.ListarDia(clData.SelectedDate);
             gvAgenda.DataBind();
             if (gvAgenda.Rows.Count > 0)
             {
@@ -80,23 +66,8 @@ namespace FrontEnd
             }
         }
 
-        protected void btnAnterior_Click(object sender, EventArgs e)
-        {
-            if (txtData.Text != "")
-                txtData.Text = DateTime.Parse(txtData.Text).AddDays(-1).ToShortDateString();            
-            CarregarAgenda();
-        }
-
-        protected void btnPosterior_Click(object sender, EventArgs e)
-        {
-            if (txtData.Text != "")
-                txtData.Text = DateTime.Parse(txtData.Text).AddDays(1).ToShortDateString();            
-            CarregarAgenda();
-        }
-
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)
-        {
-            txtData.Text = clData.SelectedDate.ToShortDateString();
+        {            
             CarregarAgenda();
         }
 
@@ -155,7 +126,7 @@ namespace FrontEnd
 
         public bool ValidaAgendamento()
         {
-            if (txtData.Text == "")
+            if (txtDataAgendar.Value == "")
             {
                 Master.Alerta("Data inválida ou não informada.");
                 return false;

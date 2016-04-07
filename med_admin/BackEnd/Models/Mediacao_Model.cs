@@ -93,7 +93,7 @@ namespace BackEnd.Models
                 dbDataContext context = getDataContext();
                 Table<mediacao> tb = getTable();
 
-                context.alteraMediacao(a.id, a.id_solicitacao, a.numero, a.tema_conflito, a.data_mediacao, a.id_mediador,
+                context.alteraMediacao(a.id, a.id_agendamento, a.numero, a.tema_conflito, a.data_mediacao, a.id_mediador,
                         a.id_tipo_registro, a.objeto, a.id_local, a.documento_link, a.status, a.resolucao);
                 tb.Context.SubmitChanges();
 

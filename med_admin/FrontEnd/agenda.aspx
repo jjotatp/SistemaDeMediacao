@@ -4,79 +4,79 @@
     <div class="col-md-3">
         <div class="panel panel-default">             
             <div class="panel-heading clearfix">
-                <h4>Agendamentos</h4>            
+                <center>
+                    <h5><asp:Label ID="txtTexto" runat="server" class="text-center"/></h5>
+                </center>
             </div>
             <div class="panel-body clearfix">
                 <div class="form-group">
                     <div class="col-md-12">
                         <center>
                             <asp:Calendar ID="clData" runat="server" CssClass="table-condensed" OnSelectionChanged="Calendar1_SelectionChanged" 
-                                SelectionMode="Day" BorderStyle="None" DayHeaderStyle-BackColor="#D8B221" TitleStyle-BackColor="#FFCA00"></asp:Calendar>
+                                SelectionMode="Day" BorderStyle="None" DayHeaderStyle-BackColor="#1E90FF" TitleStyle-BackColor="#ADD8E6" DayHeaderStyle-ForeColor="White"></asp:Calendar>
                         </center>
                     </div>                
                 </div>
                 <div class="form-group">
                     <div class="col-md-12">
                         <center>
-                            <a role="button" data-toggle="collapse" href="#collapseAgendar" aria-expanded="false"
-                                aria-controls="collapseExample"><span class="btn btn-success btn-block">Agendar</span></a>
+                            <a role="button" data-toggle="modal" data-target="#modalAgendar"><span class="btn btn-success btn-block">Agendar</span></a>
                         </center>
                     </div>
                 </div>                
-                <div class="collapse" id="collapseAgendar">
-                    <div class="form-group">
-                        <label class="col-md-2 control-label">
-                            Data
-                        </label>
-                        <div class="col-md-8">
-                            <input type="date" class="form-control dateSet" onkeyup="formataData(this,event);" runat="server" id="txtDataAgendar"  MaxLength="10"/>
-                        </div>                            
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-2 control-label">
-                            Hora
-                        </label>                            
-                        <div class="col-md-5">
-                            <input type="time" class="form-control" runat="server" id="txtHoraInicial"  MaxLength="5" placeholder="Horário de início"/>
-                        </div>                                                    
-                        <div class="col-md-5">
-                            <input type="time" class="form-control" runat="server" id="txtHoraFinal"  MaxLength="5" placeholder="Horário final"/>
-                        </div>              
-                    </div>                        
-                    <div class="form-group">
-                        <label class="col-md-2 control-label" for="descricao">
-                            Info
-                        </label>
-                        <div class="col-md-10">
-                            <textarea id="txtDescricaoAgendamento" class="form-control input-md" runat="server" placeholder="Descrever o agendamento" maxlength="50"></textarea>
+                <div id="modalAgendar" class="modal fade" role="dialog">                    
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">                            
+                            <h3 class="modal-title">Agendar um horário</h3>
+                        </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">
+                                        Data
+                                    </label>
+                                    <div class="col-md-8">
+                                        <input type="date" class="form-control dateSet" onkeyup="formataData(this,event);" runat="server" id="txtDataAgendar"  MaxLength="10"/>
+                                    </div>                            
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">
+                                        Hora
+                                    </label>                            
+                                    <div class="col-md-5">
+                                        <input type="time" class="form-control" runat="server" id="txtHoraInicial"  MaxLength="5" placeholder="Horário de início"/>
+                                    </div>                                                    
+                                    <div class="col-md-5">
+                                        <input type="time" class="form-control" runat="server" id="txtHoraFinal"  MaxLength="5" placeholder="Horário final"/>
+                                    </div>              
+                                </div>                        
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label" for="descricao">
+                                        Detalhes
+                                    </label>
+                                    <div class="col-md-10">
+                                        <textarea id="txtDescricaoAgendamento" class="form-control input-md" runat="server" placeholder="Descrever o agendamento" maxlength="50"></textarea>
+                                    </div>
+                                </div>                                
+                            </div>
+                            <div class="modal-footer">
+                                <asp:Button ID="btnAgendar" runat="server" Text="Confirmar Agendamento" UseSubmitBehavior="False" 
+                                        CssClass="btn btn-success" OnClick="btnAgendar_Click" data-dismiss="modal"></asp:Button>  
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                            </div>
                         </div>
                     </div>
-                    <center>                           
-                        <asp:Button ID="btnAgendar" runat="server" Text="Confirmar Agendamento" UseSubmitBehavior="False" 
-                            CssClass="btn btn-success btn-rounded" OnClick="btnAgendar_Click"></asp:Button>  
-                    </center>
                 </div>                    
             </div>                    
         </div>        
     </div>
     <div class="col-md-9">        
         <div class="panel panel-default">             
-            <div class="panel-heading clearfix">                
-                    <div class="col-md-4">                        
-                        <div class="input-group">                                                                        
-                            <div runat="server" class="input-group-btn">
-                                <asp:Button ID="btnAnterior" UseSubmitBehavior="False" runat="server" CssClass="btn btn-default" OnClick="btnAnterior_Click" Font-Bold="true" Text="<"/>
-                            </div>                                                            
-                                <asp:TextBox runat="server" AutoPostBack="true" onkeyup="formataData(this,event);" maxlength="10" CssClass="dt form-control text-center" id="txtData"></asp:TextBox>                                
-                                <%--<input runat="server" id="txtData" onkeyup="formataData(this,event);" maxlength="10" class="dt form-control text-center" type="text"/>--%>                            
-                            <div runat="server" class="input-group-btn">
-                                <asp:Button ID="btnPosterior" UseSubmitBehavior="False" runat="server" CssClass="btn btn-default" OnClick="btnPosterior_Click" Text=">" Font-Bold="true" />
-                            </div>
-                        </div>                        
-                    </div>                                
-                    <div class="col-sm-6 text-center">
-                        <h5><asp:Label ID="txtTexto" runat="server" class="text-center"/></h5>
-                    </div>                                                                                
+            <div class="panel-heading clearfix">
+                <center>
+                    <h4><asp:Label ID="lblTituloLista" runat="server" class="text-center" Text="Agendamentos"/></h4>
+                </center>                                    
             </div>
                         
             <div class="panel-body">
@@ -115,7 +115,7 @@
                 </Columns>                            
                 </asp:GridView>                                 
             <%} else { %>
-                <h4 style="text-align: center">Nada agendado neste dia</h4>
+                <h5 style="text-align: center">Nada agendado neste dia</h5>
             <%} %>
             </div>                                                                                
         </div>
