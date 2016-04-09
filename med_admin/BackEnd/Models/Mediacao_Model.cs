@@ -20,7 +20,7 @@ namespace BackEnd.Models
             {
                 conn.Open();
                 using (DbTransaction trans = conn.BeginTransaction())
-                {                   
+                {
                     try
                     {
                         Table<mediacao> tb = context.GetTable<mediacao>();
@@ -37,8 +37,12 @@ namespace BackEnd.Models
                             mp.mediacao_id = m.id;
                             tbParte.InsertOnSubmit(mp);
                             tbParte.Context.SubmitChanges();
-                        }                        
-
+                        }
+                        
+                        if (m.id_agendamento != null)
+                        {
+                            context.atualizaStatus(m.id_agendamento);
+                        }
                         trans.Commit();
                         return true;
                     }
@@ -48,7 +52,7 @@ namespace BackEnd.Models
                         trans.Rollback();
                         return false;
                     }
-                }                
+                }
             }
         }
 
@@ -58,7 +62,7 @@ namespace BackEnd.Models
         {
             dbDataContext context = getDataContext();
             Table<mediacao> tb = context.GetTable<mediacao>();
-            return tb;            
+            return tb;
         }
 
         public Table<mediacao_parte> getTablePartes()

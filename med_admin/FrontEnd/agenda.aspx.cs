@@ -64,6 +64,13 @@ namespace FrontEnd
                     Master.Alerta("Erro ao excluír o agendamento. Erro:" + model.message);
                 }
             }
+            else if(e.CommandName == "Mediacao")
+            {
+                // deve registrar o agendamento em uma sessão e abrir o cadastro de pessoa
+                // para ao abrir a mediação ser possível vincular o agendamento
+                Session["med_agendamento"] = id;
+                Response.Redirect("cad_pessoa.aspx");
+            }
         }
 
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)
@@ -153,6 +160,30 @@ namespace FrontEnd
                 return false;
             }
             return true;         
+        }
+
+        public bool VerificarFinalizado(int i)
+        {
+            return (i == 1);
+        }
+
+        protected void gvAgenda_RowDataBound(object sender, GridViewRowEventArgs e)
+        {            
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                if (!VerificarFinalizado(int.Parse(Convert.ToString(DataBinder.Eval(e.Row.DataItem,"status")))) )
+                {
+                    LinkButton lbtn = (LinkButton)e.Row.FindControl("btnVisualizar");
+                    lbtn.Visible = false;
+                }
+                else
+                {
+                    LinkButton lbtn1 = (LinkButton)e.Row.FindControl("btnMediacao");
+                    lbtn1.Visible = false;
+                    LinkButton lbtn2 = (LinkButton)e.Row.FindControl("btnExcluir");
+                    lbtn2.Visible = false;
+                }
+            }
         }
     }
 }

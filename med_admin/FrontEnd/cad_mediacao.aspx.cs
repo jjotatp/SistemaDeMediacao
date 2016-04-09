@@ -132,6 +132,10 @@ namespace FrontEnd
 
         protected void PegarCampos() // DEVE SER MODIFICADA
         {
+            // ********************
+            //    NÃO É UTILIZADA
+            // ********************        
+
             // PEGA OS COMPONENTES QUE FORAM ADICIONADOS            
             foreach (Control ctr in TextBoxPlaceHolder.Controls)
             {
@@ -159,6 +163,10 @@ namespace FrontEnd
                 // pega o mediador logado
                 mediador med = Session["med"] as mediador;
 
+                int id_agendamento = 0;
+                if (Session["med_agendamento"] != null)
+                    id_agendamento = Int32.Parse(Session["med_agendamento"].ToString());
+
                 m.numero = txtNumero.Value;
                 m.tema_conflito = txtTemaConflito.Value;
                 m.id_tipo_registro = Int32.Parse(ddTipoRegistro.SelectedValue);
@@ -168,6 +176,10 @@ namespace FrontEnd
                 m.objeto = txtObjetoMediacao.Text;
                 m.resolucao = Char.Parse(ddResolucao.SelectedValue);
                 m.status = 1;
+                if ( id_agendamento != 0 )
+                {
+                    m.id_agendamento = id_agendamento;
+                }
 
                 mediacao_parte mp = null;
 
@@ -196,7 +208,8 @@ namespace FrontEnd
 
                 if (model.InserirMediacaoTotal(m, mpLista))
                 {
-                    return true;
+                    Session.Remove("med_agendamento");
+                    return true;                    
                 }
                 else
                 {

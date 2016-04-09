@@ -1,4 +1,4 @@
-﻿    <%@ Page Title="" Language="C#" MasterPageFile="~/med_admin.Master" AutoEventWireup="true" CodeBehind="agenda.aspx.cs" Inherits="FrontEnd.agenda" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/med_admin.Master" AutoEventWireup="true" CodeBehind="agenda.aspx.cs" Inherits="FrontEnd.agenda" %>
 <%@ MasterType VirtualPath="~/med_admin.master"  %>
 <asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">           
     <div class="col-md-3">
@@ -81,8 +81,8 @@
                         
             <div class="panel-body">
             <% if (gvAgenda.Rows.Count > 0) { %>
-                <asp:GridView runat="server" ID="gvAgenda" CssClass="table table-hover table-striped" 
-                    GridLines="None" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="id" OnRowCommand="gvAgenda_RowCommand">
+                <asp:GridView runat="server" ID="gvAgenda" CssClass="table table-hover table-striped" OnRowCommand="gvAgenda_RowCommand" 
+                    GridLines="None" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="id" OnRowDataBound="gvAgenda_RowDataBound" >
                 <Columns>                                
                 <asp:TemplateField HeaderText="Hora inicial">
                     <ItemTemplate>
@@ -94,24 +94,40 @@
                     <HeaderStyle Width="110px"/>
                     <ItemTemplate>
                         <%# DateTime.Parse(Eval("data_final").ToString()).ToShortTimeString() %>
-                    </ItemTemplate>                    
-                </asp:TemplateField>                                     
-                <asp:TemplateField HeaderText="Detalhes agendamento" >
-                    <ItemTemplate>
-                        <%#Eval("descricao") %>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <%--<asp:TemplateField>
-                  <ItemTemplate>
-                      <asp:Button ID="btnExcluirAgendamento" runat="server" Text="Remove User From Role" CommandName="Apagar" 
-                          OnClientClick="confirm('Deseja realmente excluir o agendamento?');" CssClass="btn btn-xs btn-danger"/>
-                      <HeaderStyle Width="40px"></HeaderStyle>
-                  </ItemTemplate>
-                </asp:TemplateField>--%>                                                    
-                <asp:ButtonField CommandName="Apagar" HeaderStyle-Width="40" Text="Apagar" >
-                    <ControlStyle CssClass="btn btn-xs btn-danger deleteLink" />                                                        
-                    <HeaderStyle Width="40px"></HeaderStyle>
-                </asp:ButtonField>
+                <asp:TemplateField HeaderText="Detalhes agendamento">
+                    <ItemTemplate>
+                        <%# Eval("descricao") %>
+                    </ItemTemplate>
+                </asp:TemplateField>                                    
+                <asp:TemplateField HeaderStyle-HorizontalAlign="Right">                    
+                    <HeaderStyle HorizontalAlign="Right" />
+                    <ItemTemplate>                                                 
+                        <asp:LinkButton ID="btnVisualizar" CssClass="btn btn-xs btn-default" 
+                            runat="server" UseSubmitBehavior="false"
+                            CommandName="Visualizar" 
+                            CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" 
+                            Text="Visualizar Mediação"
+                            Tooltip="Visualizar a mediação vinculada ao registro"                               
+                            />
+                        <asp:LinkButton ID="btnMediacao" CssClass="btn btn-xs btn-success"
+                            runat="server" UseSubmitBehavior="false"
+                            CommandName="Mediacao" 
+                            CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" 
+                            Text="Nova Mediação"    
+                            ToolTip="Iniciar uma nova mediação"                         
+                            />    
+                        <asp:LinkButton ID="btnExcluir" CssClass="btn btn-xs btn-danger" 
+                            runat="server" UseSubmitBehavior="false"
+                            CommandName="Apagar" 
+                            CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" 
+                            Text="Apagar"                 
+                            OnClientClick="javascript: return confirm('Confirma a exclusão do agendamento?');" 
+                            ToolTip="Apagar o agendamento"                                                                                        
+                            />
+                    </ItemTemplate>
+                </asp:TemplateField>
                 </Columns>                            
                 </asp:GridView>                                 
             <%} else { %>
