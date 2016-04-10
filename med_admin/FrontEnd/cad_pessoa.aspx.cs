@@ -50,6 +50,18 @@ namespace FrontEnd
                     // se for a primeira pessoa a ser cadastrada, ou seja, 
                     // o parâmetro NEXT não existir ou for 0, remove a sessão
                     Session.Remove("mediacao_partes");
+                    // SE FOR A PRIMEIRA PESSOA A SER CADASTRADA
+                    // VERIFICA SE PARAMETRO AGEND FOI PASSADO, 
+                    // SE SIM, ADICIONA NA SESSAO
+                    // SE NAO, REMOVE DA SESSAO
+                    if (Request.QueryString["AGEND"] == null)
+                    {
+                        Session.Remove("med_agendamento");
+                    }
+                    else
+                    {
+                        Session["med_agendamento"] = int.Parse(Request.QueryString["AGEND"].ToString());
+                    }                    
                 }
             }
         }

@@ -1,21 +1,17 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/med_admin.Master" AutoEventWireup="true" CodeBehind="cad_tipo_registro.aspx.cs" Inherits="FrontEnd.cad_tipo_registro" %>
 <%@ MasterType VirtualPath="~/med_admin.master"  %>
-<asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">            
-    <div class="container">
-        <h3>Cadastro - Tipos de Registro</h3>
-                                    
-        <p>Faça o cadastro dos Tipos de Registros</p>
+<asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">                
+<div class="col-sm-10 col-sm-offset-1">
+    <div class="panel panel-color panel-primary">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                Cadastro de Tipos de Registro
+            </h4>
+        </div>
         <div class="panel-body">                    
             <fieldset>
                 <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label">
-                        ID
-                    </label>
-                    <div class="col-md-1">                            
-                        <asp:Label runat="server" class="alert-info form-control" ID="txtID" ></asp:Label>
-                    </div>
-                </div>
+                <asp:Label runat="server" ID="txtID" hidden="hidden"></asp:Label>
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="">Descrição</label>
                     <div class="col-md-6">
@@ -24,15 +20,16 @@
                 </div>
                                     
                             
-                <div class="col-md-offset-3">
-                    <asp:Button runat="server" id="btnSalvar" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5"
+                <div class="col-md-offset-4">
+                    <asp:Button runat="server" id="btnSalvar" class="btn btn-success"
                     OnClick="btnSalvar_Click" Text="Salvar" />
-                    <asp:Button runat="server" id="btnListar" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5"
+                    <asp:Button runat="server" id="btnListar" class="btn btn-info"
                     OnClick="btnListar_Click" Text="Listar" />
-                    <asp:Button runat="server" id="btnLimpar" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5"
+                    <asp:Button runat="server" id="btnLimpar" class="btn btn-warning"
                     OnClick="btnLimpar_Click" Text="Limpar" />
                 </div>
             </fieldset>            
         </div>
     </div>
+</div>
 </asp:Content>

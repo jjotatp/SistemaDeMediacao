@@ -28,6 +28,8 @@ namespace FrontEnd
                 ddCidade.DataBind();
                 ddCidade.SelectedIndex = 0;
 
+                cbbAtivo.Checked = true;
+
                 // declara ID e verifica se existe ID no txtID ou no endereço
                 int id = 0;
 

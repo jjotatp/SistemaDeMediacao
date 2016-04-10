@@ -19,8 +19,7 @@ namespace FrontEnd
                 // carrega os dados na lista de solicitações
                 PreencherGrid();
                 PreencherCentros();
-                OcultaDescSoli();
-                
+                OcultaDescSoli();                
             }                      
         }        
 

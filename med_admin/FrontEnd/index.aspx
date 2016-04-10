@@ -4,7 +4,7 @@
     <div class="">
             <div class="container">
                 <div class="col-md-6 col-md-offset-3">
-                    <div class="panel panel-color panel-danger">
+                    <div class="panel panel-color panel-primary">
                         <div class="panel-heading">
                             <h3 class="panel-title">Olá, seja bem vindo ao Gerenciador do Portal de Mediação</h3>
                         </div>

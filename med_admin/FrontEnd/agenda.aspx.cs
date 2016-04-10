@@ -66,10 +66,9 @@ namespace FrontEnd
             }
             else if(e.CommandName == "Mediacao")
             {
-                // deve registrar o agendamento em uma sessão e abrir o cadastro de pessoa
-                // para ao abrir a mediação ser possível vincular o agendamento
-                Session["med_agendamento"] = id;
-                Response.Redirect("cad_pessoa.aspx");
+                // deve abrir o cadastro de pessoa com o parametro AGEND
+                // para quando abrir o cadastro ele salvar na sessão               
+                Response.Redirect("cad_pessoa.aspx?AGEND="+id.ToString());
             }
         }
 

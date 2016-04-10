@@ -26,7 +26,7 @@ Inherits="FrontEnd.LoginControl" %>
                         <li>
                             <span><asp:Label id="lblNomeUsuario" runat="server" CssClass="text-white"/></span>
                             &nbsp;
-                            <asp:Button id="btnSairLogado" runat="server" CssClass="btn btn-danger"
+                            <asp:Button id="btnSairLogado" runat="server" CssClass="btn btn-default"
                             Text="Sair" OnClick="btnSairLogado_Click" UseSubmitBehavior="False" />                                                       
                         </li>                                                  
                     </ul>                    

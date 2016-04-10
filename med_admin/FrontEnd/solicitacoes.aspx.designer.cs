@@ -49,6 +49,15 @@ namespace FrontEnd {
         protected global::System.Web.UI.WebControls.GridView gdvLista;
         
         /// <summary>
+        /// txtId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtId;
+        
+        /// <summary>
         /// pnlAcaoSoli control.
         /// </summary>
         /// <remarks>
@@ -76,13 +85,13 @@ namespace FrontEnd {
         protected global::System.Web.UI.WebControls.Panel pnlDados;
         
         /// <summary>
-        /// txtId control.
+        /// btnExcluir control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtId;
+        protected global::System.Web.UI.WebControls.Button btnExcluir;
         
         /// <summary>
         /// txtNome control.
@@ -157,33 +166,6 @@ namespace FrontEnd {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtPeriodo;
         
         /// <summary>
-        /// btnExcluir control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnExcluir;
-        
-        /// <summary>
-        /// ddLocal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddLocal;
-        
-        /// <summary>
-        /// btnConfirmaTransferencia control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnConfirmaTransferencia;
-        
-        /// <summary>
         /// txtData control.
         /// </summary>
         /// <remarks>
@@ -227,6 +209,24 @@ namespace FrontEnd {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAgendar;
+        
+        /// <summary>
+        /// ddLocal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddLocal;
+        
+        /// <summary>
+        /// btnConfirmaTransferencia control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnConfirmaTransferencia;
         
         /// <summary>
         /// Master property.

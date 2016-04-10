@@ -3,10 +3,10 @@ CodeBehind="cad_pessoa.aspx.cs" Inherits="FrontEnd.cad_pessoa" %>
     <%@ MasterType VirtualPath="~/med_admin.master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">
     <div class="col-md-10 col-md-offset-1">
-        <div class="panel panel-color panel-danger">
+        <div class="panel panel-color panel-primary">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    Cadastar Parte da Mediação (Pessoa Envolvida)
+                    Cadastrar Parte da Mediação (Pessoa Envolvida)
                 </h4>
             </div>
             <div class="panel-body">

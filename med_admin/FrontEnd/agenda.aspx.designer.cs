@@ -76,15 +76,6 @@ namespace FrontEnd {
         protected global::System.Web.UI.WebControls.Button btnAgendar;
         
         /// <summary>
-        /// lblTituloLista control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTituloLista;
-        
-        /// <summary>
         /// gvAgenda control.
         /// </summary>
         /// <remarks>

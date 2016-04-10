@@ -1,21 +1,21 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/med_admin.Master" AutoEventWireup="true" CodeBehind="solicitacoes.aspx.cs" Inherits="FrontEnd.solicitacoes" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">
     <%@ MasterType VirtualPath="~/med_admin.master"  %>               
-    <div class="container">
+<%--    <div style="text-align: center;">
+        <h1>
+            Gerenciamento de Solicitações
+        </h1>                
+    </div>--%>
     <div class="col-md-7">
-        <div class="panel panel-color panel-danger">
+        <div class="panel panel-color panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title">
+                <h4 class="panel-title">
                     <i class="ion-chatbubble">
                     </i>
                     Solicitações
-                </h3>
-                <small style="color: #fff;">
-                    Lista das solicitações feitas no site. Aqui você pode excluir uma solicitação indevida, agendar um horário para
-                    a solicitação e atribuir o local de atendimento da mediação.
-                </small>
+                </h4>                
             </div>
-            <div class="panel-heading">
+            <div class="panel-body">
                 <div class="form-group">
                     <div class="col-md-3">
                         <asp:DropDownList ID="ddTipoBusca" CssClass="form-control" runat="server">
@@ -29,14 +29,12 @@
                         <input type="text" id="txtBusca" runat="server" placeholder="Buscar..." class="form-control">
                     </div>
                     <div class="col-md-2">
-                        <asp:Button ID="btnBuscar" runat="server" CssClass="btn btn-primary" Text="Buscar" OnClick="btnBuscar_Click"/>
+                        <asp:Button ID="btnBuscar" runat="server" CssClass="btn btn-info" Text="Buscar" OnClick="btnBuscar_Click"/>
                     </div>
                 </div>
-            </div>
-            <div class="panel-body">
                 <asp:GridView ID="gdvLista" runat="server" CssClass="table table-hover" GridLines="None"
                     AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="id" OnRowCommand="gdvLista_RowCommand"
-                        PageSize="8" OnPageIndexChanging="gdvLista_PageIndexChanging">
+                        PageSize="8" OnPageIndexChanging="gdvLista_PageIndexChanging" EmptyDataText="Nenhuma solicitação encontrada.">
             <Columns>
                 <asp:TemplateField HeaderText="ID" >
                     <ItemTemplate>
@@ -65,7 +63,7 @@
                 </asp:TemplateField>                
                                
                 <asp:ButtonField CommandName="Visualizar" HeaderStyle-Width="40" Text="Visualizar" runat="server">
-                    <ControlStyle CssClass="btn btn-xs btn-default"/>                         
+                    <ControlStyle CssClass="btn btn-xs btn-info"/>                         
                     <HeaderStyle Width="40px"></HeaderStyle>
                 </asp:ButtonField>
                 
@@ -76,61 +74,45 @@
                 NextPageText="<div class='form-control btn-default'><b> Próxima </b></div>"
                 PreviousPageText="<div class='form-control btn-default'><b> Anterior </b></div>" />            
             <PagerStyle HorizontalAlign="Center" />
-        </asp:GridView>
-                <%--<div class="table-responsive">
-                    <table class="table">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    Gabriela Angela
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Guilherme Silveira
-                                </td>
-                            </tr>
-                            
-                        </tbody>
-                    </table>
-                </div>--%>
-                <!-- <div class="list-group">
-                                <a href="#" class="list-group-item">Matheus Silva | <span class="label label-dark">LIXEIRA</span></a>
-                                <a href="#" class="list-group-item">Pedro Camargo | <span class="label label-dark">LIXEIRA</span></a>
-                                <a href="#" class="list-group-item">Guilherme Silveira | <span class="label label-dark">LIXEIRA</span></a>
-                                <a href="#" class="list-group-item active">André Naves | <span class="label label-dark">LIXEIRA</span></a>
-                                <a href="#" class="list-group-item">Gabriela Angela | <span class="label label-dark">LIXEIRA</span></a>
-                            </div>
-                            -->
+        </asp:GridView>                
             </div>
         </div>
     </div>
     <div class="col-md-5">
-        <div class="panel panel-color panel-danger">
+        <div class="panel panel-color panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title">
+                <h4 class="panel-title">
                     <i class="ion-chatbubble">
                     </i>
-                    Detalhes da solicitação
-                </h3>
+                    Visualização
+                </h4>
+                <input id="txtId" runat="server" readonly="readonly" hidden="hidden">
             </div>
             <div class="panel-body">                    
-                <div class="alert alert-warning" role="alert" id="pnlAcaoSoli" runat="server" style="display:none">
+                <div class="alert alert-success" role="alert" id="pnlAcaoSoli" runat="server" style="display:none">
                     <strong>
                         <asp:Label ID="lblDescAcaoSoli" runat="server" Text="Solicitação já agendada." Font-Size="10" Visible="true"/>
                     </strong>
                 </div> 
                 <asp:Panel id="pnlDados" runat="server">                    
                 <fieldset>
-                    <!-- Text input-->
+                    <!-- Botões de opções -->
                     <div class="form-group">
-                        <label class="col-md-4 control-label" for="id">
-                            ID
+                        <label class="col-md-4 control-label" for="">
                         </label>
                         <div class="col-md-8">
-                            <input id="txtId" class="form-control input-md" runat="server" readonly="readonly">
+                            <a role="button" data-toggle="modal" data-target="#modalAgendar" aria-expanded="false">
+                                <span class="btn btn-success">Agendar</span>
+                            </a>                        
+                            <a role="button" data-toggle="modal" data-target="#modalTransferir" aria-expanded="false" 
+                                title="Permite selecionar o núcleo de mediação que a solicitação deve ser atendida.">
+                                <span class="btn btn-success">Transferir</span>
+                            </a>                                 
+                            <asp:Button ID="btnExcluir" CssClass="btn btn-danger" runat="server" Text="Excluir" 
+                                ToolTip="Exclui a solicitação do sistema" OnClientClick="javascript:return confirm('Tem certeza que deseja excluir a solicitação?');"
+                                OnClick="btnExcluir_Click"/>
                         </div>
-                    </div>
+                    </div> 
                     <!-- Text input-->
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="nome">
@@ -204,81 +186,86 @@
                         <div class="col-md-8">
                             <input readonly="readonly" id="txtPeriodo" class="form-control input-md" runat="server" type="text">
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="">
-                        </label>
-                        <div class="col-md-8">
-                            <a role="button" data-toggle="collapse" href="#collapseAgendar" aria-expanded="false"
-                            aria-controls="collapseExample"><span class="btn btn-default">Agendar</span></a>                        
-                            <%--<asp:Button ID="btnTransferir" CssClass="btn btn-success" runat="server" Text="Transferir" 
-                                ToolTip="Permite selecionar o local para a solicitação ser atendida."/>                --%> 
-                            <a role="button" data-toggle="collapse" href="#collapseTransferir" aria-expanded="false" 
-                                title="Permite selecionar o núcleo de mediação que a solicitação deve ser atendida."
-                            aria-controls="collapseExample"><span class="btn btn-success">Transferir</span></a>                                 
-                            <asp:Button ID="btnExcluir" CssClass="btn btn-danger" runat="server" Text="Excluir" 
-                                ToolTip="Exclui a solicitação do sistema" OnClientClick="javascript:return confirm('Tem certeza que deseja excluir a solicitação?');"
-                                OnClick="btnExcluir_Click"/>
+                    </div>                                       
+                    <!--  ============= MODAL AGENDAR ============  -->
+                    <div id="modalAgendar" class="modal fade" role="dialog">                    
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">                            
+                            <h3 class="modal-title">Agendar um horário</h3>
                         </div>
-                    </div>                    
-                    <div class="collapse" id="collapseTransferir">
-                        <div class="form-group">
-                            <label class="col-lg-4 control-label">
-                                Transferir para:
-                            </label>
-                            <div class="col-lg-8">
-                                <asp:DropDownList runat="server" ID="ddLocal" CssClass="form-control"
-                                placeholder="Selecione...">
-                                </asp:DropDownList>
-                            </div>                            
-                        </div>
-                        <center>
-                            <asp:Button ID="btnConfirmaTransferencia" runat="server" Text="Confirmar Transferência" 
-                                CssClass="btn btn-success btn-rounded" OnClientClick="javascript:return confirm('Tem certeza que deseja transferir a solicitação?');" 
-                                OnClick="btnConfirmaTransferencia_Click"></asp:Button>                            
-                        </center>
-                        <br />
-                    </div>                    
-                    <div class="collapse" id="collapseAgendar">
-                        <div class="form-group">
-                            <label class="col-lg-4 control-label">
-                                Data
-                            </label>
-                            <div class="col-lg-5">
-                                <input type="date"  class="form-control" onkeyup="formataData(this,event);" runat="server" id="txtData"  MaxLength="10"/>
-                            </div>                            
-                        </div>
-                        <div class="form-group">
-                            <label class="col-lg-4 control-label">
-                                Horário de
-                            </label>                            
-                            <div class="col-lg-3">
-                                <input type="time" class="form-control" runat="server" id="txtHoraInicial"  MaxLength="5"/>
-                            </div>                            
-                            <label class="col-lg-1 control-label">
-                                até
-                            </label>
-                            <div class="col-lg-3">
-                                <input type="time" class="form-control" runat="server" id="txtHoraFinal"  MaxLength="5"/>
-                            </div>              
-                        </div>                        
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="descricao">
-                                Descrição
-                            </label>
-                            <div class="col-md-8">                                
-                                <textarea id="txtDescricaoAgendamento" class="form-control input-md" runat="server" placeholder="Descrever o agendamento" maxlength="50"></textarea>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">
+                                        Data
+                                    </label>
+                                    <div class="col-md-8">
+                                        <input type="date" class="form-control" onkeyup="formataData(this,event);" runat="server" id="txtData"  MaxLength="10"/>
+                                    </div>                            
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">
+                                        Hora
+                                    </label>                            
+                                    <div class="col-md-5">                                        
+                                        <input type="time" class="form-control" runat="server" id="txtHoraInicial"  MaxLength="5" placeholder="Horário inicial"/>
+                                    </div>                                                    
+                                    <div class="col-md-5">
+                                        <input type="time" class="form-control" runat="server" id="txtHoraFinal"  MaxLength="5" placeholder="Horário final"/>
+                                    </div>              
+                                </div>                        
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label" for="descricao">
+                                        Detalhes
+                                    </label>
+                                    <div class="col-md-10">                                        
+                                        <textarea id="txtDescricaoAgendamento" class="form-control input-md" runat="server" placeholder="Descrever o agendamento" maxlength="50"></textarea>
+                                    </div>
+                                </div>                                
+                            </div>
+                            <div class="modal-footer">
+                                <asp:Button ID="btnAgendar" runat="server" Text="Realizar Agendamento"
+                                 CssClass="btn btn-success" OnClick="btnAgendar_Click" data-dismiss="modal"></asp:Button>   
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
                             </div>
                         </div>
-                        <center>                           
-                            <asp:Button ID="btnAgendar" runat="server" Text="Realizar Agendamento"
-                                CssClass="btn btn-success btn-rounded" OnClick="btnAgendar_Click"></asp:Button>  
-                        </center>
                     </div>
+                </div>               
+                   <!-- ==============  FIM MODAL AGENDAR================= --> 
+                    <!--========================= MODAL TRANSFERIR =================== -->                        
+                    <div id="modalTransferir" class="modal fade" role="dialog">                    
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">                            
+                            <h3 class="modal-title">Transferir a solicitação</h3>
+                        </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label class="col-lg-4 control-label">
+                                        Transferir para:
+                                    </label>
+                                    <div class="col-lg-8">
+                                        <asp:DropDownList runat="server" ID="ddLocal" CssClass="form-control"
+                                        placeholder="Selecione...">
+                                        </asp:DropDownList>
+                                    </div>                            
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <asp:Button ID="btnConfirmaTransferencia" runat="server" Text="Confirmar Transferência" 
+                                CssClass="btn btn-success" OnClientClick="javascript:return confirm('Tem certeza que deseja transferir a solicitação?');" 
+                                OnClick="btnConfirmaTransferencia_Click"></asp:Button>  
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>     
+                    <!--===================== FIM MODAL TRANSFERIR=================== -->    
                 </fieldset> 
                 </asp:Panel>           
             </div>
         </div>
     </div>
-</div>
 </asp:Content>

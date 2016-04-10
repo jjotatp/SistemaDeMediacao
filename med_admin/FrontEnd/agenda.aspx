@@ -2,11 +2,13 @@
 <%@ MasterType VirtualPath="~/med_admin.master"  %>
 <asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">           
     <div class="col-md-3">
-        <div class="panel panel-default">             
-            <div class="panel-heading clearfix">
-                <center>
-                    <h5><asp:Label ID="txtTexto" runat="server" class="text-center"/></h5>
-                </center>
+        <div class="panel panel-color panel-primary">             
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <center>
+                        <asp:Label ID="txtTexto" runat="server"/>
+                    </center>
+                </h4>
             </div>
             <div class="panel-body clearfix">
                 <div class="form-group">
@@ -72,10 +74,14 @@
         </div>        
     </div>
     <div class="col-md-9">        
-        <div class="panel panel-default">             
+        <div class="panel panel-primary">             
             <div class="panel-heading clearfix">
                 <center>
-                    <h4><asp:Label ID="lblTituloLista" runat="server" class="text-center" Text="Agendamentos"/></h4>
+                    <h4 class="panel-title">
+                        <i class="ion-chatbubble-working">
+                        </i>
+                        Agendamentos
+                    </h4>                    
                 </center>                                    
             </div>
                         
@@ -104,7 +110,7 @@
                 <asp:TemplateField HeaderStyle-HorizontalAlign="Right">                    
                     <HeaderStyle HorizontalAlign="Right" />
                     <ItemTemplate>                                                 
-                        <asp:LinkButton ID="btnVisualizar" CssClass="btn btn-xs btn-default" 
+                        <asp:LinkButton ID="btnVisualizar" CssClass="btn btn-xs btn-info" 
                             runat="server" UseSubmitBehavior="false"
                             CommandName="Visualizar" 
                             CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" 

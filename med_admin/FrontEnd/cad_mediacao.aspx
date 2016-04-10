@@ -10,7 +10,7 @@ CodeBehind="cad_mediacao.aspx.cs" Inherits="FrontEnd.cad_mediacao" %>
             </div>
             <!--==============DECLARAÇÃO DAS PARTES==============-->            
             <div class="col-md-12">
-                <div class="panel panel-color panel-danger">
+                <div class="panel panel-color panel-primary">
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             Declaração das partes envolvidas
@@ -35,7 +35,7 @@ CodeBehind="cad_mediacao.aspx.cs" Inherits="FrontEnd.cad_mediacao" %>
             </div>
             <!--====================DADOS DA MEDIAÇÃO===============-->
             <div class="col-md-12">
-                <div class="panel panel-color panel-danger">
+                <div class="panel panel-color panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">
                             <i class="ion-chatbubble">
@@ -105,7 +105,7 @@ CodeBehind="cad_mediacao.aspx.cs" Inherits="FrontEnd.cad_mediacao" %>
         </div>          
         <div class="form-group">
             <div style="text-align: center;" class="col-md-10 col-md-offset-1">                
-                <asp:Button CssClass="btn btn-danger w-lg btn-rounded" runat="server" ID="btnGerarTermo" Text="Gerar Termo" OnClick="btnGerarTermo_Click"/>
+                <asp:Button CssClass="btn btn-success" runat="server" ID="btnGerarTermo" Text="Gerar Termo" OnClick="btnGerarTermo_Click"/>
             </div>
         </div>        
     </asp:Content>

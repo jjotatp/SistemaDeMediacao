@@ -2,26 +2,17 @@
     CodeBehind="cad_local.aspx.cs" Inherits="FrontEnd.cad_local" %>
 <%@ MasterType VirtualPath="~/med_admin.master"  %>
     <asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">              
-        <div class="">
-            <div class="container">
-                <h3>
-                    Cadastro - Núcleo de Mediação
-                </h3>
-                <p>
-                    Faça o cadastro dos Núcleos de Mediação
-                </p>
-                                               
+        <div class="col-sm-10 col-sm-offset-1">
+            <div class="panel panel-color panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        Cadastro de Núcleo de Mediação
+                    </h4>
+                </div>                                               
                 <div class="panel-body">
                     <fieldset>
                         <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">
-                                ID
-                            </label>
-                            <div class="col-md-1">                            
-                                <asp:Label runat="server" class="alert-info form-control" ID="txtID" ></asp:Label>
-                            </div>
-                        </div>
+                        <asp:Label runat="server" ID="txtID" hidden="hidden"></asp:Label>                         
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="nome">
                                 Nome
@@ -115,12 +106,12 @@
                                 <input type="checkbox" id="cbbAtivo" runat="server" data-toggle="toggle" data-on="Ativo" data-off="Inativo"/>
                             </div>
                         </div>
-                        <div class="col-md-offset-3">
-                            <asp:Button runat="server" id="btnSalvar" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5"
-                            OnClick="btnSalvar_Click" Text="Salvar"/>
-                            <asp:Button runat="server" id="btnListar" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5"
+                        <div class="col-md-offset-4">
+                            <asp:Button runat="server" id="btnSalvar" class="btn btn-success"
+                            OnClick="btnSalvar_Click" Text="Salvar" />
+                            <asp:Button runat="server" id="btnListar" class="btn btn-info"
                             OnClick="btnListar_Click" Text="Listar" />
-                            <asp:Button runat="server" id="btnLimpar" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5"
+                            <asp:Button runat="server" id="btnLimpar" class="btn btn-warning"
                             OnClick="btnLimpar_Click" Text="Limpar" />
                         </div>
                     </fieldset>
