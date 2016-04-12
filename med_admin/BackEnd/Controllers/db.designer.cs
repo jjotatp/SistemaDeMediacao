@@ -188,6 +188,14 @@ namespace BackEnd.Controllers
 			}
 		}
 		
+		public System.Data.Linq.Table<v_mediador> v_mediadors
+		{
+			get
+			{
+				return this.GetTable<v_mediador>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.alteraCidade")]
 		public int alteraCidade([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string nome, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string estado)
 		{
@@ -3837,6 +3845,87 @@ namespace BackEnd.Controllers
 		{
 			this.SendPropertyChanging();
 			entity.agendamento = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.v_mediadores")]
+	public partial class v_mediador
+	{
+		
+		private int _ID;
+		
+		private string _Nome;
+		
+		private string _Patente;
+		
+		private string _Nucleo;
+		
+		public v_mediador()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nome", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string Nome
+		{
+			get
+			{
+				return this._Nome;
+			}
+			set
+			{
+				if ((this._Nome != value))
+				{
+					this._Nome = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Patente", DbType="VarChar(50)")]
+		public string Patente
+		{
+			get
+			{
+				return this._Patente;
+			}
+			set
+			{
+				if ((this._Patente != value))
+				{
+					this._Patente = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nucleo", DbType="VarChar(100)")]
+		public string Nucleo
+		{
+			get
+			{
+				return this._Nucleo;
+			}
+			set
+			{
+				if ((this._Nucleo != value))
+				{
+					this._Nucleo = value;
+				}
+			}
 		}
 	}
 }

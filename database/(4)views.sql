@@ -13,7 +13,6 @@ as
 			l.logradouro Logradouro, l.telefone Telefone, l.numero 'Número', l.ativo
 	from locais l
 	left join cidades c on (l.id_cidade = c.id)
-
 go
 
 select * from v_nucleos

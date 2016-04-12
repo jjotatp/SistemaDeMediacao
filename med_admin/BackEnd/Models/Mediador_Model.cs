@@ -66,13 +66,13 @@ namespace BackEnd.Models
             }
         }
 
-        public List<mediador> ListarPorNome(string Nome)
+        public List<v_mediador> ListarPorNome(string Nome)
         {
             using (dbDataContext db = getDataContext())
             {
                 Nome = "%" + Nome + "%";
-                String sSql = "select * from mediadores m where m.nome like {0}";
-                var query = db.ExecuteQuery<mediador>(sSql, Nome);
+                String sSql = "select * from v_mediadores m where m.Nome like {0}";
+                var query = db.ExecuteQuery<v_mediador>(sSql, Nome);
                 return query.ToList(); 
             }
         }

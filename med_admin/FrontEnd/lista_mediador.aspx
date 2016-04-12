@@ -27,27 +27,27 @@
                 <Columns>
                     <asp:TemplateField HeaderText="ID">
                         <ItemTemplate>
-                            <%#Eval("id") %>
+                            <%#Eval("ID") %>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Nome">
                         <ItemTemplate>
-                            <%#Eval("nome") %>
+                            <%#Eval("Nome") %>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Patente" >
                         <ItemTemplate>
-                            <%#Eval("patente") %>
+                            <%#Eval("Patente") %>
                         </ItemTemplate>
                     </asp:TemplateField> 
                     <asp:TemplateField HeaderText="Núcleo de mediação" >
                         <ItemTemplate>
-                            <%#Eval("local.nome") %>
+                            <%#Eval("Nucleo") %>
                         </ItemTemplate>
                     </asp:TemplateField> 
                                 
                     <asp:ButtonField CommandName="Editar" HeaderStyle-Width="40" Text="Editar" runat="server">
-                        <ControlStyle CssClass="btn btn-xs btn-default"/>                         
+                        <ControlStyle CssClass="btn btn-xs btn-info"/>                         
                         <HeaderStyle Width="40px"></HeaderStyle>
                     </asp:ButtonField>
                 

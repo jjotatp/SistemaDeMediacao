@@ -25,7 +25,7 @@ namespace FrontEnd
             Mediador_Model model = new Mediador_Model();
 
             // asp:repeater
-            gdvLista.DataSource = model.Listar();
+            gdvLista.DataSource = model.ListarPorNome(txtNome.Text);
             gdvLista.DataBind();
 
             if (gdvLista.Rows.Count > 0)
@@ -37,10 +37,7 @@ namespace FrontEnd
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
-            Mediador_Model model = new Mediador_Model();
-
-            gdvLista.DataSource = model.ListarPorNome(txtNome.Text);
-            gdvLista.DataBind();
+            PreencherGrid();
         }
 
         protected void gdvLista_RowCommand(object sender, GridViewCommandEventArgs e)
