@@ -68,7 +68,6 @@ namespace BackEnd.Models
         {
             using (dbDataContext db = getDataContext())
             {
-
                 String sSql = "select * from cidades C where C.nome like '%" + Nome + "%' ";
                 var query = db.ExecuteQuery<cidade>(sSql);
                 return query.ToList();

@@ -15,46 +15,56 @@ namespace FrontEnd
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-                        
+            if (!IsPostBack)
+            {
+                // CARREGAR IMAGEM PEGANDO O ID NO GET
+            }
         }
 
         protected void btnCarregarImagem_Click(object sender, EventArgs e)
         {
-            if (uplImagemCarregada.PostedFile != null && uplImagemCarregada.PostedFile.FileName != "")
+            try
             {
-                // passa a imagem para a variável uploadedImage
-                //byte[] imageSize = new byte[uplImagemCarregada.PostedFile.ContentLength];
-                //HttpPostedFile uploadedImage = uplImagemCarregada.PostedFile;
-                //uploadedImage.InputStream.Read(imageSize, 0, (int)uplImagemCarregada.PostedFile.ContentLength);                
-
-                // se não existe, cria a pasta IMAGES no servidor
-                String caminho = Server.MapPath(@"~\Images\");
-                String nome = uplImagemCarregada.FileName;
-                
-                // verifica se o nome do arquivo é maior que 50 caracteres
-                if (nome.Length > 50)
+                if (uplImagemCarregada.PostedFile != null && uplImagemCarregada.PostedFile.FileName != "")
                 {
-                    Master.Alerta("Nome de arquivo muito grande para carregar.");
-                    return;
+                    // passa a imagem para a variável uploadedImage
+                    //byte[] imageSize = new byte[uplImagemCarregada.PostedFile.ContentLength];
+                    //HttpPostedFile uploadedImage = uplImagemCarregada.PostedFile;
+                    //uploadedImage.InputStream.Read(imageSize, 0, (int)uplImagemCarregada.PostedFile.ContentLength);                
+
+                    // se não existe, cria a pasta IMAGES no servidor
+                    String caminho = Server.MapPath(@"~\Images\");
+                    String nome = uplImagemCarregada.FileName;
+
+                    // verifica se o nome do arquivo é maior que 50 caracteres
+                    if (nome.Length > 50)
+                    {
+                        Master.Alerta("Nome de arquivo muito grande para carregar.");
+                        return;
+                    }
+
+                    if (!Directory.Exists(caminho))
+                    {
+                        Directory.CreateDirectory(caminho);
+                    }
+
+                    String arquivo = caminho + nome;
+
+                    // salva a imagem carregada apenas se ela não está salva
+                    if (!File.Exists(arquivo))
+                    {
+                        uplImagemCarregada.SaveAs(arquivo);
+                    }
+                    // ajusta o nome para o imageurl aceitar
+                    caminho = @"..\Images\";
+                    arquivo = caminho + nome;
+                    // carrega a imagem no componente Image
+                    imgImagemCarregada.ImageUrl = caminho + nome;
                 }
-
-                if ( ! Directory.Exists(caminho))
-                {
-                    Directory.CreateDirectory(caminho);
-                }
-
-                String arquivo = caminho + nome;
-
-                // salva a imagem carregada apenas se ela não está salva
-                if (!File.Exists(arquivo))
-                {
-                    uplImagemCarregada.SaveAs(arquivo);
-                }                
-                // ajusta o nome para o imageurl aceitar
-                caminho = @"..\Images\";
-                arquivo = caminho + nome;
-                // carrega a imagem no componente Image
-                imgImagemCarregada.ImageUrl = caminho+nome;                
+            }
+            catch(Exception error)
+            {
+                Master.Alerta(error.Message);
             }
         }        
 

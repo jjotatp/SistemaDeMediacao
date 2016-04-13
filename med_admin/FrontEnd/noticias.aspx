@@ -1,14 +1,33 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/med_admin.Master" AutoEventWireup="true" CodeBehind="noticias.aspx.cs" Inherits="FrontEnd.noticias" %>
 <%@ MasterType VirtualPath="~/med_admin.master"  %>
 <asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">
-    <div class="container">
-                <div class="container">
-                    <a href="noticia_publicar.aspx" class="btn btn-block btn-warning" role="button">Postar Nova Notícia</a>
-                    <br>
+    <div class="col-sm-10 col-sm-offset-1">
+        <div class="panel panel-color panel-primary">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    Notícias
+                </h4>
+            </div>                                                   
+            <div class="panel-body">
+                <div class="col-sm-12">
+                    <div class="col-md-3">
+                        <input class="form-control input-md" id="txtDataInicioAtividade" type="date" runat="server" />
+                    </div>
+                    <div class="col-md-4">
+                        <asp:TextBox ID="txtTitulo" CssClass="form-control" runat="server"
+                        placeholder="Buscar notícia">
+                        </asp:TextBox>
+                    </div>
+                    <div class="col-md-2">
+                        <asp:Button CssClass="btn btn-info" runat="server" ID="btnBuscar" Text="Buscar" OnClick="btnBuscar_Click"/>
+                    </div>
+                    <a href="noticia_publicar.aspx" class="btn btn-success pull-right" role="button">Postar Nova Notícia</a>
                 </div>
-                <section id="artigos">
-                    <div class="container">
-                        <div class="col-md-12">
+                <div class="col-sm-12">
+                    <br />
+                    <asp:ScriptManager ID ="scriptManager" runat="server" />
+                    <asp:UpdatePanel ID="updtPanel" runat="server" UpdateMode="Conditional">                                                                       
+                        <ContentTemplate>                                
                             <div class="row">
                                 <% foreach (BackEnd.Controllers.noticia n in listaNoticias)
                                     { %>
@@ -22,11 +41,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                <% } %>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                                <% } %>  
+                            </div>                                
+                        </ContentTemplate>
+                        <%--<Triggers> 
+                            <asp:PostBackTrigger ControlID="" /> 
+                        </Triggers>--%>
+                    </asp:UpdatePanel>   
+                </div>
             </div>
+        </div>
+    </div>
 </asp:Content>
+

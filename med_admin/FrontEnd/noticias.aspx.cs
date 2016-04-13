@@ -16,10 +16,27 @@ namespace FrontEnd
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                txtDataInicioAtividade.Value = DateTime.Today.ToString("yyyy-MM-dd");
+            }            
+
+            Listar();
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            Listar();
+
+            // inserir o foreach dentro de um update panel e carregar aqui
+            updtPanel.Update();
+        }
+
+        protected void Listar()
+        {
             Noticia_Model model = new Noticia_Model();
 
-            listaNoticias = model.Listar();        
-            
+            listaNoticias = model.Listar(DateTime.Parse(txtDataInicioAtividade.Value), txtTitulo.Text);
         }
     }
 }
