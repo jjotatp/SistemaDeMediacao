@@ -17,21 +17,79 @@ namespace FrontEnd
         {
             if (!IsPostBack)
             {
-                // CARREGAR IMAGEM PEGANDO O ID NO GET
+                // CARREGAR NOTÍCIA PEGANDO O ID NO GET
+                if (Request.QueryString["ID"] != null)
+                {
+                    btnSalvarNoticia.Text = "Salvar Notícia";
+
+                    int id = int.Parse(Request.QueryString["ID"]);
+                    Noticia_Model m = new Noticia_Model();
+                    noticia nt = new noticia();
+
+                    nt = m.Obter(id);
+
+                    txtTituloNoticia.Text = nt.titulo_postagem;
+                    edtNoticia.Value = nt.corpo_noticia;
+
+                    // continuar aqui, carregar a imagem que é trazida do banco
+
+                    String url = nt.imagem_caminho + nt.imagem_nome;
+
+                    imgImagemCarregada.ImageUrl = url;
+                }
+                else
+                {
+                    btnSalvarNoticia.Text = "Publicar Notícia";
+                }
             }
         }
 
         protected void btnCarregarImagem_Click(object sender, EventArgs e)
         {
+            Carregar();
+        }        
+
+        protected void btnSalvarNoticia_Click(object sender, EventArgs e)
+        {
+            if (Validar())
+            {
+                // pega apenas o nome do arquivo para poder remontar o caminho para o servidor
+                String caminho = @"..\Images\";
+                String nome = Path.GetFileName(imgImagemCarregada.ImageUrl);
+
+                // declara objeto noticia
+                noticia n = new noticia();
+                // declara objeto noticia_model
+                Noticia_Model model = new Noticia_Model();
+                // pega o mediador logado
+                mediador med = Session["med"] as mediador;
+
+                n.titulo_postagem = txtTituloNoticia.Text;
+                n.corpo_noticia = edtNoticia.Value;
+                n.data_postagem = DateTime.Now;
+                n.id_local = med.id_local;
+                n.id_mediador = med.id;
+                n.imagem_caminho = caminho;
+                n.imagem_nome = nome;
+
+                if (model.Inserir(n))
+                {
+                    Master.Sucesso("Notícia postada!");
+                    Response.Redirect("noticias.aspx");
+                }
+                else
+                {
+                    Master.Alerta("Erro: " + model.message);
+                }
+            }
+        }
+
+        protected void Carregar()
+        {
             try
             {
                 if (uplImagemCarregada.PostedFile != null && uplImagemCarregada.PostedFile.FileName != "")
                 {
-                    // passa a imagem para a variável uploadedImage
-                    //byte[] imageSize = new byte[uplImagemCarregada.PostedFile.ContentLength];
-                    //HttpPostedFile uploadedImage = uplImagemCarregada.PostedFile;
-                    //uploadedImage.InputStream.Read(imageSize, 0, (int)uplImagemCarregada.PostedFile.ContentLength);                
-
                     // se não existe, cria a pasta IMAGES no servidor
                     String caminho = Server.MapPath(@"~\Images\");
                     String nome = uplImagemCarregada.FileName;
@@ -62,43 +120,27 @@ namespace FrontEnd
                     imgImagemCarregada.ImageUrl = caminho + nome;
                 }
             }
-            catch(Exception error)
+            catch (Exception error)
             {
                 Master.Alerta(error.Message);
             }
-        }        
+        }
 
-        protected void btnSalvarNoticia_Click(object sender, EventArgs e)
+        protected bool Validar()
         {
-            // pega apenas o nome do arquivo para poder remontar o caminho para o servidor
-            String caminho = @"..\Images\";
-            String nome = Path.GetFileName(imgImagemCarregada.ImageUrl);
-
-            // declara objeto noticia
-            noticia n = new noticia();
-            // declara objeto noticia_model
-            Noticia_Model model = new Noticia_Model();
-            // pega o mediador logado
-            mediador med = Session["med"] as mediador;
-
-            n.titulo_postagem = txtTituloNoticia.Text;
-            n.corpo_noticia = edtNoticia.Value;
-            n.data_postagem = DateTime.Now;
-            n.id_local = med.id_local;
-            n.id_mediador = med.id;
-            n.imagem_caminho = caminho;
-            n.imagem_nome = nome;
-            
-            if (model.Inserir(n))
+            // verifica se foi selecionada imagem no FILEUPLOAD mas não foi carregada para o IMGURL
+            if ( (uplImagemCarregada.PostedFile != null && uplImagemCarregada.PostedFile.FileName != "")
+                && ( imgImagemCarregada.ImageUrl == "" ) )
             {
-                Master.Sucesso("Notícia postada!");
-                Response.Redirect("noticias.aspx");
+                Master.Alerta("Após selecionar a imagem, é necessário carregá-la.");
+                return false;
             }
-            else
-            {
-                Master.Alerta("Erro: " + model.message);
-            }
+            return true;
+        }
 
+        protected void btnVoltar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("noticias.aspx");
         }
     }
 }

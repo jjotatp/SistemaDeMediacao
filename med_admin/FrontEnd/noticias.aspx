@@ -33,15 +33,21 @@
                                     { %>
                                 <div class="col-sm-6 col-md-3">
                                     <div class="thumbnail">
-                                        <img src="<%: n.imagem_caminho + n.imagem_nome %>" alt="<%: n.imagem_nome %>">
-                                        <div class="caption">
-                                            <h3><%: n.titulo_postagem %></h3>
-                                            <p><%: n.corpo_noticia %></p>
-                                            <%--<p><a href="#" class="btn btn-danger" role="button">Leia Mais</a> <a href="editar-noticias.html" class="btn btn-warning" role="button">Editar</a></p>--%>
-                                        </div>
+                                        <a href="noticia_publicar.aspx?ID=<%: n.id %>">
+                                            <img src="<%: n.imagem_caminho + n.imagem_nome %>" alt="<%: n.imagem_nome %>">
+                                            <div class="caption">
+                                                <h3><%: n.titulo_postagem %></h3>
+                                                <p><%: n.corpo_noticia %></p>
+                                                <%--<p><a href="#" class="btn btn-danger" role="button">Leia Mais</a> <a href="editar-noticias.html" class="btn btn-warning" role="button">Editar</a></p>--%>
+                                            </div>
+                                        </a>
                                     </div>
                                 </div>
-                                <% } %>  
+                                <% } %> 
+                                <% if (listaNoticias.Count < 1)
+                                   { %> 
+                                    <h4>Nenhuma Notícia encontrada</h4>
+                                <% } %>
                             </div>                                
                         </ContentTemplate>
                         <%--<Triggers> 

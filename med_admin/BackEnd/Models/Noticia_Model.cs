@@ -63,5 +63,14 @@ namespace BackEnd.Models
             }
         }
 
+        public noticia Obter(int id)
+        {
+            using (dbDataContext db = getDataContext())
+            {
+                Table<noticia> tb = db.GetTable<noticia>();
+                return tb.First(p => p.id == id);
+            }
+        }
+
     }
 }

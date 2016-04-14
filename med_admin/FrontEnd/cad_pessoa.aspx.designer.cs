@@ -157,15 +157,6 @@ namespace FrontEnd {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtTelefone;
         
         /// <summary>
-        /// btnMediacao control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMediacao;
-        
-        /// <summary>
         /// btnNovaPessoa control.
         /// </summary>
         /// <remarks>
@@ -173,6 +164,15 @@ namespace FrontEnd {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnNovaPessoa;
+        
+        /// <summary>
+        /// btnMediacao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMediacao;
         
         /// <summary>
         /// Master property.

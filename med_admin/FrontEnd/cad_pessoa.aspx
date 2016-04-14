@@ -16,7 +16,7 @@ CodeBehind="cad_pessoa.aspx.cs" Inherits="FrontEnd.cad_pessoa" %>
                     </label>
                     <div class="col-sm-6">
                         <asp:TextBox AutoPostBack="true" CssClass="form-control" id="txtCPF" onkeypress="formataCPF(this,event);"
-                        OnTextChanged="txtCPF_TextChanged" runat="server">
+                        OnTextChanged="txtCPF_TextChanged" runat="server" required="required">
                         </asp:TextBox>
                         <asp:Label id="lblAlertaCPF" runat="server" Font-Size="8pt" ForeColor="#00CC66">
                         </asp:Label>
@@ -168,10 +168,10 @@ CodeBehind="cad_pessoa.aspx.cs" Inherits="FrontEnd.cad_pessoa" %>
         </div>
         <div class="form-group">
             <div class="container text-right">
-                <asp:Button id="btnMediacao" runat="server" CssClass="btn btn-success"
-                Text="Ir Para a Mediação" OnClick="btnMediacao_Click" />
-                <asp:button id="btnNovaPessoa" runat="server" cssclass="btn btn-default"
+                <asp:button id="btnNovaPessoa" runat="server" cssclass="btn btn-success"
                 text="Registrar uma outra parte" OnClick="btnNovaPessoa_Click" />
+                <asp:Button id="btnMediacao" runat="server" CssClass="btn btn-purple"
+                Text="Ir para a mediação" OnClick="btnMediacao_Click" />
             </div>
         </div>
     </div>
