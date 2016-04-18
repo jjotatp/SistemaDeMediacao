@@ -20,6 +20,18 @@
                                 </Triggers>
                             </asp:UpdatePanel>                                                    
                         </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="">
+                            Prioridade da Notícia
+                        </label>
+                        <div class="col-sm-9">
+                            <asp:DropDownList runat="server" ID="ddPrioridade" CssClass="form-control">
+                                <asp:ListItem Text="3 - Listagem Padrão" Value="3" Selected="True"></asp:ListItem>
+                                <asp:ListItem Text="2 - Painel Lateral" Value="2" ></asp:ListItem>
+                                <asp:ListItem Text="1 - Painel Superior" Value="1" ></asp:ListItem>
+                            </asp:DropDownList>
+                        </div>
+                    </div>
                     </div>
                 <div class="col-md-5">                                         
                     <asp:UpdatePanel ID="updtPanel" runat="server" UpdateMode="Conditional">                                                                       
@@ -39,7 +51,8 @@
                     <div class="clearfix">
                         <asp:Button CssClass="btn btn-success" runat="server" ID="btnSalvarNoticia" OnClick="btnSalvarNoticia_Click" Text="Publicar Notícia"
                             OnClientClick="javascript:return confirm('Você confirma a publicação dessa notícia?');"/>
-                        <asp:Button CssClass="btn btn-default" runat="server" ID="btnVoltar" Text="Voltar" OnClick="btnVoltar_Click"/>
+                        <a class="btn btn-default" runat="server" ID="btnVoltar" href="noticias.aspx">Voltar</a>
+                        
                     </div>                              
                 </center>
         

@@ -72,15 +72,6 @@
                             <a href="index.aspx"><i class="ion-home "></i>Início</a>
                         </li>
                         <li class="has-submenu">
-                            <a href="solicitacoes.aspx"><i class="ion-chatbubble"></i>Solicitações</a>
-                        </li>
-                        <li class="has-submenu">
-                            <a href="agenda.aspx"><i class="ion-chatbubble-working"></i>Agendamentos</a>
-                        </li>
-                        <li class="has-submenu">
-                            <a href="noticias.aspx"><i class="ion-calendar "></i>Noticias</a>
-                        </li>
-                        <li class="has-submenu">
                             <a href="#"><i class="ion-person-stalker"></i>Cadastros</a>
                             <ul class="submenu">
                                 <li><a href="cad_mediador.aspx">Mediador</a></li>
@@ -90,12 +81,20 @@
                             </ul>
                         </li>
                         <li class="has-submenu">
-                            <a href="lista_mediacoes.aspx"><i class="ion-folder"></i>Histórico</a>
+                            <a href="solicitacoes.aspx"><i class="ion-chatbubble"></i>Solicitações</a>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="agenda.aspx"><i class="ion-chatbubble-working"></i>Agendamentos</a>
                         </li>
                         <li class="has-submenu">
                             <a href="cad_pessoa.aspx"><i class="ion-document"></i>Nova Mediação</a>
                         </li>
-
+                        <li class="has-submenu">
+                            <a href="lista_mediacoes.aspx"><i class="ion-folder"></i>Histórico</a>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="noticias.aspx"><i class="ion-calendar "></i>Noticias</a>
+                        </li>
                     </ul>
                     <!-- End navigation menu -->
                 </div>

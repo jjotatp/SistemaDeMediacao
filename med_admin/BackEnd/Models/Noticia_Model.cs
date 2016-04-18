@@ -40,6 +40,27 @@ namespace BackEnd.Models
             }
         }
 
+        public bool Alterar(noticia a)
+        {
+            try
+            {
+                dbDataContext context = getDataContext();
+                Table<noticia> tb = getTable();
+
+                context.alteraNoticia(a.id, a.imagem_nome, a.imagem_caminho, a.titulo_postagem, 
+                    a.corpo_noticia, a.id_mediador_edicao, a.id_local_edicao, a.data_edicao, a.prioridade);
+
+                tb.Context.SubmitChanges();
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                message = e.Message;
+                return false;
+            }
+        }
+
         public List<noticia> Listar()
         {
             using (dbDataContext db = getDataContext())

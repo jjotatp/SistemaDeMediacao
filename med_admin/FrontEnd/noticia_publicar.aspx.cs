@@ -18,29 +18,34 @@ namespace FrontEnd
             if (!IsPostBack)
             {
                 // CARREGAR NOTÍCIA PEGANDO O ID NO GET
-                if (Request.QueryString["ID"] != null)
-                {
-                    btnSalvarNoticia.Text = "Salvar Notícia";
+                CarregarNoticia();
+            }
+        }
 
-                    int id = int.Parse(Request.QueryString["ID"]);
-                    Noticia_Model m = new Noticia_Model();
-                    noticia nt = new noticia();
+        protected void CarregarNoticia()
+        {
+            if (Request.QueryString["ID"] != null)
+            {
+                int id = int.Parse(Request.QueryString["ID"]);
 
-                    nt = m.Obter(id);
+                Noticia_Model m = new Noticia_Model();
+                noticia nt = new noticia();
 
-                    txtTituloNoticia.Text = nt.titulo_postagem;
-                    edtNoticia.Value = nt.corpo_noticia;
+                nt = m.Obter(id);
 
-                    // continuar aqui, carregar a imagem que é trazida do banco
+                txtTituloNoticia.Text = nt.titulo_postagem;
+                edtNoticia.Value = nt.corpo_noticia;
+                ddPrioridade.SelectedValue = nt.prioridade.ToString();
 
-                    String url = nt.imagem_caminho + nt.imagem_nome;
+                String url = nt.imagem_caminho + nt.imagem_nome;
 
-                    imgImagemCarregada.ImageUrl = url;
-                }
-                else
-                {
-                    btnSalvarNoticia.Text = "Publicar Notícia";
-                }
+                imgImagemCarregada.ImageUrl = url;
+
+                btnSalvarNoticia.Text = "Salvar Notícia";
+            }
+            else
+            {
+                btnSalvarNoticia.Text = "Publicar Notícia";
             }
         }
 
@@ -51,6 +56,9 @@ namespace FrontEnd
 
         protected void btnSalvarNoticia_Click(object sender, EventArgs e)
         {
+            // Validar se esta editando ou postando nova
+            //    se estiver editando, alterar somente titulo, texto e imagem, mantendo a data
+
             if (Validar())
             {
                 // pega apenas o nome do arquivo para poder remontar o caminho para o servidor
@@ -66,20 +74,46 @@ namespace FrontEnd
 
                 n.titulo_postagem = txtTituloNoticia.Text;
                 n.corpo_noticia = edtNoticia.Value;
-                n.data_postagem = DateTime.Now;
-                n.id_local = med.id_local;
-                n.id_mediador = med.id;
                 n.imagem_caminho = caminho;
                 n.imagem_nome = nome;
+                n.prioridade = int.Parse(ddPrioridade.SelectedValue);
 
-                if (model.Inserir(n))
+                if (Request.QueryString["ID"] != null)
                 {
-                    Master.Sucesso("Notícia postada!");
-                    Response.Redirect("noticias.aspx");
+                    // se tem ID, altera
+                    int id = int.Parse(Request.QueryString["ID"]);
+
+                    n.id = id;
+                    n.data_edicao = DateTime.Now;
+                    n.id_local_edicao = med.id_local;
+                    n.id_mediador_edicao = med.id;
+
+                    if (model.Alterar(n))
+                    {
+                        Master.Sucesso("Notícia alterada!");
+                        Response.Redirect("noticias.aspx");
+                    }
+                    else
+                    {
+                        Master.Alerta("Erro: " + model.message);
+                    }
                 }
                 else
                 {
-                    Master.Alerta("Erro: " + model.message);
+                    // se não tem ID, insere
+                    n.data_postagem = DateTime.Now;
+                    n.id_local = med.id_local;
+                    n.id_mediador = med.id;
+
+                    if (model.Inserir(n))
+                    {
+                        Master.Sucesso("Notícia postada!");
+                        Response.Redirect("noticias.aspx");
+                    }
+                    else
+                    {
+                        Master.Alerta("Erro: " + model.message);
+                    }
                 }
             }
         }
@@ -136,11 +170,6 @@ namespace FrontEnd
                 return false;
             }
             return true;
-        }
-
-        protected void btnVoltar_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("noticias.aspx");
         }
     }
 }
