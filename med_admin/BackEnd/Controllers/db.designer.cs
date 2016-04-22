@@ -196,6 +196,14 @@ namespace BackEnd.Controllers
 			}
 		}
 		
+		public System.Data.Linq.Table<casos_mediacao> casos_mediacaos
+		{
+			get
+			{
+				return this.GetTable<casos_mediacao>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.alteraCidade")]
 		public int alteraCidade([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string nome, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string estado)
 		{
@@ -270,6 +278,13 @@ namespace BackEnd.Controllers
 		public int alteraNoticia([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string imagem_nome, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(MAX)")] string imagem_caminho, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string titulo_postagem, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(500)")] string corpo_noticia, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_mediador_edicao, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_local_edicao, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> data_edicao, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> prioridade)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id, imagem_nome, imagem_caminho, titulo_postagem, corpo_noticia, id_mediador_edicao, id_local_edicao, data_edicao, prioridade);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.alteraCasosMediacao")]
+		public int alteraCasosMediacao([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_tipo_registro, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string titulo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string descricao, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string imagem_nome, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(MAX)")] string imagem_caminho, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_mediador, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> prioridade, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> data)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_tipo_registro, titulo, descricao, imagem_nome, imagem_caminho, id_mediador, prioridade, data);
 			return ((int)(result.ReturnValue));
 		}
 	}
@@ -4166,6 +4181,159 @@ namespace BackEnd.Controllers
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.casos_mediacao")]
+	public partial class casos_mediacao
+	{
+		
+		private int _id_tipo_registro;
+		
+		private string _titulo;
+		
+		private string _descricao;
+		
+		private string _imagem_nome;
+		
+		private string _imagem_caminho;
+		
+		private int _id_mediador;
+		
+		private System.Nullable<int> _prioridade;
+		
+		private System.DateTime _data;
+		
+		public casos_mediacao()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_tipo_registro", DbType="Int NOT NULL")]
+		public int id_tipo_registro
+		{
+			get
+			{
+				return this._id_tipo_registro;
+			}
+			set
+			{
+				if ((this._id_tipo_registro != value))
+				{
+					this._id_tipo_registro = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_titulo", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string titulo
+		{
+			get
+			{
+				return this._titulo;
+			}
+			set
+			{
+				if ((this._titulo != value))
+				{
+					this._titulo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_descricao", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string descricao
+		{
+			get
+			{
+				return this._descricao;
+			}
+			set
+			{
+				if ((this._descricao != value))
+				{
+					this._descricao = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_imagem_nome", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string imagem_nome
+		{
+			get
+			{
+				return this._imagem_nome;
+			}
+			set
+			{
+				if ((this._imagem_nome != value))
+				{
+					this._imagem_nome = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_imagem_caminho", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string imagem_caminho
+		{
+			get
+			{
+				return this._imagem_caminho;
+			}
+			set
+			{
+				if ((this._imagem_caminho != value))
+				{
+					this._imagem_caminho = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_mediador", DbType="Int NOT NULL")]
+		public int id_mediador
+		{
+			get
+			{
+				return this._id_mediador;
+			}
+			set
+			{
+				if ((this._id_mediador != value))
+				{
+					this._id_mediador = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_prioridade", DbType="Int")]
+		public System.Nullable<int> prioridade
+		{
+			get
+			{
+				return this._prioridade;
+			}
+			set
+			{
+				if ((this._prioridade != value))
+				{
+					this._prioridade = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_data", DbType="DateTime NOT NULL")]
+		public System.DateTime data
+		{
+			get
+			{
+				return this._data;
+			}
+			set
+			{
+				if ((this._data != value))
+				{
+					this._data = value;
+				}
 			}
 		}
 	}

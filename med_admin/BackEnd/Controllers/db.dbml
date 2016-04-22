@@ -96,6 +96,7 @@
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="descricao" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Association Name="tipo_registro_mediacao" Member="mediacaos" Storage="_mediacoes" ThisKey="id" OtherKey="id_tipo_registro" Type="mediacao" />
+      <Association Name="tipo_registro_casos_mediacao" Member="casos_mediacaos" ThisKey="id" OtherKey="id_tipo_registro" Type="casos_mediacao" />
     </Type>
   </Table>
   <Table Name="dbo.v_nucleos" Member="v_nucleos">
@@ -123,6 +124,7 @@
       <Association Name="mediador_mediacao" Member="mediacaos" Storage="_mediacoes" ThisKey="id" OtherKey="id_mediador" Type="mediacao" />
       <Association Name="mediador_noticia" Member="noticias" ThisKey="id" OtherKey="id_mediador" Type="noticia" />
       <Association Name="mediador_noticia1" Member="noticias1" ThisKey="id" OtherKey="id_mediador_edicao" Type="noticia" />
+      <Association Name="mediador_casos_mediacao" Member="casos_mediacaos" ThisKey="id" OtherKey="id_mediador" Type="casos_mediacao" />
       <Association Name="local_mediador" Member="local" ThisKey="id_local" OtherKey="id" Type="local" IsForeignKey="true" />
     </Type>
   </Table>
@@ -185,6 +187,20 @@
       <Association Name="local_noticia1" Member="local1" ThisKey="id_local_edicao" OtherKey="id" Type="local" IsForeignKey="true" />
       <Association Name="mediador_noticia" Member="mediador" ThisKey="id_mediador" OtherKey="id" Type="mediador" IsForeignKey="true" />
       <Association Name="mediador_noticia1" Member="mediador1" ThisKey="id_mediador_edicao" OtherKey="id" Type="mediador" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.casos_mediacao" Member="casos_mediacaos">
+    <Type Name="casos_mediacao">
+      <Column Name="id_tipo_registro" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="titulo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="descricao" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="imagem_nome" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="imagem_caminho" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="id_mediador" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="prioridade" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="data" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="mediador_casos_mediacao" Member="mediador" ThisKey="id_mediador" OtherKey="id" Type="mediador" IsForeignKey="true" />
+      <Association Name="tipo_registro_casos_mediacao" Member="tipo_registro" ThisKey="id_tipo_registro" OtherKey="id" Type="tipo_registro" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.alteraCidade" Method="alteraCidade">
@@ -299,6 +315,17 @@
     <Parameter Name="id_local_edicao" Type="System.Int32" DbType="Int" />
     <Parameter Name="data_edicao" Type="System.DateTime" DbType="DateTime" />
     <Parameter Name="prioridade" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.alteraCasosMediacao" Method="alteraCasosMediacao">
+    <Parameter Name="id_tipo_registro" Type="System.Int32" DbType="Int" />
+    <Parameter Name="titulo" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="descricao" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="imagem_nome" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="imagem_caminho" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="id_mediador" Type="System.Int32" DbType="Int" />
+    <Parameter Name="prioridade" Type="System.Int32" DbType="Int" />
+    <Parameter Name="data" Type="System.DateTime" DbType="DateTime" />
     <Return Type="System.Int32" />
   </Function>
 </Database>

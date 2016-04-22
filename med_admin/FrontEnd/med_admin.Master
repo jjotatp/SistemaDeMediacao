@@ -95,6 +95,9 @@
                         <li class="has-submenu">
                             <a href="noticias.aspx"><i class="ion-calendar "></i>Noticias</a>
                         </li>
+                        <li class="has-submenu">
+                            <a href="config_site.aspx"><i class="ion-calendar "></i>Configurações Site</a>
+                        </li>
                     </ul>
                     <!-- End navigation menu -->
                 </div>

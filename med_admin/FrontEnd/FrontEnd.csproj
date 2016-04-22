@@ -98,6 +98,9 @@
     <Content Include="agenda.aspx" />
     <Content Include="cad_mediacao.aspx" />
     <Content Include="cad_pessoa.aspx" />
+    <Content Include="casos_mediacao_lista.aspx" />
+    <Content Include="caso_mediacao.aspx" />
+    <Content Include="config_site.aspx" />
     <Content Include="Content\css\bootstrap-toggle.min.css" />
     <Content Include="Content\css\ion.rangeSlider.css" />
     <Content Include="Content\css\ion.rangeSlider.skinFlat.css" />
@@ -419,6 +422,27 @@
     </Compile>
     <Compile Include="cad_tipo_registro.aspx.designer.cs">
       <DependentUpon>cad_tipo_registro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="casos_mediacao_lista.aspx.cs">
+      <DependentUpon>casos_mediacao_lista.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="casos_mediacao_lista.aspx.designer.cs">
+      <DependentUpon>casos_mediacao_lista.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="caso_mediacao.aspx.cs">
+      <DependentUpon>caso_mediacao.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="caso_mediacao.aspx.designer.cs">
+      <DependentUpon>caso_mediacao.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="config_site.aspx.cs">
+      <DependentUpon>config_site.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="config_site.aspx.designer.cs">
+      <DependentUpon>config_site.aspx</DependentUpon>
     </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>

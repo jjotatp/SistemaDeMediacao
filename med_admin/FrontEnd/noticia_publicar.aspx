@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-sm-12 col-md-7">
                     <div class="card-box">
-                        <h4 class="m-t-0 header-title"><b>Conteúdo da Notícia</b></h4>                                                                                
+                        <h4 class="m-t-0 header-title"><b>Conteúdo da Notícia</b></h4>
                             <div class="input-group">
                                 <span class="input-group-addon">Título</span>
                                 <asp:TextBox runat="server" ID="txtTituloNoticia" CssClass="form-control" required="required" MaxLength="50"></asp:TextBox>
