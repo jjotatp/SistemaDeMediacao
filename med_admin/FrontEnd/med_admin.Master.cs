@@ -71,5 +71,20 @@ namespace FrontEnd
                 return 0;
             }
         }
+
+        public mediador GetLogado()
+        {
+            // função que pega o mediador logado e retorna
+            mediador med = new mediador();
+            try
+            {
+                med = Session["med"] as mediador;
+            }
+            catch (Exception e)
+            {
+                Alerta(e.Message);
+            }
+            return med;
+        }
     }
 }

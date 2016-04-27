@@ -96,7 +96,7 @@
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="descricao" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Association Name="tipo_registro_mediacao" Member="mediacaos" Storage="_mediacoes" ThisKey="id" OtherKey="id_tipo_registro" Type="mediacao" />
-      <Association Name="tipo_registro_casos_mediacao" Member="casos_mediacaos" ThisKey="id" OtherKey="id_tipo_registro" Type="casos_mediacao" />
+      <Association Name="tipo_registro_casos_mediacao" Member="casos_mediacao" ThisKey="id" OtherKey="id_tipo_registro" Type="casos_mediacao" Cardinality="One" />
     </Type>
   </Table>
   <Table Name="dbo.v_nucleos" Member="v_nucleos">
@@ -191,7 +191,7 @@
   </Table>
   <Table Name="dbo.casos_mediacao" Member="casos_mediacaos">
     <Type Name="casos_mediacao">
-      <Column Name="id_tipo_registro" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_tipo_registro" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="titulo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="descricao" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="imagem_nome" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />

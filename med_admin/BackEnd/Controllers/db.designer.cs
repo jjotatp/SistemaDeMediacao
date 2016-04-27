@@ -60,6 +60,9 @@ namespace BackEnd.Controllers
     partial void Insertnoticia(noticia instance);
     partial void Updatenoticia(noticia instance);
     partial void Deletenoticia(noticia instance);
+    partial void Insertcasos_mediacao(casos_mediacao instance);
+    partial void Updatecasos_mediacao(casos_mediacao instance);
+    partial void Deletecasos_mediacao(casos_mediacao instance);
     #endregion
 		
 		public dbDataContext() : 
@@ -2241,6 +2244,8 @@ namespace BackEnd.Controllers
 		
 		private EntitySet<mediacao> _mediacoes;
 		
+		private EntityRef<casos_mediacao> _casos_mediacao;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -2254,6 +2259,7 @@ namespace BackEnd.Controllers
 		public tipo_registro()
 		{
 			this._mediacoes = new EntitySet<mediacao>(new Action<mediacao>(this.attach_mediacoes), new Action<mediacao>(this.detach_mediacoes));
+			this._casos_mediacao = default(EntityRef<casos_mediacao>);
 			OnCreated();
 		}
 		
@@ -2307,6 +2313,35 @@ namespace BackEnd.Controllers
 			set
 			{
 				this._mediacoes.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tipo_registro_casos_mediacao", Storage="_casos_mediacao", ThisKey="id", OtherKey="id_tipo_registro", IsUnique=true, IsForeignKey=false)]
+		public casos_mediacao casos_mediacao
+		{
+			get
+			{
+				return this._casos_mediacao.Entity;
+			}
+			set
+			{
+				casos_mediacao previousValue = this._casos_mediacao.Entity;
+				if (((previousValue != value) 
+							|| (this._casos_mediacao.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._casos_mediacao.Entity = null;
+						previousValue.tipo_registro = null;
+					}
+					this._casos_mediacao.Entity = value;
+					if ((value != null))
+					{
+						value.tipo_registro = this;
+					}
+					this.SendPropertyChanged("casos_mediacao");
+				}
 			}
 		}
 		
@@ -2540,6 +2575,8 @@ namespace BackEnd.Controllers
 		
 		private EntitySet<noticia> _noticias1;
 		
+		private EntitySet<casos_mediacao> _casos_mediacaos;
+		
 		private EntityRef<local> _local;
 		
     #region Extensibility Method Definitions
@@ -2567,6 +2604,7 @@ namespace BackEnd.Controllers
 			this._mediacoes = new EntitySet<mediacao>(new Action<mediacao>(this.attach_mediacoes), new Action<mediacao>(this.detach_mediacoes));
 			this._noticias = new EntitySet<noticia>(new Action<noticia>(this.attach_noticias), new Action<noticia>(this.detach_noticias));
 			this._noticias1 = new EntitySet<noticia>(new Action<noticia>(this.attach_noticias1), new Action<noticia>(this.detach_noticias1));
+			this._casos_mediacaos = new EntitySet<casos_mediacao>(new Action<casos_mediacao>(this.attach_casos_mediacaos), new Action<casos_mediacao>(this.detach_casos_mediacaos));
 			this._local = default(EntityRef<local>);
 			OnCreated();
 		}
@@ -2754,6 +2792,19 @@ namespace BackEnd.Controllers
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="mediador_casos_mediacao", Storage="_casos_mediacaos", ThisKey="id", OtherKey="id_mediador")]
+		public EntitySet<casos_mediacao> casos_mediacaos
+		{
+			get
+			{
+				return this._casos_mediacaos;
+			}
+			set
+			{
+				this._casos_mediacaos.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="local_mediador", Storage="_local", ThisKey="id_local", OtherKey="id", IsForeignKey=true)]
 		public local local
 		{
@@ -2842,6 +2893,18 @@ namespace BackEnd.Controllers
 		{
 			this.SendPropertyChanging();
 			entity.mediador1 = null;
+		}
+		
+		private void attach_casos_mediacaos(casos_mediacao entity)
+		{
+			this.SendPropertyChanging();
+			entity.mediador = this;
+		}
+		
+		private void detach_casos_mediacaos(casos_mediacao entity)
+		{
+			this.SendPropertyChanging();
+			entity.mediador = null;
 		}
 	}
 	
@@ -4186,8 +4249,10 @@ namespace BackEnd.Controllers
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.casos_mediacao")]
-	public partial class casos_mediacao
+	public partial class casos_mediacao : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _id_tipo_registro;
 		
@@ -4205,11 +4270,40 @@ namespace BackEnd.Controllers
 		
 		private System.DateTime _data;
 		
+		private EntityRef<mediador> _mediador;
+		
+		private EntityRef<tipo_registro> _tipo_registro;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_tipo_registroChanging(int value);
+    partial void Onid_tipo_registroChanged();
+    partial void OntituloChanging(string value);
+    partial void OntituloChanged();
+    partial void OndescricaoChanging(string value);
+    partial void OndescricaoChanged();
+    partial void Onimagem_nomeChanging(string value);
+    partial void Onimagem_nomeChanged();
+    partial void Onimagem_caminhoChanging(string value);
+    partial void Onimagem_caminhoChanged();
+    partial void Onid_mediadorChanging(int value);
+    partial void Onid_mediadorChanged();
+    partial void OnprioridadeChanging(System.Nullable<int> value);
+    partial void OnprioridadeChanged();
+    partial void OndataChanging(System.DateTime value);
+    partial void OndataChanged();
+    #endregion
+		
 		public casos_mediacao()
 		{
+			this._mediador = default(EntityRef<mediador>);
+			this._tipo_registro = default(EntityRef<tipo_registro>);
+			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_tipo_registro", DbType="Int NOT NULL")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_tipo_registro", DbType="Int NOT NULL", IsPrimaryKey=true)]
 		public int id_tipo_registro
 		{
 			get
@@ -4220,7 +4314,15 @@ namespace BackEnd.Controllers
 			{
 				if ((this._id_tipo_registro != value))
 				{
+					if (this._tipo_registro.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_tipo_registroChanging(value);
+					this.SendPropertyChanging();
 					this._id_tipo_registro = value;
+					this.SendPropertyChanged("id_tipo_registro");
+					this.Onid_tipo_registroChanged();
 				}
 			}
 		}
@@ -4236,7 +4338,11 @@ namespace BackEnd.Controllers
 			{
 				if ((this._titulo != value))
 				{
+					this.OntituloChanging(value);
+					this.SendPropertyChanging();
 					this._titulo = value;
+					this.SendPropertyChanged("titulo");
+					this.OntituloChanged();
 				}
 			}
 		}
@@ -4252,7 +4358,11 @@ namespace BackEnd.Controllers
 			{
 				if ((this._descricao != value))
 				{
+					this.OndescricaoChanging(value);
+					this.SendPropertyChanging();
 					this._descricao = value;
+					this.SendPropertyChanged("descricao");
+					this.OndescricaoChanged();
 				}
 			}
 		}
@@ -4268,7 +4378,11 @@ namespace BackEnd.Controllers
 			{
 				if ((this._imagem_nome != value))
 				{
+					this.Onimagem_nomeChanging(value);
+					this.SendPropertyChanging();
 					this._imagem_nome = value;
+					this.SendPropertyChanged("imagem_nome");
+					this.Onimagem_nomeChanged();
 				}
 			}
 		}
@@ -4284,7 +4398,11 @@ namespace BackEnd.Controllers
 			{
 				if ((this._imagem_caminho != value))
 				{
+					this.Onimagem_caminhoChanging(value);
+					this.SendPropertyChanging();
 					this._imagem_caminho = value;
+					this.SendPropertyChanged("imagem_caminho");
+					this.Onimagem_caminhoChanged();
 				}
 			}
 		}
@@ -4300,7 +4418,15 @@ namespace BackEnd.Controllers
 			{
 				if ((this._id_mediador != value))
 				{
+					if (this._mediador.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_mediadorChanging(value);
+					this.SendPropertyChanging();
 					this._id_mediador = value;
+					this.SendPropertyChanged("id_mediador");
+					this.Onid_mediadorChanged();
 				}
 			}
 		}
@@ -4316,7 +4442,11 @@ namespace BackEnd.Controllers
 			{
 				if ((this._prioridade != value))
 				{
+					this.OnprioridadeChanging(value);
+					this.SendPropertyChanging();
 					this._prioridade = value;
+					this.SendPropertyChanged("prioridade");
+					this.OnprioridadeChanged();
 				}
 			}
 		}
@@ -4332,8 +4462,100 @@ namespace BackEnd.Controllers
 			{
 				if ((this._data != value))
 				{
+					this.OndataChanging(value);
+					this.SendPropertyChanging();
 					this._data = value;
+					this.SendPropertyChanged("data");
+					this.OndataChanged();
 				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="mediador_casos_mediacao", Storage="_mediador", ThisKey="id_mediador", OtherKey="id", IsForeignKey=true)]
+		public mediador mediador
+		{
+			get
+			{
+				return this._mediador.Entity;
+			}
+			set
+			{
+				mediador previousValue = this._mediador.Entity;
+				if (((previousValue != value) 
+							|| (this._mediador.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._mediador.Entity = null;
+						previousValue.casos_mediacaos.Remove(this);
+					}
+					this._mediador.Entity = value;
+					if ((value != null))
+					{
+						value.casos_mediacaos.Add(this);
+						this._id_mediador = value.id;
+					}
+					else
+					{
+						this._id_mediador = default(int);
+					}
+					this.SendPropertyChanged("mediador");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tipo_registro_casos_mediacao", Storage="_tipo_registro", ThisKey="id_tipo_registro", OtherKey="id", IsForeignKey=true)]
+		public tipo_registro tipo_registro
+		{
+			get
+			{
+				return this._tipo_registro.Entity;
+			}
+			set
+			{
+				tipo_registro previousValue = this._tipo_registro.Entity;
+				if (((previousValue != value) 
+							|| (this._tipo_registro.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tipo_registro.Entity = null;
+						previousValue.casos_mediacao = null;
+					}
+					this._tipo_registro.Entity = value;
+					if ((value != null))
+					{
+						value.casos_mediacao = this;
+						this._id_tipo_registro = value.id;
+					}
+					else
+					{
+						this._id_tipo_registro = default(int);
+					}
+					this.SendPropertyChanged("tipo_registro");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

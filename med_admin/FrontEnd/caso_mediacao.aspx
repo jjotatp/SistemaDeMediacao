@@ -13,11 +13,16 @@
                 <div class="col-sm-12 col-md-7">
                     <div class="card-box">
                             <div class="form-group">
-                                <label class="col-sm-3 control-label" for="sel1">
+                                <label class="col-sm-3 control-label" for="ddTipoRegistro">
                                     Tipo de Registro
                                 </label>
-                                <div class="col-sm-9">
-                                    <asp:DropDownList ID="ddTipoRegistro" runat="server" CssClass="form-control" OnSelectedIndexChanged="ddTipoRegistro_SelectedIndexChanged"></asp:DropDownList>     
+                                <div class="col-sm-6">
+                                    <asp:DropDownList ID="ddTipoRegistro" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                        <asp:ListItem Value="0" Text="Selecione um tipo"></asp:ListItem>
+                                    </asp:DropDownList>     
+                                </div>
+                                <div class="col-sm-3">
+                                    <asp:button CssClass="btn btn-info" runat="server" id="btnChecarTipoReg" text="Verificar e Carregar" OnClick="btnChecarTipoReg_OnClick"/>
                                 </div>
                             </div>  
                             <div class="form-group">
@@ -25,7 +30,7 @@
                                     Título
                                 </label>
                                 <div class="col-sm-9">
-                                    <asp:TextBox runat="server" ID="txtTitulo" CssClass="form-control" required="required" MaxLength="50"></asp:TextBox>
+                                    <asp:TextBox runat="server" ID="txtTitulo" CssClass="form-control" MaxLength="50"></asp:TextBox>
                                 </div>
                             </div>
                             <%--<asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">                                                                       
@@ -35,7 +40,7 @@
                                     Descrição
                                 </label>
                                 <div class="col-sm-9">
-                                    <textarea runat="server" class="form-control" id="txtDescricao" style="height: 100px;" maxlength="100" required="required"/>
+                                    <textarea runat="server" class="form-control" id="txtDescricao" style="height: 100px;" maxlength="100" />
                                 </div>
                             </div>                                           
                                 
@@ -72,7 +77,7 @@
                 </div>    
                 <div class="col-md-12">
                     <div class="col-md-offset-5">
-                        <asp:Button CssClass="btn btn-success" runat="server" ID="btnSalvar" Text="Salvar"
+                        <asp:Button CssClass="btn btn-success" runat="server" ID="btnSalvar" Text="Salvar" OnClick="btnSalvar_Click"
                             OnClientClick="javascript:return confirm('Você confirma a publicação desse caso de mediação?');"/>
                         <a class="btn btn-default" runat="server" ID="btnVoltar" href="casos_mediacao_lista.aspx">Voltar</a>                
                     </div>

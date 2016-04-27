@@ -33,3 +33,38 @@ C:\programas\Sistema de mediacao\trunk\med_admin\FrontEnd\obj\Debug\FrontEnd.dll
 C:\programas\Sistema de mediacao\trunk\med_admin\FrontEnd\obj\Debug\FrontEnd.pdb
 C:\programas\Sistema de mediacao\trunk\med_admin\FrontEnd\bin\BackEnd.dll
 C:\programas\Sistema de mediacao\trunk\med_admin\FrontEnd\bin\BackEnd.pdb
+C:\programas\TCC\med_admin\FrontEnd\bin\ApplicationInsights.config
+C:\programas\TCC\med_admin\FrontEnd\bin\roslyn\csc.exe
+C:\programas\TCC\med_admin\FrontEnd\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\programas\TCC\med_admin\FrontEnd\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\programas\TCC\med_admin\FrontEnd\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\programas\TCC\med_admin\FrontEnd\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\programas\TCC\med_admin\FrontEnd\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\programas\TCC\med_admin\FrontEnd\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\programas\TCC\med_admin\FrontEnd\bin\roslyn\System.Collections.Immutable.dll
+C:\programas\TCC\med_admin\FrontEnd\bin\roslyn\System.Reflection.Metadata.dll
+C:\programas\TCC\med_admin\FrontEnd\bin\roslyn\vbc.exe
+C:\programas\TCC\med_admin\FrontEnd\bin\roslyn\VBCSCompiler.exe
+C:\programas\TCC\med_admin\FrontEnd\bin\roslyn\VBCSCompiler.exe.config
+C:\programas\TCC\med_admin\FrontEnd\bin\FrontEnd.dll.config
+C:\programas\TCC\med_admin\FrontEnd\bin\FrontEnd.dll
+C:\programas\TCC\med_admin\FrontEnd\bin\FrontEnd.pdb
+C:\programas\TCC\med_admin\FrontEnd\bin\BackEnd.dll
+C:\programas\TCC\med_admin\FrontEnd\bin\Microsoft.AI.Agent.Intercept.dll
+C:\programas\TCC\med_admin\FrontEnd\bin\Microsoft.AI.DependencyCollector.dll
+C:\programas\TCC\med_admin\FrontEnd\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\programas\TCC\med_admin\FrontEnd\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\programas\TCC\med_admin\FrontEnd\bin\Microsoft.AI.Web.dll
+C:\programas\TCC\med_admin\FrontEnd\bin\Microsoft.AI.WindowsServer.dll
+C:\programas\TCC\med_admin\FrontEnd\bin\Microsoft.ApplicationInsights.dll
+C:\programas\TCC\med_admin\FrontEnd\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\programas\TCC\med_admin\FrontEnd\bin\BackEnd.pdb
+C:\programas\TCC\med_admin\FrontEnd\bin\Microsoft.AI.DependencyCollector.xml
+C:\programas\TCC\med_admin\FrontEnd\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\programas\TCC\med_admin\FrontEnd\bin\Microsoft.AI.Web.xml
+C:\programas\TCC\med_admin\FrontEnd\bin\Microsoft.AI.WindowsServer.xml
+C:\programas\TCC\med_admin\FrontEnd\bin\Microsoft.ApplicationInsights.xml
+C:\programas\TCC\med_admin\FrontEnd\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\programas\TCC\med_admin\FrontEnd\obj\Debug\FrontEnd.csprojResolveAssemblyReference.cache
+C:\programas\TCC\med_admin\FrontEnd\obj\Debug\FrontEnd.dll
+C:\programas\TCC\med_admin\FrontEnd\obj\Debug\FrontEnd.pdb

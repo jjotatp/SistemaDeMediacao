@@ -5,3 +5,10 @@ C:\programas\Sistema de mediacao\trunk\med_admin\BackEnd\obj\Debug\BackEnd.cspro
 C:\programas\Sistema de mediacao\trunk\med_admin\BackEnd\obj\Debug\BackEnd.dll
 C:\programas\Sistema de mediacao\trunk\med_admin\BackEnd\obj\Debug\BackEnd.pdb
 C:\programas\Sistema de mediacao\trunk\med_admin\BackEnd\bin\Debug\DocX.dll
+C:\programas\TCC\med_admin\BackEnd\bin\Debug\BackEnd.dll.config
+C:\programas\TCC\med_admin\BackEnd\bin\Debug\BackEnd.dll
+C:\programas\TCC\med_admin\BackEnd\bin\Debug\BackEnd.pdb
+C:\programas\TCC\med_admin\BackEnd\bin\Debug\DocX.dll
+C:\programas\TCC\med_admin\BackEnd\obj\Debug\BackEnd.csprojResolveAssemblyReference.cache
+C:\programas\TCC\med_admin\BackEnd\obj\Debug\BackEnd.dll
+C:\programas\TCC\med_admin\BackEnd\obj\Debug\BackEnd.pdb

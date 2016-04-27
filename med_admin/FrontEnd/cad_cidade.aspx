@@ -27,8 +27,8 @@ CodeBehind="cad_cidade.aspx.cs" Inherits="FrontEnd.cad_cidade" %>
                         <label class="col-md-4 control-label" for="nome">
                             Estado
                         </label>
-                        <div class="col-md-6">
-                            <asp:DropDownList CssClass="btn btn-default dropdown-toggle" ID="ddEstado" runat="server" ToolTip="Selecione o estado">                                                                
+                        <div class="col-md-2">
+                            <asp:DropDownList CssClass="form-control" ID="ddEstado" runat="server" ToolTip="Selecione o estado">                                                                
                             </asp:DropDownList>
                         </div>
                     </div>

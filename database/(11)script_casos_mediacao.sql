@@ -1,6 +1,6 @@
 create table casos_mediacao
 (
-	id_tipo_registro int not null references tipos_registro(id),
+	id_tipo_registro int not null references tipos_registro(id) primary key,
 	titulo varchar(50) not null,
 	descricao varchar(100) not null,
 	imagem_nome varchar(50) not null,
