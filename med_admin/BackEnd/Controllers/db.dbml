@@ -125,6 +125,7 @@
       <Association Name="mediador_noticia" Member="noticias" ThisKey="id" OtherKey="id_mediador" Type="noticia" />
       <Association Name="mediador_noticia1" Member="noticias1" ThisKey="id" OtherKey="id_mediador_edicao" Type="noticia" />
       <Association Name="mediador_casos_mediacao" Member="casos_mediacaos" ThisKey="id" OtherKey="id_mediador" Type="casos_mediacao" />
+      <Association Name="mediador_depoimento" Member="depoimentos" ThisKey="id" OtherKey="id_mediador" Type="depoimento" />
       <Association Name="local_mediador" Member="local" ThisKey="id_local" OtherKey="id" Type="local" IsForeignKey="true" />
     </Type>
   </Table>
@@ -201,6 +202,18 @@
       <Column Name="data" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Association Name="mediador_casos_mediacao" Member="mediador" ThisKey="id_mediador" OtherKey="id" Type="mediador" IsForeignKey="true" />
       <Association Name="tipo_registro_casos_mediacao" Member="tipo_registro" ThisKey="id_tipo_registro" OtherKey="id" Type="tipo_registro" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.depoimentos" Member="depoimentos">
+    <Type Name="depoimento">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nome" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="idade" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="descricao" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="id_mediador" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="data" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="mediador_depoimento" Member="mediador" ThisKey="id_mediador" OtherKey="id" Type="mediador" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.alteraCidade" Method="alteraCidade">
@@ -326,6 +339,16 @@
     <Parameter Name="id_mediador" Type="System.Int32" DbType="Int" />
     <Parameter Name="prioridade" Type="System.Int32" DbType="Int" />
     <Parameter Name="data" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.alteraDepoimento" Method="alteraDepoimento">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nome" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="idade" Type="System.Int32" DbType="Int" />
+    <Parameter Name="descricao" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="id_mediador" Type="System.Int32" DbType="Int" />
+    <Parameter Name="data" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="status" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
 </Database>

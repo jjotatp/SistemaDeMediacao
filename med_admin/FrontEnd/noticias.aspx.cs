@@ -36,7 +36,14 @@ namespace FrontEnd
         {
             Noticia_Model model = new Noticia_Model();
 
-            listaNoticias = model.Listar(DateTime.Parse(txtDataInicioAtividade.Value), txtTitulo.Text);
+            if (txtDataInicioAtividade.Value != "")
+            {
+                listaNoticias = model.Listar(DateTime.Parse(txtDataInicioAtividade.Value), txtTitulo.Text);
+            }
+            else
+            {
+                listaNoticias = model.Listar(txtTitulo.Text);
+            }
         }
     }
 }

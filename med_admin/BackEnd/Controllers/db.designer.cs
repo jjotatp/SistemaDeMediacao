@@ -63,6 +63,9 @@ namespace BackEnd.Controllers
     partial void Insertcasos_mediacao(casos_mediacao instance);
     partial void Updatecasos_mediacao(casos_mediacao instance);
     partial void Deletecasos_mediacao(casos_mediacao instance);
+    partial void Insertdepoimento(depoimento instance);
+    partial void Updatedepoimento(depoimento instance);
+    partial void Deletedepoimento(depoimento instance);
     #endregion
 		
 		public dbDataContext() : 
@@ -207,6 +210,14 @@ namespace BackEnd.Controllers
 			}
 		}
 		
+		public System.Data.Linq.Table<depoimento> depoimentos
+		{
+			get
+			{
+				return this.GetTable<depoimento>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.alteraCidade")]
 		public int alteraCidade([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string nome, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string estado)
 		{
@@ -288,6 +299,13 @@ namespace BackEnd.Controllers
 		public int alteraCasosMediacao([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_tipo_registro, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string titulo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string descricao, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string imagem_nome, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(MAX)")] string imagem_caminho, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_mediador, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> prioridade, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> data)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_tipo_registro, titulo, descricao, imagem_nome, imagem_caminho, id_mediador, prioridade, data);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.alteraDepoimento")]
+		public int alteraDepoimento([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string nome, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idade, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string descricao, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_mediador, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> data, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> status)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id, nome, idade, descricao, id_mediador, data, status);
 			return ((int)(result.ReturnValue));
 		}
 	}
@@ -2577,6 +2595,8 @@ namespace BackEnd.Controllers
 		
 		private EntitySet<casos_mediacao> _casos_mediacaos;
 		
+		private EntitySet<depoimento> _depoimentos;
+		
 		private EntityRef<local> _local;
 		
     #region Extensibility Method Definitions
@@ -2605,6 +2625,7 @@ namespace BackEnd.Controllers
 			this._noticias = new EntitySet<noticia>(new Action<noticia>(this.attach_noticias), new Action<noticia>(this.detach_noticias));
 			this._noticias1 = new EntitySet<noticia>(new Action<noticia>(this.attach_noticias1), new Action<noticia>(this.detach_noticias1));
 			this._casos_mediacaos = new EntitySet<casos_mediacao>(new Action<casos_mediacao>(this.attach_casos_mediacaos), new Action<casos_mediacao>(this.detach_casos_mediacaos));
+			this._depoimentos = new EntitySet<depoimento>(new Action<depoimento>(this.attach_depoimentos), new Action<depoimento>(this.detach_depoimentos));
 			this._local = default(EntityRef<local>);
 			OnCreated();
 		}
@@ -2805,6 +2826,19 @@ namespace BackEnd.Controllers
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="mediador_depoimento", Storage="_depoimentos", ThisKey="id", OtherKey="id_mediador")]
+		public EntitySet<depoimento> depoimentos
+		{
+			get
+			{
+				return this._depoimentos;
+			}
+			set
+			{
+				this._depoimentos.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="local_mediador", Storage="_local", ThisKey="id_local", OtherKey="id", IsForeignKey=true)]
 		public local local
 		{
@@ -2902,6 +2936,18 @@ namespace BackEnd.Controllers
 		}
 		
 		private void detach_casos_mediacaos(casos_mediacao entity)
+		{
+			this.SendPropertyChanging();
+			entity.mediador = null;
+		}
+		
+		private void attach_depoimentos(depoimento entity)
+		{
+			this.SendPropertyChanging();
+			entity.mediador = this;
+		}
+		
+		private void detach_depoimentos(depoimento entity)
 		{
 			this.SendPropertyChanging();
 			entity.mediador = null;
@@ -4535,6 +4581,253 @@ namespace BackEnd.Controllers
 						this._id_tipo_registro = default(int);
 					}
 					this.SendPropertyChanged("tipo_registro");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.depoimentos")]
+	public partial class depoimento : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private string _nome;
+		
+		private System.Nullable<int> _idade;
+		
+		private string _descricao;
+		
+		private System.Nullable<int> _id_mediador;
+		
+		private System.DateTime _data;
+		
+		private System.Nullable<int> _status;
+		
+		private EntityRef<mediador> _mediador;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OnnomeChanging(string value);
+    partial void OnnomeChanged();
+    partial void OnidadeChanging(System.Nullable<int> value);
+    partial void OnidadeChanged();
+    partial void OndescricaoChanging(string value);
+    partial void OndescricaoChanged();
+    partial void Onid_mediadorChanging(System.Nullable<int> value);
+    partial void Onid_mediadorChanged();
+    partial void OndataChanging(System.DateTime value);
+    partial void OndataChanged();
+    partial void OnstatusChanging(System.Nullable<int> value);
+    partial void OnstatusChanged();
+    #endregion
+		
+		public depoimento()
+		{
+			this._mediador = default(EntityRef<mediador>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nome", DbType="VarChar(30)")]
+		public string nome
+		{
+			get
+			{
+				return this._nome;
+			}
+			set
+			{
+				if ((this._nome != value))
+				{
+					this.OnnomeChanging(value);
+					this.SendPropertyChanging();
+					this._nome = value;
+					this.SendPropertyChanged("nome");
+					this.OnnomeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idade", DbType="Int")]
+		public System.Nullable<int> idade
+		{
+			get
+			{
+				return this._idade;
+			}
+			set
+			{
+				if ((this._idade != value))
+				{
+					this.OnidadeChanging(value);
+					this.SendPropertyChanging();
+					this._idade = value;
+					this.SendPropertyChanged("idade");
+					this.OnidadeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_descricao", DbType="VarChar(100)")]
+		public string descricao
+		{
+			get
+			{
+				return this._descricao;
+			}
+			set
+			{
+				if ((this._descricao != value))
+				{
+					this.OndescricaoChanging(value);
+					this.SendPropertyChanging();
+					this._descricao = value;
+					this.SendPropertyChanged("descricao");
+					this.OndescricaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_mediador", DbType="Int")]
+		public System.Nullable<int> id_mediador
+		{
+			get
+			{
+				return this._id_mediador;
+			}
+			set
+			{
+				if ((this._id_mediador != value))
+				{
+					if (this._mediador.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_mediadorChanging(value);
+					this.SendPropertyChanging();
+					this._id_mediador = value;
+					this.SendPropertyChanged("id_mediador");
+					this.Onid_mediadorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_data", DbType="DateTime NOT NULL")]
+		public System.DateTime data
+		{
+			get
+			{
+				return this._data;
+			}
+			set
+			{
+				if ((this._data != value))
+				{
+					this.OndataChanging(value);
+					this.SendPropertyChanging();
+					this._data = value;
+					this.SendPropertyChanged("data");
+					this.OndataChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="Int")]
+		public System.Nullable<int> status
+		{
+			get
+			{
+				return this._status;
+			}
+			set
+			{
+				if ((this._status != value))
+				{
+					this.OnstatusChanging(value);
+					this.SendPropertyChanging();
+					this._status = value;
+					this.SendPropertyChanged("status");
+					this.OnstatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="mediador_depoimento", Storage="_mediador", ThisKey="id_mediador", OtherKey="id", IsForeignKey=true)]
+		public mediador mediador
+		{
+			get
+			{
+				return this._mediador.Entity;
+			}
+			set
+			{
+				mediador previousValue = this._mediador.Entity;
+				if (((previousValue != value) 
+							|| (this._mediador.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._mediador.Entity = null;
+						previousValue.depoimentos.Remove(this);
+					}
+					this._mediador.Entity = value;
+					if ((value != null))
+					{
+						value.depoimentos.Add(this);
+						this._id_mediador = value.id;
+					}
+					else
+					{
+						this._id_mediador = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("mediador");
 				}
 			}
 		}

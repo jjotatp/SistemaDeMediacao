@@ -118,6 +118,8 @@
     <Content Include="Content\plugins\summernote\dist\lang\summernote-pt-BR.js" />
     <Content Include="Content\plugins\summernote\dist\plugin\hello\summernote-ext-hello.js" />
     <Content Include="Content\plugins\summernote\dist\plugin\specialchars\summernote-ext-specialchars.js" />
+    <Content Include="depoimentos.aspx" />
+    <Content Include="depoimento_editar.aspx" />
     <Content Include="lista_cidade.aspx" />
     <Content Include="lista_local.aspx" />
     <Content Include="lista_mediador.aspx" />
@@ -443,6 +445,20 @@
     </Compile>
     <Compile Include="config_site.aspx.designer.cs">
       <DependentUpon>config_site.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="depoimentos.aspx.cs">
+      <DependentUpon>depoimentos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="depoimentos.aspx.designer.cs">
+      <DependentUpon>depoimentos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="depoimento_editar.aspx.cs">
+      <DependentUpon>depoimento_editar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="depoimento_editar.aspx.designer.cs">
+      <DependentUpon>depoimento_editar.aspx</DependentUpon>
     </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>

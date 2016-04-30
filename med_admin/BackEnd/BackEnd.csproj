@@ -56,6 +56,7 @@
     <Compile Include="Models\Local_Model.cs" />
     <Compile Include="Models\Mediacao_Model.cs" />
     <Compile Include="Models\Mediador_Model.cs" />
+    <Compile Include="Models\Depoimento_Model.cs" />
     <Compile Include="Models\Noticia_Model.cs" />
     <Compile Include="Models\Pessoa_Model.cs" />
     <Compile Include="Models\Solicitacao_Model.cs" />

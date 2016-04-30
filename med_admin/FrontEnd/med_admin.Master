@@ -93,9 +93,6 @@
                             <a href="lista_mediacoes.aspx"><i class="ion-folder"></i>Histórico</a>
                         </li>
                         <li class="has-submenu">
-                            <a href="noticias.aspx"><i class="ion-calendar "></i>Noticias</a>
-                        </li>
-                        <li class="has-submenu">
                             <a href="config_site.aspx"><i class="ion-calendar "></i>Configurações Site</a>
                         </li>
                     </ul>

@@ -70,16 +70,33 @@ namespace BackEnd.Models
             }
         }
 
+        public List<noticia> Listar(String text)
+        {
+            IEnumerable<noticia> query;
+            text = "%" + text + "%";
+            String sql = " select n.* " +
+                         " from noticias n " +
+                         " where ((n.titulo_postagem like {0} ) or(n.corpo_noticia like {0} )) ";
+            using (dbDataContext db = getDataContext())
+            {
+                query = db.ExecuteQuery<noticia>(sql, text);
+
+                return query.ToList();
+            }
+        }
+
         public List<noticia> Listar(DateTime data,String text)
         {
+            IEnumerable<noticia> query;
+            text = "%" + text + "%";
+            String sql = " select n.* " +
+                         " from noticias n " +
+                         " where ((n.titulo_postagem like {0} ) or(n.corpo_noticia like {0} )) " +
+                         " and (n.data_postagem between {1} and {2} ) ";
             using (dbDataContext db = getDataContext())
-            {                
-                text = "%" + text + "%";
-                String sql =" select n.* " +
-                            " from noticias n " +
-                            " where (n.data_postagem between {0} and {1} ) " +
-                            " and((n.titulo_postagem like {2} ) or(n.corpo_noticia like {2} )) ";
-                var query = db.ExecuteQuery<noticia>(sql, data, data.AddDays(1), text);
+            {
+                query = db.ExecuteQuery<noticia>(sql, text, data, data.AddDays(1));
+
                 return query.ToList();
             }
         }
