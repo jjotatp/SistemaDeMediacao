@@ -5,10 +5,14 @@ create table depoimentos
 	id int not null primary key identity,
 	nome varchar(30),
 	idade int,
-	descricao varchar(100),
+	descricao varchar(200),
 	id_mediador int references mediadores(id),
 	data datetime not null,
-	status int, -- 1 = aprovado e em exibição no site; 2 = recusado e arquivado.
+	status int, 
+	-- 1 = PENDENTE
+	-- 2 = APROVADO e em exibição no site; 
+	-- 3 = RECUSADO e arquivado.
+	check ( status in (1,2,3) )
 );
 go
 
@@ -17,7 +21,7 @@ create procedure alteraDepoimento
 	@id int,
 	@nome varchar(30),
 	@idade int,
-	@descricao varchar(100),
+	@descricao varchar(200),
 	@id_mediador int,
 	@data datetime,
 	@status int

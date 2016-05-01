@@ -40,14 +40,14 @@ namespace BackEnd.Models
             }
         }
 
-        public bool Alterar(depoimento a)
+        public bool Alterar(depoimento d)
         {
             try
             {
                 dbDataContext context = getDataContext();
                 Table<depoimento> tb = getTable();
 
-                context.alteraDepoimento(a.id, a.nome, a.idade, a.descricao, a.id_mediador, a.data, a.status);
+                context.alteraDepoimento(d.id, d.nome, d.idade, d.descricao, d.id_mediador, d.data, d.status);
 
                 tb.Context.SubmitChanges();
 

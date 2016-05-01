@@ -40,20 +40,26 @@ namespace FrontEnd
             Depoimento_Model model = new Depoimento_Model();
             depoimento d = new depoimento();
             mediador med = new mediador();
+            med = Master.GetLogado();
             // salva o depoimento e volta a tela de depoimentos
             try
             {
+                d.id = int.Parse(Request.QueryString["ID"].ToString());
                 d.descricao = txtDescricao.Value;
                 d.idade = int.Parse(txtIdade.Value);
                 d.nome = txtRodape.Text;
-
-                med = Master.GetLogado();
-
                 d.id_mediador = med.id;
                 d.data = DateTime.Now;
-                d.status = 1; // STATUS 1 = APROVADO E PUBLICADO
+                d.status = 2; // STATUS 2 = APROVADO E PUBLICADO
 
-                model.Alterar(d);
+                if (model.Alterar(d))
+                {
+                    Response.Redirect("depoimentos.aspx");
+                }
+                else
+                {
+                    Master.Alerta("Erro ao editar: " + model.message);
+                }
             }
             catch ( Exception Erro )
             {
@@ -66,18 +72,23 @@ namespace FrontEnd
             Depoimento_Model model = new Depoimento_Model();
             depoimento d = new depoimento();
             mediador med = new mediador();
+            med = Master.GetLogado();
             // recusa e arquiva o depoimento e volta a tela de depoimentos
             try
             {
                 d = model.Obter(int.Parse(Request.QueryString["ID"].ToString()));
-
-                med = Master.GetLogado();
-
                 d.id_mediador = med.id;
                 d.data = DateTime.Now;
-                d.status = 2; // STATUS 2 = RECUSADO E ARQUIVADO
+                d.status = 3; // STATUS 3 = RECUSADO E ARQUIVADO
 
-                model.Alterar(d);
+                if (model.Alterar(d))
+                {
+                    Response.Redirect("depoimentos.aspx");
+                }
+                else
+                {
+                    Master.Alerta("Erro ao arquivar: " + model.message);
+                }
             }
             catch (Exception Erro)
             {
