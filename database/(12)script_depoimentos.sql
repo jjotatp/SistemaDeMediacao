@@ -8,7 +8,7 @@ create table depoimentos
 	descricao varchar(200),
 	id_mediador int references mediadores(id),
 	data datetime not null,
-	status int, 
+	status int default 1, 
 	-- 1 = PENDENTE
 	-- 2 = APROVADO e em exibição no site; 
 	-- 3 = RECUSADO e arquivado.

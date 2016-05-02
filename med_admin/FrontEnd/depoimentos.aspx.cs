@@ -28,7 +28,19 @@ namespace FrontEnd
         {
             Depoimento_Model model = new Depoimento_Model();
 
-            listaDepoimentos = model.Listar();
+            if (ddStatus.SelectedValue == "0")
+            {
+                listaDepoimentos = model.Listar();
+            }
+            else
+            {
+                listaDepoimentos = model.Listar(int.Parse(ddStatus.SelectedValue));
+            }
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            Listar();
         }
     }
 }

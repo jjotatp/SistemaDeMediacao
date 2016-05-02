@@ -78,20 +78,19 @@ namespace BackEnd.Models
             }
         }
 
-        //public List<noticia> Listar(String text)
-        //{
-        //    IEnumerable<noticia> query;
-        //    text = "%" + text + "%";
-        //    String sql = " select n.* " +
-        //                 " from noticias n " +
-        //                 " where ((n.titulo_postagem like {0} ) or(n.corpo_noticia like {0} )) ";
-        //    using (dbDataContext db = getDataContext())
-        //    {
-        //        query = db.ExecuteQuery<noticia>(sql, text);
+        public List<depoimento> Listar(int status)
+        {
+            IEnumerable<depoimento> query;
+            String sql = " select d.* " +
+                         " from depoimentos d " +
+                         " where ( d.status = {0} )";
+            using (dbDataContext db = getDataContext())
+            {
+                query = db.ExecuteQuery<depoimento>(sql, status);
 
-        //        return query.ToList();
-        //    }
-        //}
+                return query.ToList();
+            }
+        }
 
         //public List<noticia> Listar(DateTime data,String text)
         //{

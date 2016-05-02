@@ -9,12 +9,9 @@
             </div>
             <div class="panel-body">
                 <div class="col-md-12">
-                    <label class="col-sm-3 control-label" for="txtDescricao">
-                            Listar
-                        </label>
                     <div class="col-md-3">
                         <!-- Exibir campo para filtrar status dos depoimentos e exibir de acordo com o status selecionado -->
-                        <asp:dropdownlist runat="server" id="ddStatus">
+                        <asp:dropdownlist runat="server" id="ddStatus" CssClass="form-control">
                             <asp:ListItem Value="0" Text="Todos"></asp:ListItem>
                             <asp:ListItem Value="1" Text="Pendentes"></asp:ListItem>
                             <asp:ListItem Value="2" Text="Aprovados"></asp:ListItem>
@@ -28,7 +25,7 @@
                         </asp:TextBox>
                     </div>--%>
                     <div class="col-md-2">
-                        <asp:Button CssClass="btn btn-info" runat="server" ID="btnBuscar" Text="Buscar" />
+                        <asp:Button CssClass="btn btn-info" runat="server" ID="btnBuscar" Text="Buscar" OnClick="btnBuscar_Click" />
                     </div>
                 </div>
                 <div class="col-sm-12">
@@ -68,7 +65,7 @@
 
     <style type="text/css">
         .status1 { /* STATUS PENDENTE */
-            border: 3px;
+            border: 3px solid gray;
         }
         
         .status2 { /* STATUS APROVADO */
