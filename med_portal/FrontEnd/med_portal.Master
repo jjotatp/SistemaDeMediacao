@@ -6,16 +6,19 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    
     <title>Portal da Mediação</title>
 
     <!-- Bootstrap -->
-    <link href="content/css/bootstrap.min.css" rel="stylesheet">
+    <link href="content/css/bootstrap.css" rel="stylesheet">
     <link href="content/css/estilo.css" rel="stylesheet">
+
 </head>
+
 <body>
+
     <nav class="navbar navbar-default">
-        <div class="container-fluid">
+        <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
@@ -24,7 +27,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="index.html">
-                    <img src="content/img/portal-da-mediacao-logo.png"></a>
+                    <img src="content/img/portal-da-mediacao-logo.png" class="img-responsive"></a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -82,7 +85,6 @@
         </div>
     </section>
 
-    </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="content/js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

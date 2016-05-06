@@ -4181,7 +4181,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 @media (min-width: 768px) {
   .navbar {
-    border-radius: 4px;
+    
   }
 }
 @media (min-width: 768px) {
@@ -4518,19 +4518,28 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #555555;
 }
 .navbar-default .navbar-nav > li > a {
-  color: #999999;
+background-color: rgb(222, 57, 57);
+border-bottom-color: #FFC800;
+border-bottom-style: solid;
+border-width: thick;
+color: #fff;
+height: 5em;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #333333;
-  background-color: #800606;
+background-color: rgb(128, 16, 16);
+border-bottom-color: #FFC800;
+border-bottom-style: solid;
+border-width: thick;
+color: #fff;
+height: 5em;
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
-  color: #333333;
-  
-  background-color: transparent;
+color: #333333;
+background-color: #FFC800;
+border-bottom-color: rgb(222, 57, 57);
 }
 .navbar-default .navbar-nav > .disabled > a,
 .navbar-default .navbar-nav > .disabled > a:hover,
@@ -4970,8 +4979,8 @@ a.badge:focus {
   padding-top: 30px;
   padding-bottom: 30px;
   margin-bottom: 30px;
-  color: inherit;
-  background-color: #fafafa;
+  color: #ffffff;
+  background-color: transparent;
 }
 .jumbotron h1,
 .jumbotron .h1 {
@@ -7161,7 +7170,7 @@ a.list-group-item-danger.active:focus {
   background-color: #ff291c;
 }
 .jumbotron {
-  border: 1px solid #e7e7e7;
+  
   -webkit-box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.05);
 }

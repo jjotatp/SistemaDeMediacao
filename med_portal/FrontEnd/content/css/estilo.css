@@ -35,3 +35,24 @@
     background-color: #ffffff;
     box-shadow:0px -10px 50px #cccccc;
 }
+
+.header-bg{
+    background: linear-gradient( rgba(81, 0, 0, 0.8), rgb(143, 12, 12) ), url(../img/bg.jpg);
+/*  linear-gradient( rgba(0, 0, 0, 0.78), rgb(0, 0, 0) ),*/
+    background-attachment: fixed;
+    background-position:center;
+    background-size: cover;
+    width: 100%;
+    height: auto;
+    margin-top:-30px;
+}
+
+.header-box{
+    padding: 20px;
+    color: aliceblue;
+    background: linear-gradient( rgb(44, 16, 80), rgba(0, 0, 0, 0) );
+}
+
+.header-box ul{
+    list-style: none;
+}
