@@ -15,7 +15,7 @@
                     <Columns>
                         <asp:TemplateField HeaderText="Número">
                             <ItemTemplate>
-                                <%#Eval("Numero") %>
+                                <%#Eval("Numero") + " / " + DateTime.Parse(Eval("DataMediacao").ToString()).Year.ToString() %>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Tema do Conflito">
@@ -25,7 +25,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Data">
                             <ItemTemplate>
-                                <%#DateTime.Parse(Eval("Data").ToString()).ToShortDateString() %>
+                                <%# DateTime.Parse(Eval("DataMediacao").ToString()).ToShortDateString() %>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Tipo de Registro">

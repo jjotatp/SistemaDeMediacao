@@ -19,6 +19,7 @@ namespace FrontEnd
             Mediacao_Model model = new Mediacao_Model();
 
             gdvLista.DataSource = model.Historico();
+            gdvLista.DataBind();
 
             if (gdvLista.Rows.Count > 0)
             {
