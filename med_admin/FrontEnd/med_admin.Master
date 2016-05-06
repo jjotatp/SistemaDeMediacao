@@ -90,10 +90,15 @@
                             <a href="cad_pessoa.aspx"><i class="ion-document"></i>Nova Mediação</a>
                         </li>
                         <li class="has-submenu">
-                            <a href="lista_mediacoes.aspx"><i class="ion-folder"></i>Histórico</a>
+                            <a href="historico_mediacoes.aspx"><i class="ion-folder"></i>Histórico</a>
                         </li>
                         <li class="has-submenu">
-                            <a href="config_site.aspx"><i class="ion-calendar "></i>Configurações Site</a>
+                            <a href="#"><i class="ion-calendar "></i>Configurações Site</a>
+                            <ul class="submenu">
+                                <li><a href="casos_mediacao_lista.aspx">Casos de Mediação</a></li>
+                                <li><a href="depoimentos.aspx">Depoimentos</a></li>
+                                <li><a href="noticias.aspx">Notícias</a></li>
+                            </ul>
                         </li>
                     </ul>
                     <!-- End navigation menu -->

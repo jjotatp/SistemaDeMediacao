@@ -7,6 +7,8 @@ using BackEnd.Controllers;
 using System.Data.Linq;
 using System.Data.Common;
 
+using Novacode;
+
 namespace BackEnd.Models
 {
     public class Mediacao_Model
@@ -173,6 +175,51 @@ namespace BackEnd.Models
             {
                 message = e.Message;
                 return false;
+            }
+        }
+
+        public bool GerarTermoDoc(mediacao md, string caminho)
+        {
+            try
+            {
+                // caminho + numero + ano .docx
+                // ex: Desktop\002_2016.docx
+                String nomeArquivo = caminho + @" \ " + md.numero.ToString() + "_" + md.data_mediacao.Year.ToString() + ".docx";
+                // gera o documento da mediação
+                string modelo = @"..\..\modelo_med.docx";
+                using (DocX document = DocX.Load(modelo))
+                {
+                    // adiciona o nome do batalhão no arquivo
+                    document.ReplaceText("[batalhao]", md.local.nome, false);
+
+                    // salva o documento
+                    document.SaveAs(nomeArquivo);
+                }
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                message = e.Message;
+                return false;
+            }
+        }
+
+        public List<mediacao> Listar()
+        {
+            using (dbDataContext db = getDataContext())
+            {
+                Table<mediacao> tb = getTable();
+                return tb.ToList();
+            }
+        }
+
+        public List<v_historico_mediacao> Historico()
+        {
+            using (dbDataContext db = getDataContext())
+            {
+                Table<v_historico_mediacao> tb = db.GetTable<v_historico_mediacao>();
+                return tb.ToList();
             }
         }
 

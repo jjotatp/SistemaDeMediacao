@@ -12,3 +12,10 @@ C:\programas\TCC\med_admin\BackEnd\bin\Debug\DocX.dll
 C:\programas\TCC\med_admin\BackEnd\obj\Debug\BackEnd.csprojResolveAssemblyReference.cache
 C:\programas\TCC\med_admin\BackEnd\obj\Debug\BackEnd.dll
 C:\programas\TCC\med_admin\BackEnd\obj\Debug\BackEnd.pdb
+C:\programas\T C C\med_admin\BackEnd\bin\Debug\BackEnd.dll.config
+C:\programas\T C C\med_admin\BackEnd\bin\Debug\BackEnd.dll
+C:\programas\T C C\med_admin\BackEnd\bin\Debug\BackEnd.pdb
+C:\programas\T C C\med_admin\BackEnd\bin\Debug\DocX.dll
+C:\programas\T C C\med_admin\BackEnd\obj\Debug\BackEnd.csprojResolveAssemblyReference.cache
+C:\programas\T C C\med_admin\BackEnd\obj\Debug\BackEnd.dll
+C:\programas\T C C\med_admin\BackEnd\obj\Debug\BackEnd.pdb

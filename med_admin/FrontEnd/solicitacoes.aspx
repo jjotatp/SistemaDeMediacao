@@ -226,7 +226,7 @@
                             </div>
                             <div class="modal-footer">
                                 <asp:Button ID="btnAgendar" runat="server" Text="Realizar Agendamento"
-                                 CssClass="btn btn-success" OnClick="btnAgendar_Click" data-dismiss="modal"></asp:Button>   
+                                 CssClass="btn btn-success" OnClick="btnAgendar_Click"></asp:Button>   
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
                             </div>
                         </div>

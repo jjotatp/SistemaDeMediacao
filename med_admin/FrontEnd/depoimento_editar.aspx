@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/med_admin.Master" AutoEventWireup="true" CodeBehind="depoimento_editar.aspx.cs" Inherits="FrontEnd.depoimento_editar" %>
 <%@ MasterType VirtualPath="~/med_admin.master"  %>
-<asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">
-<asp:ScriptManager ID ="scriptManager" runat="server" />        
+<asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">   
     <div class="col-md-10 col-md-offset-1">
         <div class="panel panel-color panel-primary">
             <div class="panel-heading">
@@ -28,7 +27,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label" for="txtRodape">
+                        <label class="col-sm-3 control-label" for="txtIdade">
                             Idade
                         </label>
                         <div class="col-sm-6">

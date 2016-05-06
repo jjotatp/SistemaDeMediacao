@@ -100,7 +100,6 @@
     <Content Include="cad_pessoa.aspx" />
     <Content Include="casos_mediacao_lista.aspx" />
     <Content Include="caso_mediacao.aspx" />
-    <Content Include="config_site.aspx" />
     <Content Include="Content\css\bootstrap-toggle.min.css" />
     <Content Include="Content\css\ion.rangeSlider.css" />
     <Content Include="Content\css\ion.rangeSlider.skinFlat.css" />
@@ -120,6 +119,7 @@
     <Content Include="Content\plugins\summernote\dist\plugin\specialchars\summernote-ext-specialchars.js" />
     <Content Include="depoimentos.aspx" />
     <Content Include="depoimento_editar.aspx" />
+    <Content Include="historico_mediacoes.aspx" />
     <Content Include="lista_cidade.aspx" />
     <Content Include="lista_local.aspx" />
     <Content Include="lista_mediador.aspx" />
@@ -439,13 +439,6 @@
     <Compile Include="caso_mediacao.aspx.designer.cs">
       <DependentUpon>caso_mediacao.aspx</DependentUpon>
     </Compile>
-    <Compile Include="config_site.aspx.cs">
-      <DependentUpon>config_site.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="config_site.aspx.designer.cs">
-      <DependentUpon>config_site.aspx</DependentUpon>
-    </Compile>
     <Compile Include="depoimentos.aspx.cs">
       <DependentUpon>depoimentos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -459,6 +452,13 @@
     </Compile>
     <Compile Include="depoimento_editar.aspx.designer.cs">
       <DependentUpon>depoimento_editar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="historico_mediacoes.aspx.cs">
+      <DependentUpon>historico_mediacoes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="historico_mediacoes.aspx.designer.cs">
+      <DependentUpon>historico_mediacoes.aspx</DependentUpon>
     </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>

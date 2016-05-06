@@ -218,6 +218,14 @@ namespace BackEnd.Controllers
 			}
 		}
 		
+		public System.Data.Linq.Table<v_historico_mediacao> v_historico_mediacaos
+		{
+			get
+			{
+				return this.GetTable<v_historico_mediacao>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.alteraCidade")]
 		public int alteraCidade([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string nome, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string estado)
 		{
@@ -4849,6 +4857,87 @@ namespace BackEnd.Controllers
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.v_historico_mediacoes")]
+	public partial class v_historico_mediacao
+	{
+		
+		private string _Numero;
+		
+		private string _TemaConflito;
+		
+		private System.DateTime _DataMediacao;
+		
+		private string _DescricaoTipoRegistro;
+		
+		public v_historico_mediacao()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Numero", DbType="VarChar(20)")]
+		public string Numero
+		{
+			get
+			{
+				return this._Numero;
+			}
+			set
+			{
+				if ((this._Numero != value))
+				{
+					this._Numero = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TemaConflito", DbType="VarChar(50)")]
+		public string TemaConflito
+		{
+			get
+			{
+				return this._TemaConflito;
+			}
+			set
+			{
+				if ((this._TemaConflito != value))
+				{
+					this._TemaConflito = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataMediacao", DbType="DateTime NOT NULL")]
+		public System.DateTime DataMediacao
+		{
+			get
+			{
+				return this._DataMediacao;
+			}
+			set
+			{
+				if ((this._DataMediacao != value))
+				{
+					this._DataMediacao = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DescricaoTipoRegistro", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string DescricaoTipoRegistro
+		{
+			get
+			{
+				return this._DescricaoTipoRegistro;
+			}
+			set
+			{
+				if ((this._DescricaoTipoRegistro != value))
+				{
+					this._DescricaoTipoRegistro = value;
+				}
 			}
 		}
 	}

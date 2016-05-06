@@ -216,6 +216,14 @@
       <Association Name="mediador_depoimento" Member="mediador" ThisKey="id_mediador" OtherKey="id" Type="mediador" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.v_historico_mediacoes" Member="v_historico_mediacaos">
+    <Type Name="v_historico_mediacao">
+      <Column Name="Numero" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="TemaConflito" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DataMediacao" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DescricaoTipoRegistro" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Function Name="dbo.alteraCidade" Method="alteraCidade">
     <Parameter Name="id" Type="System.Int32" DbType="Int" />
     <Parameter Name="nome" Type="System.String" DbType="VarChar(100)" />
