@@ -30,7 +30,26 @@ namespace FrontEnd
 
         protected void gdvLista_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            // recupera a linha clicada no gridview
+            int linha = Convert.ToInt32(e.CommandArgument);
+            // recupera o id do procedimento na linha clicada
+            Int32 id = (Int32)gdvLista.DataKeys[linha].Value;
 
+            Mediacao_Model model = new Mediacao_Model();
+
+            if (e.CommandName == "Gerar")
+            {
+                string caminho = @"C:\Users\Gui\Documents";
+
+                if (model.GerarTermoDoc(id, caminho))
+                {
+                    Master.Sucesso("Arquivo gerado e salvo em: " + caminho);
+                }
+                else
+                {
+                    Master.Alerta("Erro: " + model.message);
+                }
+            }
         }
 
         protected void gdvLista_PageIndexChanging(object sender, GridViewPageEventArgs e)

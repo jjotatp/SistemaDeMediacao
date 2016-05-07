@@ -74,6 +74,14 @@ namespace BackEnd.Models
             return tb;
         }
 
+        public mediacao Obter(int id)
+        {
+            dbDataContext db = new dbDataContext();
+            
+            var mediacao = db.mediacaos.Where(p => p.id == id).First();
+            return mediacao;
+        }
+
         public bool Inserir(mediacao a)
         {
             // função para cadastrar
@@ -178,19 +186,91 @@ namespace BackEnd.Models
             }
         }
 
-        public bool GerarTermoDoc(mediacao md, string caminho)
+        public bool GerarTermoDoc(int id_mediacao, string caminho)
         {
             try
             {
+                
+                CORRIGIR O ERRO PARA CARREGAR TODOS OS DADOS DA MEDIACAO
+
+                mediacao md = new mediacao();
+
+                md = Obter(id_mediacao);              
+
                 // caminho + numero + ano .docx
                 // ex: Desktop\002_2016.docx
-                String nomeArquivo = caminho + @" \ " + md.numero.ToString() + "_" + md.data_mediacao.Year.ToString() + ".docx";
+                String nomeArquivo = caminho + @"\" + md.numero.ToString() + "_" + md.data_mediacao.Year.ToString() + ".docx";
                 // gera o documento da mediação
-                string modelo = @"..\..\modelo_med.docx";
+                
+                string modelo = AppDomain.CurrentDomain.BaseDirectory + @"\modelo_med.docx";
                 using (DocX document = DocX.Load(modelo))
                 {
                     // adiciona o nome do batalhão no arquivo
                     document.ReplaceText("[batalhao]", md.local.nome, false);
+                    // adiciona o nome da companhia no arquivo
+                    document.ReplaceText("[companhia]", md.local.descricao, false);
+                    // adiciona o numero da mediação no arquivo
+                    document.ReplaceText("[numero]", md.numero.ToString(), false);
+                    // adiciona o ano no arquivo
+                    document.ReplaceText("[ano]", md.data_mediacao.Year.ToString(), false);
+                    // adiciona o nome das partes no arquivo
+                    
+                    string partes = "", nome_partes = "", assinaturas = "";
+
+                    int i = 0;
+
+                    Paragraph p = null;
+
+                    foreach (mediacao_parte mp in md.mediacao_partes)
+                    {
+                        partes = partes + mp.pessoa.nome + Environment.NewLine;
+
+                        i++;
+                        p.Append("PARTE " + i.ToString() + ": ").Bold().Append(mp.pessoa.nome + ", ");
+                        p.Append("RG: ").Bold().Append(mp.pessoa.rg + ", ");
+                        p.Append("CPF: ").Bold().Append(mp.pessoa.cpf + ", ");
+                        p.Append(mp.pessoa.status_civil + ", ");
+                        p.Append(mp.pessoa.profissao + ", ");
+                        p.Append("NASCIDO EM ").Bold().Append(DateTime.Parse(mp.pessoa.nascimento_data.ToString()).ToShortDateString() + ", ");
+                        p.Append("NA CIDADE DE ").Bold().Append(mp.pessoa.cidade.nome + " - " + mp.pessoa.cidade.estado + ", ");
+                        p.Append("DO SEXO ").Bold().Append(GetSexo(mp.pessoa.sexo.ToString()) + ", ");
+                        p.Append("FILHO DE ").Bold().Append(mp.pessoa.nome_pai);
+                        p.Append(" E ").Bold().Append(mp.pessoa.nome_mae + ", ");
+                        p.Append("RESIDENTE NA ").Bold().Append(mp.pessoa.endereco_logradouro + " nº " +
+                                                                    mp.pessoa.endereco_numero + ", " +
+                                                                    mp.pessoa.endereco_bairro + ", " +
+                                                                    mp.pessoa.cidade1.nome + " - " + mp.pessoa.cidade1.estado + ", ");
+                        p.Append("TELEFONE ").Bold().Append(mp.pessoa.telefone + ", ");
+                        p.Append("aceitou a participar da sessão de mediação de conflito onde declarou que: ");
+                        p.AppendLine(mp.descricao_caso);
+                        p.AppendLine();
+                        p.AppendLine("ASSINATURA (PARTE " + i.ToString() + ")").Alignment = Alignment.right;
+                        p.AppendLine();
+
+                        if (i > 1)
+                            nome_partes = nome_partes + ", e ";
+                        if (mp.pessoa.sexo == 'M')
+                            nome_partes = nome_partes + "Sr. " + mp.pessoa.nome;
+                        else
+                            nome_partes = nome_partes + "Sra. " + mp.pessoa.nome;
+
+                        assinaturas = assinaturas + "__________________________________" + Environment.NewLine + "RG:" + Environment.NewLine;
+                    }
+                    // informa as partes
+                    document.ReplaceText("[partes]", partes , false);
+                    // informa o tema do conflito
+                    document.ReplaceText("[tema_conflito]", md.tema_conflito, false);
+                    // informa as qualificações
+                    document.ReplaceText("[qualificacao]", p.Text, true);
+                    // informa os nomes das partes
+                    document.ReplaceText("[nome_partes]", nome_partes, false);
+                    // informa endereço do local
+                    document.ReplaceText("[endereco_local]", md.local.logradouro, false);
+                    document.ReplaceText("[numero_local]", md.local.numero, false);
+                    document.ReplaceText("[bairro_local]", md.local.bairro, false);
+                    document.ReplaceText("[cidade_local]", md.local.cidade.nome + " - " + md.local.cidade.estado, false);
+                    document.ReplaceText("[objeto_mediacao]", md.objeto, false);
+                    document.ReplaceText("[assinaturas]", assinaturas, false);
 
                     // salva o documento
                     document.SaveAs(nomeArquivo);
@@ -203,6 +283,14 @@ namespace BackEnd.Models
                 message = e.Message;
                 return false;
             }
+        }
+
+        public string GetSexo(string sigla)
+        {
+            if (sigla == "M")
+                return "Masculino";
+            else
+                return "Feminino"; 
         }
 
         public List<mediacao> Listar()

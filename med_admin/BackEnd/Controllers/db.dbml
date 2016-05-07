@@ -218,6 +218,7 @@
   </Table>
   <Table Name="dbo.v_historico_mediacoes" Member="v_historico_mediacaos">
     <Type Name="v_historico_mediacao">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Numero" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="TemaConflito" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="DataMediacao" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />

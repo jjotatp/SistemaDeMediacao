@@ -10,9 +10,14 @@
             </div>                                                   
             <div class="panel-body">
                 <asp:GridView ID="gdvLista" runat="server" CssClass="table table-hover" GridLines="None"
-                            AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="Numero" OnRowCommand="gdvLista_RowCommand"
+                            AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="id" OnRowCommand="gdvLista_RowCommand"
                                 PageSize="10" OnPageIndexChanging="gdvLista_PageIndexChanging" EmptyDataText="Nenhuma mediação encontrada.">
                     <Columns>
+                        <asp:TemplateField HeaderText="ID">
+                            <ItemTemplate>
+                                <%# Eval("id") %>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Número">
                             <ItemTemplate>
                                 <%#Eval("Numero") + " / " + DateTime.Parse(Eval("DataMediacao").ToString()).Year.ToString() %>
@@ -34,7 +39,7 @@
                             </ItemTemplate>
                         </asp:TemplateField>                
                                
-                        <asp:ButtonField CommandName="Visualizar" HeaderStyle-Width="40" Text="Visualizar" runat="server">
+                        <asp:ButtonField CommandName="Gerar" HeaderStyle-Width="40" Text="Gerar .docx" runat="server">
                             <ControlStyle CssClass="btn btn-xs btn-info"/>                         
                             <HeaderStyle Width="40px"></HeaderStyle>
                         </asp:ButtonField>

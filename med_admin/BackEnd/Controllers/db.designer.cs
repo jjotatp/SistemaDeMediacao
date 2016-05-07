@@ -4865,6 +4865,8 @@ namespace BackEnd.Controllers
 	public partial class v_historico_mediacao
 	{
 		
+		private int _id;
+		
 		private string _Numero;
 		
 		private string _TemaConflito;
@@ -4875,6 +4877,22 @@ namespace BackEnd.Controllers
 		
 		public v_historico_mediacao()
 		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", DbType="Int NOT NULL")]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this._id = value;
+				}
+			}
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Numero", DbType="VarChar(20)")]
