@@ -77,9 +77,15 @@ namespace BackEnd.Models
         public mediacao Obter(int id)
         {
             dbDataContext db = new dbDataContext();
-            
-            var mediacao = db.mediacaos.Where(p => p.id == id).First();
-            return mediacao;
+
+            DataLoadOptions options = new DataLoadOptions();
+            options.LoadWith<mediacao>(m => m.mediacao_partes);
+            options.LoadWith<mediacao>(m => m.local);
+            options.LoadWith<mediacao_parte>(mp => mp.pessoa);
+            db.LoadOptions = options;
+            var query = from m in db.mediacaos where m.id == id select m;
+
+            return query.FirstOrDefault();
         }
 
         public bool Inserir(mediacao a)
@@ -191,7 +197,7 @@ namespace BackEnd.Models
             try
             {
                 
-                CORRIGIR O ERRO PARA CARREGAR TODOS OS DADOS DA MEDIACAO
+                //CORRIGIR O ERRO PARA CARREGAR TODOS OS DADOS DA MEDIACAO
 
                 mediacao md = new mediacao();
 
