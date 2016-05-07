@@ -13,6 +13,7 @@
     <link href="content/css/bootstrap.css" rel="stylesheet" />
     <link href="content/css/estilo.css" rel="stylesheet" />
     <link href="content/css/animated.css" rel="stylesheet" />
+    <link href="content/css/soli.css" rel="stylesheet">
 
     <!-- Fonte -->
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
@@ -36,11 +37,11 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active wow bounceIn data-wow-duration="2s""><a href="#">Início <span class="sr-only">(current)</span></a></li>
+                    <li class="active wow bounceIn data-wow-duration="2s""><a href="index.aspx">Início <span class="sr-only">(current)</span></a></li>
 
-                    <li class="wow bounceIn data-wow-duration="1s" data-wow-delay="0.5s""><a href="#">Contato</a></li>
-                    <li class="wow bounceIn data-wow-duration="1s" data-wow-delay="0.7s""><a href="#">Notícias</a></li>
-                    <li class="wow bounceIn data-wow-duration="1s" data-wow-delay="0.9s""><a href="#">Depoimentos</a></li>
+                    <li class="wow bounceIn data-wow-duration="1s" data-wow-delay="0.5s""><a href="#"> Contato</a></li>
+                    <li class="wow bounceIn data-wow-duration="1s" data-wow-delay="0.7s""><a href="#"> Notícias</a></li>
+                    <li class="wow bounceIn data-wow-duration="1s" data-wow-delay="0.9s""><a href="#"> Depoimentos</a></li>
                 </ul>
 
             </div>
@@ -87,12 +88,13 @@
     <script src="content/js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="content/js/bootstrap.min.js"></script>
-
+    <!-- Animação -->
     <script src="content/js/wow.min.js"></script>
-    
     <script type="text/javascript">
         new WOW().init();
     </script>
+    <!-- Formulário de Solicitação -->
+    <script src="content/js/soli.js"></script>
 
 </body>
 </html>

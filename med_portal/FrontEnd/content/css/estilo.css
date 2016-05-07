@@ -56,3 +56,21 @@
 .header-box ul{
     list-style: none;
 }
+
+.thumbnail .caption h3{
+    color: #777777;
+    font-size: 3em;
+    font-weight:600;
+    text-transform: uppercase;
+}
+
+.thumbnail .caption p{
+    color: #999;    
+}
+
+.titulo-artigo{
+    color: #220200;
+    font-size: 2em;
+    font-weight:600;
+    text-transform: uppercase;
+}
