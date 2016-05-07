@@ -82,6 +82,7 @@ namespace BackEnd.Models
             options.LoadWith<mediacao>(m => m.mediacao_partes);
             options.LoadWith<mediacao>(m => m.local);
             options.LoadWith<mediacao_parte>(mp => mp.pessoa);
+            options.LoadWith<mediacao>(m => m.mediador);
             db.LoadOptions = options;
             var query = from m in db.mediacaos where m.id == id select m;
 
@@ -208,7 +209,7 @@ namespace BackEnd.Models
                 String nomeArquivo = caminho + @"\" + md.numero.ToString() + "_" + md.data_mediacao.Year.ToString() + ".docx";
                 // gera o documento da mediação
                 
-                string modelo = AppDomain.CurrentDomain.BaseDirectory + @"\modelo_med.docx";
+                string modelo = AppDomain.CurrentDomain.BaseDirectory + "modelo_med.docx";
                 using (DocX document = DocX.Load(modelo))
                 {
                     // adiciona o nome do batalhão no arquivo
@@ -219,20 +220,24 @@ namespace BackEnd.Models
                     document.ReplaceText("[numero]", md.numero.ToString(), false);
                     // adiciona o ano no arquivo
                     document.ReplaceText("[ano]", md.data_mediacao.Year.ToString(), false);
-                    // adiciona o nome das partes no arquivo
-                    
+                    // informa o tema do conflito
+                    document.ReplaceText("[tema_conflito]", md.tema_conflito, false);
+                    // rodapé
+                    document.ReplaceText("[cidade]", md.local.cidade.nome, false);
+                    document.ReplaceText("[data_escrita]", md.data_mediacao.ToLongDateString(), false);
+
                     string partes = "", nome_partes = "", assinaturas = "";
 
                     int i = 0;
-
-                    Paragraph p = null;
+                    
+                    Paragraph p = document.InsertParagraph();
 
                     foreach (mediacao_parte mp in md.mediacao_partes)
                     {
                         partes = partes + mp.pessoa.nome + Environment.NewLine;
 
                         i++;
-                        p.Append("PARTE " + i.ToString() + ": ").Bold().Append(mp.pessoa.nome + ", ");
+                        p.Append("PARTE " + i.ToString() + ": ").Bold().Append(mp.pessoa.nome.ToString() + ", ");
                         p.Append("RG: ").Bold().Append(mp.pessoa.rg + ", ");
                         p.Append("CPF: ").Bold().Append(mp.pessoa.cpf + ", ");
                         p.Append(mp.pessoa.status_civil + ", ");
@@ -247,11 +252,14 @@ namespace BackEnd.Models
                                                                     mp.pessoa.endereco_bairro + ", " +
                                                                     mp.pessoa.cidade1.nome + " - " + mp.pessoa.cidade1.estado + ", ");
                         p.Append("TELEFONE ").Bold().Append(mp.pessoa.telefone + ", ");
-                        p.Append("aceitou a participar da sessão de mediação de conflito onde declarou que: ");
+                        p.Append("aceitou a participar da sessão de mediação de conflito onde declarou que: ").Alignment = Alignment.both;
                         p.AppendLine(mp.descricao_caso);
                         p.AppendLine();
-                        p.AppendLine("ASSINATURA (PARTE " + i.ToString() + ")").Alignment = Alignment.right;
                         p.AppendLine();
+                        p.AppendLine("ASSINATURA (PARTE " + i.ToString() + ")");
+                        p.AppendLine();
+                        p.AppendLine();
+
 
                         if (i > 1)
                             nome_partes = nome_partes + ", e ";
@@ -260,23 +268,38 @@ namespace BackEnd.Models
                         else
                             nome_partes = nome_partes + "Sra. " + mp.pessoa.nome;
 
-                        assinaturas = assinaturas + "__________________________________" + Environment.NewLine + "RG:" + Environment.NewLine;
+                        assinaturas = assinaturas + "__________________________________" + Environment.NewLine + 
+                            "RG:" + Environment.NewLine + Environment.NewLine;
                     }
-                    // informa as partes
-                    document.ReplaceText("[partes]", partes , false);
-                    // informa o tema do conflito
-                    document.ReplaceText("[tema_conflito]", md.tema_conflito, false);
-                    // informa as qualificações
-                    document.ReplaceText("[qualificacao]", p.Text, true);
-                    // informa os nomes das partes
-                    document.ReplaceText("[nome_partes]", nome_partes, false);
-                    // informa endereço do local
-                    document.ReplaceText("[endereco_local]", md.local.logradouro, false);
-                    document.ReplaceText("[numero_local]", md.local.numero, false);
-                    document.ReplaceText("[bairro_local]", md.local.bairro, false);
-                    document.ReplaceText("[cidade_local]", md.local.cidade.nome + " - " + md.local.cidade.estado, false);
-                    document.ReplaceText("[objeto_mediacao]", md.objeto, false);
-                    document.ReplaceText("[assinaturas]", assinaturas, false);
+
+                    // adiciona o nome das partes no arquivo
+                    document.ReplaceText("[partes]", partes, false);
+
+                    Paragraph p2 = document.InsertParagraph();
+
+                    // =========== DECLARAÇÃO FINAL MEDIAÇÃO =============
+                    p2.Append("Pelo presente Termo de \"MEDIAÇÃO\", as partes, " + nome_partes +
+                    " presentes no núcleo de Mediação Comunitária do " + md.local.nome + "/" + md.local.descricao +
+                    ", situado na " + md.local.logradouro + ", nº " + md.local.numero + ", " +
+                    "Bairro " + md.local.bairro + ", na cidade de " + md.local.cidade.nome + " - " + md.local.cidade.estado +
+                    " resolvem aceitar a adoção do " +
+                    "procedimento de mediação para a resolução de conflito relatado neste instrumento de registro " +
+                    "policial, obrigando - se a manter sigilo, assim como o mediador, de toda e qualquer informação, " +
+                    "documentos, papéis em geral, enfim, de tudo que lhes seja apresentado ou chegue ao seu conhecimento " +
+                    "em razão do procedimento de mediação aqui homologado. O descumprimento da obrigação de sigilo por " +
+                    "qualquer das partes ou pelo mediador implicará em responsabilidade civil e criminal.").Alignment = Alignment.both;
+                    // objeto da mediação
+                    p2.AppendLine();
+
+                    Paragraph objeto = document.InsertParagraph();
+                    objeto.AppendLine("O objeto da mediação é o seguinte: " +md.objeto).AppendLine().Alignment = Alignment.left;
+                    // assinaturas
+                    objeto.AppendLine(assinaturas).AppendLine().AppendLine();
+
+                    Paragraph p3 = document.InsertParagraph();                    
+                    
+                    p3.AppendLine(md.mediador.nome).Bold();
+                    p3.AppendLine(md.mediador.patente + " - Mediador").Alignment = Alignment.right;
 
                     // salva o documento
                     document.SaveAs(nomeArquivo);
