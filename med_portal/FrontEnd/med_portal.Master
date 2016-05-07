@@ -9,15 +9,19 @@
     
     <title>Portal da Mediação</title>
 
-    <!-- Bootstrap -->
-    <link href="content/css/bootstrap.css" rel="stylesheet">
-    <link href="content/css/estilo.css" rel="stylesheet">
+    <!-- css -->
+    <link href="content/css/bootstrap.css" rel="stylesheet" />
+    <link href="content/css/estilo.css" rel="stylesheet" />
+    <link href="content/css/animated.css" rel="stylesheet" />
+
+    <!-- Fonte -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
 </head>
 
 <body>
 
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default" role="navigation">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -32,18 +36,12 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Início <span class="sr-only">(current)</span></a></li>
+                    <li class="active wow bounceIn data-wow-duration="2s""><a href="#">Início <span class="sr-only">(current)</span></a></li>
 
-                    <li><a href="#">Contato</a></li>
-                    <li><a href="#">Notícias</a></li>
-                    <li><a href="#">Depoimentos</a></li>
+                    <li class="wow bounceIn data-wow-duration="1s" data-wow-delay="0.5s""><a href="#">Contato</a></li>
+                    <li class="wow bounceIn data-wow-duration="1s" data-wow-delay="0.7s""><a href="#">Notícias</a></li>
+                    <li class="wow bounceIn data-wow-duration="1s" data-wow-delay="0.9s""><a href="#">Depoimentos</a></li>
                 </ul>
-                <form class="navbar-form navbar-right" role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Buscar...">
-                    </div>
-                    <button type="submit" class="btn btn-default glyphicon glyphicon-search "></button>
-                </form>
 
             </div>
         </div>
@@ -89,5 +87,12 @@
     <script src="content/js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="content/js/bootstrap.min.js"></script>
+
+    <script src="content/js/wow.min.js"></script>
+    
+    <script type="text/javascript">
+        new WOW().init();
+    </script>
+
 </body>
 </html>

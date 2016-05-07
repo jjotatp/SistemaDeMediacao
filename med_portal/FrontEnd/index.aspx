@@ -7,7 +7,7 @@
         <div class="container">
             <div class="col-md-12">
                 <div class="col-md-12 text-center">
-                    <div class="jumbotron">
+                    <div class="jumbotron wow flipInX data-wow-duration="3s"">
                         <h1>Solicite sua Mediação</h1>
                         <p>Em poucos Passos você consegue resolver o problema que te encomoda...</p>
                         <p>Preencha nosso formulário de contato para começar a resolver o seu problema</p>
@@ -30,39 +30,39 @@
         <section id="menus-especiais">
             <div class="col-md-12">
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-4 wow fadeIn data-wow-duration="6s" data-wow-delay="0.5s"">
                         <div class="panel panel-danger">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><span class="glyphicon glyphicon-info-sign"></span>O que é Mediação?</h3>
                             </div>
                             <div class="panel-body">
-                                <p style="text-align: center;">Conheça um pouca mais sobre Mediação</p>
+                                <p style="text-align: center;"> Conheça um pouca mais sobre Mediação</p>
                                 <ul class="pager">
                                     <li><a href="oQueEMeciacao.html">Saiba Mais</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-4 wow fadeIn data-wow-duration="6s" data-wow-delay="0.7s"">
                         <div class="panel panel-warning">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><span class="glyphicon glyphicon-bullhorn"></span>Exemplificação de Mediação</h3>
                             </div>
                             <div class="panel-body">
-                                <p style="text-align: center;">Listamos alguns casos que resolvemos aqui</p>
+                                <p style="text-align: center;"> Listamos alguns casos que resolvemos aqui</p>
                                 <ul class="pager">
                                     <li><a href="casosDeMediacao.html">Saiba Mais</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-4 wow fadeIn data-wow-duration="6s" data-wow-delay="0.9s"">
                         <div class="panel panel-danger">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><span class="glyphicon glyphicon-map-marker"></span>Pontos de Mediação</h3>
                             </div>
                             <div class="panel-body">
-                                <p style="text-align: center;">Conheça o que tem mais próximo de você...</p>
+                                <p style="text-align: center;"> Conheça o que tem mais próximo de você...</p>
                                 <ul class="pager">
                                     <li><a href="pontoDeMeciacao.html">Saiba Mais</a></li>
                                 </ul>
