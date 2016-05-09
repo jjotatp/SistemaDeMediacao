@@ -39,11 +39,14 @@ namespace FrontEnd
 
             if (e.CommandName == "Gerar")
             {
-                string caminho = @"C:\Users\Gui\Documents";
 
-                if (model.GerarTermoDoc(id, caminho))
+                string caminho = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                //@"C:\Users\Gui\Documents";
+                string nomeArquivo = model.GerarTermoDoc(id, caminho);
+
+                if (nomeArquivo != "")
                 {
-                    Master.Sucesso("Arquivo gerado e salvo em: " + caminho);
+                    Master.Sucesso("Arquivo gerado e salvo em: " + nomeArquivo);
                 }
                 else
                 {

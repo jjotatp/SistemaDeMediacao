@@ -193,13 +193,10 @@ namespace BackEnd.Models
             }
         }
 
-        public bool GerarTermoDoc(int id_mediacao, string caminho)
+        public string GerarTermoDoc(int id_mediacao, string caminho)
         {
             try
             {
-                
-                //CORRIGIR O ERRO PARA CARREGAR TODOS OS DADOS DA MEDIACAO
-
                 mediacao md = new mediacao();
 
                 md = Obter(id_mediacao);              
@@ -229,12 +226,14 @@ namespace BackEnd.Models
                     string partes = "", nome_partes = "", assinaturas = "";
 
                     int i = 0;
-                    
-                    Paragraph p = document.InsertParagraph();
+
+                    Paragraph p = null;
 
                     foreach (mediacao_parte mp in md.mediacao_partes)
                     {
                         partes = partes + mp.pessoa.nome + Environment.NewLine;
+
+                        p = document.InsertParagraph();
 
                         i++;
                         p.Append("PARTE " + i.ToString() + ": ").Bold().Append(mp.pessoa.nome.ToString() + ", ");
@@ -256,10 +255,12 @@ namespace BackEnd.Models
                         p.AppendLine(mp.descricao_caso);
                         p.AppendLine();
                         p.AppendLine();
-                        p.AppendLine("ASSINATURA (PARTE " + i.ToString() + ")");
-                        p.AppendLine();
-                        p.AppendLine();
+                        //p.AppendLine("ASSINATURA (PARTE " + i.ToString() + ")");
+                        //p.AppendLine();
+                        //p.AppendLine();
+                        p = null;
 
+                        document.InsertParagraph("ASSINATURA (PARTE " + i.ToString() + ")").AppendLine().Alignment = Alignment.right;
 
                         if (i > 1)
                             nome_partes = nome_partes + ", e ";
@@ -292,7 +293,7 @@ namespace BackEnd.Models
                     p2.AppendLine();
 
                     Paragraph objeto = document.InsertParagraph();
-                    objeto.AppendLine("O objeto da mediação é o seguinte: " +md.objeto).AppendLine().Alignment = Alignment.left;
+                    objeto.AppendLine("O objeto da mediação é o seguinte: " +md.objeto).AppendLine().AppendLine().Alignment = Alignment.left;
                     // assinaturas
                     objeto.AppendLine(assinaturas).AppendLine().AppendLine();
 
@@ -305,12 +306,12 @@ namespace BackEnd.Models
                     document.SaveAs(nomeArquivo);
                 }
 
-                return true;
+                return nomeArquivo;
             }
             catch (Exception e)
             {
                 message = e.Message;
-                return false;
+                return "";
             }
         }
 
