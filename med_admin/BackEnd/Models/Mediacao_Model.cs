@@ -231,8 +231,6 @@ namespace BackEnd.Models
 
                     foreach (mediacao_parte mp in md.mediacao_partes)
                     {
-                        partes = partes + mp.pessoa.nome + Environment.NewLine;
-
                         p = document.InsertParagraph();
 
                         i++;
@@ -251,7 +249,7 @@ namespace BackEnd.Models
                                                                     mp.pessoa.endereco_bairro + ", " +
                                                                     mp.pessoa.cidade1.nome + " - " + mp.pessoa.cidade1.estado + ", ");
                         p.Append("TELEFONE ").Bold().Append(mp.pessoa.telefone + ", ");
-                        p.Append("aceitou a participar da sessão de mediação de conflito onde declarou que: ").Alignment = Alignment.both;
+                        p.Append("aceitou a participar da sessão de mediação de conflito onde declarou que: ").Bold().Alignment = Alignment.both;
                         p.AppendLine(mp.descricao_caso);
                         p.AppendLine();
                         p.AppendLine();
@@ -262,6 +260,10 @@ namespace BackEnd.Models
 
                         document.InsertParagraph("ASSINATURA (PARTE " + i.ToString() + ")").AppendLine().Alignment = Alignment.right;
 
+                        if (i > 1)
+                            partes = partes + ", " + mp.pessoa.nome;
+                        else
+                            partes = mp.pessoa.nome;
                         if (i > 1)
                             nome_partes = nome_partes + ", e ";
                         if (mp.pessoa.sexo == 'M')
