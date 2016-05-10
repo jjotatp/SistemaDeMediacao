@@ -51,7 +51,7 @@
                             <div class="panel-body">
                                 <p style="text-align: center;"> Listamos alguns casos que resolvemos aqui</p>
                                 <ul class="pager">
-                                    <li><a href="casosDeMediacao.html">Saiba Mais</a></li>
+                                    <li><a href="exCasos.aspx">Saiba Mais</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -88,7 +88,7 @@
                                     <div class="caption">
                                         <h3>Artigo Principal 01</h3>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacus lectus, sagittis ut ante a, commodo ultricies magna. Nullam eu dui non lectus feugiat molestie vitae nec libero.</p>
-                                        <p><a href="#" class="btn btn-danger" role="button">Leia Mais</a> </p>
+                                        <p><a href="#" class="btn btn-link" role="button"><samp class="glyphicon glyphicon-chevron-right"></samp> Leia Mais</a> </p>
                                     </div>
                                 </div>
                             </div>
@@ -99,7 +99,7 @@
                                     <div class="caption">
                                         <h3>Artigo Principal 02</h3>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacus lectus, sagittis ut ante a, commodo ultricies magna. Nullam eu dui non lectus feugiat molestie vitae nec libero.</p>
-                                        <p><a href="#" class="btn btn-link" role="button">Leia Mais</a> </p>
+                                        <p><a href="#" class="btn btn-link" role="button"><samp class="glyphicon glyphicon-chevron-right"></samp> Leia Mais</a> </p>
                                     </div>
                                 </div>
                             </div>
@@ -116,7 +116,7 @@
                                 <img src="https://visualhunt.com/photos/xl/1/silhouette-fitness-bless-you-bike-woman-sporty.jpg" alt="...">
                                 <div class="caption">
                                     <h3>Artigo 01</h3>
-                                    <p><a href="#" class="btn btn-danger" role="button">Leia Mais</a> </p>
+                                    <p><a href="#" class="btn btn-link" role="button"><samp class="glyphicon glyphicon-chevron-right"></samp> Leia Mais</a> </p>
                                 </div>
                             </div>
                         </div>
@@ -126,7 +126,7 @@
                                 <img src="https://visualhunt.com/photos/xl/1/silhouette-fitness-bless-you-bike-woman-sporty.jpg" alt="...">
                                 <div class="caption">
                                     <h3>Artigo 02</h3>
-                                    <p><a href="#" class="btn btn-danger" role="button">Leia Mais</a> </p>
+                                    <p><a href="#" class="btn btn-link" role="button"><samp class="glyphicon glyphicon-chevron-right"></samp> Leia Mais</a> </p>
                                 </div>
                             </div>
                         </div>
@@ -136,7 +136,7 @@
                                 <img src="https://visualhunt.com/photos/xl/1/silhouette-fitness-bless-you-bike-woman-sporty.jpg" alt="...">
                                 <div class="caption">
                                     <h3>Artigo 03</h3>
-                                    <p><a href="#" class="btn btn-danger" role="button">Leia Mais</a> </p>
+                                    <p><a href="#" class="btn btn-link" role="button"><samp class="glyphicon glyphicon-chevron-right"></samp> Leia Mais</a> </p>
                                 </div>
                             </div>
                         </div>

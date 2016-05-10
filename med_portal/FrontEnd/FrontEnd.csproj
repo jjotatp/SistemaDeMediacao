@@ -94,6 +94,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="exCasos.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -110,10 +111,18 @@
     <Content Include="index.aspx" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
+    <Content Include="sobreMediacao.aspx" />
     <Content Include="solicitacao.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="exCasos.aspx.cs">
+      <DependentUpon>exCasos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="exCasos.aspx.designer.cs">
+      <DependentUpon>exCasos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -129,6 +138,13 @@
       <DependentUpon>med_portal.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sobreMediacao.aspx.cs">
+      <DependentUpon>sobreMediacao.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sobreMediacao.aspx.designer.cs">
+      <DependentUpon>sobreMediacao.aspx</DependentUpon>
+    </Compile>
     <Compile Include="solicitacao.aspx.cs">
       <DependentUpon>solicitacao.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
