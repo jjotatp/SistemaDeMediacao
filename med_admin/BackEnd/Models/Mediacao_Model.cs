@@ -6,7 +6,6 @@ using System.Data.Linq.Mapping;
 using BackEnd.Controllers;
 using System.Data.Linq;
 using System.Data.Common;
-
 using Novacode;
 
 namespace BackEnd.Models
@@ -240,15 +239,16 @@ namespace BackEnd.Models
                         p.Append(mp.pessoa.status_civil + ", ");
                         p.Append(mp.pessoa.profissao + ", ");
                         p.Append("NASCIDO EM ").Bold().Append(DateTime.Parse(mp.pessoa.nascimento_data.ToString()).ToShortDateString() + ", ");
-                        p.Append("NA CIDADE DE ").Bold().Append(mp.pessoa.cidade.nome + " - " + mp.pessoa.cidade.estado + ", ");
+                        p.Append("NA CIDADE DE ").Bold().Append(mp.pessoa.cidade1.nome + " - " + mp.pessoa.cidade1.estado + ", ");
                         p.Append("DO SEXO ").Bold().Append(GetSexo(mp.pessoa.sexo.ToString()) + ", ");
                         p.Append("FILHO DE ").Bold().Append(mp.pessoa.nome_pai);
                         p.Append(" E ").Bold().Append(mp.pessoa.nome_mae + ", ");
                         p.Append("RESIDENTE NA ").Bold().Append(mp.pessoa.endereco_logradouro + " nº " +
                                                                     mp.pessoa.endereco_numero + ", " +
                                                                     mp.pessoa.endereco_bairro + ", " +
-                                                                    mp.pessoa.cidade1.nome + " - " + mp.pessoa.cidade1.estado + ", ");
-                        p.Append("TELEFONE ").Bold().Append(mp.pessoa.telefone + ", ");
+                                                                    mp.pessoa.cidade.nome + " - " + mp.pessoa.cidade.estado + ", ");
+                        if ((mp.pessoa.telefone != null)&&(mp.pessoa.telefone != "")) 
+                            p.Append("TELEFONE ").Bold().Append(mp.pessoa.telefone + ", ");
                         p.Append("aceitou a participar da sessão de mediação de conflito onde declarou que: ").Bold().Alignment = Alignment.both;
                         p.AppendLine(mp.descricao_caso);
                         p.AppendLine();
@@ -338,8 +338,9 @@ namespace BackEnd.Models
         {
             using (dbDataContext db = getDataContext())
             {
-                Table<v_historico_mediacao> tb = db.GetTable<v_historico_mediacao>();
-                return tb.ToList();
+                var query = from p in db.v_historico_mediacaos orderby p.DataMediacao descending select p;
+                //Table<v_historico_mediacao> tb = db.GetTable<v_historico_mediacao>().OrderByDescending<v_historico_mediacao, >
+                return query.ToList();
             }
         }
 

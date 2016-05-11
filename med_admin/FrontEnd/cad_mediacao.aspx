@@ -105,7 +105,7 @@ CodeBehind="cad_mediacao.aspx.cs" Inherits="FrontEnd.cad_mediacao" %>
         </div>          
         <div class="form-group">
             <div style="text-align: center;" class="col-md-10 col-md-offset-1">                
-                <asp:Button CssClass="btn btn-success" runat="server" ID="btnGerarTermo" Text="Gerar Termo" OnClick="btnGerarTermo_Click"/>
+                <asp:Button CssClass="btn btn-success" runat="server" ID="btnSalvar" Text="Salvar Mediação" OnClick="btnSalvar_Click"/>
             </div>
         </div>        
     </asp:Content>

@@ -370,6 +370,7 @@
     <Content Include="Content\plugins\x-editable\dist\bootstrap3-editable\js\bootstrap-editable.min.js" />
     <Content Include="Content\Site.css" />
     <Content Include="index.aspx" />
+    <Content Include="result_tipo_registro.aspx" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="solicitacoes.aspx" />
@@ -524,6 +525,13 @@
       <DependentUpon>noticia_publicar.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="result_tipo_registro.aspx.cs">
+      <DependentUpon>result_tipo_registro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="result_tipo_registro.aspx.designer.cs">
+      <DependentUpon>result_tipo_registro.aspx</DependentUpon>
+    </Compile>
     <Compile Include="solicitacoes.aspx.cs">
       <DependentUpon>solicitacoes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

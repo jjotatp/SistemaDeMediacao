@@ -83,6 +83,15 @@ namespace BackEnd.Models
             }
         }
 
+        public List<v_total_tipos_registro> Totalizar()
+        {
+            using (dbDataContext db = getDataContext())
+            {
+                Table<v_total_tipos_registro> tb = db.GetTable<v_total_tipos_registro>();
+                return tb.ToList();
+            }
+        }
+
         public List<tipo_registro> ListarPorDescricao(string s)
         {
             using (dbDataContext db = getDataContext())

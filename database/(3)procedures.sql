@@ -53,7 +53,8 @@ create procedure alteraMediador
 	@patente varchar(50),
 	@id_local int,
 	@usuario varchar(50),
-	@senha varchar(50)
+	@senha varchar(50),
+	@nivel int
 )
 as
 begin
@@ -63,7 +64,8 @@ begin
 	patente = @patente,
 	id_local = @id_local,
 	usuario = @usuario,
-	senha = @senha
+	senha = @senha,
+	nivel_permissao = @nivel
 	where id = @id;
 end
 go
@@ -116,7 +118,7 @@ go
 create procedure alteraMediacao
 (
 	@id int,
-	@id_solicitacao int ,
+	@id_agendamento int ,
 	@numero varchar(20),
 	@tema_conflito varchar(50),	
 	@data_mediacao date ,
@@ -132,7 +134,7 @@ as
 begin
 	update mediacoes
 	set
-	id_solicitacao = @id_solicitacao,
+	@id_agendamento = @id_agendamento,
 	numero = @numero,
 	tema_conflito = @tema_conflito,
 	data_mediacao = @data_mediacao,
@@ -208,6 +210,84 @@ begin
 end
 go
 
+create procedure alteraNoticia
+(
+	@id int,
+	@imagem_nome varchar(50),
+	@imagem_caminho varchar(max),
+	@titulo_postagem varchar(50),
+	@corpo_noticia varchar(500),
+	@id_mediador_edicao int,
+	@id_local_edicao int,
+	@data_edicao datetime,
+	@prioridade int
+)
+as
+begin
+	update noticias 
+	set imagem_nome = @imagem_nome,
+	imagem_caminho = @imagem_caminho,
+	titulo_postagem = @titulo_postagem,
+	corpo_noticia = @corpo_noticia,
+	id_mediador_edicao = @id_mediador_edicao,
+	id_local_edicao = @id_local_edicao,
+	data_edicao = @data_edicao,
+	prioridade = @prioridade
+	where id = @id
+end
+go
+
+create procedure alteraCasosMediacao
+(
+	@id_tipo_registro int ,
+	@titulo varchar(50) ,
+	@descricao varchar(100) ,
+	@imagem_nome varchar(50),
+	@imagem_caminho varchar(max),
+	@id_mediador int,
+	@prioridade int,
+	@data datetime
+)
+as
+begin
+	update casos_mediacao
+	set
+	titulo = @titulo,
+	descricao = @descricao,
+	imagem_nome = @imagem_nome,
+	imagem_caminho = @imagem_caminho,
+	id_mediador = @id_mediador,
+	prioridade = @prioridade,
+	data = @data
+	where
+	id_tipo_registro = @id_tipo_registro
+end
+go
+
+create procedure alteraDepoimento
+(
+	@id int,
+	@nome varchar(30),
+	@idade int,
+	@descricao varchar(200),
+	@id_mediador int,
+	@data datetime,
+	@status int
+)
+as
+begin
+	update depoimentos
+	set 
+	nome = @nome,
+	idade = @idade,
+	descricao = @descricao,
+	id_mediador = @id_mediador,
+	data = @data,
+	status = @status
+	where id = @id;	
+end
+go
+
 --================================================
 
 select * from mediadores
@@ -218,14 +298,33 @@ create procedure cadMediador
 	@patente varchar(100),
 	@id_local int,
 	@usuario varchar(50),
-	@senha varchar(50)
+	@senha varchar(50),
+	@nivel int
 )
 as
 begin
 	insert into mediadores
-	(nome, patente, id_local, usuario, senha)
+	(nome, patente, id_local, usuario, senha, nivel_permissao)
 	values
-	(@nome,@patente,@id_local,@usuario,@senha)
+	(@nome,@patente,@id_local,@usuario,@senha,@nivel)
 end
 go
 
+-- finaliza o agendamento passando o status = 1 se ele estiver vinculado a uma mediação
+create procedure atualizaStatus
+(
+	@id_agendamento int
+)
+as
+begin
+	declare @qntMed int
+	-- busca o id do tratamento
+	set @qntMed = (select COUNT(*) from mediacoes where id_agendamento = @id_agendamento )
+
+	if ( @qntMed > 0 )
+		update agendamentos 
+		set
+		status = 1
+		where id = @id_agendamento;
+end
+go

@@ -7,9 +7,9 @@ ON mediadores
 INSTEAD OF INSERT 
 AS 
 	INSERT INTO mediadores 
-	(nome,patente,id_local,usuario,senha)
+	(nome,patente,id_local,usuario,nivel_permissao,senha)
 	SELECT
-	 nome,patente,id_local,usuario,
+	 nome,patente,id_local,usuario,nivel_permissao,
 	 SUBSTRING(master.dbo.fn_varbintohexstr(HashBytes('MD5', senha)), 3, 32)
 	 FROM inserted
 GO

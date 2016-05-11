@@ -226,6 +226,14 @@ namespace BackEnd.Controllers
 			}
 		}
 		
+		public System.Data.Linq.Table<v_total_tipos_registro> v_total_tipos_registros
+		{
+			get
+			{
+				return this.GetTable<v_total_tipos_registro>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.alteraCidade")]
 		public int alteraCidade([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string nome, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string estado)
 		{
@@ -4955,6 +4963,51 @@ namespace BackEnd.Controllers
 				if ((this._DescricaoTipoRegistro != value))
 				{
 					this._DescricaoTipoRegistro = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.v_total_tipos_registro")]
+	public partial class v_total_tipos_registro
+	{
+		
+		private string _Tipo_Registro;
+		
+		private System.Nullable<int> _Total;
+		
+		public v_total_tipos_registro()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tipo_Registro", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Tipo_Registro
+		{
+			get
+			{
+				return this._Tipo_Registro;
+			}
+			set
+			{
+				if ((this._Tipo_Registro != value))
+				{
+					this._Tipo_Registro = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total", DbType="Int")]
+		public System.Nullable<int> Total
+		{
+			get
+			{
+				return this._Total;
+			}
+			set
+			{
+				if ((this._Total != value))
+				{
+					this._Total = value;
 				}
 			}
 		}

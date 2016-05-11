@@ -146,11 +146,6 @@ namespace FrontEnd
             }
         }
 
-        protected void btnGerarTermo_Click(object sender, EventArgs e)
-        {   
-            FinalizarMediacao();            
-        }
-
         protected bool FinalizarMediacao()
         {            
             if (ValidarDepoimentos())
@@ -209,6 +204,7 @@ namespace FrontEnd
                 if (model.InserirMediacaoTotal(m, mpLista))
                 {
                     Session.Remove("med_agendamento");
+                    Response.Redirect("historico_mediacoes.aspx?ID=" + m.id.ToString());
                     return true;                    
                 }
                 else
@@ -240,6 +236,11 @@ namespace FrontEnd
                 }
             }
             return true;
+        }
+
+        protected void btnSalvar_Click(object sender, EventArgs e)
+        {
+            FinalizarMediacao();
         }
     }
 }

@@ -33,7 +33,9 @@ create table mediadores
 	patente varchar(50),
 	id_local int not null references locais(id),
 	usuario varchar(50) unique not null,
-	senha varchar(50) not null
+	senha varchar(50) not null,
+	nivel_permissao int not null default 1,
+	check(nivel_permissao in (1,2,3,4))
 );
 
 create table solicitacoes
@@ -59,30 +61,33 @@ create table tipos_registro
 	descricao varchar(50) not null
 );
 
-create table mediacoes
-(
-	id int not null primary key identity,
-	numero varchar(20),
-	tema_conflito varchar(50),	
-	data_mediacao datetime not null,
-	id_mediador int not null references mediadores(id),
-	id_tipo_registro int not null references tipos_registro(id),
-	objeto varchar(max),
-	id_local int not null references locais(id),
-	documento_link varchar(100),
-	status int not null,
-	resolucao char(1),
-	check (status in (1,2)),
-	check (resolucao in ('A','D')) -- Acordo e Disacordo
-);
-
 create table agendamentos
 (
 	id int not null primary key identity,
 	id_solicitacao int references solicitacoes(id),
 	descricao varchar(50),
 	data_inicial datetime not null,
-	data_final datetime not null
+	data_final datetime not null,
+	status int not null default 0,
+	check (status in (0,1))
+);
+
+create table mediacoes
+(
+	id int not null primary key identity,
+	numero varchar(20) not null,
+	tema_conflito varchar(50) not null,	
+	data_mediacao datetime not null,
+	id_mediador int not null references mediadores(id),
+	id_tipo_registro int not null references tipos_registro(id),
+	objeto varchar(max) not null,
+	id_local int not null references locais(id),
+	documento_link varchar(max),
+	status int not null,
+	resolucao char(1),
+	check (status in (1,2)),
+	check (resolucao in ('A','D')), -- Acordo e Disacordo
+	id_agendamento int references agendamentos(id)
 );
 
 create table pessoas
@@ -121,6 +126,40 @@ create table noticias
 	titulo_postagem varchar(50) not null,
 	corpo_noticia varchar(500) not null,
 	id_mediador int not null references mediadores(id),
-	id_local int not null references locais(id)
+	id_local int not null references locais(id),
+	id_mediador_edicao int references mediadores(id),
+	data_edicao datetime,
+	id_local_edicao int references locais (id),
+	prioridade int not null default(3)
 );
 
+create table casos_mediacao
+(
+	id_tipo_registro int not null references tipos_registro(id) primary key,
+	titulo varchar(50) not null,
+	descricao varchar(100) not null,
+	imagem_nome varchar(50) not null,
+	imagem_caminho varchar(max) not null,
+	id_mediador int not null references mediadores(id),
+	prioridade int,
+	data datetime not null
+)
+go
+
+create table depoimentos
+(
+-- tabela que registra os depoimentos no sistema
+-- recebe id do mediador para saber qual mediador foi o responsável a alterar o depoimento
+	id int not null primary key identity,
+	nome varchar(30),
+	idade int,
+	descricao varchar(200),
+	id_mediador int references mediadores(id),
+	data datetime not null,
+	status int default 1, 
+	-- 1 = PENDENTE
+	-- 2 = APROVADO e em exibição no site; 
+	-- 3 = RECUSADO e arquivado.
+	check ( status in (1,2,3) )
+);
+go

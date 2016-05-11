@@ -225,6 +225,12 @@
       <Column Name="DescricaoTipoRegistro" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
+  <Table Name="dbo.v_total_tipos_registro" Member="v_total_tipos_registros">
+    <Type Name="v_total_tipos_registro">
+      <Column Name="Tipo_Registro" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Total" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.alteraCidade" Method="alteraCidade">
     <Parameter Name="id" Type="System.Int32" DbType="Int" />
     <Parameter Name="nome" Type="System.String" DbType="VarChar(100)" />
