@@ -38,7 +38,7 @@
                             <div class="panel-body">
                                 <p style="text-align: center;"> Conheça um pouca mais sobre Mediação</p>
                                 <ul class="pager">
-                                    <li><a href="oQueEMeciacao.html">Saiba Mais</a></li>
+                                    <li><a href="sobreMediacao.aspx">Saiba Mais</a></li>
                                 </ul>
                             </div>
                         </div>
