@@ -35,23 +35,9 @@ namespace FrontEnd
             // recupera o id do procedimento na linha clicada
             Int32 id = (Int32)gdvLista.DataKeys[linha].Value;
 
-            Mediacao_Model model = new Mediacao_Model();
-
-            if (e.CommandName == "Gerar")
+            if (e.CommandName == "Detalhes")
             {
-
-                string caminho = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                //@"C:\Users\Gui\Documents";
-                string nomeArquivo = model.GerarTermoDoc(id, caminho);
-
-                if (nomeArquivo != "")
-                {
-                    Master.Sucesso("Arquivo gerado e salvo em: " + nomeArquivo);
-                }
-                else
-                {
-                    Master.Alerta("Erro: " + model.message);
-                }
+                Response.Redirect("detail_mediacao.aspx?ID=" + id.ToString());
             }
         }
 

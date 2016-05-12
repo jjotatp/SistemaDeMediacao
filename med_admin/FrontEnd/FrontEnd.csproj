@@ -119,6 +119,7 @@
     <Content Include="Content\plugins\summernote\dist\plugin\specialchars\summernote-ext-specialchars.js" />
     <Content Include="depoimentos.aspx" />
     <Content Include="depoimento_editar.aspx" />
+    <Content Include="detail_mediacao.aspx" />
     <Content Include="historico_mediacoes.aspx" />
     <Content Include="lista_cidade.aspx" />
     <Content Include="lista_local.aspx" />
@@ -453,6 +454,13 @@
     </Compile>
     <Compile Include="depoimento_editar.aspx.designer.cs">
       <DependentUpon>depoimento_editar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="detail_mediacao.aspx.cs">
+      <DependentUpon>detail_mediacao.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="detail_mediacao.aspx.designer.cs">
+      <DependentUpon>detail_mediacao.aspx</DependentUpon>
     </Compile>
     <Compile Include="historico_mediacoes.aspx.cs">
       <DependentUpon>historico_mediacoes.aspx</DependentUpon>

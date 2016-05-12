@@ -204,7 +204,7 @@ namespace FrontEnd
                 if (model.InserirMediacaoTotal(m, mpLista))
                 {
                     Session.Remove("med_agendamento");
-                    Response.Redirect("historico_mediacoes.aspx?ID=" + m.id.ToString());
+                    Response.Redirect("detail_mediacao.aspx?ID=" + m.id.ToString());
                     return true;                    
                 }
                 else

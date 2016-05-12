@@ -295,7 +295,7 @@ namespace BackEnd.Models
                     p2.AppendLine();
 
                     Paragraph objeto = document.InsertParagraph();
-                    objeto.AppendLine("O objeto da mediação é o seguinte: " +md.objeto).AppendLine().AppendLine().Alignment = Alignment.left;
+                    objeto.AppendLine("O objeto da mediação é o seguinte:").AppendLine(md.objeto).AppendLine().Alignment = Alignment.left;
                     // assinaturas
                     objeto.AppendLine(assinaturas).AppendLine().AppendLine();
 

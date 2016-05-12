@@ -39,7 +39,7 @@
                             </ItemTemplate>
                         </asp:TemplateField>                
                                
-                        <asp:ButtonField CommandName="Gerar" HeaderStyle-Width="40" Text="Gerar .docx" runat="server">
+                        <asp:ButtonField CommandName="Detalhes" HeaderStyle-Width="40" Text="Detalhes" runat="server">
                             <ControlStyle CssClass="btn btn-xs btn-info"/>                         
                             <HeaderStyle Width="40px"></HeaderStyle>
                         </asp:ButtonField>
