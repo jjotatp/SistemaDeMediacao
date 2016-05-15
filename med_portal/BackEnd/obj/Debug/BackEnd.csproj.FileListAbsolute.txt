@@ -1,0 +1,5 @@
+C:\Users\junio\Documents\TCC\med_portal\BackEnd\bin\Debug\BackEnd.dll
+C:\Users\junio\Documents\TCC\med_portal\BackEnd\bin\Debug\BackEnd.pdb
+C:\Users\junio\Documents\TCC\med_portal\BackEnd\obj\Debug\BackEnd.csprojResolveAssemblyReference.cache
+C:\Users\junio\Documents\TCC\med_portal\BackEnd\obj\Debug\BackEnd.dll
+C:\Users\junio\Documents\TCC\med_portal\BackEnd\obj\Debug\BackEnd.pdb
