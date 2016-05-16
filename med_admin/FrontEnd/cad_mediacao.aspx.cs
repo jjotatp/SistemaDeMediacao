@@ -46,7 +46,6 @@ namespace FrontEnd
                 ddTipoRegistro.SelectedIndex = 0;
 
                 txtTemaConflito.MaxLength = 50;
-                txtNumero.MaxLength = 20;
 
                 txtData.Value = DateTime.Parse(DateTime.Now.ToString()).ToString("yyyy-MM-dd");
                 txtHora.Value = DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString();
@@ -162,7 +161,7 @@ namespace FrontEnd
                 if (Session["med_agendamento"] != null)
                     id_agendamento = Int32.Parse(Session["med_agendamento"].ToString());
 
-                m.numero = txtNumero.Value;
+                m.numero = model.GerarProximoNumero();
                 m.tema_conflito = txtTemaConflito.Value;
                 m.id_tipo_registro = Int32.Parse(ddTipoRegistro.SelectedValue);
                 m.data_mediacao = DateTime.Parse(txtData.Value + " " + txtHora.Value + ":00");

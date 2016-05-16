@@ -43,7 +43,7 @@ namespace FrontEnd
 
                 med = model.Obter(id);
 
-                txtNumero.Text = med.numero;
+                txtNumero.Text = med.numero.ToString();
                 txtData.Text = med.data_mediacao.ToShortDateString();
                 txtHora.Text = med.data_mediacao.ToShortTimeString();
                 txtTemaConflito.Text = med.tema_conflito;

@@ -339,10 +339,31 @@ namespace BackEnd.Models
             using (dbDataContext db = getDataContext())
             {
                 var query = from p in db.v_historico_mediacaos orderby p.DataMediacao descending select p;
-                //Table<v_historico_mediacao> tb = db.GetTable<v_historico_mediacao>().OrderByDescending<v_historico_mediacao, >
                 return query.ToList();
             }
         }
 
+        public int GerarProximoNumero()
+        {
+            // busca o próximo número de acordo com o último inserido
+            int num = 0;
+            try
+            {
+                using (dbDataContext db = getDataContext())
+                {
+                    var query = from n in db.mediacaos where (n.data_mediacao.Year == DateTime.Today.Year) orderby n.numero descending select n;
+                    if (query.Count() > 0)
+                        num = query.First().numero + 1;
+                    else
+                        num = 1;
+                }
+                
+            }
+            catch(Exception e)
+            {
+                message = e.Message;
+            }
+            return num;
+        }
     }
 }

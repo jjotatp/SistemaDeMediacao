@@ -75,7 +75,7 @@ create table agendamentos
 create table mediacoes
 (
 	id int not null primary key identity,
-	numero varchar(20) not null,
+	numero int not null,
 	tema_conflito varchar(50) not null,	
 	data_mediacao datetime not null,
 	id_mediador int not null references mediadores(id),

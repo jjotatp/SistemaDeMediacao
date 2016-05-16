@@ -46,18 +46,12 @@ CodeBehind="cad_mediacao.aspx.cs" Inherits="FrontEnd.cad_mediacao" %>
                     <div class="panel-body">
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="">
-                                Número da Mediação
-                            </label>
-                            <div class="col-sm-3">
-                                <input class="form-control" id="txtNumero" type="text" runat="server" required="required">
-                            </div>
-                            <label class="col-sm-1 control-label" for="">
                                 Data
                             </label>
                             <div class="col-sm-2">
                                 <input class="form-control" id="txtData" type="date" runat="server" required="required">
                             </div>
-                            <label class="col-sm-1 control-label" for="">
+                            <label class="col-sm-2 control-label" for="">
                                 Hora
                             </label>
                             <div class="col-sm-2">
@@ -96,7 +90,7 @@ CodeBehind="cad_mediacao.aspx.cs" Inherits="FrontEnd.cad_mediacao" %>
                                 Objeto da Mediação
                             </label>
                             <div class="col-sm-9">
-                                <asp:TextBox TextMode="MultiLine" Rows="5" CssClass="form-control" id="txtObjetoMediacao" runat="server" required="required"></asp:TextBox>                                                                
+                                <asp:TextBox TextMode="MultiLine" Rows="5" CssClass="form-control" id="txtObjetoMediacao" runat="server" required="required"></asp:TextBox>
                             </div>
                         </div>                        
                     </div>

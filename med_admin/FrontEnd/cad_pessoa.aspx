@@ -169,9 +169,9 @@ CodeBehind="cad_pessoa.aspx.cs" Inherits="FrontEnd.cad_pessoa" %>
         <div class="form-group">
             <div class="container text-right">
                 <asp:button id="btnNovaPessoa" runat="server" cssclass="btn btn-success"
-                text="Registrar uma outra parte" OnClick="btnNovaPessoa_Click" />
+                text="Salvar e registrar uma outra parte" OnClick="btnNovaPessoa_Click" />
                 <asp:Button id="btnMediacao" runat="server" CssClass="btn btn-purple"
-                Text="Ir para a mediação" OnClick="btnMediacao_Click" />
+                Text="Salvar e ir para a mediação" OnClick="btnMediacao_Click" />
             </div>
         </div>
     </div>

@@ -119,7 +119,7 @@ create procedure alteraMediacao
 (
 	@id int,
 	@id_agendamento int ,
-	@numero varchar(20),
+	@numero int,
 	@tema_conflito varchar(50),	
 	@data_mediacao date ,
 	@id_mediador int ,

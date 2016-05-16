@@ -20,7 +20,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Número">
                             <ItemTemplate>
-                                <%#Eval("Numero") + " / " + DateTime.Parse(Eval("DataMediacao").ToString()).Year.ToString() %>
+                                <%#Eval("Numero").ToString() + " / " + DateTime.Parse(Eval("DataMediacao").ToString()).Year.ToString() %>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Tema do Conflito">
