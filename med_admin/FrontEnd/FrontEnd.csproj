@@ -157,6 +157,7 @@
     <Content Include="Content\plugins\summernote\dist\font\summernote.eot" />
     <Content Include="Content\plugins\summernote\dist\font\summernote.ttf" />
     <Content Include="Content\plugins\summernote\dist\font\summernote.woff" />
+    <None Include="Properties\PublishProfiles\medfatec.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -182,36 +183,8 @@
     <Content Include="Content\fonts\ioniconsaa26.svg" />
     <Content Include="Content\fonts\Material-Design-Iconic-Fontf700.svg" />
     <Content Include="Content\fonts\themify9f24.svg" />
-    <Content Include="Content\images\avatar-1.jpg" />
-    <Content Include="Content\images\email\1.png" />
-    <Content Include="Content\images\email\2.png" />
-    <Content Include="Content\images\email\3.png" />
     <Content Include="Content\images\favicon_1.ico" />
-    <Content Include="Content\images\gallery\1.jpg" />
-    <Content Include="Content\images\gallery\10.jpg" />
-    <Content Include="Content\images\gallery\11.jpg" />
-    <Content Include="Content\images\gallery\12.jpg" />
-    <Content Include="Content\images\gallery\2.jpg" />
-    <Content Include="Content\images\gallery\3.jpg" />
-    <Content Include="Content\images\gallery\4.jpg" />
-    <Content Include="Content\images\gallery\5.jpg" />
-    <Content Include="Content\images\gallery\6.jpg" />
-    <Content Include="Content\images\gallery\7.jpg" />
-    <Content Include="Content\images\gallery\8.jpg" />
-    <Content Include="Content\images\gallery\9.jpg" />
     <Content Include="Content\images\multiple-arrow.png" />
-    <Content Include="Content\images\small\img1.jpg" />
-    <Content Include="Content\images\small\img2.jpg" />
-    <Content Include="Content\images\small\img3.jpg" />
-    <Content Include="Content\images\users\avatar-1.jpg" />
-    <Content Include="Content\images\users\avatar-2.jpg" />
-    <Content Include="Content\images\users\avatar-3.jpg" />
-    <Content Include="Content\images\users\avatar-4.jpg" />
-    <Content Include="Content\images\users\avatar-5.jpg" />
-    <Content Include="Content\images\users\avatar-6.jpg" />
-    <Content Include="Content\images\users\avatar-7.jpg" />
-    <Content Include="Content\images\users\avatar-8.jpg" />
-    <Content Include="Content\images\users\avatar-9.jpg" />
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\detect.js" />
     <Content Include="Content\js\fastclick.js" />
@@ -375,7 +348,9 @@
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="solicitacoes.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="agenda.aspx.cs">

@@ -39,7 +39,7 @@
                         <div class="col-md-4">
                         <div class="card-box widget-user">
                             <div>
-                                <a href="lista_mediacoes.aspx">
+                                <a href="historico_mediacoes.aspx">
                                     <img class="img-responsive" alt="user" src="Content/images/historico.png">
                                     <div class="wid-u-info">                                    
                                         <h4 class="m-t-0 m-b-5">Mediações Arquivadas</h4>
