@@ -6,6 +6,12 @@
 
 }
 
+.arte-principal-artigo {
+    background-image: url("https://visualhunt.com/photos/m/2/knowledge-book-library-glasses-textbook.jpg"); 
+    background-size: cover;
+    height: 400px;
+}
+
 .espaco{
     padding-left: 40px;
     padding-top: 75px;

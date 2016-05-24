@@ -40,7 +40,7 @@
                     <li class="active wow bounceIn data-wow-duration="2s""><a href="index.aspx">Início <span class="sr-only">(current)</span></a></li>
 
                     <li class="wow bounceIn data-wow-duration="1s" data-wow-delay="0.5s""><a href="contato.aspx"> Contato</a></li>
-                    <li class="wow bounceIn data-wow-duration="1s" data-wow-delay="0.7s""><a href="#"> Notícias</a></li>
+                    <li class="wow bounceIn data-wow-duration="1s" data-wow-delay="0.7s""><a href="noticias.aspx"> Notícias</a></li>
                     <li class="wow bounceIn data-wow-duration="1s" data-wow-delay="0.9s""><a href="depoimentos.aspx"> Depoimentos</a></li>
                 </ul>
 

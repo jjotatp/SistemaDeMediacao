@@ -97,6 +97,7 @@
     <Content Include="contato.aspx" />
     <Content Include="depoimentos.aspx" />
     <Content Include="exCasos.aspx" />
+    <Content Include="noticias.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -115,6 +116,7 @@
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="sobreMediacao.aspx" />
     <Content Include="solicitacao.aspx" />
+    <Content Include="textoNoticias.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +155,13 @@
     <Compile Include="med_portal.Master.designer.cs">
       <DependentUpon>med_portal.Master</DependentUpon>
     </Compile>
+    <Compile Include="noticias.aspx.cs">
+      <DependentUpon>noticias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="noticias.aspx.designer.cs">
+      <DependentUpon>noticias.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="sobreMediacao.aspx.cs">
       <DependentUpon>sobreMediacao.aspx</DependentUpon>
@@ -167,6 +176,13 @@
     </Compile>
     <Compile Include="solicitacao.aspx.designer.cs">
       <DependentUpon>solicitacao.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="textoNoticias.aspx.cs">
+      <DependentUpon>textoNoticias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="textoNoticias.aspx.designer.cs">
+      <DependentUpon>textoNoticias.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
