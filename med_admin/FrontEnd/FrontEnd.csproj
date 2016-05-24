@@ -153,7 +153,7 @@
     <Content Include="Content\fonts\themify9f24.ttf" />
     <Content Include="Content\fonts\themify9f24.woff" />
     <Content Include="Content\fonts\themifyd41d.eot" />
-    <Content Include="med_admin.Master" />
+    <Content Include="medAdmin.Master" />
     <Content Include="Content\plugins\summernote\dist\font\summernote.eot" />
     <Content Include="Content\plugins\summernote\dist\font\summernote.ttf" />
     <Content Include="Content\plugins\summernote\dist\font\summernote.woff" />
@@ -486,12 +486,12 @@
     <Compile Include="LoginControl.ascx.designer.cs">
       <DependentUpon>LoginControl.ascx</DependentUpon>
     </Compile>
-    <Compile Include="med_admin.Master.cs">
-      <DependentUpon>med_admin.Master</DependentUpon>
+    <Compile Include="medAdmin.Master.cs">
+      <DependentUpon>medAdmin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="med_admin.Master.designer.cs">
-      <DependentUpon>med_admin.Master</DependentUpon>
+    <Compile Include="medAdmin.Master.designer.cs">
+      <DependentUpon>medAdmin.Master</DependentUpon>
     </Compile>
     <Compile Include="noticias.aspx.cs">
       <DependentUpon>noticias.aspx</DependentUpon>

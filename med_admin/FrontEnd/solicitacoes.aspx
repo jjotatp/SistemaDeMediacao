@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/med_admin.Master" AutoEventWireup="true" CodeBehind="solicitacoes.aspx.cs" Inherits="FrontEnd.solicitacoes" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/medAdmin.master" AutoEventWireup="true" CodeBehind="solicitacoes.aspx.cs" Inherits="FrontEnd.solicitacoes" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">
-    <%@ MasterType VirtualPath="~/med_admin.master"  %>               
+    <%@ MasterType VirtualPath="~/medAdmin.master"  %>               
 <%--    <div style="text-align: center;">
         <h1>
             Gerenciamento de Solicitações

@@ -8,7 +8,7 @@ using BackEnd.Controllers;
 
 namespace FrontEnd
 {
-    public partial class med_admin : System.Web.UI.MasterPage
+    public partial class medAdmin : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

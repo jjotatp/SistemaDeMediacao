@@ -1,5 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/med_admin.Master" AutoEventWireup="true" CodeBehind="depoimento_editar.aspx.cs" Inherits="FrontEnd.depoimento_editar" %>
-<%@ MasterType VirtualPath="~/med_admin.master"  %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/medAdmin.master" AutoEventWireup="true" CodeBehind="depoimento_editar.aspx.cs" Inherits="FrontEnd.depoimento_editar" %>
+<%@ MasterType VirtualPath="~/medAdmin.master"  %>
 <asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">   
     <div class="col-md-10 col-md-offset-1">
         <div class="panel panel-color panel-primary">

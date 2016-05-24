@@ -1,5 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/med_admin.Master" AutoEventWireup="true" CodeBehind="historico_mediacoes.aspx.cs" Inherits="FrontEnd.historico_mediacoes" %>
-<%@ MasterType VirtualPath="~/med_admin.master"  %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/medAdmin.master" AutoEventWireup="true" CodeBehind="historico_mediacoes.aspx.cs" Inherits="FrontEnd.historico_mediacoes" %>
+<%@ MasterType VirtualPath="~/medAdmin.master"  %>
 <asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">
     <div class="col-md-12">
         <div class="panel panel-color panel-primary">

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/med_admin.Master" AutoEventWireup="true" CodeBehind="result_tipo_registro.aspx.cs" Inherits="FrontEnd.result_tipo_registro" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/medAdmin.master" AutoEventWireup="true" CodeBehind="result_tipo_registro.aspx.cs" Inherits="FrontEnd.result_tipo_registro" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">
     <div class="col-md-12">
         <div class="panel panel-color panel-primary">

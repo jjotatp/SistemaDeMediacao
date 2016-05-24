@@ -1,5 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/med_admin.Master" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="FrontEnd.index" %>
-<%@ MasterType VirtualPath="~/med_admin.master"  %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/medAdmin.Master" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="FrontEnd.index" %>
+<%@ MasterType VirtualPath="~/medAdmin.master"  %>
 <asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">        
     <div class="">
             <div class="container">

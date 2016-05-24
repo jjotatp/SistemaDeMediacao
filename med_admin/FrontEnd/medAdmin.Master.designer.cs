@@ -10,7 +10,7 @@
 namespace FrontEnd {
     
     
-    public partial class med_admin {
+    public partial class medAdmin {
         
         /// <summary>
         /// form1 control.

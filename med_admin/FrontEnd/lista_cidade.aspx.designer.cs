@@ -54,9 +54,9 @@ namespace FrontEnd {
         /// <remarks>
         /// Auto-generated property.
         /// </remarks>
-        public new FrontEnd.med_admin Master {
+        public new FrontEnd.medAdmin Master {
             get {
-                return ((FrontEnd.med_admin)(base.Master));
+                return ((FrontEnd.medAdmin)(base.Master));
             }
         }
     }
