@@ -112,6 +112,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.aspx" />
+    <Content Include="pontosMediacao.aspx" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="sobreMediacao.aspx" />
@@ -161,6 +162,13 @@
     </Compile>
     <Compile Include="noticias.aspx.designer.cs">
       <DependentUpon>noticias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pontosMediacao.aspx.cs">
+      <DependentUpon>pontosMediacao.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pontosMediacao.aspx.designer.cs">
+      <DependentUpon>pontosMediacao.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="sobreMediacao.aspx.cs">

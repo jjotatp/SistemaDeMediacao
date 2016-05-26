@@ -64,7 +64,7 @@
                             <div class="panel-body">
                                 <p style="text-align: center;"> Conheça o que tem mais próximo de você...</p>
                                 <ul class="pager">
-                                    <li><a href="pontoDeMeciacao.html">Saiba Mais</a></li>
+                                    <li><a href="pontosMediacao.aspx">Saiba Mais</a></li>
                                 </ul>
                             </div>
                         </div>

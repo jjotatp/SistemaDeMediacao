@@ -34,7 +34,7 @@
             </div>
             <div style="text-align: center;" class="col-md-10 col-md-offset-1">
                 <h1 class="titulo">Deseja abrir uma Mediação?</h1>
-                <p><a href="solicitacao.html" class="btn btn-danger" role="button">Solicitação</a> </p>
+                <p><a href="solicitacao.aspx" class="btn btn-danger" role="button">Solicitação</a> </p>
                 <br>
             </div>
             

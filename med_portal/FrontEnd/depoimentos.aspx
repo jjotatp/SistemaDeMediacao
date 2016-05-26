@@ -33,47 +33,63 @@
             <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
         </div>
 
-                 <div class="col-lg-4 col-sm-6 text-center">
+        <div class="col-lg-4 col-sm-6 text-center">
             <h3>Som Auto</h3>
             <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
         </div>
-                 <div class="col-lg-4 col-sm-6 text-center">
+        
+        <div class="col-lg-4 col-sm-6 text-center">
             <h3>Som Auto</h3>
             <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
         </div>
-                 <div class="col-lg-4 col-sm-6 text-center">
+        
+        <div class="col-lg-4 col-sm-6 text-center">
             <h3>Som Auto</h3>
             <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
         </div>
-                 <div class="col-lg-4 col-sm-6 text-center">
+        
+        <div class="col-lg-4 col-sm-6 text-center">
             <h3>Som Auto</h3>
             <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
         </div>
-                 <div class="col-lg-4 col-sm-6 text-center">
+        
+        <div class="col-lg-4 col-sm-6 text-center">
             <h3>Som Auto</h3>
             <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
         </div>
-                 <div class="col-lg-4 col-sm-6 text-center">
-            <h3>Som Auto</h3>
-            <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
-
-                             <div class="col-lg-4 col-sm-6 text-center">
-            <h3>Som Auto</h3>
-            <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
-        </div>
-                             <div class="col-lg-4 col-sm-6 text-center">
-            <h3>Som Auto</h3>
-            <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
-        </div>
-                             <div class="col-lg-4 col-sm-6 text-center">
-            <h3>Som Auto</h3>
-            <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
-        </div>
-                             <div class="col-lg-4 col-sm-6 text-center">
+        
+        <div class="col-lg-4 col-sm-6 text-center">
             <h3>Som Auto</h3>
             <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
         </div>
 
+        <div class="col-lg-4 col-sm-6 text-center">
+            <h3>Som Auto</h3>
+            <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
         </div>
-         </div>
+        
+        <div class="col-lg-4 col-sm-6 text-center">
+            <h3>Som Auto</h3>
+            <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
+        </div>
+        
+        <div class="col-lg-4 col-sm-6 text-center">
+            <h3>Som Auto</h3>
+            <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
+        </div>
+        
+        <div class="col-lg-4 col-sm-6 text-center">
+            <h3>Som Auto</h3>
+            <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
+        </div>
+        
+        <br />
+                   
+        <div style="text-align: center;" class="col-md-10 col-md-offset-1">
+                <h1 class="titulo">Deseja abrir uma Mediação?</h1>
+                <p><a href="solicitacao.aspx" class="btn btn-danger" role="button">Solicitação</a> </p>
+                <br>
+            </div>
+        </div>
+
 </asp:Content>
