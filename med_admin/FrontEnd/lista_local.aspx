@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/medAdmin.master" AutoEventWireup="true" CodeBehind="lista_local.aspx.cs" Inherits="FrontEnd.lista_local" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="medAdmin.Master" AutoEventWireup="true" CodeBehind="lista_local.aspx.cs" Inherits="FrontEnd.lista_local" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">
-    <%@ MasterType VirtualPath="~/medAdmin.master"  %>              
+    <%@ MasterType VirtualPath="medAdmin.Master"  %>              
 <div class="col-sm-10 col-sm-offset-1">
     <div class="panel panel-color panel-primary">
         <div class="panel-heading">

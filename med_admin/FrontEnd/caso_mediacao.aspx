@@ -1,5 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/medAdmin.master" AutoEventWireup="true" CodeBehind="caso_mediacao.aspx.cs" Inherits="FrontEnd.caso_mediacao" %>
-<%@ MasterType VirtualPath="~/medAdmin.master"  %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="medAdmin.Master" AutoEventWireup="true" CodeBehind="caso_mediacao.aspx.cs" Inherits="FrontEnd.caso_mediacao" %>
+<%@ MasterType VirtualPath="medAdmin.Master"  %>
 <asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">    
 <asp:ScriptManager ID ="scriptManager" runat="server" />        
     <div class="col-md-12">
