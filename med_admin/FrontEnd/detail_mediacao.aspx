@@ -84,7 +84,7 @@
     <div class="form-group">
             <div class="container text-right">
                 <asp:Button runat="server" id="btnGerar" class="btn btn-success"
-                OnClick="btnGerar_Click" Text="Gerar .docx" />
+                OnClick="btnGerar_Click" Text="Baixar Arquivo" />
                 <asp:Button runat="server" id="btnVoltar" class="btn btn-default"
                 OnClick="btnVoltar_Click" Text="Voltar" />
             </div>

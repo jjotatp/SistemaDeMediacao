@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using BackEnd.Controllers;
 using BackEnd.Models;
+using System.IO;
+using System.Globalization;
 
 namespace FrontEnd
 {
@@ -69,20 +71,45 @@ namespace FrontEnd
 
         protected void Gerar()
         {
-            Mediacao_Model model = new Mediacao_Model();
-            int id = int.Parse(Request.QueryString["ID"].ToString());
-
-            string caminho = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-
-            string nomeArquivo = model.GerarTermoDoc(id, caminho);
-
-            if (nomeArquivo != "")
+            try
             {
-                Master.Sucesso("Arquivo gerado e salvo em: " + nomeArquivo);
+                Mediacao_Model model = new Mediacao_Model();
+                int id = int.Parse(Request.QueryString["ID"].ToString());
+                string arquivo = "";
+                String caminho = Server.MapPath(@"Documents\");
+
+                //string caminho = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                if (!Directory.Exists(caminho))
+                {
+                    Directory.CreateDirectory(caminho);
+                }
+
+                arquivo = model.GerarTermoDoc(id, caminho);
+
+                if (arquivo != "")
+                {
+                    // se o arquivo foi gerado e salvo na pasta do servidor, faz a solicitação de download para o cliente
+                    var file = new FileInfo(arquivo);
+
+                    Response.Clear();
+                    Response.AddHeader("Content-Disposition", "attachment; filename="
+                                                              + HttpUtility.UrlEncode(file.Name));
+                    Response.AddHeader("Content-Length", file.Length.ToString(CultureInfo.InvariantCulture));
+                    Response.ContentType = "application/octet-stream";
+                    Response.WriteFile(file.FullName);
+                    Response.Flush();
+                    Response.End();
+
+                    //Master.Sucesso("Arquivo gerado e salvo em: " + arquivo);
+                }
+                else
+                {
+                    Master.Alerta("Erro: " + model.message);
+                }
             }
-            else
+            catch (Exception Exc)
             {
-                Master.Alerta("Erro: " + model.message);
+                Master.Alerta("Erro: " + Exc.Message);
             }
         }
 

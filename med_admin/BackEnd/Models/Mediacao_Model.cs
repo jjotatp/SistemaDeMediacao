@@ -7,6 +7,7 @@ using BackEnd.Controllers;
 using System.Data.Linq;
 using System.Data.Common;
 using Novacode;
+using System.IO;
 
 namespace BackEnd.Models
 {
@@ -204,7 +205,13 @@ namespace BackEnd.Models
                 // ex: Desktop\002_2016.docx
                 String nomeArquivo = caminho + @"\" + md.numero.ToString() + "_" + md.data_mediacao.Year.ToString() + ".docx";
                 // gera o documento da mediação
-                
+
+                // Se o arquivo já existe, não salva novamente
+                //if (File.Exists(nomeArquivo))
+                //{
+                //    return nomeArquivo;
+                //}
+
                 string modelo = AppDomain.CurrentDomain.BaseDirectory + "modelo_med.docx";
                 using (DocX document = DocX.Load(modelo))
                 {

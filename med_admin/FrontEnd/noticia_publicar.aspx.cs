@@ -58,63 +58,69 @@ namespace FrontEnd
         {
             // Validar se esta editando ou postando nova
             //    se estiver editando, alterar somente titulo, texto e imagem, mantendo a data
-
-            if (Validar())
+            try
             {
-                // pega apenas o nome do arquivo para poder remontar o caminho para o servidor
-                String caminho = @"..\Images\";
-                String nome = Path.GetFileName(imgImagemCarregada.ImageUrl);
-
-                // declara objeto noticia
-                noticia n = new noticia();
-                // declara objeto noticia_model
-                Noticia_Model model = new Noticia_Model();
-                // pega o mediador logado
-                mediador med = Session["med"] as mediador;
-
-                n.titulo_postagem = txtTituloNoticia.Text;
-                n.corpo_noticia = edtNoticia.Value;
-                n.imagem_caminho = caminho;
-                n.imagem_nome = nome;
-                n.prioridade = int.Parse(ddPrioridade.SelectedValue);
-
-                if (Request.QueryString["ID"] != null)
+                if (Validar())
                 {
-                    // se tem ID, altera
-                    int id = int.Parse(Request.QueryString["ID"]);
+                    // pega apenas o nome do arquivo para poder remontar o caminho para o servidor
+                    String caminho = @"Images\";
+                    String nome = Path.GetFileName(imgImagemCarregada.ImageUrl);
 
-                    n.id = id;
-                    n.data_edicao = DateTime.Now;
-                    n.id_local_edicao = med.id_local;
-                    n.id_mediador_edicao = med.id;
+                    // declara objeto noticia
+                    noticia n = new noticia();
+                    // declara objeto noticia_model
+                    Noticia_Model model = new Noticia_Model();
+                    // pega o mediador logado
+                    mediador med = Session["med"] as mediador;
 
-                    if (model.Alterar(n))
+                    n.titulo_postagem = txtTituloNoticia.Text;
+                    n.corpo_noticia = edtNoticia.Value;
+                    n.imagem_caminho = caminho;
+                    n.imagem_nome = nome;
+                    n.prioridade = int.Parse(ddPrioridade.SelectedValue);
+
+                    if (Request.QueryString["ID"] != null)
                     {
-                        Master.Sucesso("Notícia alterada!");
-                        Response.Redirect("noticias.aspx");
+                        // se tem ID, altera
+                        int id = int.Parse(Request.QueryString["ID"]);
+
+                        n.id = id;
+                        n.data_edicao = DateTime.Now;
+                        n.id_local_edicao = med.id_local;
+                        n.id_mediador_edicao = med.id;
+
+                        if (model.Alterar(n))
+                        {
+                            Master.Sucesso("Notícia alterada!");
+                            Response.Redirect("noticias.aspx");
+                        }
+                        else
+                        {
+                            Master.Alerta("Erro: " + model.message);
+                        }
                     }
                     else
                     {
-                        Master.Alerta("Erro: " + model.message);
-                    }
-                }
-                else
-                {
-                    // se não tem ID, insere
-                    n.data_postagem = DateTime.Now;
-                    n.id_local = med.id_local;
-                    n.id_mediador = med.id;
+                        // se não tem ID, insere
+                        n.data_postagem = DateTime.Now;
+                        n.id_local = med.id_local;
+                        n.id_mediador = med.id;
 
-                    if (model.Inserir(n))
-                    {
-                        Master.Sucesso("Notícia postada!");
-                        Response.Redirect("noticias.aspx");
-                    }
-                    else
-                    {
-                        Master.Alerta("Erro: " + model.message);
+                        if (model.Inserir(n))
+                        {
+                            Master.Sucesso("Notícia postada!");
+                            Response.Redirect("noticias.aspx");
+                        }
+                        else
+                        {
+                            Master.Alerta("Erro: " + model.message);
+                        }
                     }
                 }
+            }
+            catch (Exception Exc)
+            {
+                Master.Alerta("Erro: " + Exc.Message);
             }
         }
 
@@ -125,7 +131,7 @@ namespace FrontEnd
                 if (uplImagemCarregada.PostedFile != null && uplImagemCarregada.PostedFile.FileName != "")
                 {
                     // se não existe, cria a pasta IMAGES no servidor
-                    String caminho = Server.MapPath(@"~\Images\");
+                    String caminho = Server.MapPath(@"Images\");
                     String nome = uplImagemCarregada.FileName;
 
                     // verifica se o nome do arquivo é maior que 50 caracteres
@@ -148,7 +154,7 @@ namespace FrontEnd
                         uplImagemCarregada.SaveAs(arquivo);
                     }
                     // ajusta o nome para o imageurl aceitar
-                    caminho = @"..\Images\";
+                    caminho = @"Images\";
                     arquivo = caminho + nome;
                     // carrega a imagem no componente Image
                     imgImagemCarregada.ImageUrl = caminho + nome;
