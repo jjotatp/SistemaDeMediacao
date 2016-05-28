@@ -54,9 +54,6 @@
                                 <% } %>
                             </div>
                         </ContentTemplate>
-                        <%--<Triggers> 
-                            <asp:PostBackTrigger ControlID="" /> 
-                        </Triggers>--%>
                     </asp:UpdatePanel>
                 </div>
             </div>

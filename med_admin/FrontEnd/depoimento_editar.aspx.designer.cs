@@ -19,7 +19,7 @@ namespace FrontEnd {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescricao;
+        protected global::System.Web.UI.WebControls.TextBox txtDescricao;
         
         /// <summary>
         /// txtRodape control.
@@ -37,7 +37,7 @@ namespace FrontEnd {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtIdade;
+        protected global::System.Web.UI.WebControls.TextBox txtIdade;
         
         /// <summary>
         /// btnSalvar control.

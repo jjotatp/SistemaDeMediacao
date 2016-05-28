@@ -8,29 +8,32 @@ namespace FrontEnd
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.QueryString["ID"] != null)
+            if (!IsPostBack)
             {
-                // se foi informado ID então carrega os dados
-                CarregarDados(int.Parse(Request.QueryString["ID"].ToString()));
-            }
-            else
-            {
-                // se não, redireciona para a lista
-                Response.Redirect("depoimentos.aspx");
+                if (Request.QueryString["ID"] != null)
+                {
+                    // se foi informado ID então carrega os dados
+                    CarregarDados(int.Parse(Request.QueryString["ID"].ToString()));
+                }
+                else
+                {
+                    // se não, redireciona para a lista
+                    Response.Redirect("depoimentos.aspx");
+                }
             }
         }
 
         protected void CarregarDados(int id)
         {
             Depoimento_Model model = new Depoimento_Model();
-            depoimento d = new depoimento();
+            depoimento d = new BackEnd.Controllers.depoimento();
             try
             {
                 d = model.Obter(id);
 
-                txtDescricao.Value = d.descricao;
-                txtIdade.Value = d.idade.ToString();
-                txtRodape.Text = d.nome;
+                txtDescricao.Text = d.descricao.ToString();
+                txtIdade.Text = d.idade.ToString();
+                txtRodape.Text = d.nome.ToString();
             }
             catch { }
         }
@@ -39,19 +42,19 @@ namespace FrontEnd
         {
             Depoimento_Model model = new Depoimento_Model();
             depoimento d = new depoimento();
-            mediador med = new mediador();
-            med = Master.GetLogado();
             // salva o depoimento e volta a tela de depoimentos
             try
             {
-                d.id = int.Parse(Request.QueryString["ID"].ToString());
-                d.descricao = txtDescricao.Value;
-                d.idade = int.Parse(txtIdade.Value);
+                d.descricao = txtDescricao.Text;
+                d.idade = int.Parse(txtIdade.Text);
                 d.nome = txtRodape.Text;
-                d.id_mediador = med.id;
                 d.data = DateTime.Now;
+                d.id = int.Parse(Request.QueryString["ID"].ToString());
                 d.status = 2; // STATUS 2 = APROVADO E PUBLICADO
 
+                mediador med = new mediador();
+                med = Master.GetLogado();
+                d.id_mediador = med.id;
                 if (model.Alterar(d))
                 {
                     Response.Redirect("depoimentos.aspx");
