@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FrontEnd {
+namespace MedAdmin {
     
     
     public partial class medAdmin {
@@ -28,7 +28,7 @@ namespace FrontEnd {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FrontEnd.LoginControl LoginControl1;
+        protected global::MedAdmin.LoginControl LoginControl1;
         
         /// <summary>
         /// pnlAlerta control.

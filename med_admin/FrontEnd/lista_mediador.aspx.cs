@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using BackEnd.Controllers;
 using BackEnd.Models;
 
-namespace FrontEnd
+namespace MedAdmin
 {
     public partial class lista_mediador : System.Web.UI.Page
     {

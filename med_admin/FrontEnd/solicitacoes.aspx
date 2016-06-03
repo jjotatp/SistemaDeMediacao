@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="medAdmin.Master" AutoEventWireup="true" CodeBehind="solicitacoes.aspx.cs" Inherits="FrontEnd.solicitacoes" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="medAdmin.Master" AutoEventWireup="true" CodeBehind="solicitacoes.aspx.cs" Inherits="MedAdmin.solicitacoes" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">
     <%@ MasterType VirtualPath="medAdmin.Master"  %>               
 <%--    <div style="text-align: center;">

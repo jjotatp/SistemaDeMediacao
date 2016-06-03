@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="medAdmin.Master" AutoEventWireup="true" CodeBehind="noticia_publicar.aspx.cs" Inherits="FrontEnd.noticia_publicar" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="medAdmin.Master" AutoEventWireup="true" CodeBehind="noticia_publicar.aspx.cs" Inherits="MedAdmin.noticia_publicar" %>
 <%@ MasterType VirtualPath="medAdmin.Master"  %>
 <asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">    
     <asp:ScriptManager ID ="scriptManager" runat="server" />        

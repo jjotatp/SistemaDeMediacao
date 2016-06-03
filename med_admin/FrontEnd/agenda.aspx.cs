@@ -9,7 +9,7 @@ using BackEnd.Controllers;
 using BackEnd.Models;
 using System.Web.Services;
 
-namespace FrontEnd
+namespace MedAdmin
 {
     public partial class agenda : System.Web.UI.Page
     {       

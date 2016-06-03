@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="medAdmin.Master.cs" Inherits="FrontEnd.medAdmin" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="medAdmin.Master.cs" Inherits="MedAdmin.medAdmin" %>
 
 <%@ Register TagPrefix="lgn" TagName="Login" Src="~/LoginControl.ascx" %>
 

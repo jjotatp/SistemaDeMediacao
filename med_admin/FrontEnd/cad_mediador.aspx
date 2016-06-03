@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="medAdmin.Master" AutoEventWireup="true" CodeBehind="cad_mediador.aspx.cs" Inherits="FrontEnd.cad_mediador" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="medAdmin.Master" AutoEventWireup="true" CodeBehind="cad_mediador.aspx.cs" Inherits="MedAdmin.cad_mediador" %>
 <%@ MasterType VirtualPath="medAdmin.Master"  %> 
 <asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">                 
     <div class="col-sm-10 col-sm-offset-1">

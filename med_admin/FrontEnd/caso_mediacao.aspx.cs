@@ -4,7 +4,7 @@ using BackEnd.Models;
 using System.IO;
 using System.Collections.Generic;
 
-namespace FrontEnd
+namespace MedAdmin
 {
     public partial class caso_mediacao : System.Web.UI.Page
     {

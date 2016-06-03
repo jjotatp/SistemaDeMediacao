@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FrontEnd {
+namespace MedAdmin {
     
     
     public partial class result_tipo_registro {

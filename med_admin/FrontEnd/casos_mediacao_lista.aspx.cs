@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 using BackEnd.Controllers;
 using BackEnd.Models;
 
-namespace FrontEnd
+namespace MedAdmin
 {
     public partial class casos_mediacao_lista : System.Web.UI.Page
     {

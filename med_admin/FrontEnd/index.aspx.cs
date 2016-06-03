@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 using BackEnd.Models;
 using BackEnd.Controllers;
 
-namespace FrontEnd
+namespace MedAdmin
 {
     public partial class index : System.Web.UI.Page
     {

@@ -3,7 +3,7 @@ using BackEnd.Controllers;
 using BackEnd.Models;
 using System.Web.UI.WebControls;
 
-namespace FrontEnd
+namespace MedAdmin
 {
     public partial class historico_mediacoes : System.Web.UI.Page
     {

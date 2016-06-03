@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="medAdmin.Master" AutoEventWireup="true" CodeBehind="historico_mediacoes.aspx.cs" Inherits="FrontEnd.historico_mediacoes" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="medAdmin.Master" AutoEventWireup="true" CodeBehind="historico_mediacoes.aspx.cs" Inherits="MedAdmin.historico_mediacoes" %>
 <%@ MasterType VirtualPath="medAdmin.Master"  %>
 <asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">
     <div class="col-md-12">

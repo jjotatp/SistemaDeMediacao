@@ -11,7 +11,7 @@ using BackEnd.Models;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace FrontEnd
+namespace MedAdmin
 {
     public partial class LoginControl : System.Web.UI.UserControl
     {

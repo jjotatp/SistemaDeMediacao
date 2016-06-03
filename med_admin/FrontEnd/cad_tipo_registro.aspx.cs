@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using BackEnd.Controllers;
 using BackEnd.Models;
 
-namespace FrontEnd
+namespace MedAdmin
 {
     public partial class cad_tipo_registro : System.Web.UI.Page
     {

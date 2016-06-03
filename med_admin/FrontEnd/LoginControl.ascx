@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="LoginControl.ascx.cs"
-Inherits="FrontEnd.LoginControl" %>
+Inherits="MedAdmin.LoginControl" %>
     <link href="Content/plugins/jquery-circliful/css/jquery.circliful.css"
     rel="stylesheet" type="text/css" />
     <link href="Content/css/bootstrap.min.css" rel="stylesheet" type="text/css"

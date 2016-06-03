@@ -9,7 +9,7 @@ using BackEnd.Models;
 using System.IO;
 using System.Globalization;
 
-namespace FrontEnd
+namespace MedAdmin
 {
     public partial class detail_mediacao : System.Web.UI.Page
     {

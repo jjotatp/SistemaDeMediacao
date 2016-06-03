@@ -8,7 +8,7 @@ using BackEnd.Controllers;
 using BackEnd.Models;
 using System.Security.Cryptography;
 
-namespace FrontEnd
+namespace MedAdmin
 {
     public partial class cad_mediador : System.Web.UI.Page
     {

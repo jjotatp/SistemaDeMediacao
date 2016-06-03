@@ -26,7 +26,7 @@ namespace BackEnd.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=gui-note;Initial Catalog=med_admin;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=med_admin;User ID=medadmin;Password=medadminbd")]
         public string med_adminConnectionString {
             get {
                 return ((string)(this["med_adminConnectionString"]));
@@ -36,7 +36,7 @@ namespace BackEnd.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=GUI-NOTE;Initial Catalog=med_admin;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=med_admin;User ID=medadmin;Password=medadminbd")]
         public string med_adminConnectionString1 {
             get {
                 return ((string)(this["med_adminConnectionString1"]));

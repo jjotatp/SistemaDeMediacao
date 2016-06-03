@@ -2,7 +2,7 @@
 using BackEnd.Controllers;
 using BackEnd.Models;
 
-namespace FrontEnd
+namespace MedAdmin
 {
     public partial class cad_local : System.Web.UI.Page
     {

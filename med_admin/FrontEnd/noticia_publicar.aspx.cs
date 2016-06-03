@@ -9,7 +9,7 @@ using System.IO;
 using BackEnd.Controllers;
 using BackEnd.Models;
 
-namespace FrontEnd
+namespace MedAdmin
 {
     public partial class noticia_publicar : System.Web.UI.Page
     {

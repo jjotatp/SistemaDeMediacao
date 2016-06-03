@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using BackEnd.Controllers;
 
-namespace FrontEnd
+namespace MedAdmin
 {
     public partial class medAdmin : System.Web.UI.MasterPage
     {

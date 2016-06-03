@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="medAdmin.Master" AutoEventWireup="true" CodeBehind="depoimentos.aspx.cs" Inherits="FrontEnd.depoimentos" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="medAdmin.Master" AutoEventWireup="true" CodeBehind="depoimentos.aspx.cs" Inherits="MedAdmin.depoimentos" %>
 <%@ MasterType VirtualPath="medAdmin.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">
     <div class="col-sm-10 col-sm-offset-1">

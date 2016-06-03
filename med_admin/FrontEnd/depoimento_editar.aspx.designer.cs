@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FrontEnd {
+namespace MedAdmin {
     
     
     public partial class depoimento_editar {
@@ -72,9 +72,9 @@ namespace FrontEnd {
         /// <remarks>
         /// Auto-generated property.
         /// </remarks>
-        public new FrontEnd.medAdmin Master {
+        public new MedAdmin.medAdmin Master {
             get {
-                return ((FrontEnd.medAdmin)(base.Master));
+                return ((MedAdmin.medAdmin)(base.Master));
             }
         }
     }

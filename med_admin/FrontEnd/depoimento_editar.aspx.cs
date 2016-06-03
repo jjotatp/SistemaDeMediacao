@@ -2,7 +2,7 @@
 using BackEnd.Controllers;
 using BackEnd.Models;
 
-namespace FrontEnd
+namespace MedAdmin
 {
     public partial class depoimento_editar : System.Web.UI.Page
     {

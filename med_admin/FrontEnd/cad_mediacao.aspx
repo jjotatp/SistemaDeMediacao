@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="medAdmin.Master" AutoEventWireup="true"
-CodeBehind="cad_mediacao.aspx.cs" Inherits="FrontEnd.cad_mediacao" %>
+CodeBehind="cad_mediacao.aspx.cs" Inherits="MedAdmin.cad_mediacao" %>
 <%@ MasterType VirtualPath="medAdmin.Master" %>
     <asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">              
         <div class="container">
