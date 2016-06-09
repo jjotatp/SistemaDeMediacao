@@ -28,6 +28,7 @@ namespace BackEnd.Models
             try
             {
                 Table<noticia> tb = getTable();
+
                 tb.InsertOnSubmit(a);
                 tb.Context.SubmitChanges();
 
@@ -96,6 +97,20 @@ namespace BackEnd.Models
             using (dbDataContext db = getDataContext())
             {
                 query = db.ExecuteQuery<noticia>(sql, text, data, data.AddDays(1));
+
+                return query.ToList();
+            }
+        }
+
+        public List<noticia> ListarSite()
+        {
+            IEnumerable<noticia> query;
+            String sql = " select top 5 n.id, n.titulo_postagem, n.corpo_noticia, n.imagem_caminho, n.imagem_nome, n.data_postagem, n.data_edicao, n.prioridade "+
+                        " from noticias n"+
+                        " order by n.prioridade, coalesce(n.data_edicao, n.data_postagem)";
+            using (dbDataContext db = getDataContext())
+            {
+                query = db.ExecuteQuery<noticia>(sql);
 
                 return query.ToList();
             }

@@ -40,13 +40,33 @@
                     <li class="active wow bounceIn data-wow-duration="2s""><a href="index.aspx">Início <span class="sr-only">(current)</span></a></li>
 
                     <li class="wow bounceIn data-wow-duration="1s" data-wow-delay="0.5s""><a href="contato.aspx"> Contato</a></li>
-                    <li class="wow bounceIn data-wow-duration="1s" data-wow-delay="0.7s""><a href="noticias.aspx"> Notícias</a></li>
-                    <li class="wow bounceIn data-wow-duration="1s" data-wow-delay="0.9s""><a href="depoimentos.aspx"> Depoimentos</a></li>
+                    <li class="wow bounceIn data-wow-duration="1s" data-wow-delay="0.7s""><a href="noticias_portal.aspx"> Notícias</a></li>
+                    <li class="wow bounceIn data-wow-duration="1s" data-wow-delay="0.9s""><a href="depoimentos_portal.aspx"> Depoimentos</a></li>
                 </ul>
 
             </div>
         </div>
     </nav>
+    <div class="row">
+        <div class="container">
+            <div class="alert alert-danger alert-dismissible fade in" role="alert" id="pnlAlerta" style="display:none" runat="server"> 
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button> 
+                <strong>
+                <asp:Label ID="lblTextoAlerta" runat="server" Text="" Font-Size="10" Visible="true"/>
+                </strong>
+            </div>  
+            <div class="alert alert-success alert-dismissible fade in" role="alert" id="pnlSucesso" style="display:none" runat="server"> 
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button> 
+                <strong>
+                <asp:Label ID="lblTextoSucesso" runat="server" Text="" Font-Size="10" Visible="true"/>
+                </strong>
+            </div>                         
+        </div>
+    </div>
     <form id="form1" runat="server">
         <div>
             <!-- HEADER -->
@@ -95,6 +115,13 @@
     </script>
     <!-- Formulário de Solicitação -->
     <script src="content/js/soli.js"></script>
-
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            setTimeout(function () {
+                jQuery("#pnlAlerta").alert("close");
+                jQuery("#pnlSucesso").alert("close");
+            }, 10000);
+        });
+    </script>
 </body>
 </html>

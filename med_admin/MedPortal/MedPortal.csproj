@@ -108,10 +108,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="contato.aspx" />
-    <Content Include="depoimentos.aspx" />
+    <Content Include="depoimentos_portal.aspx" />
     <Content Include="exCasos.aspx" />
     <Content Include="index.aspx" />
-    <Content Include="noticias.aspx" />
+    <Content Include="noticias_portal.aspx" />
     <Content Include="pontosMediacao.aspx" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
@@ -128,12 +128,12 @@
     <Compile Include="contato.aspx.designer.cs">
       <DependentUpon>contato.aspx</DependentUpon>
     </Compile>
-    <Compile Include="depoimentos.aspx.cs">
-      <DependentUpon>depoimentos.aspx</DependentUpon>
+    <Compile Include="depoimentos_portal.aspx.cs">
+      <DependentUpon>depoimentos_portal.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="depoimentos.aspx.designer.cs">
-      <DependentUpon>depoimentos.aspx</DependentUpon>
+    <Compile Include="depoimentos_portal.aspx.designer.cs">
+      <DependentUpon>depoimentos_portal.aspx</DependentUpon>
     </Compile>
     <Compile Include="exCasos.aspx.cs">
       <DependentUpon>exCasos.aspx</DependentUpon>
@@ -156,12 +156,12 @@
     <Compile Include="med_portal.Master.designer.cs">
       <DependentUpon>med_portal.Master</DependentUpon>
     </Compile>
-    <Compile Include="noticias.aspx.cs">
-      <DependentUpon>noticias.aspx</DependentUpon>
+    <Compile Include="noticias_portal.aspx.cs">
+      <DependentUpon>noticias_portal.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="noticias.aspx.designer.cs">
-      <DependentUpon>noticias.aspx</DependentUpon>
+    <Compile Include="noticias_portal.aspx.designer.cs">
+      <DependentUpon>noticias_portal.aspx</DependentUpon>
     </Compile>
     <Compile Include="pontosMediacao.aspx.cs">
       <DependentUpon>pontosMediacao.aspx</DependentUpon>
@@ -195,6 +195,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="content\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BackEnd\BackEnd.csproj">
+      <Project>{9aef0d88-48ce-4af3-93f5-057dd28b077f}</Project>
+      <Name>BackEnd</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

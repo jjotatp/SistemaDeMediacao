@@ -10,60 +10,54 @@
 namespace FrontEnd {
     
     
-    public partial class med_portal {
+    public partial class depoimentos {
         
         /// <summary>
-        /// pnlAlerta control.
+        /// txtNome control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pnlAlerta;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtNome;
         
         /// <summary>
-        /// lblTextoAlerta control.
+        /// txtIdade control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTextoAlerta;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtIdade;
         
         /// <summary>
-        /// pnlSucesso control.
+        /// txtDepoimento control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pnlSucesso;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDepoimento;
         
         /// <summary>
-        /// lblTextoSucesso control.
+        /// btnEnviar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTextoSucesso;
+        protected global::System.Web.UI.WebControls.Button btnEnviar;
         
         /// <summary>
-        /// form1 control.
+        /// Master property.
         /// </summary>
         /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
+        /// Auto-generated property.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
-        /// <summary>
-        /// ContentPlaceHolder1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        public new FrontEnd.med_portal Master {
+            get {
+                return ((FrontEnd.med_portal)(base.Master));
+            }
+        }
     }
 }
