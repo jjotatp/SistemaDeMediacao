@@ -163,3 +163,10 @@ create table depoimentos
 	check ( status in (1,2,3) )
 );
 go
+
+create table configuracoes
+(
+	id int not null primary key identity,
+	nome_conf varchar(10) not null unique,
+	caminho_images varchar(max)
+);

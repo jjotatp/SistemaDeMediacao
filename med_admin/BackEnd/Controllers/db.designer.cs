@@ -66,6 +66,9 @@ namespace BackEnd.Controllers
     partial void Insertmediacao(mediacao instance);
     partial void Updatemediacao(mediacao instance);
     partial void Deletemediacao(mediacao instance);
+    partial void Insertconfiguracao(configuracao instance);
+    partial void Updateconfiguracao(configuracao instance);
+    partial void Deleteconfiguracao(configuracao instance);
     #endregion
 		
 		public dbDataContext() : 
@@ -231,6 +234,14 @@ namespace BackEnd.Controllers
 			get
 			{
 				return this.GetTable<v_historico_mediacao>();
+			}
+		}
+		
+		public System.Data.Linq.Table<configuracao> configuracaos
+		{
+			get
+			{
+				return this.GetTable<configuracao>();
 			}
 		}
 		
@@ -5009,6 +5020,116 @@ namespace BackEnd.Controllers
 				{
 					this._DescricaoTipoRegistro = value;
 				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.configuracoes")]
+	public partial class configuracao : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private string _nome_conf;
+		
+		private string _caminho_images;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onnome_confChanging(string value);
+    partial void Onnome_confChanged();
+    partial void Oncaminho_imagesChanging(string value);
+    partial void Oncaminho_imagesChanged();
+    #endregion
+		
+		public configuracao()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nome_conf", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
+		public string nome_conf
+		{
+			get
+			{
+				return this._nome_conf;
+			}
+			set
+			{
+				if ((this._nome_conf != value))
+				{
+					this.Onnome_confChanging(value);
+					this.SendPropertyChanging();
+					this._nome_conf = value;
+					this.SendPropertyChanged("nome_conf");
+					this.Onnome_confChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_caminho_images", DbType="VarChar(MAX)")]
+		public string caminho_images
+		{
+			get
+			{
+				return this._caminho_images;
+			}
+			set
+			{
+				if ((this._caminho_images != value))
+				{
+					this.Oncaminho_imagesChanging(value);
+					this.SendPropertyChanging();
+					this._caminho_images = value;
+					this.SendPropertyChanged("caminho_images");
+					this.Oncaminho_imagesChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

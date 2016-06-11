@@ -231,6 +231,13 @@
       <Column Name="DescricaoTipoRegistro" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
+  <Table Name="dbo.configuracoes" Member="configuracaos">
+    <Type Name="configuracao">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nome_conf" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="caminho_images" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.alteraCidade" Method="alteraCidade">
     <Parameter Name="id" Type="System.Int32" DbType="Int" />
     <Parameter Name="nome" Type="System.String" DbType="VarChar(100)" />

@@ -130,8 +130,13 @@ namespace MedAdmin
             {
                 if (uplImagemCarregada.PostedFile != null && uplImagemCarregada.PostedFile.FileName != "")
                 {
+                    configuracao c = new configuracao();
+                    Configuracao_Model mc = new Configuracao_Model();
+
+                    c = mc.Obter("medPortal");
                     // se não existe, cria a pasta IMAGES no servidor
                     String caminho = Server.MapPath(@"Images\");
+                    String caminho2 = c.caminho_images; //@"C:\\programas\T C C\med_admin\MedPortal\Images\";
                     String nome = uplImagemCarregada.FileName;
 
                     // verifica se o nome do arquivo é maior que 50 caracteres
@@ -145,19 +150,23 @@ namespace MedAdmin
                     {
                         Directory.CreateDirectory(caminho);
                     }
+                    if (!Directory.Exists(caminho2))
+                    {
+                        Directory.CreateDirectory(caminho2);
+                    }
 
                     String arquivo = caminho + nome;
+                    String arquivo2 = caminho2 + nome;
 
                     // salva a imagem carregada apenas se ela não está salva
                     if (!File.Exists(arquivo))
                     {
                         uplImagemCarregada.SaveAs(arquivo);
+                        uplImagemCarregada.SaveAs(arquivo2);
                     }
-                    // ajusta o nome para o imageurl aceitar
                     caminho = @"Images\";
                     arquivo = caminho + nome;
-                    // carrega a imagem no componente Image
-                    imgImagemCarregada.ImageUrl = caminho + nome;
+                    imgImagemCarregada.ImageUrl = arquivo;
                 }
             }
             catch (Exception error)
