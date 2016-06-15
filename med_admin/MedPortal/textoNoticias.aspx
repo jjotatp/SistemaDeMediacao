@@ -12,7 +12,6 @@
                 </div>
 
             </div>
-            <small>data postagem:<%: ntc.data_postagem.ToString() %> - data edição:<%: ntc.data_edicao.ToString() %></small>
             <!-- /.row -->
         </div>
         <!-- /.row -->
@@ -24,8 +23,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="col-md-5"><img src="<%: ntc.imagem_caminho + ntc.imagem_nome %>" alt="<%: ntc.imagem_nome %>"></div>
-                    <div class="col-md-5 espaco">
+                    <div class="col-md-5">
+                        <img class="imagem-grande" src="<%: ntc.imagem_caminho + ntc.imagem_nome %>" alt="<%: ntc.imagem_nome %>">
+                        <small><% if (ntc.data_edicao != null)
+                                        { %><%: ntc.data_edicao.ToString() %><% }
+                                else { %><%: ntc.data_postagem.ToString() %><% } %></small>  
+                    </div>
+                    <div class="col-md-7 espaco">
                             <p class="texto"><%: ntc.corpo_noticia %></p>
                     </div>
                 </div>
@@ -39,4 +43,11 @@
             
         </div>
     </section>
+    <style>
+            .imagem-grande{
+                width: 400px;
+                height: 400px;
+                align-content: center;
+            }
+    </style>
 </asp:Content>

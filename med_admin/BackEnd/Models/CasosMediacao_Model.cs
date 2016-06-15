@@ -68,7 +68,19 @@ namespace BackEnd.Models
             }
         }
 
-        
+        public List<casos_mediacao> ListarSite()
+        {
+            using (dbDataContext db = getDataContext())
+            {
+                String sSql = "select cm.prioridade, cm.id_tipo_registro, cm.imagem_nome, cm.imagem_caminho, cm.titulo, cm.descricao "+
+                                "from casos_mediacao cm " +
+                                "left join mediacoes m on (m.id_tipo_registro = cm.id_tipo_registro) " +
+                                "group by cm.prioridade, cm.id_tipo_registro, cm.imagem_nome, cm.imagem_caminho, cm.titulo, cm.descricao " +
+                                "order by cm.prioridade, COUNT(M.id) desc";
+                var query = db.ExecuteQuery<casos_mediacao>(sSql);
+                return query.ToList();
+            }
+        }
 
     }
 }

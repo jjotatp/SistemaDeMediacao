@@ -24,7 +24,7 @@
                                     { %>
                                 <div class="col-sm-6 col-md-3">
                                     <div class="thumbnail">
-                                        <a href="caso_med.aspx?ID=<%: n.id_tipo_registro %>">
+                                        <a href="caso_mediacao.aspx?ID=<%: n.id_tipo_registro %>">
                                             <% if (n.imagem_nome != "")
                                                 { %>
                                                 <img src="<%: n.imagem_caminho + n.imagem_nome %>" alt="<%: n.imagem_nome %>">
