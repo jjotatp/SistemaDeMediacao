@@ -93,10 +93,10 @@ namespace MedAdmin
                 txtEmail.Value = s.solicitante_email;
                 txtEndereco.Value = s.solicitante_endereco;
                 txtTelefone.Value = s.solicitante_telefone;
-                txtDescricaoProblema.Value = s.descricao_problema;
                 txtDescricaoCaso.Value = s.descricao_caso;
                 txtDadosOutraParte.Value = s.detalhes_partes;
-                txtPeriodo.Value = model.RetornaPeriodo(s.solicitante_periodo_atendimento);
+                txtPeriodo.Value = s.solicitante_periodo_atendimento;
+                txtDia.Value = s.solicitante_dia_atendimento;
                                 
                 pnlDados.Enabled = !(model.CarregaAgendamentos(s).Count > 0);                
                 if (!pnlDados.Enabled)
@@ -176,10 +176,10 @@ namespace MedAdmin
             txtEmail.Value = "";
             txtEndereco.Value = "";
             txtTelefone.Value = "";
-            txtDescricaoProblema.Value = "";
             txtDescricaoCaso.Value = "";
             txtDadosOutraParte.Value = "";
             txtPeriodo.Value = "";
+            txtDia.Value = "";
         }
 
         protected void btnAgendar_Click(object sender, EventArgs e)

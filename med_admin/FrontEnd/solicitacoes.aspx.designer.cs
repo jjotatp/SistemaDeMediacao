@@ -130,15 +130,6 @@ namespace MedAdmin {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtTelefone;
         
         /// <summary>
-        /// txtDescricaoProblema control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtDescricaoProblema;
-        
-        /// <summary>
         /// txtDescricaoCaso control.
         /// </summary>
         /// <remarks>
@@ -164,6 +155,15 @@ namespace MedAdmin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtPeriodo;
+        
+        /// <summary>
+        /// txtDia control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtDia;
         
         /// <summary>
         /// txtData control.

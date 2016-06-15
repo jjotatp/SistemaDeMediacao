@@ -91,6 +91,23 @@ namespace BackEnd.Models
                 return null;
             }
 
-        }        
+        }
+
+        public List<v_locais_endereco> ListarComEnderecoNaDesc()
+        {
+            try
+            {
+                String sql = "select * from v_locais_endereco";
+                dbDataContext db = getDataContext();
+                var query = db.ExecuteQuery<v_locais_endereco>(sql);
+
+                return query.ToList();
+            }
+            catch (Exception e)
+            {
+                message = e.Message;
+                return null;
+            }
+        }
     }
 }

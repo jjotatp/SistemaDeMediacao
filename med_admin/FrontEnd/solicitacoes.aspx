@@ -149,15 +149,6 @@
                             <input id="txtTelefone" class="form-control input-md" runat="server" readonly="readonly">
                         </div>
                     </div>
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="descricao">
-                            Problema principal
-                        </label>
-                        <div class="col-md-8">
-                            <input id="txtDescricaoProblema" class="form-control" runat="server" readonly="readonly" />                                
-                        </div>
-                    </div>
                     <!-- Textarea -->
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="descricao">
@@ -187,6 +178,14 @@
                             <input readonly="readonly" id="txtPeriodo" class="form-control input-md" runat="server" type="text">
                         </div>
                     </div>                                       
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="">
+                            Dia  disponível
+                        </label>
+                        <div class="col-md-8">
+                            <input readonly="readonly" id="txtDia" class="form-control input-md" runat="server" type="text">
+                        </div>
+                    </div>  
                     <!--  ============= MODAL AGENDAR ============  -->
                     <div id="modalAgendar" class="modal fade" role="dialog">                    
                     <div class="modal-dialog">

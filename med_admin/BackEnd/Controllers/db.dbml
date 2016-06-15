@@ -33,11 +33,11 @@
       <Column Name="data_inicio_atividade" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="ativo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="telefone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Association Name="local_solicitacao" Member="solicitacaos" ThisKey="id" OtherKey="id_local" Type="solicitacao" />
       <Association Name="local_mediador" Member="mediadors" ThisKey="id" OtherKey="id_local" Type="mediador" />
       <Association Name="local_noticia" Member="noticias" ThisKey="id" OtherKey="id_local" Type="noticia" />
       <Association Name="local_noticia1" Member="noticias1" ThisKey="id" OtherKey="id_local_edicao" Type="noticia" />
       <Association Name="local_mediacao" Member="mediacaos" ThisKey="id" OtherKey="id_local" Type="mediacao" />
+      <Association Name="local_solicitacao" Member="solicitacaos" ThisKey="id" OtherKey="id_local" Type="solicitacao" />
       <Association Name="cidade_local" Member="cidade" ThisKey="id_cidade" OtherKey="id" Type="cidade" IsForeignKey="true" />
     </Type>
   </Table>
@@ -70,25 +70,6 @@
       <Association Name="pessoa_mediacao_parte" Member="mediacao_partes" ThisKey="cpf" OtherKey="pessoa_id" Type="mediacao_parte" />
       <Association Name="cidade_pessoa" Member="cidade" ThisKey="endereco_cidade" OtherKey="id" Type="cidade" IsForeignKey="true" />
       <Association Name="cidade_pessoa1" Member="cidade1" ThisKey="nascimento_cidade" OtherKey="id" Type="cidade" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.solicitacoes" Member="solicitacaos">
-    <Type Name="solicitacao">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="data" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="descricao_problema" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="descricao_caso" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
-      <Column Name="solicitante_nome" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="solicitante_telefone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="solicitante_endereco" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="solicitante_email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="solicitante_periodo_atendimento" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-      <Column Name="detalhes_partes" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
-      <Column Name="id_local" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="id_cidade_abertura" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="solicitacao_agendamento" Member="agendamentos" ThisKey="id" OtherKey="id_solicitacao" Type="agendamento" />
-      <Association Name="cidade_solicitacao" Member="cidade" ThisKey="id_cidade_abertura" OtherKey="id" Type="cidade" IsForeignKey="true" />
-      <Association Name="local_solicitacao" Member="local" ThisKey="id_local" OtherKey="id" Type="local" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.tipos_registro" Member="tipo_registros">
@@ -238,6 +219,31 @@
       <Column Name="caminho_images" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.solicitacoes" Member="solicitacaos">
+    <Type Name="solicitacao">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="data" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="descricao_caso" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="solicitante_nome" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="solicitante_telefone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="solicitante_endereco" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="solicitante_email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="solicitante_periodo_atendimento" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="detalhes_partes" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="id_local" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_cidade_abertura" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="solicitante_dia_atendimento" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="solicitacao_agendamento" Member="agendamentos" ThisKey="id" OtherKey="id_solicitacao" Type="agendamento" />
+      <Association Name="cidade_solicitacao" Member="cidade" ThisKey="id_cidade_abertura" OtherKey="id" Type="cidade" IsForeignKey="true" />
+      <Association Name="local_solicitacao" Member="local" ThisKey="id_local" OtherKey="id" Type="local" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_locais_endereco" Member="v_locais_enderecos">
+    <Type Name="v_locais_endereco">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRICAO" Type="System.String" DbType="VarChar(254) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Function Name="dbo.alteraCidade" Method="alteraCidade">
     <Parameter Name="id" Type="System.Int32" DbType="Int" />
     <Parameter Name="nome" Type="System.String" DbType="VarChar(100)" />
@@ -260,19 +266,6 @@
     <Parameter Name="endereco_bairro" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="endereco_cidade" Type="System.Int32" DbType="Int" />
     <Parameter Name="telefone" Type="System.String" DbType="VarChar(20)" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.alteraSolicitacoes" Method="alteraSolicitacoes">
-    <Parameter Name="id" Type="System.Int32" DbType="Int" />
-    <Parameter Name="descricao_problema" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="descricao_caso" Type="System.String" DbType="VarChar(250)" />
-    <Parameter Name="solicitante_nome" Type="System.String" DbType="VarChar(100)" />
-    <Parameter Name="solicitante_telefone" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="solicitante_endereco" Type="System.String" DbType="VarChar(100)" />
-    <Parameter Name="solicitante_email" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="solicitante_periodo_atendimento" Type="System.Char" DbType="Char(1)" />
-    <Parameter Name="detalhes_partes" Type="System.String" DbType="VarChar(200)" />
-    <Parameter Name="id_local" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.alteraTipoRegistro" Method="alteraTipoRegistro">
@@ -371,6 +364,19 @@
     <Parameter Name="documento_link" Type="System.String" DbType="VarChar(100)" />
     <Parameter Name="status" Type="System.Int32" DbType="Int" />
     <Parameter Name="resolucao" Type="System.Char" DbType="Char(1)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.alteraSolicitacoes" Method="alteraSolicitacoes">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="descricao_caso" Type="System.String" DbType="VarChar(250)" />
+    <Parameter Name="solicitante_nome" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="solicitante_telefone" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="solicitante_endereco" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="solicitante_email" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="solicitante_periodo_atendimento" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="solicitante_dia_atendimento" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="detalhes_partes" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="id_local" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
 </Database>

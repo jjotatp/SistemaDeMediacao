@@ -42,14 +42,12 @@ create table solicitacoes
 (
 	id int not null primary key identity,
 	data date not null,
-	descricao_problema varchar(50) not null,
 	descricao_caso varchar(250) not null,
 	solicitante_nome varchar(100) not null,
 	solicitante_telefone varchar(20),
 	solicitante_endereco varchar(100),
 	solicitante_email varchar(50),
 	solicitante_periodo_atendimento char(1),
-	check (solicitante_periodo_atendimento in ('M','T','N')),
 	detalhes_partes varchar(200) not null,
 	id_local int references locais(id),
 	id_cidade_abertura int not null references cidades(id)

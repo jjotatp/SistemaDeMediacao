@@ -94,6 +94,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="content\mascara.js" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -116,6 +117,7 @@
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="sobreMediacao.aspx" />
+    <Content Include="solicitacao_concluido.aspx" />
     <Content Include="solicitacao.aspx" />
     <Content Include="textoNoticias.aspx" />
     <Content Include="Web.config" />
@@ -178,6 +180,13 @@
     <Compile Include="sobreMediacao.aspx.designer.cs">
       <DependentUpon>sobreMediacao.aspx</DependentUpon>
     </Compile>
+    <Compile Include="solicitacao_concluido.aspx.cs">
+      <DependentUpon>solicitacao_concluido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="solicitacao_concluido.aspx.designer.cs">
+      <DependentUpon>solicitacao_concluido.aspx</DependentUpon>
+    </Compile>
     <Compile Include="solicitacao.aspx.cs">
       <DependentUpon>solicitacao.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -193,9 +202,7 @@
       <DependentUpon>textoNoticias.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="content\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\BackEnd\BackEnd.csproj">
       <Project>{9aef0d88-48ce-4af3-93f5-057dd28b077f}</Project>

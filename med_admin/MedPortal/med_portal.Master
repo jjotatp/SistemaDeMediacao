@@ -110,6 +110,9 @@
     <script src="content/js/bootstrap.min.js"></script>
     <!-- Animação -->
     <script src="content/js/wow.min.js"></script>
+    <!-- Mascara.js -->
+    <script src="content/mascara.js"></script>
+
     <script type="text/javascript">
         new WOW().init();
     </script>
