@@ -16,11 +16,6 @@ namespace MedAdmin
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                txtDataInicioAtividade.Value = DateTime.Today.ToString("yyyy-MM-dd");
-            }            
-
             Listar();
         }
 
