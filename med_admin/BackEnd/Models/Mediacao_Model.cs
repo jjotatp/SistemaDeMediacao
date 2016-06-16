@@ -288,6 +288,7 @@ namespace BackEnd.Models
                     Paragraph p2 = document.InsertParagraph();
 
                     // =========== DECLARAÇÃO FINAL MEDIAÇÃO =============
+                    p2.InsertPageBreakBeforeSelf();
                     p2.Append("Pelo presente Termo de \"MEDIAÇÃO\", as partes, " + nome_partes +
                     " presentes no núcleo de Mediação Comunitária do " + md.local.nome + "/" + md.local.descricao +
                     ", situado na " + md.local.logradouro + ", nº " + md.local.numero + ", " +
@@ -304,7 +305,7 @@ namespace BackEnd.Models
                     Paragraph objeto = document.InsertParagraph();
                     objeto.AppendLine("O objeto da mediação é o seguinte:").AppendLine(md.objeto).AppendLine().Alignment = Alignment.left;
                     // assinaturas
-                    objeto.AppendLine(assinaturas).AppendLine().AppendLine();
+                    objeto.AppendLine(assinaturas).AppendLine();
 
                     Paragraph p3 = document.InsertParagraph();                    
                     
@@ -328,8 +329,10 @@ namespace BackEnd.Models
         {
             if (sigla == "M")
                 return "Masculino";
+            else if (sigla == "F")
+                return "Feminino";
             else
-                return "Feminino"; 
+                return "N/A";
         }
 
         public List<mediacao> Listar()
