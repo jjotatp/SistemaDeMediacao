@@ -76,7 +76,7 @@ namespace BackEnd.Models
                 using (dbDataContext db = getDataContext())
                 {
                     Nome = "%" + Nome + "%";
-                    string sSql = " select * from v_nucleos where ( Nome like {0} ) ";
+                    string sSql = " select * from v_nucleos where ( Descricao like {0} ) ";
                     if (SomenteAtivos)
                     {
                          sSql = sSql + " and ( ativo = 1 )";

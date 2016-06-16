@@ -40,7 +40,7 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Descrição" >
                     <ItemTemplate>
-                        <%#Eval("Descrição") %>
+                        <%#Eval("Descricao") %>
                     </ItemTemplate>
                 </asp:TemplateField> 
                 <asp:TemplateField HeaderText="Cidade" >

@@ -27,7 +27,7 @@ namespace MedAdmin
                 Local_Model l = new Local_Model();
                 ddLocal.DataSource = l.Listar();
                 ddLocal.DataValueField = "id";
-                ddLocal.DataTextField = "nome";
+                ddLocal.DataTextField = "descricao";
                 ddLocal.DataBind();
                 ddLocal.SelectedIndex = 0;
 

@@ -30,7 +30,7 @@ namespace MedAdmin
 
             ddLocal.DataSource = model.Listar();
             ddLocal.DataValueField = "id";
-            ddLocal.DataTextField = "nome";
+            ddLocal.DataTextField = "descricao";
             ddLocal.DataBind();
             ddLocal.SelectedIndex = 0;
         }

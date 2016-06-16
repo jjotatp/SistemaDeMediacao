@@ -24,7 +24,7 @@ namespace MedAdmin
                 pnlLogado.Visible = true;
                 pnlNaoLogado.Visible = false;
                 lblNomeUsuario.Text = mediador.nome;
-                lblNucleoLogado.Text = mediador.local.nome + " - " + mediador.local.cidade.nome;                
+                lblNucleoLogado.Text = mediador.local.descricao + " - " + mediador.local.cidade.nome;                
             }
             else
             {

@@ -1,14 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="med_admin" Class="dbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=GUI-NOTE;Initial Catalog=med_admin;Integrated Security=True" SettingsObjectName="BackEnd.Properties.Settings" SettingsPropertyName="med_adminConnectionString1" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.v_solicitacoes" Member="v_solicitacaos">
-    <Type Name="v_solicitacao">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Nome" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="Local" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="Data" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="Cidade" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.cidades" Member="cidades">
     <Type Name="cidade">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -80,19 +71,6 @@
       <Association Name="tipo_registro_mediacao" Member="mediacaos" ThisKey="id" OtherKey="id_tipo_registro" Type="mediacao" />
     </Type>
   </Table>
-  <Table Name="dbo.v_nucleos" Member="v_nucleos">
-    <Type Name="v_nucleo">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Nome" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="Descrição" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Cidade" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="Bairro" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Logradouro" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="Telefone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="Número" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
-      <Column Name="ativo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
   <Table Name="dbo.mediadores" Member="mediadors">
     <Type Name="mediador">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -120,14 +98,6 @@
       <Column Name="status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="agendamento_mediacao" Member="mediacaos" ThisKey="id" OtherKey="id_agendamento" Type="mediacao" />
       <Association Name="solicitacao_agendamento" Member="solicitacao" ThisKey="id_solicitacao" OtherKey="id" Type="solicitacao" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.v_mediadores" Member="v_mediadors">
-    <Type Name="v_mediador">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Nome" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="Patente" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Nucleo" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.noticias" Member="noticias">
@@ -241,7 +211,37 @@
   <Table Name="dbo.v_locais_endereco" Member="v_locais_enderecos">
     <Type Name="v_locais_endereco">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="DESCRICAO" Type="System.String" DbType="VarChar(254) NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRICAO" Type="System.String" DbType="VarChar(204) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_solicitacoes" Member="v_solicitacaos">
+    <Type Name="v_solicitacao">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nome" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Local" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Data" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Cidade" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_mediadores" Member="v_mediadors">
+    <Type Name="v_mediador">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nome" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Patente" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Nucleo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_nucleos" Member="v_nucleos">
+    <Type Name="v_nucleo">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nome" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Descricao" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Cidade" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Bairro" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Logradouro" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Numero" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="ativo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Function Name="dbo.alteraCidade" Method="alteraCidade">
