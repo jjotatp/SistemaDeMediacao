@@ -24,51 +24,37 @@
         <div class="col-lg-12">
             <h2 class="page-header"><span class="glyphicon glyphicon-certificate"></span> Principais Casos</h2>
         </div>
-            
-        <div class="col-lg-4 col-sm-6 text-center">
-            <img class="img-circle img-responsive img-center" src="http://placehold.it/200x200" alt="">
-            <h3>Som Auto</h3>
-            <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
-        </div>
+        <% foreach (BackEnd.Controllers.casos_mediacao cm in casos)
+            {
+                i++;
+                if (i <= 3)
+                { %>
+                    <div class="col-lg-4 col-sm-6 text-center">
+                        <img class="img-circle img-responsive img-center" src="<%: cm.imagem_caminho + cm.imagem_nome %>" alt="<%: cm.imagem_nome %>">
+                        <h3><%: cm.titulo %></h3>
+                        <p><%: cm.descricao %></p>
+                    </div>
+              <% }
+                      if (i == 4)
+                      {%>
+                </div>
 
-         <div class="col-lg-4 col-sm-6 text-center">
-            <img class="img-circle img-responsive img-center" src="http://placehold.it/200x200" alt="">
-            <h3>Briga de Trânsito</h3>
-            <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
-        </div>
+                <div class="void"> &nbsp; </div>
 
-         <div class="col-lg-4 col-sm-6 text-center">
-            <img class="img-circle img-responsive img-center" src="http://placehold.it/200x200" alt="">
-            <h3>Agressão</h3>
-            <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
-        </div>
-    </div>
-    
-    <div class="void"> &nbsp; </div>
-
-    <div class="container">
-                <div class="col-lg-12">
-            <h2 class="page-header"><span class=" glyphicon glyphicon-menu-down"></span> Alguns Outros Casos</h2>
-        </div>
-        <div class="col-md-6 wow fadeInUp data-wow-duration="2s"">
-            <div class="list-group ">
-              <button type="button" class="list-group-item">Cras justo odio</button>
-              <button type="button" class="list-group-item">Dapibus ac facilisis in</button>
-              <button type="button" class="list-group-item">Morbi leo risus</button>
-              <button type="button" class="list-group-item">Porta ac consectetur ac</button>
-              <button type="button" class="list-group-item">Vestibulum at eros</button>
+                <div class="container">
+                            <div class="col-lg-12">
+                        <h2 class="page-header"><span class=" glyphicon glyphicon-menu-down"></span> Alguns Outros Casos</h2>
+                    </div>
+                    <div class="col-md-12 wow fadeInUp data-wow-duration='2s'">
+                        <div class="list-group ">
+                    <% }
+                      if (i > 3)
+                      { %>
+                            <button type="button" class="list-group-item"><%: cm.titulo %></button>
+                        <% }
+            }%>
             </div>
         </div>
-        
-        <div class="col-md-6 wow fadeInUp data-wow-duration="2s"">
-            <div class="list-group text-center">
-              <button type="button" class="list-group-item">Cras justo odio</button>
-              <button type="button" class="list-group-item">Dapibus ac facilisis in</button>
-              <button type="button" class="list-group-item">Morbi leo risus</button>
-              <button type="button" class="list-group-item">Porta ac consectetur ac</button>
-              <button type="button" class="list-group-item">Vestibulum at eros</button>
-            </div>
-        </div>                
     </div>
 
     <div class="void"> &nbsp; </div>
