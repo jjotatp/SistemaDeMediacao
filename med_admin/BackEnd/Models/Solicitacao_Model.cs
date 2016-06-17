@@ -104,14 +104,15 @@ namespace BackEnd.Models
             }
         }
 
-        public List<solicitacao> ListarPorData(DateTime valorParametro)
+        public List<v_solicitacao> ListarPorData(DateTime valorParametro)
         {
             using (dbDataContext db = getDataContext())
             {
+               
                 String sSql = " select s.id ID,s.solicitante_nome Nome, l.descricao Local, s.data Data, c.nome Cidade from solicitacoes s " +
                                " left join cidades c on (s.id_cidade_abertura = c.id) " +
                                " left join locais l on (s.id_local = l.id) where s.data = {0}";
-                var query = db.ExecuteQuery<solicitacao>(sSql, valorParametro);
+                var query = db.ExecuteQuery<v_solicitacao>(sSql, valorParametro);
                 return query.ToList();
             }
         }

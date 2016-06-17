@@ -41,6 +41,7 @@
             <div class="col-lg-4 col-sm-6 text-center">
                 <p><%: d.descricao %></p>
                 <h3><%: d.nome + ", " + d.idade.ToString() %></h3>
+                <div class="void"> &nbsp; </div>
             </div>
          <% } %>
 

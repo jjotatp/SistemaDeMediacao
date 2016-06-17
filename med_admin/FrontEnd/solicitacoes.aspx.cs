@@ -46,7 +46,7 @@ namespace MedAdmin
             else if (ddTipoBusca.Text == "Data")
             {
                 DateTime data = new DateTime();
-                if (DateTime.TryParse(txtData.Value, out data))
+                if (DateTime.TryParse(txtBusca.Value, out data))
                 {
                     gdvLista.DataSource = model.ListarPorData(data);
                 }
