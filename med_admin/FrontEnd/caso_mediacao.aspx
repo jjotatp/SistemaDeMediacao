@@ -67,7 +67,7 @@
                         <ContentTemplate>                                
                             <asp:Image ID="imgImagemCarregada" runat="server" CssClass="col-md-8" />               
                             <asp:FileUpload ID="uplImagemCarregada" runat="server" /><br />
-                            <asp:Button ID="btnCarregar" runat="server" Text="Carregar" CssClass="btn btn-default" ToolTip="Carregar a imagem selecionada" /><br />                                
+                            <asp:Button ID="btnCarregar" runat="server" Text="Carregar" CssClass="btn btn-default" ToolTip="Carregar a imagem selecionada" OnClick="btnCarregar_Click"/><br />                                
                         </ContentTemplate>
                         <Triggers> 
                             <asp:PostBackTrigger ControlID="btnCarregar" /> 

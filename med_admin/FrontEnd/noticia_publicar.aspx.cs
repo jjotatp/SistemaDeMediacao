@@ -63,7 +63,7 @@ namespace MedAdmin
                 if (Validar())
                 {
                     // pega apenas o nome do arquivo para poder remontar o caminho para o servidor
-                    String caminho = Server.MapPath(@"Images\");
+                    String caminho = @"Images\";
                     String nome = Path.GetFileName(imgImagemCarregada.ImageUrl);
 
                     // declara objeto noticia

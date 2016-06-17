@@ -40,6 +40,27 @@ namespace BackEnd.Models
             }
         }
 
+        public bool Alterar(casos_mediacao d)
+        {
+            try
+            {
+                dbDataContext context = getDataContext();
+                Table<casos_mediacao> tb = getTable();
+
+                context.alteraCasosMediacao(d.id_tipo_registro, d.titulo, d.descricao, 
+                                d.imagem_nome, d.imagem_caminho, d.id_mediador, d.prioridade, d.data);
+
+                tb.Context.SubmitChanges();
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                message = e.Message;
+                return false;
+            }
+        }
+
         public casos_mediacao Obter(int id_tipo_registro)
         {
             using (dbDataContext db = getDataContext())
