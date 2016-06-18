@@ -158,6 +158,7 @@
     <Content Include="Content\plugins\summernote\dist\font\summernote.eot" />
     <Content Include="Content\plugins\summernote\dist\font\summernote.ttf" />
     <Content Include="Content\plugins\summernote\dist\font\summernote.woff" />
+    <None Include="Properties\PublishProfiles\medadmin.pubxml" />
     <None Include="Properties\PublishProfiles\medfatec.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

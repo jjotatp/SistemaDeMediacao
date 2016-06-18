@@ -32,7 +32,7 @@
         <elementListCompartment Id="37b06d6c-4901-4c82-b742-aeca105e91b4" absoluteBounds="9.265, 3.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(5.5 : 11.936708984375); (15.75 : 11.936708984375); (15.75 : 9.5112939453125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 11.936708984375); (15.75 : 11.936708984375); (15.75 : 9.5112939453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbDataContext/pessoa/pessoa_mediacao_parte" />
       <nodes>
         <classShapeMoniker Id="78a235c5-e317-4e5a-b339-85fce0032853" />
@@ -66,7 +66,7 @@
         <elementListCompartment Id="d0ba3d6f-71bf-43f0-86d1-e900dabbc0b0" absoluteBounds="6.015, 5.46, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(5.5 : 6.14024983723958); (5.66666666666667 : 6.14024983723958 : JumpStart); (5.83333333333333 : 6.14024983723958 : JumpEnd); (6 : 6.14024983723958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.5 : 6.14024983723958); (6 : 6.14024983723958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbDataContext/local/local_mediador" />
       <nodes>
         <classShapeMoniker Id="468b0d2f-0dbe-4ae6-9958-7e4599de0677" />
@@ -119,14 +119,14 @@
         <elementListCompartment Id="a8e86e3b-8a13-4e74-945d-2784edb023b8" absoluteBounds="1.0150000000000001, 2.96, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(6 : 5.70533950976562); (5.83333333333333 : 5.70533950976562 : JumpStart); (5.66666666666667 : 5.70533950976562 : JumpEnd); (5.5625 : 5.70533950976562); (5.5625 : 5.0625); (3.33333333333333 : 5.0625 : JumpStart); (3.16666666666667 : 5.0625 : JumpEnd); (2.61458533333333 : 5.0625 : JumpStart); (2.44791866666667 : 5.0625 : JumpEnd); (2 : 5.0625); (2 : 4.84780110677083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(6 : 5.70533950976562); (5.5625 : 5.70533950976562); (5.5625 : 5.0625); (2 : 5.0625); (2 : 4.84780110677083)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbDataContext/mediador/mediador_casos_mediacao" />
       <nodes>
         <classShapeMoniker Id="22f8069d-c3f3-4673-b2de-37ee9523c2dc" />
         <classShapeMoniker Id="15a1feaf-1a7d-4576-a86f-c4fa93ac3d41" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(9.25 : 3.59699625651042); (5.875 : 3.59699625651042); (5.875 : 4.875); (5.83333333333333 : 4.875 : JumpStart); (5.6319290479333 : 4.875 : JumpEnd); (3.25 : 4.875); (3.25 : 5.34780110677083); (2.531252 : 5.34780110677083); (2.531252 : 4.84780110677083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(9.25 : 3.59699625651042); (5.875 : 3.59699625651042); (5.875 : 4.875); (3.25 : 4.875); (3.25 : 5.34780110677083); (2.531252 : 5.34780110677083); (2.531252 : 4.84780110677083)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbDataContext/tipo_registro/tipo_registro_casos_mediacao" />
       <nodes>
         <classShapeMoniker Id="055785e4-2443-4c2d-bf66-4a4da40cf6d7" />
@@ -139,19 +139,13 @@
         <elementListCompartment Id="fac2b1c1-b7c2-4b58-bcad-386ea3615161" absoluteBounds="3.515, 3.085, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(6 : 5); (5.82630433590874 : 4.92374749038082 : JumpStart); (5.67369566409126 : 4.85675218409834 : JumpEnd); (5.5 : 4.78049967447917)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(6 : 5); (5.82630433590874 : 4.92374749038082 : JumpStart); (5.67369566409126 : 4.85675218409835 : JumpEnd); (5.5 : 4.78049967447917)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbDataContext/mediador/mediador_depoimento" />
       <nodes>
         <classShapeMoniker Id="22f8069d-c3f3-4673-b2de-37ee9523c2dc" />
         <classShapeMoniker Id="77fbe527-e950-492b-82de-ca193f961797" />
       </nodes>
     </associationConnector>
-    <classShape Id="8798b8d3-bc48-47ef-8f96-d5419d488012" absoluteBounds="6.875, 0.5, 2, 1.1939925130208333">
-      <DataClassMoniker Name="/dbDataContext/v_total_tipos_registro" />
-      <nestedChildShapes>
-        <elementListCompartment Id="05525876-78bc-4122-91ce-0d58f08edfa8" absoluteBounds="6.89, 0.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="b2aff13a-c0ed-4aa5-8e6e-7417cbc1950c" absoluteBounds="11.25, 5, 2, 3.1170068359375">
       <DataClassMoniker Name="/dbDataContext/mediacao" />
       <nestedChildShapes>
@@ -172,14 +166,14 @@
         <classShapeMoniker Id="b2aff13a-c0ed-4aa5-8e6e-7417cbc1950c" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 6.87752195670573); (5.75 : 6.87752195670573); (5.75 : 4.75); (5.79166666666667 : 4.75 : JumpStart); (5.95833333333333 : 4.75 : JumpEnd); (10.9166666666667 : 4.75 : JumpStart); (11.0833333333333 : 4.75 : JumpEnd); (12.53125075 : 4.75); (12.53125075 : 5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 6.87752195670573); (5.75 : 6.87752195670573); (5.75 : 4.75); (5.79166666666667 : 4.75 : JumpStart); (5.95833333333333 : 4.75 : JumpEnd); (10.9166666666667 : 4.75 : JumpStart); (11.0833333333333 : 4.75 : JumpEnd); (12.53125075 : 4.75); (12.53125075 : 5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbDataContext/local/local_mediacao" />
       <nodes>
         <classShapeMoniker Id="468b0d2f-0dbe-4ae6-9958-7e4599de0677" />
         <classShapeMoniker Id="b2aff13a-c0ed-4aa5-8e6e-7417cbc1950c" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8 : 5.03125); (11.25 : 5.03125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8 : 5.03125); (11.25 : 5.03125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbDataContext/mediador/mediador_mediacao" />
       <nodes>
         <classShapeMoniker Id="22f8069d-c3f3-4673-b2de-37ee9523c2dc" />
@@ -254,6 +248,12 @@
       <DataClassMoniker Name="/dbDataContext/v_nucleo" />
       <nestedChildShapes>
         <elementListCompartment Id="c2f5a3f0-005e-402f-83f9-eb74a216024b" absoluteBounds="11.265, 0.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="392b321f-5f13-4d31-b337-c4363c6aa927" absoluteBounds="7, 0.75, 2, 1.3862939453125">
+      <DataClassMoniker Name="/dbDataContext/v_total_tipos_registro" />
+      <nestedChildShapes>
+        <elementListCompartment Id="130a2ce9-fbff-48fa-9959-2b523de9a5a9" absoluteBounds="7.015, 1.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

@@ -92,6 +92,50 @@ namespace BackEnd.Models
             }
         }
 
+        public List<v_total_tipos_registro> Totalizar(String sDataIni , String sDataFim )
+        {
+            using (dbDataContext db = getDataContext())
+            {
+                IEnumerable<v_total_tipos_registro> query;
+                if ((sDataIni != "") && (sDataFim != ""))
+                {
+                    String sSql = " select t.ID, t.DESCRICAO, " +
+                                "( select COUNT(*) " +
+                                "from mediacoes m where (m.id_tipo_registro = t.id)" +
+                                "and m.data_mediacao between {0} and {1} ) as TOTAL " +
+                                "from tipos_registro t";
+                    query = db.ExecuteQuery<v_total_tipos_registro>(sSql, DateTime.Parse(sDataIni + " 00:00:00"), DateTime.Parse(sDataFim + " 23:59:59"));
+                }
+                else if (sDataIni != "")
+                {
+                    String sSql = " select t.ID, t.DESCRICAO, " +
+                                "( select COUNT(*) " +
+                                "from mediacoes m where (m.id_tipo_registro = t.id)" +
+                                "and m.data_mediacao >= {0} ) as TOTAL " +
+                                "from tipos_registro t";
+                    query = db.ExecuteQuery<v_total_tipos_registro>(sSql, DateTime.Parse(sDataIni + " 00:00:00"));
+                }
+                else if (sDataFim != "")
+                {
+                    String sSql = " select t.ID, t.DESCRICAO, " +
+                                "( select COUNT(*) " +
+                                "from mediacoes m where (m.id_tipo_registro = t.id)" +
+                                "and m.data_mediacao <= {1} ) as TOTAL " +
+                                "from tipos_registro t";
+                    query = db.ExecuteQuery<v_total_tipos_registro>(sSql, DateTime.Parse(sDataFim + " 23:59:59"));
+                }
+                else
+                {
+                    String sSql = "select t.ID, t.DESCRICAO, " +
+                                "( select COUNT(*) " +
+                                "from mediacoes m where (m.id_tipo_registro = t.id) ) as TOTAL " +
+                                "from tipos_registro t";
+                    query = db.ExecuteQuery<v_total_tipos_registro>(sSql);
+                }
+                return query.ToList();
+            }
+        }
+
         public List<tipo_registro> ListarPorDescricao(string s)
         {
             using (dbDataContext db = getDataContext())

@@ -181,14 +181,6 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		public System.Data.Linq.Table<v_total_tipos_registro> v_total_tipos_registros
-		{
-			get
-			{
-				return this.GetTable<v_total_tipos_registro>();
-			}
-		}
-		
 		public System.Data.Linq.Table<mediacao> mediacaos
 		{
 			get
@@ -250,6 +242,14 @@ namespace BackEnd.Controllers
 			get
 			{
 				return this.GetTable<v_nucleo>();
+			}
+		}
+		
+		public System.Data.Linq.Table<v_total_tipos_registro> v_total_tipos_registros
+		{
+			get
+			{
+				return this.GetTable<v_total_tipos_registro>();
 			}
 		}
 		
@@ -3583,51 +3583,6 @@ namespace BackEnd.Controllers
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.v_total_tipos_registro")]
-	public partial class v_total_tipos_registro
-	{
-		
-		private string _Tipo_Registro;
-		
-		private System.Nullable<int> _Total;
-		
-		public v_total_tipos_registro()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tipo_Registro", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Tipo_Registro
-		{
-			get
-			{
-				return this._Tipo_Registro;
-			}
-			set
-			{
-				if ((this._Tipo_Registro != value))
-				{
-					this._Tipo_Registro = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total", DbType="Int")]
-		public System.Nullable<int> Total
-		{
-			get
-			{
-				return this._Total;
-			}
-			set
-			{
-				if ((this._Total != value))
-				{
-					this._Total = value;
-				}
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.mediacoes")]
 	public partial class mediacao : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -5182,6 +5137,69 @@ namespace BackEnd.Controllers
 				if ((this._ativo != value))
 				{
 					this._ativo = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.v_total_tipos_registro")]
+	public partial class v_total_tipos_registro
+	{
+		
+		private int _ID;
+		
+		private string _DESCRICAO;
+		
+		private System.Nullable<int> _TOTAL;
+		
+		public v_total_tipos_registro()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DESCRICAO", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string DESCRICAO
+		{
+			get
+			{
+				return this._DESCRICAO;
+			}
+			set
+			{
+				if ((this._DESCRICAO != value))
+				{
+					this._DESCRICAO = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TOTAL", DbType="Int")]
+		public System.Nullable<int> TOTAL
+		{
+			get
+			{
+				return this._TOTAL;
+			}
+			set
+			{
+				if ((this._TOTAL != value))
+				{
+					this._TOTAL = value;
 				}
 			}
 		}

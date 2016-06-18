@@ -22,8 +22,9 @@ namespace MedAdmin
         protected void PreencherGrid()
         {
             TipoRegistro_Model model = new TipoRegistro_Model();
-
-            gdvLista.DataSource = model.Totalizar();
+  
+            gdvLista.DataSource = model.Totalizar(txtDataIni.Value, txtDataFim.Value);
+  
             gdvLista.DataBind();
 
             if (gdvLista.Rows.Count > 0)
@@ -31,6 +32,11 @@ namespace MedAdmin
                 gdvLista.UseAccessibleHeader = true;
                 gdvLista.HeaderRow.TableSection = TableRowSection.TableHeader;
             }
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            PreencherGrid();
         }
     }
 }

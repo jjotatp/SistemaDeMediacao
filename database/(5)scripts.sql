@@ -91,3 +91,13 @@ as
 go
 
 select * from v_mediadores
+
+drop view v_total_tipos_registro
+
+create view v_total_tipos_registro
+as
+	 select t.ID, t.descricao as DESCRICAO, COUNT(m.id) TOTAL
+	 from tipos_registro t
+	 left join mediacoes m on (m.id_tipo_registro = t.id)
+	 group by t.id, t.descricao
+go

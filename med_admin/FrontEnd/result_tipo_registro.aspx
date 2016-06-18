@@ -8,18 +8,34 @@
                 </h4>
             </div>                                                   
             <div class="panel-body">
+                <div class="col-md-12">
+                    <div class="col-md-2">
+                        <label>Data Inicial</label>
+                        <input class="form-control input-md" id="txtDataIni" type="date" runat="server" />
+                    </div>
+                    <div class="col-md-2">
+                        <label>Data Final</label>
+                        <input class="form-control input-md" id="txtDataFim" type="date" runat="server" />
+                    </div>
+                    <div class="col-md-1">
+                        <label class="control-label col-md-1"></label>
+                        <br />
+                        <asp:Button CssClass="btn btn-info" runat="server" ID="btnBuscar" Text="Filtrar" OnClick="btnBuscar_Click"/>
+                    </div>
+                </div>
+                <div class="void"> &nbsp; </div>
                 <div class="col-md-4">
                     <asp:GridView ID="gdvLista" runat="server" CssClass="table table-hover" GridLines="None"
                                 AutoGenerateColumns="False">
                         <Columns>
                             <asp:TemplateField HeaderText="Tipos de Registro">
                                 <ItemTemplate>
-                                    <%# Eval("Tipo_Registro") %>
+                                    <%# Eval("DESCRICAO") %>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Total">
                                 <ItemTemplate>
-                                    <%# Eval("Total") %>
+                                    <%# Eval("TOTAL") %>
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
