@@ -39,7 +39,7 @@
                 <ul class="nav navbar-nav">
                     <li class="active wow bounceIn data-wow-duration="2s""><a href="index.aspx">Início <span class="sr-only">(current)</span></a></li>
 
-                    <li class="wow bounceIn data-wow-duration="1s" data-wow-delay="0.5s""><a href="contato.aspx"> Contato</a></li>
+                    <li class="wow bounceIn data-wow-duration="1s" data-wow-delay="0.5s""><a href="pontosMediacao.aspx"> Contato</a></li>
                     <li class="wow bounceIn data-wow-duration="1s" data-wow-delay="0.7s""><a href="noticias_portal.aspx"> Notícias</a></li>
                     <li class="wow bounceIn data-wow-duration="1s" data-wow-delay="0.9s""><a href="depoimentos_portal.aspx"> Depoimentos</a></li>
                 </ul>
@@ -79,25 +79,17 @@
         <div class="row">
             <div class="container-fluid rodape rodape-sombra">
                 <div class="col-md-12">
-                    <div class="col-md-offset-1 col-md-3">
-                        <br>
+                    <div class="col-md-offset-1 col-md-2">
                         <br>
                         <img src="content/img/portal-da-mediacao-logo.png">
-                        <p style="color: #4d4d4d;">Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
-                        <br>
                         <br>
                         <br>
                     </div>
-
-                    <div class="col-md-offset-1 col-md-5">
+                    <div class="col-md-6">
                         <br>
-                        <h2>Contato</h2>
-                        <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
-                        <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
-
+                        <br>
+                        <p style="color: #4d4d4d;">© 2016 Portal da Mediação. Todos os direitos reservados.</p>
                     </div>
-                    <br>
-                    <br>
                 </div>
 
             </div>
