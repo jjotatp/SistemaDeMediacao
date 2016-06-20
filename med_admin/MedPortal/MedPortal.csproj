@@ -108,7 +108,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="contato.aspx" />
     <Content Include="depoimentos_portal.aspx" />
     <Content Include="exCasos.aspx" />
     <Content Include="index.aspx" />
@@ -123,13 +122,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="contato.aspx.cs">
-      <DependentUpon>contato.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="contato.aspx.designer.cs">
-      <DependentUpon>contato.aspx</DependentUpon>
-    </Compile>
     <Compile Include="depoimentos_portal.aspx.cs">
       <DependentUpon>depoimentos_portal.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -26,20 +26,10 @@ namespace BackEnd.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=med_admin;User ID=medadmin;Password=medadminbd")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=medfatec.database.windows.net;Initial Catalog=med_admin;User ID=medadmin;Password=med#q1w2e3")]
         public string med_adminConnectionString {
             get {
                 return ((string)(this["med_adminConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=med_admin;User ID=medadmin;Password=medadminbd")]
-        public string med_adminConnectionString1 {
-            get {
-                return ((string)(this["med_adminConnectionString1"]));
             }
         }
     }
