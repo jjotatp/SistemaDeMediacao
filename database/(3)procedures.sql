@@ -73,13 +73,13 @@ go
 create procedure alteraSolicitacoes
 (
 	@id int,	
-	@descricao_problema varchar(50),
 	@descricao_caso varchar(250),
 	@solicitante_nome varchar(100) ,
 	@solicitante_telefone varchar(20),
 	@solicitante_endereco varchar(100),
 	@solicitante_email varchar(50),
-	@solicitante_periodo_atendimento char(1),
+	@solicitante_periodo_atendimento varchar(20),
+	@solicitante_dia_atendimento varchar(50),
 	@detalhes_partes varchar(200) ,
 	@id_local int
 )
@@ -87,13 +87,13 @@ as
 begin
 	update solicitacoes
 	set	
-	descricao_problema = @descricao_problema,
 	descricao_caso = @descricao_caso,
 	solicitante_nome = @solicitante_nome,
 	solicitante_telefone = @solicitante_telefone,
 	solicitante_endereco = @solicitante_endereco,
 	solicitante_email = @solicitante_email,
 	solicitante_periodo_atendimento = @solicitante_periodo_atendimento,
+	solicitante_dia_atendimento = @solicitante_dia_atendimento,
 	detalhes_partes = @detalhes_partes,
 	id_local = @id_local
 	where id = @id;

@@ -47,7 +47,8 @@ create table solicitacoes
 	solicitante_telefone varchar(20),
 	solicitante_endereco varchar(100),
 	solicitante_email varchar(50),
-	solicitante_periodo_atendimento char(1),
+	solicitante_periodo_atendimento varchar(20),
+	solicitante_dia_atendimento varchar(50),
 	detalhes_partes varchar(200) not null,
 	id_local int references locais(id),
 	id_cidade_abertura int not null references cidades(id)
