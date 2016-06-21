@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="col-md-5">
-                        <img class="imagem-grande" src="<%: ntc.imagem_caminho + ntc.imagem_nome %>" alt="<%: ntc.imagem_nome %>">
+                        <img class="imagem-vis img-center col-md-12" src="<%: ntc.imagem_caminho + ntc.imagem_nome %>" alt="<%: ntc.imagem_nome %>">
                         <small><% if (ntc.data_edicao != null)
                                         { %><%: ntc.data_edicao.ToString() %><% }
                                 else { %><%: ntc.data_postagem.ToString() %><% } %></small>  
@@ -43,11 +43,5 @@
             
         </div>
     </section>
-    <style>
-            .imagem-grande{
-                width: 400px;
-                height: 400px;
-                align-content: center;
-            }
-    </style>
+
 </asp:Content>

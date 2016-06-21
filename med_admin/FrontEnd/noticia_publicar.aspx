@@ -26,7 +26,8 @@
                         </label>
                         <div class="col-sm-9">
                             <asp:DropDownList runat="server" ID="ddPrioridade" CssClass="form-control">
-                                <asp:ListItem Text="2 - Listagem Padrão" Value="2" Selected="True"></asp:ListItem>
+                                <asp:ListItem Text="3 - Listagem Padrão" Value="3" Selected="True"></asp:ListItem>
+                                <asp:ListItem Text="2 - Painel Lateral" Value="2" ></asp:ListItem>
                                 <asp:ListItem Text="1 - Painel Superior" Value="1" ></asp:ListItem>
                             </asp:DropDownList>
                         </div>

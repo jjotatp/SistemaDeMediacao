@@ -118,5 +118,32 @@
             }, 10000);
         });
     </script>
+    <style>
+        .imagem-grande {
+            width: 660px;
+            height: 660px;
+            align-content: center;
+        }
+
+        .imagem-pequena {
+            background-size: cover;
+            width: 120px;
+            height: 120px;
+            align-content: center;
+        }
+
+        .imagem-media {
+            background-size: cover;
+            width: 250px;
+            height: 250px;
+            align-content: center;
+        }
+
+        .imagem-vis {
+            background-size: cover;
+            width: 400px;
+            align-content: center;
+        }
+    </style>
 </body>
 </html>

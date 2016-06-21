@@ -86,13 +86,13 @@ namespace BackEnd.Models
             }
         }
 
-        public List<noticia> Listar(DateTime data,String text)
+        public List<noticia> Listar(DateTime data,String text, Int32 qtd = 30)
         {
             IEnumerable<noticia> query;
             text = "%" + text + "%";
-            String sql = " select n.* " +
+            String sql = " select top "+qtd.ToString()+" n.* " +
                          " from noticias n " +
-                         " where ((n.titulo_postagem like {0} ) or(n.corpo_noticia like {0} )) " +
+                         " where ((n.titulo_postagem like {0} ) or (n.corpo_noticia like {0} )) " +
                          " and (n.data_postagem between {1} and {2} ) ";
             using (dbDataContext db = getDataContext())
             {
@@ -105,9 +105,9 @@ namespace BackEnd.Models
         public List<noticia> ListarSite()
         {
             IEnumerable<noticia> query;
-            String sql = " select top 5 n.id, n.titulo_postagem, n.corpo_noticia, n.imagem_caminho, n.imagem_nome, n.data_postagem, n.data_edicao, n.prioridade "+
-                        " from noticias n"+
-                        " order by n.prioridade, coalesce(n.data_edicao, n.data_postagem)";
+            String sql =" select n.id, n.titulo_postagem, n.corpo_noticia, n.imagem_caminho, n.imagem_nome, n.data_postagem, n.data_edicao, n.prioridade " +
+                        " from noticias n " +
+                        " order by n.prioridade, coalesce(n.data_edicao, n.data_postagem) desc";
             using (dbDataContext db = getDataContext())
             {
                 query = db.ExecuteQuery<noticia>(sql);

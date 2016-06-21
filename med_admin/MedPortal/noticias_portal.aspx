@@ -123,25 +123,4 @@
         </div>
 
     </section>
-    <style>
-        .imagem-grande {
-            width: 650px;
-            height: 650px;
-            align-content: center;
-        }
-
-        .imagem-pequena {
-            background-size: cover;
-            width: 130px;
-            height: 130px;
-            align-content: center;
-        }
-
-        .imagem-media {
-            background-size: cover;
-            width: 250px;
-            height: 250px;
-            align-content: center;
-        }
-    </style>
 </asp:Content>

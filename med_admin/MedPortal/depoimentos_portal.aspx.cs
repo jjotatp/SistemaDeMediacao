@@ -33,6 +33,7 @@ namespace FrontEnd
             dp.idade = int.Parse(txtIdade.Value);
             dp.descricao = txtDepoimento.Value;
             dp.data = DateTime.Now;
+            dp.status = 1;
     
             if (model.Inserir(dp))
             {
