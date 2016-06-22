@@ -3,6 +3,8 @@ using BackEnd.Controllers;
 using BackEnd.Models;
 using System.IO;
 using System.Collections.Generic;
+using System.IO;
+using System.Net;
 
 namespace MedAdmin
 {
@@ -94,7 +96,12 @@ namespace MedAdmin
             if (Validar())
             {
                 // pega nome da imagem e caminho
-                String caminho = @"Images\";
+                configuracao c = new configuracao();
+                Configuracao_Model mc = new Configuracao_Model();
+
+                c = mc.Obter("medPortal");
+
+                String caminho = c.caminho_images;
                 String nome = Path.GetFileName(imgImagemCarregada.ImageUrl);
                 // pega mediador logado
                 mediador med = Master.GetLogado();
@@ -171,39 +178,50 @@ namespace MedAdmin
                     Configuracao_Model mc = new Configuracao_Model();
 
                     c = mc.Obter("medPortal");
-                    // se não existe, cria a pasta IMAGES no servidor
-                    String caminho = Server.MapPath(@"Images\");
-                    String caminho2 = c.caminho_images; //@"C:\\programas\T C C\med_admin\MedPortal\Images\";
-                    String nome = uplImagemCarregada.FileName;
 
-                    // verifica se o nome do arquivo é maior que 50 caracteres
-                    if (nome.Length > 50)
-                    {
-                        Master.Alerta("Nome de arquivo muito grande para carregar.");
-                        return;
-                    }
+                    //FTP Server URL.
+                    string ftp = c.caminho_images;
 
-                    if (!Directory.Exists(caminho))
-                    {
-                        Directory.CreateDirectory(caminho);
-                    }
-                    if (!Directory.Exists(caminho2))
-                    {
-                        Directory.CreateDirectory(caminho2);
-                    }
+                    //FTP Folder name. Leave blank if you want to upload to root folder.
 
-                    String arquivo = caminho + nome;
-                    String arquivo2 = caminho2 + nome;
+                    byte[] fileBytes = null;
 
-                    // salva a imagem carregada apenas se ela não está salva
-                    if (!File.Exists(arquivo))
+                    //Read the FileName and convert it to Byte array.
+                    string fileName = Path.GetFileName(uplImagemCarregada.FileName);
+
+                    fileBytes = uplImagemCarregada.FileBytes;
+
+                    try
                     {
-                        uplImagemCarregada.SaveAs(arquivo);
-                        uplImagemCarregada.SaveAs(arquivo2);
+                        //Create FTP Request.
+                        FtpWebRequest request = (FtpWebRequest)WebRequest.Create(ftp + fileName);
+                        request.Method = WebRequestMethods.Ftp.UploadFile;
+
+                        //Enter FTP Server credentials.
+                        request.Credentials = new NetworkCredential(c.usuario_ftp, c.senha_ftp);
+                        request.ContentLength = fileBytes.Length;
+                        request.UsePassive = true;
+                        request.UseBinary = true;
+                        request.ServicePoint.ConnectionLimit = fileBytes.Length;
+                        request.EnableSsl = false;
+
+                        using (Stream requestStream = request.GetRequestStream())
+                        {
+                            requestStream.Write(fileBytes, 0, fileBytes.Length);
+                            requestStream.Close();
+                        }
+
+                        FtpWebResponse response = (FtpWebResponse)request.GetResponse();
+
+                        Master.Sucesso(fileName + " uploaded.<br />");
+                        // exibe na tela
+                        imgImagemCarregada.ImageUrl = ftp + fileName;
+                        response.Close();
                     }
-                    caminho = @"Images\";
-                    arquivo = caminho + nome;
-                    imgImagemCarregada.ImageUrl = arquivo;
+                    catch (WebException ex)
+                    {
+                        throw new Exception((ex.Response as FtpWebResponse).StatusDescription);
+                    }
                 }
             }
             catch (Exception error)

@@ -94,12 +94,40 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="content\css\animated.css" />
+    <Content Include="content\css\bootstrap.css" />
+    <Content Include="content\css\bootstrap.min.css" />
+    <Content Include="content\css\casos.css" />
+    <Content Include="content\css\estilo.css" />
+    <Content Include="content\css\soli.css" />
+    <Content Include="content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="content\font\xxx.txt" />
+    <Content Include="content\img\bg.jpg" />
+    <Content Include="content\img\casos.jpg" />
+    <Content Include="content\img\depo.jpg" />
+    <Content Include="content\img\noticias.jpg" />
+    <Content Include="content\img\oquee.jpg" />
+    <Content Include="content\img\oquee2.jpg" />
+    <Content Include="content\img\portal-da-mediacao-logo.png" />
+    <Content Include="content\js\bootstrap.js" />
+    <Content Include="content\js\bootstrap.min.js" />
+    <Content Include="content\js\jquery.min.js" />
+    <Content Include="content\js\npm.js" />
+    <Content Include="content\js\soli.js" />
+    <Content Include="content\js\wow.min.js" />
     <Content Include="content\mascara.js" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="med_portal.Master" />
+    <Content Include="content\css\bootstrap.css.map" />
+    <Content Include="content\css\bootstrap.min.css.map" />
+    <Content Include="content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="content\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Properties\PublishProfiles\medportal.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

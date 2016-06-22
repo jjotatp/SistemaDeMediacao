@@ -5,6 +5,10 @@ using System.Web;
 using System.Data.Linq;
 using System.Data.Linq.Mapping;
 using BackEnd.Controllers;
+using System.IO;
+using System.Net;
+using System.Text;
+using System.Drawing;
 
 
 namespace BackEnd.Models
@@ -124,6 +128,5 @@ namespace BackEnd.Models
                 return tb.First(p => p.id == id);
             }
         }
-
     }
 }

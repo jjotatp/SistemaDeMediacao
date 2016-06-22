@@ -31,3 +31,6 @@ C:\programas\T C C\med_admin\MedPortal\bin\Microsoft.CodeDom.Providers.DotNetCom
 C:\programas\T C C\med_admin\MedPortal\obj\Release\MedPortal.csprojResolveAssemblyReference.cache
 C:\programas\T C C\med_admin\MedPortal\obj\Release\MedPortal.dll
 C:\programas\T C C\med_admin\MedPortal\obj\Release\MedPortal.pdb
+C:\programas\T C C\med_admin\MedPortal\bin\BackEnd.dll
+C:\programas\T C C\med_admin\MedPortal\bin\DocX.dll
+C:\programas\T C C\med_admin\MedPortal\bin\BackEnd.pdb

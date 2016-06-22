@@ -114,7 +114,7 @@
                 </div>
                 <% if (listaNoticias.Count < 1)
                     { %>
-                <h4>Nenhuma Notícia encontrada</h4>
+                <h4>Nenhuma Notícia encontrada (Notícias serão exibidas aqui).</h4>
                 <% } %>
                 <!-- modo site -->
                 <br />

@@ -176,13 +176,6 @@
       <Column Name="DescricaoTipoRegistro" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.configuracoes" Member="configuracaos">
-    <Type Name="configuracao">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="nome_conf" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
-      <Column Name="caminho_images" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.solicitacoes" Member="solicitacaos">
     <Type Name="solicitacao">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -243,6 +236,15 @@
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="DESCRICAO" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="TOTAL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.configuracoes" Member="configuracaos">
+    <Type Name="configuracao">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nome_conf" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="caminho_images" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="usuario_ftp" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="senha_ftp" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.alteraCidade" Method="alteraCidade">
