@@ -9,9 +9,9 @@
                 <div class="col-md-12 text-center">
                     <div class="jumbotron wow flipInX data-wow-duration="3s"">
                         <h1>Solicite sua Mediação</h1>
-                        <p>Em poucos Passos você consegue resolver o problema que te encomoda...</p>
-                        <p>Preencha nosso formulário de contato para começar a resolver o seu problema</p>
-                        <p><a class="btn btn-danger btn-lg" href="solicitacao.aspx" role="button">Solicitação</a></p>
+                        <p>Em poucos passos você consegue resolver o seu problema...</p>
+                        <p>Preencha nosso formulário que em breve um mediador entrará em contato</p>
+                        <p><a class="btn btn-danger btn-lg" href="solicitacao.aspx" role="button">Solicite uma Mediação!</a></p>
                     </div>
                 </div>
 

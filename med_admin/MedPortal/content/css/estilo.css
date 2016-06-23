@@ -69,7 +69,7 @@
 }
 
 .header-bg{
-    background: linear-gradient( rgba(81, 0, 0, 0.8), rgb(143, 12, 12) ), url(../img/bg.jpg);
+    background: linear-gradient( rgba(109, 109, 109, 0.8), rgba(84, 84, 84, 0.65) ), url(../img/bg.jpg);
 /*  linear-gradient( rgba(0, 0, 0, 0.78), rgb(0, 0, 0) ),*/
     background-attachment: fixed;
     background-position:center;

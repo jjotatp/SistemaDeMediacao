@@ -96,7 +96,6 @@
   <ItemGroup>
     <Content Include="content\css\animated.css" />
     <Content Include="content\css\bootstrap.css" />
-    <Content Include="content\css\bootstrap.min.css" />
     <Content Include="content\css\casos.css" />
     <Content Include="content\css\estilo.css" />
     <Content Include="content\css\soli.css" />
@@ -122,12 +121,12 @@
     </Content>
     <Content Include="med_portal.Master" />
     <Content Include="content\css\bootstrap.css.map" />
-    <Content Include="content\css\bootstrap.min.css.map" />
     <Content Include="content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="content\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Properties\PublishProfiles\medportal.pubxml" />
+    <None Include="Properties\PublishProfiles\portaldamediacao.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
