@@ -9,6 +9,10 @@ namespace BackEnd.Models
 {
     public class Mediador_Model
     {
+        public const int PERM_PADRAO = 1;
+        public const int PERM_AVANCADO = 2;
+        public const int PERM_ADMIN = 3;
+
         public String message;
 
         public dbDataContext getDataContext() { dbDataContext db = new dbDataContext(); return db; }

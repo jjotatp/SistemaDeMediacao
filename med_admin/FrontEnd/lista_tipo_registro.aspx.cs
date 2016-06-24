@@ -13,6 +13,11 @@ namespace MedAdmin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Master.GetNivelPermissao() < Mediador_Model.PERM_ADMIN)
+            {
+                Response.Redirect("index.aspx");
+            }
+
             if (!IsPostBack)
             {
                 // LIMITE MAXIMO DE CARACTERES DO TIPO REGISTRO

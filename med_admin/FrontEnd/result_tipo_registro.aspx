@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="medAdmin.Master" AutoEventWireup="true" CodeBehind="result_tipo_registro.aspx.cs" Inherits="MedAdmin.result_tipo_registro" %>
+<%@ MasterType VirtualPath="medAdmin.Master"  %>
 <asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">
     <div class="col-md-12">
         <div class="panel panel-color panel-primary">

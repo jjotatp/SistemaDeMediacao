@@ -25,8 +25,6 @@ namespace MedAdmin
             sb.Append("</script>");
             ClientScript.RegisterClientScriptBlock(sender.GetType(), "alert", sb.ToString());
             */
-
-            Master.Alerta("Teste");
         }
 
     }

@@ -12,6 +12,11 @@ namespace MedAdmin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Master.GetNivelPermissao() < Mediador_Model.PERM_ADMIN)
+            {
+                Response.Redirect("index.aspx");
+            }
+
             if (!IsPostBack)
             {
                 TipoRegistro_Model c = new TipoRegistro_Model();

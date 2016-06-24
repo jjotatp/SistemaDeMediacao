@@ -40,10 +40,9 @@
                     <div class="col-md-4">
                         <asp:DropDownList runat="server" ID="ddNivelPermissao" CssClass="form-control"
                                 placeholder="Selecione...">
-                            <asp:ListItem Enabled="true" Value="1" Text="Básico"></asp:ListItem>
-                            <asp:ListItem Text="Padrão" Value="2"></asp:ListItem>
-                            <asp:ListItem Text="Avançado" Value="3"></asp:ListItem>
-                            <asp:ListItem Text="Administrador" Value="4"></asp:ListItem>
+                            <asp:ListItem Text="Padrão" Value="1" Selected="True"></asp:ListItem>
+                            <asp:ListItem Text="Avançado" Value="2"></asp:ListItem>
+                            <asp:ListItem Text="Administrador" Value="3"></asp:ListItem>
                         </asp:DropDownList>
                     </div>              
                     <button type="button" class="btn glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#myModal"></button>
@@ -59,20 +58,16 @@
                         <h3 class="modal-title">Níveis de permissão</h3>
                       </div>
                       <div class="modal-body">
-                        <h4>Básico</h4>
-                        <p>Mediadores com a permissão de nível básico terão acesso ao módulo de solicitações (apenas agendamento), módulo de agendamentos (sem exclusão) e módulo de mediações.
-                        </p><br />
-
                         <h4>Padrão</h4>
-                        <p>Mediadores com a permissão de nível padrão terão acesso as permissões do nível anterior, módulo de controle (apenas cidade e tipo de registro) e permissão de exclusão de solicitações e agendamentos.                            
+                        <p>Mediadores com a permissão de nível padrão terão acesso ao módulo de solicitações, agenda, registrar mediações e listar o histórico.
                         </p><br />
 
                         <h4>Avançado</h4>
-                        <p>Mediadores com a permissão de nível avançado terão acesso as permissões dos níveis anteriores, módulo de notícias, módulo de configurações do portal, módulo de controle (exceto mediadores) e relatórios.
+                        <p>Mediadores com a permissão de nível avançado terão acesso as permissões dos níveis anteriores, e o módulo de resultados.
                         </p><br />
 
                         <h4>Administrador</h4>
-                        <p>Mediadores com a permissão de nível administrador terão acesso total ao sistema, incluindo controle de mediadores, sendo possível alterar as senhas dos cadastrados.
+                        <p>Mediadores com a permissão de nível administrador terão acesso total ao sistema, incluindo o módulo de controle (cadastros).
                         </p>
                       </div>
                       <div class="modal-footer">

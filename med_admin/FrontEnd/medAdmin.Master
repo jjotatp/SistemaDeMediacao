@@ -71,7 +71,7 @@
                         <li class="has-submenu active">
                             <a href="index.aspx"><i class="ion-home "></i>Início</a>
                         </li>
-                        <li class="has-submenu">
+                        <li class="has-submenu" id="submenuCadastros" runat="server">
                             <a href="#"><i class="ion-person-stalker"></i>Cadastros</a>
                             <ul class="submenu">
                                 <li><a href="cad_mediador.aspx">Mediador</a></li>
@@ -80,19 +80,19 @@
                                 <li><a href="cad_cidade.aspx">Cidade</a></li>
                             </ul>
                         </li>
-                        <li class="has-submenu">
+                        <li class="has-submenu" id="submenuSolicitacoes" runat="server">
                             <a href="solicitacoes.aspx"><i class="ion-chatbubble"></i>Solicitações</a>
                         </li>
-                        <li class="has-submenu">
+                        <li class="has-submenu" id="submenuAgendamentos" runat="server">
                             <a href="agenda.aspx"><i class="ion-chatbubble-working"></i>Agendamentos</a>
                         </li>
-                        <li class="has-submenu">
+                        <li class="has-submenu" id="submenuMediacao" runat="server">
                             <a href="cad_pessoa.aspx"><i class="ion-document"></i>Nova Mediação</a>
                         </li>
-                        <li class="has-submenu">
+                        <li class="has-submenu" id="submenuHistorico" runat="server">
                             <a href="historico_mediacoes.aspx"><i class="ion-folder"></i>Histórico</a>
                         </li>
-                        <li class="has-submenu">
+                        <li class="has-submenu" id="submenuConfiguracoes" runat="server">
                             <a href="#"><i class="ion-calendar "></i>Configurações Site</a>
                             <ul class="submenu">
                                 <li><a href="casos_mediacao_lista.aspx">Casos de Mediação</a></li>
@@ -100,7 +100,7 @@
                                 <li><a href="noticias.aspx">Notícias</a></li>
                             </ul>
                         </li>
-                        <li class="has-submenu">
+                        <li class="has-submenu" id="submenuResultados" runat="server">
                             <a href="#"><i class="ion-calendar "></i>Resultados</a>
                             <ul class="submenu">
                                 <li><a href="result_tipo_registro.aspx">Totalizar Tipos Registros</a></li>

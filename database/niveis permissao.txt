@@ -1,0 +1,13 @@
+1- Padrão::
+Mediadores com a permissão de nível padrão terão acesso ao módulo de solicitações, agenda, registrar mediações e listar o histórico.
+
+2- Avançado::
+Mediadores com a permissão de nível avançado terão acesso as permissões dos níveis anteriores, e o módulo de resultados.
+
+3- Administrador::
+Mediadores com a permissão de nível administrador terão acesso total ao sistema, incluindo o módulo de controle (cadastros).
+
+
+1 - solicitacao, agenda, mediação, histórico.
+2 - solicitacao, agenda, mediação, histórico, resultados.
+3 - solicitacao, agenda, mediação, histórico, resultados, cadastros, configurações site.

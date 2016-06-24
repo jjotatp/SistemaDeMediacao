@@ -13,7 +13,12 @@ namespace MedAdmin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (Master.GetNivelPermissao() < Mediador_Model.PERM_AVANCADO)
+            {
+                Response.Redirect("index.aspx");
+            }
+
+            if (!IsPostBack)
             {
                 PreencherGrid();
             }

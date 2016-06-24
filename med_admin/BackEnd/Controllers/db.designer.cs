@@ -72,7 +72,7 @@ namespace BackEnd.Controllers
     #endregion
 		
 		public dbDataContext() : 
-				base(global::BackEnd.Properties.Settings.Default.med_adminConnectionStringAzure, mappingSource)
+				base(global::BackEnd.Properties.Settings.Default.med_adminConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

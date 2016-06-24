@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BackEnd.Controllers;
+using BackEnd.Models;
 
 namespace MedAdmin
 {
@@ -16,6 +17,9 @@ namespace MedAdmin
             OcultaSucesso();
             // Alerta é mensagem vermelha
             // Sucesso é mensagem verde
+            submenuResultados.Visible = (GetNivelPermissao() >= Mediador_Model.PERM_AVANCADO);  // Avançado
+            submenuCadastros.Visible = (GetNivelPermissao() >= Mediador_Model.PERM_ADMIN);      // Admin
+            submenuConfiguracoes.Visible = (GetNivelPermissao() >= Mediador_Model.PERM_ADMIN);  // Admin
         }
 
         public void EditaCadastro(GridViewCommandEventArgs e, int id, String telaCadastro)
@@ -57,7 +61,7 @@ namespace MedAdmin
             // função que pega o mediador logado e verifica seu nível de permissão
             try
             {
-                int nivel = 0;
+                int nivel = 1;
                 mediador mediador = Session["med"] as mediador;
 
                 if (mediador != null)
@@ -68,7 +72,7 @@ namespace MedAdmin
             }
             catch
             {
-                return 0;
+                return 1;
             }
         }
 

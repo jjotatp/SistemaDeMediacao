@@ -16,9 +16,9 @@ namespace MedAdmin
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (Master.GetNivelPermissao() < Mediador_Model.PERM_ADMIN)
             {
-                
+                Response.Redirect("index.aspx");
             }
 
             Listar();
