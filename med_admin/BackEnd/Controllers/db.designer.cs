@@ -51,9 +51,6 @@ namespace BackEnd.Controllers
     partial void Insertagendamento(agendamento instance);
     partial void Updateagendamento(agendamento instance);
     partial void Deleteagendamento(agendamento instance);
-    partial void Insertnoticia(noticia instance);
-    partial void Updatenoticia(noticia instance);
-    partial void Deletenoticia(noticia instance);
     partial void Insertcasos_mediacao(casos_mediacao instance);
     partial void Updatecasos_mediacao(casos_mediacao instance);
     partial void Deletecasos_mediacao(casos_mediacao instance);
@@ -69,6 +66,9 @@ namespace BackEnd.Controllers
     partial void Insertconfiguracao(configuracao instance);
     partial void Updateconfiguracao(configuracao instance);
     partial void Deleteconfiguracao(configuracao instance);
+    partial void Insertnoticia(noticia instance);
+    partial void Updatenoticia(noticia instance);
+    partial void Deletenoticia(noticia instance);
     #endregion
 		
 		public dbDataContext() : 
@@ -154,14 +154,6 @@ namespace BackEnd.Controllers
 			get
 			{
 				return this.GetTable<agendamento>();
-			}
-		}
-		
-		public System.Data.Linq.Table<noticia> noticias
-		{
-			get
-			{
-				return this.GetTable<noticia>();
 			}
 		}
 		
@@ -253,6 +245,14 @@ namespace BackEnd.Controllers
 			}
 		}
 		
+		public System.Data.Linq.Table<noticia> noticias
+		{
+			get
+			{
+				return this.GetTable<noticia>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.alteraCidade")]
 		public int alteraCidade([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string nome, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string estado)
 		{
@@ -309,13 +309,6 @@ namespace BackEnd.Controllers
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.alteraNoticia")]
-		public int alteraNoticia([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string imagem_nome, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(MAX)")] string imagem_caminho, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string titulo_postagem, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(500)")] string corpo_noticia, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_mediador_edicao, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_local_edicao, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> data_edicao, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> prioridade)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id, imagem_nome, imagem_caminho, titulo_postagem, corpo_noticia, id_mediador_edicao, id_local_edicao, data_edicao, prioridade);
-			return ((int)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.alteraCasosMediacao")]
 		public int alteraCasosMediacao([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_tipo_registro, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string titulo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string descricao, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string imagem_nome, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(MAX)")] string imagem_caminho, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_mediador, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> prioridade, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> data)
 		{
@@ -341,6 +334,13 @@ namespace BackEnd.Controllers
 		public int alteraSolicitacoes([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(250)")] string descricao_caso, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string solicitante_nome, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(20)")] string solicitante_telefone, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string solicitante_endereco, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string solicitante_email, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(20)")] string solicitante_periodo_atendimento, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string solicitante_dia_atendimento, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(200)")] string detalhes_partes, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_local)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id, descricao_caso, solicitante_nome, solicitante_telefone, solicitante_endereco, solicitante_email, solicitante_periodo_atendimento, solicitante_dia_atendimento, detalhes_partes, id_local);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.alteraNoticia")]
+		public int alteraNoticia([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string imagem_nome, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(MAX)")] string imagem_caminho, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string titulo_postagem, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(1500)")] string corpo_noticia, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_mediador_edicao, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_local_edicao, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> data_edicao, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> prioridade)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id, imagem_nome, imagem_caminho, titulo_postagem, corpo_noticia, id_mediador_edicao, id_local_edicao, data_edicao, prioridade);
 			return ((int)(result.ReturnValue));
 		}
 	}
@@ -597,13 +597,13 @@ namespace BackEnd.Controllers
 		
 		private EntitySet<mediador> _mediadors;
 		
-		private EntitySet<noticia> _noticias;
-		
-		private EntitySet<noticia> _noticias1;
-		
 		private EntitySet<mediacao> _mediacaos;
 		
 		private EntitySet<solicitacao> _solicitacaos;
+		
+		private EntitySet<noticia> _noticias;
+		
+		private EntitySet<noticia> _noticias1;
 		
 		private EntityRef<cidade> _cidade;
 		
@@ -638,10 +638,10 @@ namespace BackEnd.Controllers
 		public local()
 		{
 			this._mediadors = new EntitySet<mediador>(new Action<mediador>(this.attach_mediadors), new Action<mediador>(this.detach_mediadors));
-			this._noticias = new EntitySet<noticia>(new Action<noticia>(this.attach_noticias), new Action<noticia>(this.detach_noticias));
-			this._noticias1 = new EntitySet<noticia>(new Action<noticia>(this.attach_noticias1), new Action<noticia>(this.detach_noticias1));
 			this._mediacaos = new EntitySet<mediacao>(new Action<mediacao>(this.attach_mediacaos), new Action<mediacao>(this.detach_mediacaos));
 			this._solicitacaos = new EntitySet<solicitacao>(new Action<solicitacao>(this.attach_solicitacaos), new Action<solicitacao>(this.detach_solicitacaos));
+			this._noticias = new EntitySet<noticia>(new Action<noticia>(this.attach_noticias), new Action<noticia>(this.detach_noticias));
+			this._noticias1 = new EntitySet<noticia>(new Action<noticia>(this.attach_noticias1), new Action<noticia>(this.detach_noticias1));
 			this._cidade = default(EntityRef<cidade>);
 			OnCreated();
 		}
@@ -883,32 +883,6 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="local_noticia", Storage="_noticias", ThisKey="id", OtherKey="id_local")]
-		public EntitySet<noticia> noticias
-		{
-			get
-			{
-				return this._noticias;
-			}
-			set
-			{
-				this._noticias.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="local_noticia1", Storage="_noticias1", ThisKey="id", OtherKey="id_local_edicao")]
-		public EntitySet<noticia> noticias1
-		{
-			get
-			{
-				return this._noticias1;
-			}
-			set
-			{
-				this._noticias1.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="local_mediacao", Storage="_mediacaos", ThisKey="id", OtherKey="id_local")]
 		public EntitySet<mediacao> mediacaos
 		{
@@ -932,6 +906,32 @@ namespace BackEnd.Controllers
 			set
 			{
 				this._solicitacaos.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="local_noticia", Storage="_noticias", ThisKey="id", OtherKey="id_local")]
+		public EntitySet<noticia> noticias
+		{
+			get
+			{
+				return this._noticias;
+			}
+			set
+			{
+				this._noticias.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="local_noticia1", Storage="_noticias1", ThisKey="id", OtherKey="id_local_edicao")]
+		public EntitySet<noticia> noticias1
+		{
+			get
+			{
+				return this._noticias1;
+			}
+			set
+			{
+				this._noticias1.Assign(value);
 			}
 		}
 		
@@ -1001,30 +1001,6 @@ namespace BackEnd.Controllers
 			entity.local = null;
 		}
 		
-		private void attach_noticias(noticia entity)
-		{
-			this.SendPropertyChanging();
-			entity.local = this;
-		}
-		
-		private void detach_noticias(noticia entity)
-		{
-			this.SendPropertyChanging();
-			entity.local = null;
-		}
-		
-		private void attach_noticias1(noticia entity)
-		{
-			this.SendPropertyChanging();
-			entity.local1 = this;
-		}
-		
-		private void detach_noticias1(noticia entity)
-		{
-			this.SendPropertyChanging();
-			entity.local1 = null;
-		}
-		
 		private void attach_mediacaos(mediacao entity)
 		{
 			this.SendPropertyChanging();
@@ -1047,6 +1023,30 @@ namespace BackEnd.Controllers
 		{
 			this.SendPropertyChanging();
 			entity.local = null;
+		}
+		
+		private void attach_noticias(noticia entity)
+		{
+			this.SendPropertyChanging();
+			entity.local = this;
+		}
+		
+		private void detach_noticias(noticia entity)
+		{
+			this.SendPropertyChanging();
+			entity.local = null;
+		}
+		
+		private void attach_noticias1(noticia entity)
+		{
+			this.SendPropertyChanging();
+			entity.local1 = this;
+		}
+		
+		private void detach_noticias1(noticia entity)
+		{
+			this.SendPropertyChanging();
+			entity.local1 = null;
 		}
 	}
 	
@@ -1916,15 +1916,15 @@ namespace BackEnd.Controllers
 		
 		private int _nivel_permissao;
 		
-		private EntitySet<noticia> _noticias;
-		
-		private EntitySet<noticia> _noticias1;
-		
 		private EntitySet<casos_mediacao> _casos_mediacaos;
 		
 		private EntitySet<depoimento> _depoimentos;
 		
 		private EntitySet<mediacao> _mediacaos;
+		
+		private EntitySet<noticia> _noticias;
+		
+		private EntitySet<noticia> _noticias1;
 		
 		private EntityRef<local> _local;
 		
@@ -1950,11 +1950,11 @@ namespace BackEnd.Controllers
 		
 		public mediador()
 		{
-			this._noticias = new EntitySet<noticia>(new Action<noticia>(this.attach_noticias), new Action<noticia>(this.detach_noticias));
-			this._noticias1 = new EntitySet<noticia>(new Action<noticia>(this.attach_noticias1), new Action<noticia>(this.detach_noticias1));
 			this._casos_mediacaos = new EntitySet<casos_mediacao>(new Action<casos_mediacao>(this.attach_casos_mediacaos), new Action<casos_mediacao>(this.detach_casos_mediacaos));
 			this._depoimentos = new EntitySet<depoimento>(new Action<depoimento>(this.attach_depoimentos), new Action<depoimento>(this.detach_depoimentos));
 			this._mediacaos = new EntitySet<mediacao>(new Action<mediacao>(this.attach_mediacaos), new Action<mediacao>(this.detach_mediacaos));
+			this._noticias = new EntitySet<noticia>(new Action<noticia>(this.attach_noticias), new Action<noticia>(this.detach_noticias));
+			this._noticias1 = new EntitySet<noticia>(new Action<noticia>(this.attach_noticias1), new Action<noticia>(this.detach_noticias1));
 			this._local = default(EntityRef<local>);
 			OnCreated();
 		}
@@ -2103,32 +2103,6 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="mediador_noticia", Storage="_noticias", ThisKey="id", OtherKey="id_mediador")]
-		public EntitySet<noticia> noticias
-		{
-			get
-			{
-				return this._noticias;
-			}
-			set
-			{
-				this._noticias.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="mediador_noticia1", Storage="_noticias1", ThisKey="id", OtherKey="id_mediador_edicao")]
-		public EntitySet<noticia> noticias1
-		{
-			get
-			{
-				return this._noticias1;
-			}
-			set
-			{
-				this._noticias1.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="mediador_casos_mediacao", Storage="_casos_mediacaos", ThisKey="id", OtherKey="id_mediador")]
 		public EntitySet<casos_mediacao> casos_mediacaos
 		{
@@ -2165,6 +2139,32 @@ namespace BackEnd.Controllers
 			set
 			{
 				this._mediacaos.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="mediador_noticia", Storage="_noticias", ThisKey="id", OtherKey="id_mediador")]
+		public EntitySet<noticia> noticias
+		{
+			get
+			{
+				return this._noticias;
+			}
+			set
+			{
+				this._noticias.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="mediador_noticia1", Storage="_noticias1", ThisKey="id", OtherKey="id_mediador_edicao")]
+		public EntitySet<noticia> noticias1
+		{
+			get
+			{
+				return this._noticias1;
+			}
+			set
+			{
+				this._noticias1.Assign(value);
 			}
 		}
 		
@@ -2222,30 +2222,6 @@ namespace BackEnd.Controllers
 			}
 		}
 		
-		private void attach_noticias(noticia entity)
-		{
-			this.SendPropertyChanging();
-			entity.mediador = this;
-		}
-		
-		private void detach_noticias(noticia entity)
-		{
-			this.SendPropertyChanging();
-			entity.mediador = null;
-		}
-		
-		private void attach_noticias1(noticia entity)
-		{
-			this.SendPropertyChanging();
-			entity.mediador1 = this;
-		}
-		
-		private void detach_noticias1(noticia entity)
-		{
-			this.SendPropertyChanging();
-			entity.mediador1 = null;
-		}
-		
 		private void attach_casos_mediacaos(casos_mediacao entity)
 		{
 			this.SendPropertyChanging();
@@ -2280,6 +2256,30 @@ namespace BackEnd.Controllers
 		{
 			this.SendPropertyChanging();
 			entity.mediador = null;
+		}
+		
+		private void attach_noticias(noticia entity)
+		{
+			this.SendPropertyChanging();
+			entity.mediador = this;
+		}
+		
+		private void detach_noticias(noticia entity)
+		{
+			this.SendPropertyChanging();
+			entity.mediador = null;
+		}
+		
+		private void attach_noticias1(noticia entity)
+		{
+			this.SendPropertyChanging();
+			entity.mediador1 = this;
+		}
+		
+		private void detach_noticias1(noticia entity)
+		{
+			this.SendPropertyChanging();
+			entity.mediador1 = null;
 		}
 	}
 	
@@ -2531,496 +2531,6 @@ namespace BackEnd.Controllers
 		{
 			this.SendPropertyChanging();
 			entity.agendamento = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.noticias")]
-	public partial class noticia : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private string _imagem_nome;
-		
-		private string _imagem_caminho;
-		
-		private System.DateTime _data_postagem;
-		
-		private string _titulo_postagem;
-		
-		private string _corpo_noticia;
-		
-		private int _id_mediador;
-		
-		private int _id_local;
-		
-		private System.Nullable<int> _id_mediador_edicao;
-		
-		private System.Nullable<System.DateTime> _data_edicao;
-		
-		private System.Nullable<int> _id_local_edicao;
-		
-		private int _prioridade;
-		
-		private EntityRef<local> _local;
-		
-		private EntityRef<local> _local1;
-		
-		private EntityRef<mediador> _mediador;
-		
-		private EntityRef<mediador> _mediador1;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void Onimagem_nomeChanging(string value);
-    partial void Onimagem_nomeChanged();
-    partial void Onimagem_caminhoChanging(string value);
-    partial void Onimagem_caminhoChanged();
-    partial void Ondata_postagemChanging(System.DateTime value);
-    partial void Ondata_postagemChanged();
-    partial void Ontitulo_postagemChanging(string value);
-    partial void Ontitulo_postagemChanged();
-    partial void Oncorpo_noticiaChanging(string value);
-    partial void Oncorpo_noticiaChanged();
-    partial void Onid_mediadorChanging(int value);
-    partial void Onid_mediadorChanged();
-    partial void Onid_localChanging(int value);
-    partial void Onid_localChanged();
-    partial void Onid_mediador_edicaoChanging(System.Nullable<int> value);
-    partial void Onid_mediador_edicaoChanged();
-    partial void Ondata_edicaoChanging(System.Nullable<System.DateTime> value);
-    partial void Ondata_edicaoChanged();
-    partial void Onid_local_edicaoChanging(System.Nullable<int> value);
-    partial void Onid_local_edicaoChanged();
-    partial void OnprioridadeChanging(int value);
-    partial void OnprioridadeChanged();
-    #endregion
-		
-		public noticia()
-		{
-			this._local = default(EntityRef<local>);
-			this._local1 = default(EntityRef<local>);
-			this._mediador = default(EntityRef<mediador>);
-			this._mediador1 = default(EntityRef<mediador>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_imagem_nome", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string imagem_nome
-		{
-			get
-			{
-				return this._imagem_nome;
-			}
-			set
-			{
-				if ((this._imagem_nome != value))
-				{
-					this.Onimagem_nomeChanging(value);
-					this.SendPropertyChanging();
-					this._imagem_nome = value;
-					this.SendPropertyChanged("imagem_nome");
-					this.Onimagem_nomeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_imagem_caminho", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string imagem_caminho
-		{
-			get
-			{
-				return this._imagem_caminho;
-			}
-			set
-			{
-				if ((this._imagem_caminho != value))
-				{
-					this.Onimagem_caminhoChanging(value);
-					this.SendPropertyChanging();
-					this._imagem_caminho = value;
-					this.SendPropertyChanged("imagem_caminho");
-					this.Onimagem_caminhoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_data_postagem", DbType="DateTime NOT NULL")]
-		public System.DateTime data_postagem
-		{
-			get
-			{
-				return this._data_postagem;
-			}
-			set
-			{
-				if ((this._data_postagem != value))
-				{
-					this.Ondata_postagemChanging(value);
-					this.SendPropertyChanging();
-					this._data_postagem = value;
-					this.SendPropertyChanged("data_postagem");
-					this.Ondata_postagemChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_titulo_postagem", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string titulo_postagem
-		{
-			get
-			{
-				return this._titulo_postagem;
-			}
-			set
-			{
-				if ((this._titulo_postagem != value))
-				{
-					this.Ontitulo_postagemChanging(value);
-					this.SendPropertyChanging();
-					this._titulo_postagem = value;
-					this.SendPropertyChanged("titulo_postagem");
-					this.Ontitulo_postagemChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_corpo_noticia", DbType="VarChar(500) NOT NULL", CanBeNull=false)]
-		public string corpo_noticia
-		{
-			get
-			{
-				return this._corpo_noticia;
-			}
-			set
-			{
-				if ((this._corpo_noticia != value))
-				{
-					this.Oncorpo_noticiaChanging(value);
-					this.SendPropertyChanging();
-					this._corpo_noticia = value;
-					this.SendPropertyChanged("corpo_noticia");
-					this.Oncorpo_noticiaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_mediador", DbType="Int NOT NULL")]
-		public int id_mediador
-		{
-			get
-			{
-				return this._id_mediador;
-			}
-			set
-			{
-				if ((this._id_mediador != value))
-				{
-					if (this._mediador.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_mediadorChanging(value);
-					this.SendPropertyChanging();
-					this._id_mediador = value;
-					this.SendPropertyChanged("id_mediador");
-					this.Onid_mediadorChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_local", DbType="Int NOT NULL")]
-		public int id_local
-		{
-			get
-			{
-				return this._id_local;
-			}
-			set
-			{
-				if ((this._id_local != value))
-				{
-					if (this._local.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_localChanging(value);
-					this.SendPropertyChanging();
-					this._id_local = value;
-					this.SendPropertyChanged("id_local");
-					this.Onid_localChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_mediador_edicao", DbType="Int")]
-		public System.Nullable<int> id_mediador_edicao
-		{
-			get
-			{
-				return this._id_mediador_edicao;
-			}
-			set
-			{
-				if ((this._id_mediador_edicao != value))
-				{
-					if (this._mediador1.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_mediador_edicaoChanging(value);
-					this.SendPropertyChanging();
-					this._id_mediador_edicao = value;
-					this.SendPropertyChanged("id_mediador_edicao");
-					this.Onid_mediador_edicaoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_data_edicao", DbType="DateTime")]
-		public System.Nullable<System.DateTime> data_edicao
-		{
-			get
-			{
-				return this._data_edicao;
-			}
-			set
-			{
-				if ((this._data_edicao != value))
-				{
-					this.Ondata_edicaoChanging(value);
-					this.SendPropertyChanging();
-					this._data_edicao = value;
-					this.SendPropertyChanged("data_edicao");
-					this.Ondata_edicaoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_local_edicao", DbType="Int")]
-		public System.Nullable<int> id_local_edicao
-		{
-			get
-			{
-				return this._id_local_edicao;
-			}
-			set
-			{
-				if ((this._id_local_edicao != value))
-				{
-					if (this._local1.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_local_edicaoChanging(value);
-					this.SendPropertyChanging();
-					this._id_local_edicao = value;
-					this.SendPropertyChanged("id_local_edicao");
-					this.Onid_local_edicaoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_prioridade", DbType="Int NOT NULL")]
-		public int prioridade
-		{
-			get
-			{
-				return this._prioridade;
-			}
-			set
-			{
-				if ((this._prioridade != value))
-				{
-					this.OnprioridadeChanging(value);
-					this.SendPropertyChanging();
-					this._prioridade = value;
-					this.SendPropertyChanged("prioridade");
-					this.OnprioridadeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="local_noticia", Storage="_local", ThisKey="id_local", OtherKey="id", IsForeignKey=true)]
-		public local local
-		{
-			get
-			{
-				return this._local.Entity;
-			}
-			set
-			{
-				local previousValue = this._local.Entity;
-				if (((previousValue != value) 
-							|| (this._local.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._local.Entity = null;
-						previousValue.noticias.Remove(this);
-					}
-					this._local.Entity = value;
-					if ((value != null))
-					{
-						value.noticias.Add(this);
-						this._id_local = value.id;
-					}
-					else
-					{
-						this._id_local = default(int);
-					}
-					this.SendPropertyChanged("local");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="local_noticia1", Storage="_local1", ThisKey="id_local_edicao", OtherKey="id", IsForeignKey=true)]
-		public local local1
-		{
-			get
-			{
-				return this._local1.Entity;
-			}
-			set
-			{
-				local previousValue = this._local1.Entity;
-				if (((previousValue != value) 
-							|| (this._local1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._local1.Entity = null;
-						previousValue.noticias1.Remove(this);
-					}
-					this._local1.Entity = value;
-					if ((value != null))
-					{
-						value.noticias1.Add(this);
-						this._id_local_edicao = value.id;
-					}
-					else
-					{
-						this._id_local_edicao = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("local1");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="mediador_noticia", Storage="_mediador", ThisKey="id_mediador", OtherKey="id", IsForeignKey=true)]
-		public mediador mediador
-		{
-			get
-			{
-				return this._mediador.Entity;
-			}
-			set
-			{
-				mediador previousValue = this._mediador.Entity;
-				if (((previousValue != value) 
-							|| (this._mediador.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._mediador.Entity = null;
-						previousValue.noticias.Remove(this);
-					}
-					this._mediador.Entity = value;
-					if ((value != null))
-					{
-						value.noticias.Add(this);
-						this._id_mediador = value.id;
-					}
-					else
-					{
-						this._id_mediador = default(int);
-					}
-					this.SendPropertyChanged("mediador");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="mediador_noticia1", Storage="_mediador1", ThisKey="id_mediador_edicao", OtherKey="id", IsForeignKey=true)]
-		public mediador mediador1
-		{
-			get
-			{
-				return this._mediador1.Entity;
-			}
-			set
-			{
-				mediador previousValue = this._mediador1.Entity;
-				if (((previousValue != value) 
-							|| (this._mediador1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._mediador1.Entity = null;
-						previousValue.noticias1.Remove(this);
-					}
-					this._mediador1.Entity = value;
-					if ((value != null))
-					{
-						value.noticias1.Add(this);
-						this._id_mediador_edicao = value.id;
-					}
-					else
-					{
-						this._id_mediador_edicao = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("mediador1");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 	
@@ -5228,6 +4738,496 @@ namespace BackEnd.Controllers
 					this._senha_ftp = value;
 					this.SendPropertyChanged("senha_ftp");
 					this.Onsenha_ftpChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.noticias")]
+	public partial class noticia : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private string _imagem_nome;
+		
+		private string _imagem_caminho;
+		
+		private System.DateTime _data_postagem;
+		
+		private string _titulo_postagem;
+		
+		private string _corpo_noticia;
+		
+		private int _id_mediador;
+		
+		private int _id_local;
+		
+		private System.Nullable<int> _id_mediador_edicao;
+		
+		private System.Nullable<System.DateTime> _data_edicao;
+		
+		private System.Nullable<int> _id_local_edicao;
+		
+		private int _prioridade;
+		
+		private EntityRef<local> _local;
+		
+		private EntityRef<local> _local1;
+		
+		private EntityRef<mediador> _mediador;
+		
+		private EntityRef<mediador> _mediador1;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onimagem_nomeChanging(string value);
+    partial void Onimagem_nomeChanged();
+    partial void Onimagem_caminhoChanging(string value);
+    partial void Onimagem_caminhoChanged();
+    partial void Ondata_postagemChanging(System.DateTime value);
+    partial void Ondata_postagemChanged();
+    partial void Ontitulo_postagemChanging(string value);
+    partial void Ontitulo_postagemChanged();
+    partial void Oncorpo_noticiaChanging(string value);
+    partial void Oncorpo_noticiaChanged();
+    partial void Onid_mediadorChanging(int value);
+    partial void Onid_mediadorChanged();
+    partial void Onid_localChanging(int value);
+    partial void Onid_localChanged();
+    partial void Onid_mediador_edicaoChanging(System.Nullable<int> value);
+    partial void Onid_mediador_edicaoChanged();
+    partial void Ondata_edicaoChanging(System.Nullable<System.DateTime> value);
+    partial void Ondata_edicaoChanged();
+    partial void Onid_local_edicaoChanging(System.Nullable<int> value);
+    partial void Onid_local_edicaoChanged();
+    partial void OnprioridadeChanging(int value);
+    partial void OnprioridadeChanged();
+    #endregion
+		
+		public noticia()
+		{
+			this._local = default(EntityRef<local>);
+			this._local1 = default(EntityRef<local>);
+			this._mediador = default(EntityRef<mediador>);
+			this._mediador1 = default(EntityRef<mediador>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_imagem_nome", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string imagem_nome
+		{
+			get
+			{
+				return this._imagem_nome;
+			}
+			set
+			{
+				if ((this._imagem_nome != value))
+				{
+					this.Onimagem_nomeChanging(value);
+					this.SendPropertyChanging();
+					this._imagem_nome = value;
+					this.SendPropertyChanged("imagem_nome");
+					this.Onimagem_nomeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_imagem_caminho", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string imagem_caminho
+		{
+			get
+			{
+				return this._imagem_caminho;
+			}
+			set
+			{
+				if ((this._imagem_caminho != value))
+				{
+					this.Onimagem_caminhoChanging(value);
+					this.SendPropertyChanging();
+					this._imagem_caminho = value;
+					this.SendPropertyChanged("imagem_caminho");
+					this.Onimagem_caminhoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_data_postagem", DbType="DateTime NOT NULL")]
+		public System.DateTime data_postagem
+		{
+			get
+			{
+				return this._data_postagem;
+			}
+			set
+			{
+				if ((this._data_postagem != value))
+				{
+					this.Ondata_postagemChanging(value);
+					this.SendPropertyChanging();
+					this._data_postagem = value;
+					this.SendPropertyChanged("data_postagem");
+					this.Ondata_postagemChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_titulo_postagem", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string titulo_postagem
+		{
+			get
+			{
+				return this._titulo_postagem;
+			}
+			set
+			{
+				if ((this._titulo_postagem != value))
+				{
+					this.Ontitulo_postagemChanging(value);
+					this.SendPropertyChanging();
+					this._titulo_postagem = value;
+					this.SendPropertyChanged("titulo_postagem");
+					this.Ontitulo_postagemChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_corpo_noticia", DbType="VarChar(1500) NOT NULL", CanBeNull=false)]
+		public string corpo_noticia
+		{
+			get
+			{
+				return this._corpo_noticia;
+			}
+			set
+			{
+				if ((this._corpo_noticia != value))
+				{
+					this.Oncorpo_noticiaChanging(value);
+					this.SendPropertyChanging();
+					this._corpo_noticia = value;
+					this.SendPropertyChanged("corpo_noticia");
+					this.Oncorpo_noticiaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_mediador", DbType="Int NOT NULL")]
+		public int id_mediador
+		{
+			get
+			{
+				return this._id_mediador;
+			}
+			set
+			{
+				if ((this._id_mediador != value))
+				{
+					if (this._mediador.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_mediadorChanging(value);
+					this.SendPropertyChanging();
+					this._id_mediador = value;
+					this.SendPropertyChanged("id_mediador");
+					this.Onid_mediadorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_local", DbType="Int NOT NULL")]
+		public int id_local
+		{
+			get
+			{
+				return this._id_local;
+			}
+			set
+			{
+				if ((this._id_local != value))
+				{
+					if (this._local.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_localChanging(value);
+					this.SendPropertyChanging();
+					this._id_local = value;
+					this.SendPropertyChanged("id_local");
+					this.Onid_localChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_mediador_edicao", DbType="Int")]
+		public System.Nullable<int> id_mediador_edicao
+		{
+			get
+			{
+				return this._id_mediador_edicao;
+			}
+			set
+			{
+				if ((this._id_mediador_edicao != value))
+				{
+					if (this._mediador1.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_mediador_edicaoChanging(value);
+					this.SendPropertyChanging();
+					this._id_mediador_edicao = value;
+					this.SendPropertyChanged("id_mediador_edicao");
+					this.Onid_mediador_edicaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_data_edicao", DbType="DateTime")]
+		public System.Nullable<System.DateTime> data_edicao
+		{
+			get
+			{
+				return this._data_edicao;
+			}
+			set
+			{
+				if ((this._data_edicao != value))
+				{
+					this.Ondata_edicaoChanging(value);
+					this.SendPropertyChanging();
+					this._data_edicao = value;
+					this.SendPropertyChanged("data_edicao");
+					this.Ondata_edicaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_local_edicao", DbType="Int")]
+		public System.Nullable<int> id_local_edicao
+		{
+			get
+			{
+				return this._id_local_edicao;
+			}
+			set
+			{
+				if ((this._id_local_edicao != value))
+				{
+					if (this._local1.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_local_edicaoChanging(value);
+					this.SendPropertyChanging();
+					this._id_local_edicao = value;
+					this.SendPropertyChanged("id_local_edicao");
+					this.Onid_local_edicaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_prioridade", DbType="Int NOT NULL")]
+		public int prioridade
+		{
+			get
+			{
+				return this._prioridade;
+			}
+			set
+			{
+				if ((this._prioridade != value))
+				{
+					this.OnprioridadeChanging(value);
+					this.SendPropertyChanging();
+					this._prioridade = value;
+					this.SendPropertyChanged("prioridade");
+					this.OnprioridadeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="local_noticia", Storage="_local", ThisKey="id_local", OtherKey="id", IsForeignKey=true)]
+		public local local
+		{
+			get
+			{
+				return this._local.Entity;
+			}
+			set
+			{
+				local previousValue = this._local.Entity;
+				if (((previousValue != value) 
+							|| (this._local.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._local.Entity = null;
+						previousValue.noticias.Remove(this);
+					}
+					this._local.Entity = value;
+					if ((value != null))
+					{
+						value.noticias.Add(this);
+						this._id_local = value.id;
+					}
+					else
+					{
+						this._id_local = default(int);
+					}
+					this.SendPropertyChanged("local");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="local_noticia1", Storage="_local1", ThisKey="id_local_edicao", OtherKey="id", IsForeignKey=true)]
+		public local local1
+		{
+			get
+			{
+				return this._local1.Entity;
+			}
+			set
+			{
+				local previousValue = this._local1.Entity;
+				if (((previousValue != value) 
+							|| (this._local1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._local1.Entity = null;
+						previousValue.noticias1.Remove(this);
+					}
+					this._local1.Entity = value;
+					if ((value != null))
+					{
+						value.noticias1.Add(this);
+						this._id_local_edicao = value.id;
+					}
+					else
+					{
+						this._id_local_edicao = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("local1");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="mediador_noticia", Storage="_mediador", ThisKey="id_mediador", OtherKey="id", IsForeignKey=true)]
+		public mediador mediador
+		{
+			get
+			{
+				return this._mediador.Entity;
+			}
+			set
+			{
+				mediador previousValue = this._mediador.Entity;
+				if (((previousValue != value) 
+							|| (this._mediador.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._mediador.Entity = null;
+						previousValue.noticias.Remove(this);
+					}
+					this._mediador.Entity = value;
+					if ((value != null))
+					{
+						value.noticias.Add(this);
+						this._id_mediador = value.id;
+					}
+					else
+					{
+						this._id_mediador = default(int);
+					}
+					this.SendPropertyChanged("mediador");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="mediador_noticia1", Storage="_mediador1", ThisKey="id_mediador_edicao", OtherKey="id", IsForeignKey=true)]
+		public mediador mediador1
+		{
+			get
+			{
+				return this._mediador1.Entity;
+			}
+			set
+			{
+				mediador previousValue = this._mediador1.Entity;
+				if (((previousValue != value) 
+							|| (this._mediador1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._mediador1.Entity = null;
+						previousValue.noticias1.Remove(this);
+					}
+					this._mediador1.Entity = value;
+					if ((value != null))
+					{
+						value.noticias1.Add(this);
+						this._id_mediador_edicao = value.id;
+					}
+					else
+					{
+						this._id_mediador_edicao = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("mediador1");
 				}
 			}
 		}

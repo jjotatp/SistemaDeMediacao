@@ -38,7 +38,7 @@ namespace FrontEnd
             if (model.Inserir(dp))
             {
                 Limpar();
-                Master.Alerta("Depoimento registrado com sucesso! Aguarde a aprovação para que ele seja exibido na listagem principal.");
+                Master.Sucesso("Depoimento registrado com sucesso! Aguarde a aprovação para que ele seja exibido na listagem principal.");
             }
         }
 

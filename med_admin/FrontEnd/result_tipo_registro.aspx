@@ -21,7 +21,7 @@
                     <div class="col-md-1">
                         <label class="control-label col-md-1"></label>
                         <br />
-                        <asp:Button CssClass="btn btn-info" runat="server" ID="btnBuscar" Text="Filtrar" OnClick="btnBuscar_Click"/>
+                        <asp:Button CssClass="btn btn-info" runat="server" ID="btnBuscar" Text="Filtrar" OnClick="btnBuscar_Click" />
                     </div>
                 </div>
                 <div class="void"> &nbsp; </div>

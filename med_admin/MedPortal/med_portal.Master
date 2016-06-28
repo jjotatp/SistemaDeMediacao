@@ -66,6 +66,7 @@
                 </strong>
             </div>                         
         </div>
+        <br />
     </div>
     <form id="form1" runat="server">
         <div>
@@ -85,10 +86,13 @@
                         <br>
                         <br>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <br>
                         <br>
                         <p style="color: #4d4d4d;">© 2016 Portal da Mediação. Todos os direitos reservados.</p>
+                    </div>
+                    <div class="col-md-5">
+                        <img src="content/img/cps.jpg" class="img-responsive"/>
                     </div>
                 </div>
 

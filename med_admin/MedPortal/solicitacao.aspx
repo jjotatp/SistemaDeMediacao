@@ -96,27 +96,24 @@
                             </div>
                             <div class="tab-pane col-md-offset-3" role="tabpanel" id="step3">
                                 <h3>Etapa 3</h3>
-                                <p>Gostariamos que informasse qual periodo e dia da semana tem disponível.</p>
+                                <p>Gostariamos que informasse seu período e dia da semana melhores para uma reunião.</p>
                                     <fieldset>
 
                                         <!-- Multiple Checkboxes -->
-                                        <div class="form-group">
-                                            <asp:CheckBoxList runat="server" ID="cbgPeriodo" CssClass="col-md-4">
-                                                <asp:ListItem Text="Manhã"></asp:ListItem>
-                                                <asp:ListItem Text="Tarde"></asp:ListItem>
-                                                <asp:ListItem Text="Noite"></asp:ListItem>
-                                            </asp:CheckBoxList>
-
-                                            <asp:CheckBoxList runat="server" ID="cbgDia" CssClass="col-md-4">
+                                        <div class="form-group col-md-8">
+                                            <asp:CheckBoxList runat="server" ID="cbgDia" CssClass="col-md-6">
                                                 <asp:ListItem Text="Segunda"></asp:ListItem>
                                                 <asp:ListItem Text="Terça"></asp:ListItem>
                                                 <asp:ListItem Text="Quarta"></asp:ListItem>
                                                 <asp:ListItem Text="Quinta"></asp:ListItem>
                                                 <asp:ListItem Text="Sexta"></asp:ListItem>
                                             </asp:CheckBoxList>
-                                        </div>
-
-                                        <div class="form-group">
+                                            <asp:CheckBoxList runat="server" ID="cbgPeriodo" CssClass="col-md-6">
+                                                <asp:ListItem Text="Manhã"></asp:ListItem>
+                                                <asp:ListItem Text="Tarde"></asp:ListItem>
+                                                <asp:ListItem Text="Noite"></asp:ListItem>
+                                            </asp:CheckBoxList>
+                                            <br><br>
                                             <label class="control-label" for="ddLocal">Selecione o Núcleo de Mediação mais próximo de você</label>
                                             <br>
                                             <asp:DropDownList runat="server" ID="ddLocal" CssClass="form-control" placeholder="Selecione...">

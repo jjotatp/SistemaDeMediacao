@@ -9,11 +9,11 @@
                         <h4 class="m-t-0 header-title"><b>Conteúdo da Notícia</b></h4>
                             <div class="input-group">
                                 <span class="input-group-addon">Título</span>
-                                <asp:TextBox runat="server" ID="txtTituloNoticia" CssClass="form-control" required="required" MaxLength="50"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txtTituloNoticia" CssClass="form-control" required="required"></asp:TextBox>
                             </div>
                             <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">                                                                       
                                 <ContentTemplate>                                                
-                                    <textarea runat="server" class="form-control" id="edtNoticia" style="height: 200px;" maxlength="500" required="required"/>
+                                    <textarea runat="server" class="form-control" id="edtNoticia" style="height: 200px;" maxlength="1500" required="required"/>
                                 </ContentTemplate>
                                 <Triggers> 
                                     <asp:PostBackTrigger ControlID="btnSalvarNoticia" /> 

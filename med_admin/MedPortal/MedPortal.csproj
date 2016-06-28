@@ -94,6 +94,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="content\img\cps.jpg" />
     <Content Include="content\css\animated.css" />
     <Content Include="content\css\bootstrap.css" />
     <Content Include="content\css\casos.css" />

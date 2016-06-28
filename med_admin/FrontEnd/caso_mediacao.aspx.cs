@@ -5,6 +5,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using BackEnd;
 
 namespace MedAdmin
 {
@@ -192,7 +193,7 @@ namespace MedAdmin
                     byte[] fileBytes = null;
 
                     //Read the FileName and convert it to Byte array.
-                    string fileName = Path.GetFileName(uplImagemCarregada.FileName);
+                    string fileName = Util.removerAcentos( Path.GetFileName(uplImagemCarregada.FileName) );
 
                     fileBytes = uplImagemCarregada.FileBytes;
 

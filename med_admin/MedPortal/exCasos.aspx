@@ -7,8 +7,8 @@
                 <div class="col-md-12 text-center">
                     <div class="jumbotron wow flipInX data-wow-duration="3s"">
                         <h1>Exemplificação de Mediação</h1>
-                        <p>Conheça alguns casos de Mediação. Existem inumeros tipos de caso, listamos algunas deles
-                        para você ter uma ideia do quanto Mediação pode te ajudar.
+                        <p>Conheça alguns casos de Mediação. Existem inumeros tipos de caso, listamos alguns deles
+                        para você ter uma ideia do quanto a mediação pode te ajudar.
                         </p>
                     </div>
                 </div>

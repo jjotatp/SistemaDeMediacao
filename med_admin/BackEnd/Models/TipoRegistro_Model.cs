@@ -103,7 +103,7 @@ namespace BackEnd.Models
                                 "( select COUNT(*) " +
                                 "from mediacoes m where (m.id_tipo_registro = t.id)" +
                                 "and m.data_mediacao between {0} and {1} ) as TOTAL " +
-                                "from tipos_registro t";
+                                "from tipos_registro t order by t.DESCRICAO";
                     query = db.ExecuteQuery<v_total_tipos_registro>(sSql, DateTime.Parse(sDataIni + " 00:00:00"), DateTime.Parse(sDataFim + " 23:59:59"));
                 }
                 else if (sDataIni != "")
@@ -112,7 +112,7 @@ namespace BackEnd.Models
                                 "( select COUNT(*) " +
                                 "from mediacoes m where (m.id_tipo_registro = t.id)" +
                                 "and m.data_mediacao >= {0} ) as TOTAL " +
-                                "from tipos_registro t";
+                                "from tipos_registro t order by t.DESCRICAO";
                     query = db.ExecuteQuery<v_total_tipos_registro>(sSql, DateTime.Parse(sDataIni + " 00:00:00"));
                 }
                 else if (sDataFim != "")
@@ -121,7 +121,7 @@ namespace BackEnd.Models
                                 "( select COUNT(*) " +
                                 "from mediacoes m where (m.id_tipo_registro = t.id)" +
                                 "and m.data_mediacao <= {1} ) as TOTAL " +
-                                "from tipos_registro t";
+                                "from tipos_registro t order by t.DESCRICAO";
                     query = db.ExecuteQuery<v_total_tipos_registro>(sSql, DateTime.Parse(sDataFim + " 23:59:59"));
                 }
                 else
@@ -129,7 +129,7 @@ namespace BackEnd.Models
                     String sSql = "select t.ID, t.DESCRICAO, " +
                                 "( select COUNT(*) " +
                                 "from mediacoes m where (m.id_tipo_registro = t.id) ) as TOTAL " +
-                                "from tipos_registro t";
+                                "from tipos_registro t order by t.DESCRICAO";
                     query = db.ExecuteQuery<v_total_tipos_registro>(sSql);
                 }
                 return query.ToList();

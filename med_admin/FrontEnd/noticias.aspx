@@ -37,7 +37,7 @@
                                             <img src="<%: n.imagem_caminho + n.imagem_nome %>" alt="<%: n.imagem_nome %>">
                                             <div class="caption">
                                                 <h3><%: n.titulo_postagem %></h3>
-                                                <p><%: n.corpo_noticia %></p>
+                                                <%--<p><%: n.corpo_noticia %></p>--%>
                                                 <%--<p><a href="#" class="btn btn-danger" role="button">Leia Mais</a> <a href="editar-noticias.html" class="btn btn-warning" role="button">Editar</a></p>--%>
                                             </div>
                                         </a>

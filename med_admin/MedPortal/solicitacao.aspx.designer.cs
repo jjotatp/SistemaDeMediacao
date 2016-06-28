@@ -67,15 +67,6 @@ namespace FrontEnd {
         protected global::System.Web.UI.WebControls.TextBox txtDadosPartes;
         
         /// <summary>
-        /// cbgPeriodo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList cbgPeriodo;
-        
-        /// <summary>
         /// cbgDia control.
         /// </summary>
         /// <remarks>
@@ -83,6 +74,15 @@ namespace FrontEnd {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBoxList cbgDia;
+        
+        /// <summary>
+        /// cbgPeriodo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList cbgPeriodo;
         
         /// <summary>
         /// ddLocal control.

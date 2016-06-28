@@ -11,6 +11,7 @@ using System.Drawing;
 
 using BackEnd.Controllers;
 using BackEnd.Models;
+using BackEnd;
 
 namespace MedAdmin
 {
@@ -22,6 +23,8 @@ namespace MedAdmin
             {
                 Response.Redirect("index.aspx");
             }
+
+            txtTituloNoticia.MaxLength = 100;
 
             if (!IsPostBack)
             {
@@ -156,7 +159,7 @@ namespace MedAdmin
                     byte[] fileBytes = null;
 
                     //Read the FileName and convert it to Byte array.
-                    string fileName = Path.GetFileName(uplImagemCarregada.FileName);
+                    string fileName = Util.removerAcentos(Path.GetFileName(uplImagemCarregada.FileName));
 
                     fileBytes = uplImagemCarregada.FileBytes;
 
