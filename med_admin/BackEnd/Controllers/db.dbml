@@ -218,15 +218,6 @@
       <Column Name="TOTAL" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.configuracoes" Member="configuracaos">
-    <Type Name="configuracao">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="nome_conf" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
-      <Column Name="caminho_images" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="usuario_ftp" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="senha_ftp" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.noticias" Member="noticias">
     <Type Name="noticia">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -245,6 +236,16 @@
       <Association Name="local_noticia1" Member="local1" ThisKey="id_local_edicao" OtherKey="id" Type="local" IsForeignKey="true" />
       <Association Name="mediador_noticia" Member="mediador" ThisKey="id_mediador" OtherKey="id" Type="mediador" IsForeignKey="true" />
       <Association Name="mediador_noticia1" Member="mediador1" ThisKey="id_mediador_edicao" OtherKey="id" Type="mediador" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.configuracoes" Member="configuracaos">
+    <Type Name="configuracao">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nome_conf" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="caminho_images" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="usuario_ftp" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="senha_ftp" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="caminho_postagem" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.alteraCidade" Method="alteraCidade">

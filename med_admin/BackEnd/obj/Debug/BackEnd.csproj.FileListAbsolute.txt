@@ -19,3 +19,5 @@ C:\programas\T C C\med_admin\BackEnd\bin\Debug\DocX.dll
 C:\programas\T C C\med_admin\BackEnd\obj\Debug\BackEnd.dll
 C:\programas\T C C\med_admin\BackEnd\obj\Debug\BackEnd.pdb
 C:\programas\T C C\med_admin\BackEnd\obj\Debug\BackEnd.csprojResolveAssemblyReference.cache
+C:\programas\T C C\med_admin\BackEnd\obj\Debug\Interop.Microsoft.Office.Core.dll
+C:\programas\T C C\med_admin\BackEnd\obj\Debug\BackEnd.csproj.ResolveComReference.cache

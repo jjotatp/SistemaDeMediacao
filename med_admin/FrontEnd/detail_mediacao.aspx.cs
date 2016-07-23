@@ -84,7 +84,7 @@ namespace MedAdmin
                     Directory.CreateDirectory(caminho);
                 }
 
-                arquivo = model.GerarTermoDoc(id, caminho);
+                arquivo = model.GerarTermo(id, caminho);
 
                 if (arquivo != "")
                 {

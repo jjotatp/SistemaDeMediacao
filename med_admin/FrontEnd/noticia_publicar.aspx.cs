@@ -33,6 +33,16 @@ namespace MedAdmin
             }
         }
 
+        protected void btnCarregarImagem_Click(object sender, EventArgs e)
+        {
+            Carregar();
+        }        
+
+        protected void btnSalvarNoticia_Click(object sender, EventArgs e)
+        {
+            SalvarNoticia();
+        }
+
         protected void CarregarNoticia()
         {
             if (Request.QueryString["ID"] != null)
@@ -60,26 +70,22 @@ namespace MedAdmin
             }
         }
 
-        protected void btnCarregarImagem_Click(object sender, EventArgs e)
-        {
-            Carregar();
-        }        
-
-        protected void btnSalvarNoticia_Click(object sender, EventArgs e)
+        protected void SalvarNoticia()
         {
             // Validar se esta editando ou postando nova
-            //    se estiver editando, alterar somente titulo, texto e imagem, mantendo a data
+            // se estiver editando, alterar somente titulo, texto e imagem, mantendo a data
             try
             {
                 if (Validar())
                 {
-                    // pega apenas o nome do arquivo para poder remontar o caminho para o servidor
                     configuracao c = new configuracao();
                     Configuracao_Model mc = new Configuracao_Model();
 
                     c = mc.Obter("medPortal");
 
+                    // salva o caminho das imagens no servidor ftp
                     String caminho = c.caminho_images;
+                    // pega o nome da imagem carregada na tela
                     String nome = Path.GetFileName(imgImagemCarregada.ImageUrl);
 
                     // declara objeto noticia
@@ -142,63 +148,25 @@ namespace MedAdmin
 
         protected void Carregar()
         {
-            try
+            if (uplImagemCarregada.PostedFile != null && uplImagemCarregada.PostedFile.FileName != "")
             {
-                if (uplImagemCarregada.PostedFile != null && uplImagemCarregada.PostedFile.FileName != "")
+                Configuracao_Model model = new Configuracao_Model();
+
+                // cria as variáveis que serão passadas por referência
+                String fileName = Path.GetFileName(uplImagemCarregada.FileName);
+                bool enviado = false;
+
+                // chama a função passando as variáveis de referência. O retorno é a mensagem de sucesso ou erro
+                String msg = model.EnviarArquivoServidor(ref fileName, uplImagemCarregada.FileBytes, ref enviado);
+
+                // verifica se foi enviado e exibe a mensagem e a imagem na tela
+                if (enviado)
                 {
-                    configuracao c = new configuracao();
-                    Configuracao_Model mc = new Configuracao_Model();
-
-                    c = mc.Obter("medPortal");
-
-                    //FTP Server URL.
-                    string ftp = c.caminho_images;
-
-                    //FTP Folder name. Leave blank if you want to upload to root folder.
-
-                    byte[] fileBytes = null;
-
-                    //Read the FileName and convert it to Byte array.
-                    string fileName = Util.removerAcentos(Path.GetFileName(uplImagemCarregada.FileName));
-
-                    fileBytes = uplImagemCarregada.FileBytes;
-
-                    try
-                    {
-                        //Create FTP Request.
-                        FtpWebRequest request = (FtpWebRequest)WebRequest.Create(ftp + fileName);
-                        request.Method = WebRequestMethods.Ftp.UploadFile;
-
-                        //Enter FTP Server credentials.
-                        request.Credentials = new NetworkCredential(c.usuario_ftp, c.senha_ftp);
-                        request.ContentLength = fileBytes.Length;
-                        request.UsePassive = true;
-                        request.UseBinary = true;
-                        request.ServicePoint.ConnectionLimit = fileBytes.Length;
-                        request.EnableSsl = false;
-
-                        using (Stream requestStream = request.GetRequestStream())
-                        {
-                            requestStream.Write(fileBytes, 0, fileBytes.Length);
-                            requestStream.Close();
-                        }
-
-                        FtpWebResponse response = (FtpWebResponse)request.GetResponse();
-
-                        Master.Sucesso(fileName + " uploaded.<br />");
-                        // exibe na tela
-                        imgImagemCarregada.ImageUrl = ftp + fileName;
-                        response.Close();
-                    }
-                    catch (WebException ex)
-                    {
-                        throw new Exception((ex.Response as FtpWebResponse).StatusDescription);
-                    }
+                    Master.Sucesso(msg);
+                    imgImagemCarregada.ImageUrl = fileName;
                 }
-            }
-            catch (Exception error)
-            {
-                Master.Alerta(error.Message);
+                else
+                    Master.Alerta(msg);
             }
         }
 

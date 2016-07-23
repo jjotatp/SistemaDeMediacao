@@ -8,5 +8,8 @@ select * from mediadores
 select * from locais
 
 insert into mediadores (nome,patente,id_local,usuario,senha,nivel_permissao)
-values('Sérgio','SD PM',1,'sergio','123',3)
+values('Sérgio','CB PM',1,'sergio','123',3)
 
+select * from cidades
+
+update locais set logradouro = 'Rua Fernandópolis', numero = '2510' where id = 1

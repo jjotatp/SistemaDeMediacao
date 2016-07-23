@@ -193,17 +193,18 @@ namespace BackEnd.Models
             }
         }
 
-        public string GerarTermoDoc(int id_mediacao, string caminho)
+        public string GerarTermo(int id_mediacao, string caminho)
         {
             try
             {
                 mediacao md = new mediacao();
 
-                md = Obter(id_mediacao);              
+                md = Obter(id_mediacao);
 
+                String nome = md.numero.ToString() + "_" + md.data_mediacao.Year.ToString();
                 // caminho + numero + ano .docx
                 // ex: Desktop\002_2016.docx
-                String nomeArquivo = caminho + @"\" + md.numero.ToString() + "_" + md.data_mediacao.Year.ToString() + ".docx";
+                String nomeArquivo = caminho + @"\" + nome + @"\" + ".docx";
                 // gera o documento da mediação
 
                 // Se o arquivo já existe, não salva novamente
@@ -312,7 +313,8 @@ namespace BackEnd.Models
                     p3.AppendLine(md.mediador.nome).Bold();
                     p3.AppendLine(md.mediador.patente + " - Mediador").Alignment = Alignment.right;
 
-                    // salva o documento
+                    // salva o documento                    
+
                     document.SaveAs(nomeArquivo);
                 }
 

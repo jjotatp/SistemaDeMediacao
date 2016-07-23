@@ -39,3 +39,9 @@ begin
 	where id = @id
 end
 go
+
+-- campo CAMINHO_POSTAGEM para salvar o ip para postagem dos arquivos no ftp
+alter table configuracoes add caminho_postagem varchar(max)
+update configuracoes set caminho_postagem = 'ftp://localhost/'
+
+select * from configuracoes
