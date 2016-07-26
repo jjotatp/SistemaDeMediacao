@@ -22,6 +22,15 @@ namespace MedAdmin {
         protected global::System.Web.UI.WebControls.TextBox txtNome;
         
         /// <summary>
+        /// cbSomenteAtivo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbSomenteAtivo;
+        
+        /// <summary>
         /// btnBuscar control.
         /// </summary>
         /// <remarks>

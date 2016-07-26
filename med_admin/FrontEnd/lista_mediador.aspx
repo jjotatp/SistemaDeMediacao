@@ -12,6 +12,9 @@
             <div class="col-md-5">
                 <asp:TextBox ID="txtNome" runat="server" CssClass="form-control" placeholder="Digite o nome e realize a busca"></asp:TextBox>
             </div>
+            <div class="col-md-3">
+                <asp:CheckBox id="cbSomenteAtivo" runat="server" CssClass="checkbox checkbox-info" Checked="true" Text="Listar somente ativos"/>
+            </div>
             <div class="col-md-4">
                 <asp:Button ID="btnBuscar" runat="server" CssClass="btn btn-info" Text="Buscar" OnClick="btnBuscar_Click"/>
                 <asp:Button ID="btnVoltar" runat="server" CssClass="btn btn-default" Text="Voltar" OnClick="btnVoltar_Click"/>

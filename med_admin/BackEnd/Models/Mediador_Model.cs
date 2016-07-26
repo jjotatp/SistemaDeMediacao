@@ -34,12 +34,12 @@ namespace BackEnd.Models
 
                 if (a.id == 0)
                 {
-                    db.cadMediador(a.nome, a.patente, a.id_local, a.usuario, a.senha, a.nivel_permissao);
+                    db.cadMediador(a.nome, a.patente, a.id_local, a.usuario, a.senha, a.ativo, a.nivel_permissao);
                     tb.Context.SubmitChanges();
                 }
                 else
                 {
-                    db.alteraMediador(a.id, a.nome, a.patente, a.id_local, a.usuario, a.senha, a.nivel_permissao);
+                    db.alteraMediador(a.id, a.nome, a.patente, a.id_local, a.usuario, a.senha, a.ativo, a.nivel_permissao);
                     tb.Context.SubmitChanges();
                 }
 
@@ -66,16 +66,21 @@ namespace BackEnd.Models
             using (dbDataContext db = getDataContext())
             {
                 Table<mediador> tb = getTable();
-                return tb.ToList();
+                var query = db.ExecuteQuery<mediador>("select * from mediadores where ativo = 1");
+                return query.ToList();
             }
         }
 
-        public List<v_mediador> ListarPorNome(string Nome)
+        public List<v_mediador> ListarPorNome(string Nome, bool SomenteAtivos)
         {
             using (dbDataContext db = getDataContext())
             {
                 Nome = "%" + Nome + "%";
                 String sSql = "select * from v_mediadores m where m.Nome like {0}";
+                if (SomenteAtivos)
+                {
+                    sSql = sSql + " and ( m.Ativo = 1 )";
+                }
                 var query = db.ExecuteQuery<v_mediador>(sSql, Nome);
                 return query.ToList(); 
             }
@@ -89,7 +94,7 @@ namespace BackEnd.Models
                 Table<mediador> tb = getTable();
                 try
                 {
-                    d = tb.First(p => p.usuario == usuario);
+                    d = tb.First(p => (p.usuario == usuario) && (p.ativo == true));
                 }
                 catch (Exception e)
                 {
@@ -103,7 +108,7 @@ namespace BackEnd.Models
         {            
             Table<mediador> tb = getTable();
             var med = ( from p in tb
-                        where p.usuario == usuario && p.senha == senha
+                        where p.usuario == usuario && p.senha == senha && p.ativo == true
                         select p).SingleOrDefault();                                   
             return med;        
         }

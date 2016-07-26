@@ -36,6 +36,8 @@ namespace MedAdmin
                 ddLocal.DataBind();
                 ddLocal.SelectedIndex = 0;
 
+                cbbAtivo.Checked = true;
+
                 // declara ID e verifica se existe ID no txtID ou no endereço
                 int id = 0;
 
@@ -78,7 +80,7 @@ namespace MedAdmin
                         txtUsuario.Value = med.usuario;
                         txtSenha.Value = "";
                         txtConfirmarSenha.Value = "";
-                        
+                        cbbAtivo.Checked = med.ativo;                        
                     }
                     catch (Exception)
                     {
@@ -155,6 +157,7 @@ namespace MedAdmin
                 med.nivel_permissao = Int32.Parse(ddNivelPermissao.SelectedValue);
                 med.usuario = txtUsuario.Value;
                 med.senha = txtSenha.Value;
+                med.ativo = cbbAtivo.Checked;
 
                 Mediador_Model model = new Mediador_Model();
 

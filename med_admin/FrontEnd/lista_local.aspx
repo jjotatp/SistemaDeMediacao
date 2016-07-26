@@ -12,7 +12,7 @@
         <div class="col-md-5">
             <asp:TextBox ID="txtNome" runat="server" CssClass="form-control" placeholder="Digite o nome e realize a busca"></asp:TextBox>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
             <asp:CheckBox id="cbSomenteAtivo" runat="server" CssClass="checkbox checkbox-info" Checked="true" Text="Listar somente ativos"/>
         </div>
         <div class="col-md-4">

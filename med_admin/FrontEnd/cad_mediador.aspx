@@ -99,7 +99,16 @@
                         <input class="form-control input-md" id="txtConfirmarSenha" type="password" runat="server" placeholder="Digite novamente sua senha">
                     </div>
                 </div>              
-                                                                                                               
+                                                                         
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="nome">
+                        Status
+                    </label>
+                    <div class="col-md-6">
+                        <input type="checkbox" id="cbbAtivo" runat="server" data-toggle="toggle" data-on="Ativo" data-off="Inativo"/>
+                    </div>
+                </div>
+                                                                      
                 <div class="col-md-offset-4">
                     <asp:Button runat="server" id="btnSalvar" class="btn btn-success"
                     OnClick="btnSalvar_Click" Text="Salvar" />
