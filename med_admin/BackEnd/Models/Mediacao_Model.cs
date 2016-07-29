@@ -200,11 +200,11 @@ namespace BackEnd.Models
                 mediacao md = new mediacao();
 
                 md = Obter(id_mediacao);
-
+                // nome = numero + ano
                 String nome = md.numero.ToString() + "_" + md.data_mediacao.Year.ToString();
-                // caminho + numero + ano .docx
+                // nome completo = caminho + nome.docx
                 // ex: Desktop\002_2016.docx
-                String nomeArquivo = caminho + @"\" + nome + @"\" + ".docx";
+                String nomeArquivo = caminho + @"\" + nome + ".docx";
                 // gera o documento da mediação
 
                 // Se o arquivo já existe, não salva novamente
