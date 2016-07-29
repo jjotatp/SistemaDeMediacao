@@ -47,7 +47,7 @@ update configuracoes set caminho_postagem = 'ftp://localhost/'
 select * from configuracoes
 
 -- campo para ativar e desativar o mediador 
-alter table mediadores alter column ativo bit not null
+alter table mediadores add ativo bit not null default 1
 
 ALTER TRIGGER tg_insere_mediador 
 ON mediadores 
@@ -114,3 +114,52 @@ begin
 	(@nome,@patente,@id_local,@usuario,@senha,@ativo,@nivel)
 end
 go
+
+-- ============ ADIÇÃO CAMPO ATIVO NAS SOLICITACOES
+-- 1 = ATIVO
+-- 0 = ARQUIVADO
+
+select * from solicitacoes
+
+alter table solicitacoes add ativo bit not null default 1
+
+alter view v_solicitacoes
+as
+	 select s.id ID,s.solicitante_nome Nome, l.descricao Local, s.data Data, c.nome Cidade, s.ativo Ativo 
+	 from solicitacoes s
+		left join cidades c on (s.id_cidade_abertura = c.id)
+		left join locais l on (s.id_local = l.id)
+go
+
+alter procedure alteraSolicitacoes
+(
+	@id int,	
+	@descricao_caso varchar(250),
+	@solicitante_nome varchar(100) ,
+	@solicitante_telefone varchar(20),
+	@solicitante_endereco varchar(100),
+	@solicitante_email varchar(50),
+	@solicitante_periodo_atendimento varchar(20),
+	@solicitante_dia_atendimento varchar(50),
+	@detalhes_partes varchar(200) ,
+	@id_local int,
+	@ativo bit
+)
+as
+begin
+	update solicitacoes
+	set	
+	descricao_caso = @descricao_caso,
+	solicitante_nome = @solicitante_nome,
+	solicitante_telefone = @solicitante_telefone,
+	solicitante_endereco = @solicitante_endereco,
+	solicitante_email = @solicitante_email,
+	solicitante_periodo_atendimento = @solicitante_periodo_atendimento,
+	solicitante_dia_atendimento = @solicitante_dia_atendimento,
+	detalhes_partes = @detalhes_partes,
+	id_local = @id_local,
+	ativo = @ativo
+	where id = @id;
+end
+go
+

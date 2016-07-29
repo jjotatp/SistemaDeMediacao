@@ -51,7 +51,7 @@ namespace BackEnd.Models
 
                 db.alteraSolicitacoes(a.id, a.descricao_caso, a.solicitante_nome,
                                     a.solicitante_telefone, a.solicitante_endereco, a.solicitante_email,
-                                    a.solicitante_periodo_atendimento, a.solicitante_dia_atendimento, a.detalhes_partes, a.id_local);
+                                    a.solicitante_periodo_atendimento, a.solicitante_dia_atendimento, a.detalhes_partes, a.id_local, a.ativo);
 
                 tb.Context.SubmitChanges();
 
@@ -88,23 +88,28 @@ namespace BackEnd.Models
             using (dbDataContext db = getDataContext())
             {
                 Table<solicitacao> tb = getTable();
-                return tb.ToList();
+                var query = db.ExecuteQuery<solicitacao>("select * from solicitacoes where ativo = 1");
+                return query.ToList();
             }
         }
 
-        public List<v_solicitacao> ListarPorTexto(String nomeCampo, String valorParametro)
+        public List<v_solicitacao> ListarPorTexto(String nomeCampo, String valorParametro, bool SomenteAtivos = true)
         {
             using (dbDataContext db = getDataContext())
             {
                 valorParametro = "%" + valorParametro + "%";
                 String sSql = " select * from v_solicitacoes " +
-                               " where " + nomeCampo + " like {0}";
+                               " where " + nomeCampo + " like {0} ";
+
+                if (SomenteAtivos)
+                    sSql = sSql + " and ( Ativo = 1 )";
+
                 var query = db.ExecuteQuery<v_solicitacao>(sSql, valorParametro);
                 return query.ToList();
             }
         }
 
-        public List<v_solicitacao> ListarPorData(DateTime valorParametro)
+        public List<v_solicitacao> ListarPorData(DateTime valorParametro, bool SomenteAtivos = true)
         {
             using (dbDataContext db = getDataContext())
             {
@@ -112,6 +117,10 @@ namespace BackEnd.Models
                 String sSql = " select s.id ID,s.solicitante_nome Nome, l.descricao Local, s.data Data, c.nome Cidade from solicitacoes s " +
                                " left join cidades c on (s.id_cidade_abertura = c.id) " +
                                " left join locais l on (s.id_local = l.id) where s.data = {0}";
+
+                if (SomenteAtivos)
+                    sSql = sSql + " and ( s.ativo = 1 )";
+
                 var query = db.ExecuteQuery<v_solicitacao>(sSql, valorParametro);
                 return query.ToList();
             }
@@ -135,15 +144,13 @@ namespace BackEnd.Models
             }
         }
 
-        public bool Excluir(solicitacao s)
+        public bool Arquivar(solicitacao s)
         {
             try
             {
-                String sql = "delete from solicitacoes where id = {0}";
-                dbDataContext db = getDataContext();
-                db.ExecuteCommand(sql, s.id);
+                s.ativo = false;
 
-                return true;
+                return Alterar(s);
             }
             catch (Exception e)
             {

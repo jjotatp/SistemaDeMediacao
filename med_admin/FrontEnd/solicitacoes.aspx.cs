@@ -156,15 +156,15 @@ namespace MedAdmin
 
                 s = model.Obter(id_solicitacao);
 
-                if (model.Excluir(s))
+                if (model.Arquivar(s))
                 {
                     LimparCampos();
-                    Master.Sucesso("Solicitação excluída.");
+                    Master.Sucesso("Solicitação arquivada com sucesso.");
                     PreencherGrid();
                 }
                 else
                 {
-                    Master.Alerta("Erro ao excluir a solicitação. Erro:" + model.message);
+                    Master.Alerta("Erro ao arquivar a solicitação. Erro:" + model.message);
                 }
             }
         }

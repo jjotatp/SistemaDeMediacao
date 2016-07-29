@@ -108,8 +108,8 @@
                                 title="Permite selecionar o núcleo de mediação que a solicitação deve ser atendida.">
                                 <span class="btn btn-success">Transferir</span>
                             </a>                                 
-                            <asp:Button ID="btnExcluir" CssClass="btn btn-danger" runat="server" Text="Excluir" 
-                                ToolTip="Exclui a solicitação do sistema" OnClientClick="javascript:return confirm('Tem certeza que deseja excluir a solicitação?');"
+                            <asp:Button ID="btnExcluir" CssClass="btn btn-danger" runat="server" Text="Arquivar" 
+                                ToolTip="Arquiva a solicitação do sistema" OnClientClick="javascript:return confirm('Tem certeza que deseja arquivar a solicitação?');"
                                 OnClick="btnExcluir_Click"/>
                         </div>
                     </div> 
