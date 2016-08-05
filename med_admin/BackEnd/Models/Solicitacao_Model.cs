@@ -163,7 +163,7 @@ namespace BackEnd.Models
         {            
             try
             {
-                String sql = "select * from agendamentos where id_solicitacao = {0}";
+                String sql = "select * from agendamentos where ( id_solicitacao = {0} ) and ( ativo = 1 )";
                 dbDataContext db = getDataContext();
                 var query = db.ExecuteQuery<agendamento>(sql, s.id);
                                 

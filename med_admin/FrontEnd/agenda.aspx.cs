@@ -31,13 +31,18 @@ namespace MedAdmin
 
             Agendamento_Model agenda = new Agendamento_Model();
             // carrega a agenda naquele dia
-            gvAgenda.DataSource = agenda.ListarDia(clData.SelectedDate);
-            gvAgenda.DataBind();
-            if (gvAgenda.Rows.Count > 0)
+            Local_Model lmodel = new Local_Model();
+            try
             {
-                gvAgenda.UseAccessibleHeader = true;
-                gvAgenda.HeaderRow.TableSection = TableRowSection.TableHeader;
+                gvAgenda.DataSource = agenda.ListarDia(clData.SelectedDate, lmodel.Obter(Master.GetLogado().id_local));
+                gvAgenda.DataBind();
+                if (gvAgenda.Rows.Count > 0)
+                {
+                    gvAgenda.UseAccessibleHeader = true;
+                    gvAgenda.HeaderRow.TableSection = TableRowSection.TableHeader;
+                }
             }
+            catch { }
         }      
 
         protected void gvAgenda_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -47,16 +52,16 @@ namespace MedAdmin
             // recupera o id do procedimento na linha clicada
             Int32 id = (Int32)gvAgenda.DataKeys[linha].Value;           
 
-            if (e.CommandName == "Apagar")
+            if (e.CommandName == "Arquivar")
             {
                 agendamento a = new agendamento();
                 Agendamento_Model model = new Agendamento_Model();
                 // busca o agendamento selecionado
                 a = model.Obter(id);
 
-                if ( model.Excluir(a))
+                if ( model.Arquivar(a))
                 {
-                    Master.Sucesso("Agendamento excluído com sucesso");
+                    Master.Sucesso("Agendamento arquivado com sucesso");
                     CarregarAgenda();
                 }
                 else
@@ -101,7 +106,10 @@ namespace MedAdmin
                 a.descricao = txtDescricaoAgendamento.Value;                
                 a.data_inicial = dDataInicial;
                 a.data_final = dDataFinal;
-                if (model.VerificarDisponibilidade(a))
+                a.id_mediador = Master.GetLogado().id;
+
+                Local_Model mLocal = new Local_Model();
+                if (model.VerificarDisponibilidade(a, mLocal.Obter(Master.GetLogado().id_local)))
                 {
                     if (model.Inserir(a))
                     {

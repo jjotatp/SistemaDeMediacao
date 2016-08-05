@@ -140,7 +140,7 @@ namespace MedAdmin
             {
                 if (ctr is TextBox)
                 {
-                    ((TextBox)ctr).Text = "DEU CERTO GIOVANA! ID: " + ctr.ID;
+                    ((TextBox)ctr).Text = "DEU CERTO!" + ctr.ID;
                 }
             }
         }
@@ -155,13 +155,13 @@ namespace MedAdmin
                 mediacao m = new mediacao();
 
                 // pega o mediador logado
-                mediador med = Session["med"] as mediador;
+                mediador med = Master.GetLogado();
 
                 int id_agendamento = 0;
                 if (Session["med_agendamento"] != null)
                     id_agendamento = Int32.Parse(Session["med_agendamento"].ToString());
-
-                m.numero = model.GerarProximoNumero();
+                
+                m.numero = model.GerarProximoNumero(med.id_local);
                 m.tema_conflito = txtTemaConflito.Value;
                 m.id_tipo_registro = Int32.Parse(ddTipoRegistro.SelectedValue);
                 m.data_mediacao = DateTime.Parse(txtData.Value + " " + txtHora.Value + ":00");
@@ -170,6 +170,10 @@ namespace MedAdmin
                 m.objeto = txtObjetoMediacao.Text;
                 m.resolucao = Char.Parse(ddResolucao.SelectedValue);
                 m.status = 1;
+                // pega o id da cidade do local
+                Local_Model l_model = new Local_Model();
+                m.id_cidade = l_model.Obter(med.id_local).id_cidade;
+
                 if ( id_agendamento != 0 )
                 {
                     m.id_agendamento = id_agendamento;

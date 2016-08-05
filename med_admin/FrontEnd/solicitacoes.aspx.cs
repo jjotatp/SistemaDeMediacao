@@ -199,7 +199,10 @@ namespace MedAdmin
                 a.id_solicitacao = int.Parse(txtId.Value);
                 a.data_inicial = dDataInicial;
                 a.data_final = dDataFinal;
-                if (model.VerificarDisponibilidade(a))
+                a.id_mediador = Master.GetLogado().id;
+
+                Local_Model mLocal = new Local_Model();
+                if (model.VerificarDisponibilidade(a, mLocal.Obter(Master.GetLogado().id_local)))
                 {
                     if (model.Inserir(a))
                     {

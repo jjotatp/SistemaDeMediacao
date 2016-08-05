@@ -126,11 +126,11 @@
                             />    
                         <asp:LinkButton ID="btnExcluir" CssClass="btn btn-xs btn-danger" 
                             runat="server" UseSubmitBehavior="false"
-                            CommandName="Apagar" 
+                            CommandName="Arquivar" 
                             CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" 
-                            Text="Apagar"                 
-                            OnClientClick="javascript: return confirm('Confirma a exclusão do agendamento?');" 
-                            ToolTip="Apagar o agendamento"                                                                                        
+                            Text="Arquivar"                 
+                            OnClientClick="javascript: return confirm('Confirma o arquivamento do agendamento?');" 
+                            ToolTip="Arquivar o agendamento"                                                                                        
                             />
                     </ItemTemplate>
                 </asp:TemplateField>

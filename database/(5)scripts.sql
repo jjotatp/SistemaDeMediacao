@@ -163,3 +163,92 @@ begin
 end
 go
 
+-- REFERENCIAR A CIDADE NA MEDIAÇÃO
+
+select * from mediacoes
+
+alter table mediacoes add id_cidade int not null references cidades(id)
+
+alter procedure alteraMediacao
+(
+	@id int,
+	@id_agendamento int ,
+	@numero int,
+	@tema_conflito varchar(50),	
+	@data_mediacao date ,
+	@id_mediador int ,
+	@id_tipo_registro int,
+	@objeto varchar(max),
+	@id_local int,
+	@documento_link varchar(100),
+	@status int,
+	@resolucao char(1),
+	@id_cidade int
+)
+as
+begin
+	update mediacoes
+	set
+	id_agendamento = @id_agendamento,
+	numero = @numero,
+	tema_conflito = @tema_conflito,
+	data_mediacao = @data_mediacao,
+	id_mediador = @id_mediador,
+	id_tipo_registro = @id_tipo_registro,
+	objeto = @objeto,
+	id_local = @id_local,
+	documento_link = @documento_link,
+	status = @status,
+	resolucao = @resolucao,
+	id_cidade = @id_cidade
+	where id = @id;
+end
+go
+
+alter view v_historico_mediacoes as
+select
+	m.id,
+	m.numero Numero, 
+	m.tema_conflito TemaConflito, 
+	m.data_mediacao DataMediacao, 
+	t.descricao DescricaoTipoRegistro,
+	m.id_local, m.id_cidade, m.id_mediador
+from mediacoes m
+join tipos_registro t on (m.id_tipo_registro = t.id)
+go
+
+select * from v_historico_mediacoes
+
+-- REGISTRAR NO AGENDAMENTO O MEDIADOR QUE INSERIU
+select * from agendamentos
+select * from mediadores
+
+alter table agendamentos add id_mediador int not null references mediadores(id);
+alter table agendamentos add id_local int not null references locais(id);
+alter table agendamentos add ativo bit not null default 1;
+
+alter procedure alteraAgendamento
+(
+	@id int,
+	@id_solicitacao int,
+	@descricao varchar(50),
+	@data_inicial date,
+	@data_final date,
+	@id_mediador int,
+	@id_local int,
+	@ativo bit
+)
+as
+begin
+	update agendamentos
+	set
+	id_solicitacao = @id_solicitacao,
+	descricao = @descricao,
+	data_inicial = @data_inicial,
+	data_final = @data_final,
+	id_mediador = @id_mediador,
+	id_local = @id_local,
+	ativo = @ativo
+	where id = @id;
+end
+go

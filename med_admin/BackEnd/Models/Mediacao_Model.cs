@@ -78,6 +78,9 @@ namespace BackEnd.Models
         {
             dbDataContext db = new dbDataContext();
 
+            // função que carrega a mediação e todos os dados vinculados a ela
+            // na forma de seus objetos completos
+
             DataLoadOptions options = new DataLoadOptions();
             options.LoadWith<mediacao>(m => m.mediacao_partes);
             options.LoadWith<mediacao>(m => m.local);
@@ -115,7 +118,7 @@ namespace BackEnd.Models
                 Table<mediacao> tb = getTable();
 
                 context.alteraMediacao(a.id, a.id_agendamento, a.numero, a.tema_conflito, a.data_mediacao, a.id_mediador,
-                        a.id_tipo_registro, a.objeto, a.id_local, a.documento_link, a.status, a.resolucao);
+                        a.id_tipo_registro, a.objeto, a.id_local, a.documento_link, a.status, a.resolucao, a.id_cidade);
                 tb.Context.SubmitChanges();
 
                 return true;
@@ -337,12 +340,16 @@ namespace BackEnd.Models
                 return "N/A";
         }
 
-        public List<mediacao> Listar()
+        public List<mediacao> Listar(mediador MediadorLogado)
         {
             using (dbDataContext db = getDataContext())
             {
                 Table<mediacao> tb = getTable();
-                return tb.ToList();
+                // EXIBE MEDIACOES DE ACORDO COM O ALCANCE DO MEDIADOR LOGADO
+
+                // NÃO CODIFICADO AINDA
+                var query = db.ExecuteQuery<mediacao>("");
+                return query.ToList();
             }
         }
 
@@ -350,26 +357,30 @@ namespace BackEnd.Models
         {
             using (dbDataContext db = getDataContext())
             {
+                // EXIBE MEDIACOES DE ACORDO COM O ALCANCE DO MEDIADOR LOGADO
+
+                // NÃO CODIFICADO AINDA
                 var query = from p in db.v_historico_mediacaos orderby p.DataMediacao descending select p;
                 return query.ToList();
             }
         }
 
-        public int GerarProximoNumero()
+        public int GerarProximoNumero(int id_local)
         {
             // busca o próximo número de acordo com o último inserido
+            // classifica por ano e por núcleo
             int num = 0;
             try
             {
                 using (dbDataContext db = getDataContext())
                 {
-                    var query = from n in db.mediacaos where (n.data_mediacao.Year == DateTime.Today.Year) orderby n.numero descending select n;
+                    var query = from n in db.mediacaos where (n.data_mediacao.Year == DateTime.Today.Year) && ( n.id_local == id_local )
+                                orderby n.numero descending select n;
                     if (query.Count() > 0)
                         num = query.First().numero + 1;
                     else
                         num = 1;
                 }
-                
             }
             catch(Exception e)
             {
