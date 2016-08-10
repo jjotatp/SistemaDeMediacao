@@ -22,6 +22,15 @@ namespace MedAdmin {
         protected global::System.Web.UI.WebControls.Label txtID;
         
         /// <summary>
+        /// txtRE control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtRE;
+        
+        /// <summary>
         /// txtNome control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace MedAdmin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddNivelPermissao;
+        
+        /// <summary>
+        /// txtAlcance control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtAlcance;
         
         /// <summary>
         /// txtUsuario control.

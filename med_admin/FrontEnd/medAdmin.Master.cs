@@ -76,6 +76,26 @@ namespace MedAdmin
             }
         }
 
+        public string GetAlcancePermissao()
+        {
+            // função que pega o mediador logado e retorna o alcance das suas alterações
+            try
+            {
+                string alcance = "000000000";
+                mediador mediador = Session["med"] as mediador;
+
+                if (mediador != null)
+                {
+                    alcance = mediador.alcance;
+                }
+                return alcance;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public mediador GetLogado()
         {
             // função que pega o mediador logado e retorna

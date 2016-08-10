@@ -13,6 +13,13 @@
                 <!-- Text input-->                                                                                
                 <asp:Label runat="server" ID="txtID" hidden="hidden"></asp:Label>                            
                 <div class="form-group">
+                    <label class="col-md-4 control-label" for="re">RE</label>
+                    <div class="col-md-6">
+                        <input name="re" class="form-control input-md" id="txtRE" type="text" placeholder="R.E." runat="server" onkeypress="formataRE(this,event);">
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="col-md-4 control-label" for="nome">Nome</label>
                     <div class="col-md-6">
                         <input name="nome" class="form-control input-md" id="txtNome" type="text" placeholder="Nome" runat="server">
@@ -78,7 +85,14 @@
                   </div>
                 </div>
                 <!-- End Modal -->
-                            
+                
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="alcance">Alcance das Permissões</label>
+                    <div class="col-md-6">
+                        <input name="alcance" class="form-control input-md" id="txtAlcance" type="text" placeholder="Alcance das permissões" runat="server">
+                    </div>
+                </div>                            
+
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="nome">Usuário</label>
                     <div class="col-md-6">                        

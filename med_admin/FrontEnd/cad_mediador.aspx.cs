@@ -26,7 +26,9 @@ namespace MedAdmin
                 txtPatente.MaxLength = 50;
                 txtUsuario.MaxLength = 50;
                 txtSenha.MaxLength = 50;
-                txtConfirmarSenha.MaxLength = 50;                
+                txtConfirmarSenha.MaxLength = 50;
+                txtRE.MaxLength = 8;
+                txtAlcance.MaxLength = 9;
 
                 // carrega cidades
                 Local_Model l = new Local_Model();
@@ -73,14 +75,17 @@ namespace MedAdmin
 
                         //preencher caixas de texto com valores
                         txtID.Text = med.id.ToString();
+                        txtRE.Value = med.RE;
                         txtNome.Value = med.nome;
                         txtPatente.Value = med.patente;
                         ddLocal.SelectedValue = med.id_local.ToString();
                         ddNivelPermissao.SelectedValue = med.nivel_permissao.ToString();
+                        txtAlcance.Value = med.alcance;
                         txtUsuario.Value = med.usuario;
                         txtSenha.Value = "";
                         txtConfirmarSenha.Value = "";
-                        cbbAtivo.Checked = med.ativo;                        
+                        cbbAtivo.Checked = med.ativo;       
+                        
                     }
                     catch (Exception)
                     {
@@ -158,6 +163,8 @@ namespace MedAdmin
                 med.usuario = txtUsuario.Value;
                 med.senha = txtSenha.Value;
                 med.ativo = cbbAtivo.Checked;
+                med.RE = txtRE.Value;
+                med.alcance = txtAlcance.Value;
 
                 Mediador_Model model = new Mediador_Model();
 
@@ -181,7 +188,7 @@ namespace MedAdmin
                     txtID.Text = model.ObterUsuario(med.usuario).id.ToString();
                     Master.Sucesso("Registro salvo com sucesso.");
                 }
-                else
+                else // model.message contém a mensagem do erro gerado
                     Master.Alerta("Erro ao salvar o registro. Erro: "+model.message);
             }
         }

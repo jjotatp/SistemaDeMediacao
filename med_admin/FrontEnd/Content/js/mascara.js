@@ -353,6 +353,19 @@ function formataCEP(campo, evt) {
     MovimentaCursor(campo, xPos);
 }
 
+function formataRE(campo, evt) {
+    var xPos = PosicaoCursor(campo);
+    evt = getEvent(evt);
+    var tecla = getKeyCode(evt);
+    if (!teclaValida(tecla)) return;
+    vr = campo.value = filtraNumeros(filtraCampo(campo));
+    tam = vr.length;
+    if (tam < 6) campo.value = vr;
+    else if (tam == 6) campo.value = vr + '-';
+    else if (tam > 6) campo.value = vr.substr(0, 6) + '-' + vr.substr(6);
+    MovimentaCursor(campo, xPos);
+}
+
 function formataCartaoCredito(campo, evt) {
     var xPos = PosicaoCursor(campo);
     evt = getEvent(evt);

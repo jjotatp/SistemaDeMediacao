@@ -34,12 +34,12 @@ namespace BackEnd.Models
 
                 if (a.id == 0)
                 {
-                    db.cadMediador(a.nome, a.patente, a.id_local, a.usuario, a.senha, a.ativo, a.nivel_permissao);
+                    db.cadMediador(a.nome, a.patente, a.id_local, a.usuario, a.senha, a.ativo, a.nivel_permissao, a.alcance, a.RE);
                     tb.Context.SubmitChanges();
                 }
                 else
                 {
-                    db.alteraMediador(a.id, a.nome, a.patente, a.id_local, a.usuario, a.senha, a.ativo, a.nivel_permissao);
+                    db.alteraMediador(a.id, a.nome, a.patente, a.id_local, a.usuario, a.senha, a.ativo, a.nivel_permissao, a.alcance, a.RE);
                     tb.Context.SubmitChanges();
                 }
 
@@ -76,7 +76,7 @@ namespace BackEnd.Models
             using (dbDataContext db = getDataContext())
             {
                 Nome = "%" + Nome + "%";
-                String sSql = "select * from v_mediadores m where m.Nome like {0}";
+                String sSql = "select * from v_mediadores m where ( m.Nome like {0} ) or ( m.RE like {0} )";
                 if (SomenteAtivos)
                 {
                     sSql = sSql + " and ( m.Ativo = 1 )";
