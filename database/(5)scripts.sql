@@ -263,3 +263,64 @@ begin
 	(@nome,@patente,@id_local,@usuario,@senha,@ativo,@nivel,@alcance,@RE)
 end
 go
+
+------------ AJUSTE NA TABELA LOCAIS
+alter table locais add numero_opm varchar(9)
+-- após inserir, é necessário atualizar a tabela com os números de todos os locais, pois
+-- o campo deve ser alterado para único e não nulo (unique not null)
+alter table locais alter column numero_opm varchar(9) not null
+alter table locais add unique(numero_opm)
+
+select * from locais
+
+alter procedure alteraLocal
+(
+	@id int,
+	@nome varchar(100),
+	@descricao varchar(50),
+	@id_cidade int,
+	@bairro varchar(50),
+	@logradouro varchar(100) ,
+	@numero varchar(10) ,
+	@CEP varchar(15) ,
+	@data_inicio_atividade date,
+	@telefone varchar(20),
+	@ativo bit,
+	@numero_opm varchar(9)
+)
+as
+begin
+	update locais 
+	set 
+	nome = @nome,
+	descricao = @descricao,
+	id_cidade = @id_cidade,
+	bairro = @bairro,
+	logradouro = @logradouro,
+	numero = @numero,
+	cep = @cep,
+	data_inicio_atividade = @data_inicio_atividade,
+	telefone = @telefone,
+	ativo = @ativo,
+	numero_opm = @numero_opm
+	where id = @id;	
+end
+go
+
+alter view v_nucleos
+as
+	select l.id ID, l.numero_opm, l.nome Nome, l.descricao 'Descricao', c.nome 'Cidade',	l.bairro Bairro,
+			l.logradouro Logradouro, l.telefone Telefone, l.numero 'Numero', l.ativo
+	from locais l
+	left join cidades c on (l.id_cidade = c.id)
+go
+
+alter view v_locais_endereco
+as
+	select L.id 'ID' , L.numero_opm , ( L.descricao + ', ' + L.bairro + ', ' + C.nome ) 'DESCRICAO'
+	from locais L
+	join cidades C on ( C.id = L.id_cidade )
+	where L.ativo = 1
+go
+
+select * from v_locais_endereco

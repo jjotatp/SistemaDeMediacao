@@ -340,7 +340,7 @@ namespace BackEnd.Models
                 return "N/A";
         }
 
-        public List<mediacao> Listar(mediador MediadorLogado)
+        public List<mediacao> Listar(String alcance)
         {
             using (dbDataContext db = getDataContext())
             {
@@ -353,14 +353,26 @@ namespace BackEnd.Models
             }
         }
 
-        public List<v_historico_mediacao> Historico()
+        public List<v_historico_mediacao> Historico(String alcance)
         {
-            using (dbDataContext db = getDataContext())
+            IEnumerable<v_historico_mediacao> query = null;
+            try
             {
-                // EXIBE MEDIACOES DE ACORDO COM O ALCANCE DO MEDIADOR LOGADO
-
-                // NÃO CODIFICADO AINDA
-                var query = from p in db.v_historico_mediacaos orderby p.DataMediacao descending select p;
+                using (dbDataContext db = getDataContext())
+                {
+                    // EXIBE MEDIACOES DE ACORDO COM O ALCANCE DO MEDIADOR LOGADO               
+                    String sql = "select m.* " +
+                                 " from v_historico_mediacoes m " +
+                                 " join locais l on (l.id = m.id_local) " +
+                                 " where l.numero_opm like '{0}%'";
+                    query = db.ExecuteQuery<v_historico_mediacao>(sql, alcance);
+                    // var query = from p in db.v_historico_mediacaos orderby p.DataMediacao descending select p;
+                    return query.ToList();
+                }
+            }
+            catch (Exception error)
+            {
+                message = error.Message;
                 return query.ToList();
             }
         }

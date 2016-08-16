@@ -45,6 +45,10 @@ namespace MedAdmin
 
                 med = model.Obter(id);
 
+                // verifica se tem permissão de visualizar o local da mediação
+                if ( ! Master.VerificarAlcance(med.local.numero_opm) )
+                    Response.Redirect("historico_mediacoes.aspx");
+
                 txtNumero.Text = med.numero.ToString();
                 txtData.Text = med.data_mediacao.ToShortDateString();
                 txtHora.Text = med.data_mediacao.ToShortTimeString();

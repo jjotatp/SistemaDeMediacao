@@ -33,6 +33,11 @@
                         <%#Eval("ID") %>
                     </ItemTemplate>
                 </asp:TemplateField>
+                <asp:TemplateField HeaderText="Número OPM">
+                    <ItemTemplate>
+                        <%#Eval("numero_opm") %>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderText="Nome">
                     <ItemTemplate>
                         <%#Eval("Nome") %>

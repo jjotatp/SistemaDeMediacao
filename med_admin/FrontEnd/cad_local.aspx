@@ -14,6 +14,16 @@
                         <!-- Text input-->
                         <asp:Label runat="server" ID="txtID" hidden="hidden"></asp:Label>                         
                         <div class="form-group">
+                            <label class="col-md-4 control-label" for="opm">
+                                Número da OPM
+                            </label>
+                            <div class="col-md-6">
+                                <asp:TextBox runat="server" CssClass="form-control input-md" ID="txtOPM"
+                                placeholder="Número da OPM" TextMode="Number">
+                                </asp:TextBox>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="col-md-4 control-label" for="nome">
                                 Nome
                             </label>

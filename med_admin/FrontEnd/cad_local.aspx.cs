@@ -22,6 +22,7 @@ namespace MedAdmin
                 txtLogradouro.MaxLength = 100;
                 txtNumero.MaxLength = 10;
                 txtCEP.MaxLength = 9;
+                txtOPM.MaxLength = 9;
                 //txtDataInicioAtividade.MaxLength = 10;
                 txtTelefone.MaxLength = 20;
             
@@ -68,8 +69,13 @@ namespace MedAdmin
                         //recupera o produto do id informado
                         local local = model.Obter(id);
 
+                        // verifica se tem permissão de editar o local acessado
+                        if ( ! Master.VerificarAlcance(local.numero_opm) )
+                          Response.Redirect("index.aspx");
+
                         //preencher caixas de texto com valores de produto
                         txtID.Text = local.id.ToString();
+                        txtOPM.Text = local.numero_opm;
                         txtNome.Text = local.nome;
                         txtDescricao.Value = local.descricao;
                         txtNumero.Value = local.numero;
@@ -98,6 +104,7 @@ namespace MedAdmin
             //se a função valida retornar True, então permite cadastrar ou alterar o registro
             if ( Valida() ) {
                 local local = new local();
+                local.numero_opm = txtOPM.Text;
                 local.nome = txtNome.Text;
                 local.descricao = txtDescricao.Value;
                 local.CEP = txtCEP.Text;
@@ -124,7 +131,7 @@ namespace MedAdmin
                     txtID.Text = local.id.ToString();
                     Master.Sucesso("Registro salvo com sucesso.");
                 }else
-                    Master.Alerta("Erro ao salvar o registro");
+                    Master.Alerta("Erro ao salvar o registro: "+model.message);
             }            
         }
 

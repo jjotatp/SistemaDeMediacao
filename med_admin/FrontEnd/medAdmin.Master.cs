@@ -78,17 +78,26 @@ namespace MedAdmin
 
         public string GetAlcancePermissao()
         {
-            // função que pega o mediador logado e retorna o alcance das suas alterações
+            // função que retorna o alcance das suas alterações do mediador logado        
             try
             {
-                string alcance = "000000000";
+                string sAlcance = "000000000";
                 mediador mediador = Session["med"] as mediador;
 
                 if (mediador != null)
                 {
-                    alcance = mediador.alcance;
+                    int iAlcance = Int32.Parse(mediador.alcance);
+                
+                    // repetição para remover 0 à DIREITA >
+                    while ((iAlcance % 10) == 0)
+                    {
+                        iAlcance = iAlcance / 10;
+                    }
+
+                    sAlcance = iAlcance.ToString();
                 }
-                return alcance;
+
+                return sAlcance;
             }
             catch
             {
@@ -109,6 +118,23 @@ namespace MedAdmin
                 Alerta(e.Message);
             }
             return med;
+        }
+
+        public bool VerificarAlcance(String alcanceLocal)
+        {
+            try
+            {
+                int alcanceLogado = Int32.Parse(GetAlcancePermissao());
+                
+                // SE alcance do local INICIA com o alcance do usuário logado, então retorna TRUE,
+                // ou seja,  ele tem permissão de acesso
+                return (alcanceLocal.StartsWith(alcanceLogado.ToString()) );               
+            }
+            catch ( Exception e )
+            {
+                Alerta("Erro ao verificar alcance: " + e.Message);
+                return false;
+            }            
         }
     }
 }
