@@ -30,7 +30,7 @@ namespace MedAdmin
             Mediador_Model model = new Mediador_Model();
 
             // asp:repeater
-            gdvLista.DataSource = model.ListarPorNome(txtNome.Text,cbSomenteAtivo.Checked);
+            gdvLista.DataSource = model.ListarPorNome(txtNome.Text,Master.GetAlcancePermissao(),cbSomenteAtivo.Checked);
             gdvLista.DataBind();
 
             if (gdvLista.Rows.Count > 0)

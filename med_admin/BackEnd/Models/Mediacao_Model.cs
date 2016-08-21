@@ -364,7 +364,9 @@ namespace BackEnd.Models
                     String sql = "select m.* " +
                                  " from v_historico_mediacoes m " +
                                  " join locais l on (l.id = m.id_local) " +
-                                 " where l.numero_opm like '{0}%'";
+                                 " where ( l.numero_opm like {0} )" +
+                                 " order by m.DataMediacao desc";
+                    alcance = alcance + "%";
                     query = db.ExecuteQuery<v_historico_mediacao>(sql, alcance);
                     // var query = from p in db.v_historico_mediacaos orderby p.DataMediacao descending select p;
                     return query.ToList();

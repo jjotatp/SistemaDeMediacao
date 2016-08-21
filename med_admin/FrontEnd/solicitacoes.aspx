@@ -19,8 +19,6 @@
                 <div class="form-group">
                     <div class="col-md-3">
                         <asp:DropDownList ID="ddTipoBusca" CssClass="form-control" runat="server">
-                            <asp:ListItem>Cidade</asp:ListItem>
-                            <asp:ListItem>Núcleo de mediação</asp:ListItem>
                             <asp:ListItem>Nome</asp:ListItem>
                             <asp:ListItem>Data</asp:ListItem>
                         </asp:DropDownList>

@@ -18,7 +18,15 @@ namespace MedAdmin
             if (!IsPostBack)
             {
                 // pega a data de hoje
-                clData.SelectedDate = DateTime.Today;                
+                clData.SelectedDate = DateTime.Today;
+
+                // carrega nucleos de mediacao
+                Local_Model l = new Local_Model();
+                ddLocal.DataSource = l.Listar(Master.GetAlcancePermissao());
+                ddLocal.DataValueField = "id";
+                ddLocal.DataTextField = "descricao";
+                ddLocal.DataBind();
+                ddLocal.SelectedIndex = 0;
             }            
 
             CarregarAgenda();
@@ -30,11 +38,15 @@ namespace MedAdmin
             txtTexto.Text = clData.SelectedDate.ToLongDateString();
 
             Agendamento_Model agenda = new Agendamento_Model();
-            // carrega a agenda naquele dia
+            // carrega a agenda naquele dia            
             Local_Model lmodel = new Local_Model();
             try
             {
-                gvAgenda.DataSource = agenda.ListarDia(clData.SelectedDate, lmodel.Obter(Master.GetLogado().id_local));
+                // pega do combobox se tiver algum local listado/selecionado
+                if (ddLocal.Items.Count > 0)
+                    gvAgenda.DataSource = agenda.ListarDia(clData.SelectedDate, lmodel.Obter(Int32.Parse(ddLocal.SelectedValue)));
+                else // senão pega do cadastro do mediador logado
+                    gvAgenda.DataSource = agenda.ListarDia(clData.SelectedDate, lmodel.Obter(Master.GetLogado().id_local));
                 gvAgenda.DataBind();
                 if (gvAgenda.Rows.Count > 0)
                 {

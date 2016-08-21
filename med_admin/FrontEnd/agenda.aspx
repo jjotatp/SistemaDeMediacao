@@ -1,6 +1,18 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="medAdmin.Master" AutoEventWireup="true" CodeBehind="agenda.aspx.cs" Inherits="MedAdmin.agenda" %>
 <%@ MasterType VirtualPath="medAdmin.Master"  %>
 <asp:Content ID="Content1" ContentPlaceHolderID="p" runat="server">           
+    <div class="col-md-12">
+        <div class="form-group">            
+            <div class="col-md-3">
+                <asp:DropDownList runat="server" ID="ddLocal" CssClass="form-control"
+                placeholder="Selecione...">
+                </asp:DropDownList>
+            </div>
+            <div class="col-md-2">
+                <asp:Button CssClass="btn btn-info" runat="server" ID="btnBuscar" Text="Buscar" />
+            </div>
+        </div>
+    </div>              
     <div class="col-md-3">
         <div class="panel panel-color panel-primary">             
             <div class="panel-heading">
@@ -11,6 +23,8 @@
                 </h4>
             </div>
             <div class="panel-body clearfix">
+                <div class="form-group">                   
+                </div> 
                 <div class="form-group">
                     <div class="col-md-12">
                         <center>
@@ -18,14 +32,14 @@
                                 SelectionMode="Day" BorderStyle="None" DayHeaderStyle-BackColor="#1E90FF" TitleStyle-BackColor="#ADD8E6" DayHeaderStyle-ForeColor="White"></asp:Calendar>
                         </center>
                     </div>                
-                </div>
+                </div>                
                 <div class="form-group">
                     <div class="col-md-12">
                         <center>
                             <a role="button" data-toggle="modal" data-target="#modalAgendar"><span class="btn btn-success btn-block">Agendar</span></a>
                         </center>
                     </div>
-                </div>                
+                </div>                    
                 <div id="modalAgendar" class="modal fade" role="dialog">                    
                     <div class="modal-dialog">
                         <!-- Modal content-->

@@ -30,7 +30,7 @@ namespace MedAdmin
         {
             Local_Model model = new Local_Model();
 
-            gdvLista.DataSource = model.ListarPorNome(txtNome.Text,cbSomenteAtivo.Checked);
+            gdvLista.DataSource = model.ListarPorNome(txtNome.Text, Master.GetAlcancePermissao(), cbSomenteAtivo.Checked);
             gdvLista.DataBind();
 
             if (gdvLista.Rows.Count > 0)

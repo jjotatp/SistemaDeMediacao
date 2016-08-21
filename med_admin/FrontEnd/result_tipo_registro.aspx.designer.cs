@@ -13,6 +13,24 @@ namespace MedAdmin {
     public partial class result_tipo_registro {
         
         /// <summary>
+        /// cbTodos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbTodos;
+        
+        /// <summary>
+        /// ddLocal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddLocal;
+        
+        /// <summary>
         /// txtDataIni control.
         /// </summary>
         /// <remarks>

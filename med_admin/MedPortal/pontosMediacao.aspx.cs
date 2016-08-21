@@ -24,7 +24,7 @@ namespace FrontEnd
         protected void Listar()
         {
             Local_Model model = new Local_Model();
-            listaNucleos = model.ListarPorNome("",true);
+            listaNucleos = model.ListarPorNome("", "",true);
         }
     }
 }

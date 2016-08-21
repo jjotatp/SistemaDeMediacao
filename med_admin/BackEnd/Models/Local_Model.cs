@@ -58,17 +58,39 @@ namespace BackEnd.Models
             }
         }
 
-        public List<local> Listar()
+        
+        public List<local> Listar(String alcance)
         {
             using (dbDataContext db = getDataContext())
             {
                 Table<local> tb = getTable();
-                var query = db.ExecuteQuery<local>("select * from locais where ativo = 1");
+                String sSql = "select * from locais where (ativo = 1) ";
+
+                // ALCANCE/NUMERO_OPM
+                alcance = alcance + "%";
+                sSql = sSql + " and ( numero_opm like {0} )";
+
+                var query = db.ExecuteQuery<local>(sSql,alcance);
                 return query.ToList();
             }
         }
 
-        public List<v_nucleo> ListarPorNome(String Nome, Boolean SomenteAtivos)
+        public List<local> Listar(int idCidade)
+        {
+            using (dbDataContext db = getDataContext())
+            {
+                Table<local> tb = getTable();
+                String sSql = "select * from locais where (ativo = 1) ";
+
+                // cidade
+                sSql = sSql + " and ( id_cidade = {0} )";
+
+                var query = db.ExecuteQuery<local>(sSql, idCidade);
+                return query.ToList();
+            }
+        }
+
+        public List<v_nucleo> ListarPorNome(String Nome, String alcance, Boolean SomenteAtivos)
         {
             message = "";
             try
@@ -76,12 +98,16 @@ namespace BackEnd.Models
                 using (dbDataContext db = getDataContext())
                 {
                     Nome = "%" + Nome + "%";
-                    string sSql = " select * from v_nucleos where ( Descricao like {0} ) ";
+                    
+                    string sSql = " select * from v_nucleos where ( Descricao like {0} )";
                     if (SomenteAtivos)
                     {
                          sSql = sSql + " and ( ativo = 1 )";
-                    }                    
-                    var query = db.ExecuteQuery<v_nucleo>(sSql, Nome);
+                    }
+
+                    alcance = alcance + "%";
+                    sSql = sSql + " and ( numero_opm like {1} )";
+                    var query = db.ExecuteQuery<v_nucleo>(sSql, Nome, alcance);
                     return query.ToList();
                 }
             }
@@ -93,11 +119,15 @@ namespace BackEnd.Models
 
         }
 
-        public List<v_locais_endereco> ListarComEnderecoNaDesc()
+        public List<v_locais_endereco> ListarComEnderecoNaDesc(int idCidade = 0)
         {
             try
             {
-                String sql = "select * from v_locais_endereco";
+                String sql = "select le.* from v_locais_endereco le join locais l on (le.ID = l.id) where ( l.ativo = 1 )";
+                if (idCidade > 0)
+                {
+                    sql = sql + " and ( l.id_cidade = {0} )";
+                }
                 dbDataContext db = getDataContext();
                 var query = db.ExecuteQuery<v_locais_endereco>(sql);
 

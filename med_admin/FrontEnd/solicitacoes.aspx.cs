@@ -19,20 +19,32 @@ namespace MedAdmin
                 // carrega os dados na lista de solicitações
                 PreencherGrid();
                 PreencherCentros();
-                OcultaDescSoli();                
+                OcultaDescSoli();
+
+                // se tem permissão de admin, então busca pelo nome 
+                if ((Master.GetNivelPermissao() >= Mediador_Model.PERM_ADMIN))
+                {
+                    ddTipoBusca.Items.Add("Cidade");
+                    ddTipoBusca.Items.Add("Núcleo de mediação");
+                }
             }                      
         }        
 
         protected void PreencherCentros()
         {
-            // preenche o combo que será utilizado para transferir a solicitação
-            Local_Model model = new Local_Model();
+            try
+            {
+                // preenche o combo que será utilizado para transferir a solicitação
+                Local_Model model = new Local_Model();
 
-            ddLocal.DataSource = model.Listar();
-            ddLocal.DataValueField = "id";
-            ddLocal.DataTextField = "descricao";
-            ddLocal.DataBind();
-            ddLocal.SelectedIndex = 0;
+                // preenche com todos os núcleos da cidade do mediador
+                ddLocal.DataSource = model.Listar(model.Obter(Master.GetLogado().id_local).id_cidade);
+                ddLocal.DataValueField = "id";
+                ddLocal.DataTextField = "descricao";
+                ddLocal.DataBind();
+                ddLocal.SelectedIndex = 0;
+            }
+            catch { }
         }
 
         protected void PreencherGrid()
@@ -41,14 +53,14 @@ namespace MedAdmin
 
             if (ddTipoBusca.Text == "Nome")
             {
-                gdvLista.DataSource = model.ListarPorTexto("Nome", txtBusca.Value);
+                gdvLista.DataSource = model.ListarPorTexto("Nome", txtBusca.Value, Master.GetAlcancePermissao());
             }
             else if (ddTipoBusca.Text == "Data")
             {
                 DateTime data = new DateTime();
                 if (DateTime.TryParse(txtBusca.Value, out data))
                 {
-                    gdvLista.DataSource = model.ListarPorData(data);
+                    gdvLista.DataSource = model.ListarPorData(data, Master.GetAlcancePermissao());
                 }
                 else
                 {
@@ -57,11 +69,11 @@ namespace MedAdmin
             }
             else if (ddTipoBusca.Text == "Cidade")
             {
-                gdvLista.DataSource = model.ListarPorTexto("Cidade", txtBusca.Value);
+                gdvLista.DataSource = model.ListarPorTexto("Cidade", txtBusca.Value, Master.GetAlcancePermissao());
             }
             else
             {
-                gdvLista.DataSource = model.ListarPorTexto("Local", txtBusca.Value);
+                gdvLista.DataSource = model.ListarPorTexto("Local", txtBusca.Value, Master.GetAlcancePermissao());
             }
             gdvLista.DataBind();
 
@@ -97,11 +109,13 @@ namespace MedAdmin
                 txtDadosOutraParte.Value = s.detalhes_partes;
                 txtPeriodo.Value = s.solicitante_periodo_atendimento;
                 txtDia.Value = s.solicitante_dia_atendimento;
-                                
-                pnlDados.Enabled = !(model.CarregaAgendamentos(s).Count > 0);                
+
+                List<agendamento> listaAgend = new List<agendamento>();
+                listaAgend = model.CarregaAgendamentos(s);
+                pnlDados.Enabled = !(listaAgend.Count > 0);                
                 if (!pnlDados.Enabled)
                 {
-                    InsereDescSoli("Solicitação já agendada.");
+                    InsereDescSoli("Solicitação já agendada. " + listaAgend.First().data_inicial.ToString());
                 }
             }
         }

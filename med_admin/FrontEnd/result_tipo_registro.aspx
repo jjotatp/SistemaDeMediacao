@@ -9,7 +9,14 @@
                 </h4>
             </div>                                                   
             <div class="panel-body">
-                <div class="col-md-12">
+            <asp:CheckBox id="cbTodos" runat="server" CssClass="checkbox checkbox-info" Checked="false" Text="Considerar todos os núcleos"/>
+                <div class="col-md-12">                    
+                    <div class="col-md-2">
+                        <label>Núcleo</label>
+                        <asp:DropDownList runat="server" ID="ddLocal" CssClass="form-control"
+                        placeholder="Selecione...">
+                        </asp:DropDownList>
+                    </div>                            
                     <div class="col-md-2">
                         <label>Data Inicial</label>
                         <input class="form-control input-md" id="txtDataIni" type="date" runat="server" />

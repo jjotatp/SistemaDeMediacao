@@ -18,8 +18,18 @@ namespace MedAdmin
                 Response.Redirect("index.aspx");
             }
 
+            cbTodos.Visible = (Master.GetNivelPermissao() >= Mediador_Model.PERM_ADMIN);      // Admin
+
             if (!IsPostBack)
             {
+                // carrega nucleos de mediacao
+                Local_Model l = new Local_Model();
+                ddLocal.DataSource = l.Listar(Master.GetAlcancePermissao());
+                ddLocal.DataValueField = "id";
+                ddLocal.DataTextField = "descricao";
+                ddLocal.DataBind();
+                ddLocal.SelectedIndex = 0;
+
                 PreencherGrid();
             }
         }
@@ -28,7 +38,7 @@ namespace MedAdmin
         {
             TipoRegistro_Model model = new TipoRegistro_Model();
   
-            gdvLista.DataSource = model.Totalizar(txtDataIni.Value, txtDataFim.Value);
+            gdvLista.DataSource = model.Totalizar(txtDataIni.Value, txtDataFim.Value, Int32.Parse(ddLocal.SelectedValue), cbTodos.Checked);
   
             gdvLista.DataBind();
 

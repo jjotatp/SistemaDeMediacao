@@ -83,33 +83,53 @@ namespace BackEnd.Models
             }
         }
 
-        public List<solicitacao> Listar()
+        public List<solicitacao> Listar(String alcance)
         {
-            using (dbDataContext db = getDataContext())
+            IEnumerable<solicitacao> query = null;
+            try
             {
-                Table<solicitacao> tb = getTable();
-                var query = db.ExecuteQuery<solicitacao>("select * from solicitacoes where ativo = 1");
+                using (dbDataContext db = getDataContext())
+                {
+                    Table<solicitacao> tb = getTable();
+                    string sql = "select s.* " +
+                                 " from solicitacoes s " +
+                                 " join locais l on (l.id = s.id_local) " +
+                                 " where l.numero_opm like '{0}%'" +
+                                 " and s.ativo = 1";
+                    query = db.ExecuteQuery<solicitacao>(sql, alcance);
+                    return query.ToList();
+                }
+            }
+            catch (Exception error)
+            {
+                message = error.Message;
                 return query.ToList();
             }
         }
 
-        public List<v_solicitacao> ListarPorTexto(String nomeCampo, String valorParametro, bool SomenteAtivos = true)
+        public List<v_solicitacao> ListarPorTexto(String nomeCampo, String valorParametro, String alcance,bool SomenteAtivos = true)
         {
             using (dbDataContext db = getDataContext())
             {
                 valorParametro = "%" + valorParametro + "%";
-                String sSql = " select * from v_solicitacoes " +
-                               " where " + nomeCampo + " like {0} ";
-
+                String sSql = " select s.* from v_solicitacoes s " +
+                                "join solicitacoes so on (so.id = s.ID) " +
+                                "join locais l on (l.id = so.id_local) " +
+                                "where s." + nomeCampo + " like {0} ";                
+                                              
                 if (SomenteAtivos)
-                    sSql = sSql + " and ( Ativo = 1 )";
+                    sSql = sSql + " and ( s.Ativo = 1 )";
 
-                var query = db.ExecuteQuery<v_solicitacao>(sSql, valorParametro);
+                // verifica o alcance
+                alcance = alcance + "%";
+                sSql = sSql + " and ( l.numero_opm like {1} ) ";
+
+                var query = db.ExecuteQuery<v_solicitacao>(sSql, valorParametro, alcance);
                 return query.ToList();
             }
         }
 
-        public List<v_solicitacao> ListarPorData(DateTime valorParametro, bool SomenteAtivos = true)
+        public List<v_solicitacao> ListarPorData(DateTime valorParametro, String alcance, bool SomenteAtivos = true)
         {
             using (dbDataContext db = getDataContext())
             {
@@ -121,7 +141,11 @@ namespace BackEnd.Models
                 if (SomenteAtivos)
                     sSql = sSql + " and ( s.ativo = 1 )";
 
-                var query = db.ExecuteQuery<v_solicitacao>(sSql, valorParametro);
+                // verifica o alcance
+                alcance = alcance + "%";
+                sSql = sSql + " and ( l.numero_opm like {1} ) ";
+
+                var query = db.ExecuteQuery<v_solicitacao>(sSql, valorParametro, alcance);
                 return query.ToList();
             }
         }

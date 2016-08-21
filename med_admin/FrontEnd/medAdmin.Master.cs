@@ -78,7 +78,7 @@ namespace MedAdmin
 
         public string GetAlcancePermissao()
         {
-            // função que retorna o alcance das suas alterações do mediador logado        
+            // função que retorna o alcance das alterações do mediador logado        
             try
             {
                 string sAlcance = "000000000";

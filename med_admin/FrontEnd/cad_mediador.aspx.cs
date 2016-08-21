@@ -30,9 +30,9 @@ namespace MedAdmin
                 txtRE.MaxLength = 8;
                 txtAlcance.MaxLength = 9;
 
-                // carrega cidades
+                // carrega nucleos de mediacao
                 Local_Model l = new Local_Model();
-                ddLocal.DataSource = l.Listar();
+                ddLocal.DataSource = l.Listar(Master.GetAlcancePermissao());
                 ddLocal.DataValueField = "id";
                 ddLocal.DataTextField = "descricao";
                 ddLocal.DataBind();

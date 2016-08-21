@@ -18,7 +18,7 @@ namespace MedAdmin
         {
             Mediacao_Model model = new Mediacao_Model();
 
-            gdvLista.DataSource = model.Historico();
+            gdvLista.DataSource = model.Historico(Master.GetAlcancePermissao());
             gdvLista.DataBind();
 
             if (gdvLista.Rows.Count > 0)

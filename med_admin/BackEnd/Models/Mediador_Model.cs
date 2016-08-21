@@ -32,6 +32,14 @@ namespace BackEnd.Models
                 Table<mediador> tb = getTable();
                 dbDataContext db = getDataContext();
 
+                if (a.alcance == "")
+                {
+                    Local_Model local_m = new Local_Model();
+                    // se o alcance vier em branco, então pega o numero_opm do local selecionado
+                    // permitindo que o mediador tenha controle somente daquele local
+                    a.alcance = local_m.Obter(a.id_local).numero_opm;
+                }
+
                 if (a.id == 0)
                 {
                     db.cadMediador(a.nome, a.patente, a.id_local, a.usuario, a.senha, a.ativo, a.nivel_permissao, a.alcance, a.RE);
@@ -61,28 +69,65 @@ namespace BackEnd.Models
             }
         }
 
-        public List<mediador> Listar()
+        public List<mediador> Listar(string alcance)
         {
-            using (dbDataContext db = getDataContext())
+            message = "";
+            try
             {
-                Table<mediador> tb = getTable();
-                var query = db.ExecuteQuery<mediador>("select * from mediadores where ativo = 1");
-                return query.ToList();
+                using (dbDataContext db = getDataContext())
+                {
+                    Table<mediador> tb = getTable();
+
+                    // para buscar somente dos locais que começam com o alcance
+                    // ex: 255% terá como resultado todos que começam com 255
+                    alcance = alcance + "%";
+
+                    // faz a busca trazendo os ativos
+                    String sSql = "select m.* from mediadores m "+
+                                    " join locais l on (l.id = m.id_local) "+
+                                    " where (m.ativo = 1) and (l.numero_opm like {0} )";
+                    var query = db.ExecuteQuery<mediador>(sSql,alcance);
+                    return query.ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                message = e.Message;
+                return null;
             }
         }
 
-        public List<v_mediador> ListarPorNome(string Nome, bool SomenteAtivos)
+        public List<v_mediador> ListarPorNome(string Nome, string alcance, bool SomenteAtivos)
         {
-            using (dbDataContext db = getDataContext())
+            try
             {
-                Nome = "%" + Nome + "%";
-                String sSql = "select * from v_mediadores m where ( m.Nome like {0} ) or ( m.RE like {0} )";
-                if (SomenteAtivos)
+                message = "";
+                using (dbDataContext db = getDataContext())
                 {
-                    sSql = sSql + " and ( m.Ativo = 1 )";
+                    Nome = "%" + Nome + "%";
+
+                    String sSql =   "select m.*from v_mediadores m " +
+                                    "join mediadores med on (med.id = m.id) " +
+                                    "join locais l on (l.id = med.id_local) " +
+                                    "where ((m.Nome like {0} ) or (m.RE like {0} )) ";
+                                    
+                    if (SomenteAtivos)
+                    {
+                        sSql = sSql + " and ( m.Ativo = 1 )";
+                    }
+                    // faz join com a tabela de locais(nucleos) para trazer somente os mediadores dos locais
+                    // que estão de acordo com o alcance no cabeçalho da função
+                    alcance = alcance + "%";
+                    sSql = sSql + "and ( l.numero_opm like {1} ) ";
+
+                    var query = db.ExecuteQuery<v_mediador>(sSql, Nome, alcance);
+                    return query.ToList(); 
                 }
-                var query = db.ExecuteQuery<v_mediador>(sSql, Nome);
-                return query.ToList(); 
+            }
+            catch (Exception e)
+            {
+                message = e.Message;
+                return null;
             }
         }
 
