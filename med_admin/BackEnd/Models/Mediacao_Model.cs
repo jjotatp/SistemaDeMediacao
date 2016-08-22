@@ -208,6 +208,7 @@ namespace BackEnd.Models
                 // nome completo = caminho + nome.docx
                 // ex: Desktop\002_2016.docx
                 String nomeArquivo = caminho + @"\" + nome + ".docx";
+                
                 // gera o documento da mediação
 
                 // Se o arquivo já existe, não salva novamente
@@ -316,8 +317,7 @@ namespace BackEnd.Models
                     p3.AppendLine(md.mediador.nome).Bold();
                     p3.AppendLine(md.mediador.patente + " - Mediador").Alignment = Alignment.right;
 
-                    // salva o documento                    
-
+                    // salva o documento                                        
                     document.SaveAs(nomeArquivo);
                 }
 
@@ -401,6 +401,26 @@ namespace BackEnd.Models
                 message = e.Message;
             }
             return num;
+        }
+
+        public mediacao ObterPorAgendamento(int idAgendamento)
+        {
+            try
+            {
+                using (dbDataContext db = getDataContext())
+                {
+                    String sSql =   "select * from mediacoes " +
+                                    "where ( id_agendamento = {0} )";
+                    var query = db.ExecuteQuery<mediacao>(sSql, idAgendamento);
+                    return query.First();
+                }
+            }
+            catch (Exception e)
+            {
+                message = e.Message;
+                return null;
+            }
+            
         }
     }
 }

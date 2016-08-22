@@ -61,8 +61,8 @@ namespace MedAdmin
         {
             // recupera a linha clicada no gridview
             int linha = Convert.ToInt32(e.CommandArgument);
-            // recupera o id do procedimento na linha clicada
-            Int32 id = (Int32)gvAgenda.DataKeys[linha].Value;           
+            // recupera o id do agendamento na linha clicada
+            Int32 id = (Int32)gvAgenda.DataKeys[linha].Value;
 
             if (e.CommandName == "Arquivar")
             {
@@ -71,7 +71,7 @@ namespace MedAdmin
                 // busca o agendamento selecionado
                 a = model.Obter(id);
 
-                if ( model.Arquivar(a))
+                if (model.Arquivar(a))
                 {
                     Master.Sucesso("Agendamento arquivado com sucesso");
                     CarregarAgenda();
@@ -81,11 +81,24 @@ namespace MedAdmin
                     Master.Alerta("Erro ao excluír o agendamento. Erro:" + model.message);
                 }
             }
-            else if(e.CommandName == "Mediacao")
+            else if (e.CommandName == "Mediacao")
             {
                 // deve abrir o cadastro de pessoa com o parametro AGEND
                 // para quando abrir o cadastro ele salvar na sessão               
-                Response.Redirect("cad_pessoa.aspx?AGEND="+id.ToString());
+                Response.Redirect("cad_pessoa.aspx?AGEND=" + id.ToString());
+            }
+            else if (e.CommandName == "Visualizar")
+            {
+                Mediacao_Model medm = new Mediacao_Model();
+                try
+                {
+                    // visualiza a mediação correspondente a esse agendamento
+                    Response.Redirect("detail_mediacao.aspx?ID=" + medm.ObterPorAgendamento(id).id.ToString());
+                }
+                catch (Exception error)
+                {
+                    Master.Alerta(error.Message);
+                }                
             }
         }
 

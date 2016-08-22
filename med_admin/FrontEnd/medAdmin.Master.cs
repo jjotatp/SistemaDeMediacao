@@ -124,11 +124,20 @@ namespace MedAdmin
         {
             try
             {
-                int alcanceLogado = Int32.Parse(GetAlcancePermissao());
-                
-                // SE alcance do local INICIA com o alcance do usuário logado, então retorna TRUE,
-                // ou seja,  ele tem permissão de acesso
-                return (alcanceLocal.StartsWith(alcanceLogado.ToString()) );               
+                int alcanceLogado = 0;
+                if (GetAlcancePermissao() != null)
+                {
+                    alcanceLogado = Int32.Parse(GetAlcancePermissao());
+
+                    // SE alcance do local INICIA com o alcance do usuário logado, então retorna TRUE,
+                    // ou seja,  ele tem permissão de acesso
+                    if (alcanceLogado > 0)
+                        return (alcanceLocal.StartsWith(alcanceLogado.ToString()));
+                    else
+                        return true;
+                }
+                else
+                    return true;
             }
             catch ( Exception e )
             {
