@@ -13,6 +13,9 @@ namespace BackEnd.Models
 {
     public class Mediacao_Model
     {
+        public const int STATUS_PENDENTE = 0;
+        public const int STATUS_CONCLUIDO = 1;
+
         public dbDataContext getDataContext() { dbDataContext db = new dbDataContext(); return db; }        
         
         public bool InserirMediacaoTotal(mediacao m, List<mediacao_parte> partes)
@@ -134,14 +137,14 @@ namespace BackEnd.Models
         {
             String sStatus;
             // status:
+            // 0 - pendente
             // 1 - concluído
-            // 2 - cancelado
             switch (iStatus)
             {
+                case 0:  sStatus = "Pendente";
+                    break;
                 case 1:  sStatus = "Concluída";
                     break;
-                case 2:  sStatus = "Cancelada";
-                    break;        
                 default: sStatus = "Nenhum";
                     break;
             }
@@ -419,8 +422,27 @@ namespace BackEnd.Models
             {
                 message = e.Message;
                 return null;
+            }            
+        }
+
+        public List<pessoa> ListarPartes(int idMediacao)
+        {
+            try
+            {
+                using (dbDataContext db = getDataContext())
+                {
+                    String sSql = "select p.* from pessoas p " +
+                                "join mediacao_partes mp on (mp.pessoa_id = p.cpf) " +
+                                "where ( mp.mediacao_id = {0} )";
+                    var query = db.ExecuteQuery<pessoa>(sSql, idMediacao);
+                    return query.ToList();
+                }
             }
-            
+            catch (Exception e)
+            {
+                message = e.Message;
+                return null;
+            }
         }
     }
 }

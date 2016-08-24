@@ -94,6 +94,15 @@ namespace MedAdmin {
         protected global::System.Web.UI.WebControls.TextBox txtResolucao;
         
         /// <summary>
+        /// txtStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtStatus;
+        
+        /// <summary>
         /// txtMediador control.
         /// </summary>
         /// <remarks>
@@ -101,6 +110,15 @@ namespace MedAdmin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtMediador;
+        
+        /// <summary>
+        /// btnNovaMediacao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnNovaMediacao;
         
         /// <summary>
         /// btnGerar control.

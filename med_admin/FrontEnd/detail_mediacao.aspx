@@ -69,7 +69,15 @@
                     <div class="col-sm-10">
                         <asp:TextBox CssClass="form-control" id="txtResolucao" runat="server"></asp:TextBox>    
                     </div>
-                </div>  
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="sel1">
+                        Status da Mediação
+                    </label>
+                    <div class="col-sm-10">
+                        <asp:TextBox CssClass="form-control" id="txtStatus" runat="server"></asp:TextBox>
+                    </div>
+                </div>   
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="sel1">
                         Mediador
@@ -83,7 +91,9 @@
     </div>
     <div class="form-group">
             <div class="container text-right">
-                <asp:Button runat="server" id="btnGerar" class="btn btn-success"
+                <asp:Button runat="server" id="btnNovaMediacao" class="btn btn-success"
+                OnClick="btnNovaMediacao_Click" Text="Registrar Nova Mediação" />
+                <asp:Button runat="server" id="btnGerar" class="btn btn-info"
                 OnClick="btnGerar_Click" Text="Baixar Arquivo" />
                 <asp:Button runat="server" id="btnVoltar" class="btn btn-default"
                 OnClick="btnVoltar_Click" Text="Voltar" />

@@ -169,7 +169,12 @@ namespace MedAdmin
                 m.id_local = med.id_local;
                 m.objeto = txtObjetoMediacao.Text;
                 m.resolucao = Char.Parse(ddResolucao.SelectedValue);
-                m.status = 1;
+                // SE teve acordo entra as partes, status 1 CONCLUIDO
+                // SENAO   status 0 PENDENTE
+                if (m.resolucao == 'A')
+                    m.status = Mediacao_Model.STATUS_CONCLUIDO;
+                else
+                    m.status = Mediacao_Model.STATUS_PENDENTE;
                 // pega o id da cidade do local
                 Local_Model l_model = new Local_Model();
                 m.id_cidade = l_model.Obter(med.id_local).id_cidade;

@@ -54,6 +54,7 @@ namespace MedAdmin
                 txtHora.Text = med.data_mediacao.ToShortTimeString();
                 txtTemaConflito.Text = med.tema_conflito;
                 txtTipoRegistro.Text = med.tipo_registro.descricao;
+                txtStatus.Text = model.getStatus(med.status);
                 foreach (mediacao_parte mp in med.mediacao_partes)
                 {
                     lstPartes.Items.Add(mp.pessoa.nome);
@@ -65,8 +66,12 @@ namespace MedAdmin
                     txtResolucao.Text = "Desacordo entre as partes";
                 txtMediador.Text = med.mediador.nome;
 
+                // somente permite abrir uma nova mediação a partir daquela se status = pendente
+                btnNovaMediacao.Visible = (med.status == Mediacao_Model.STATUS_PENDENTE);
+                
                 return true;
-            }catch (Exception e)
+            }
+            catch (Exception e)
             {
                 Master.Alerta(e.Message);
                 return false;
@@ -92,7 +97,7 @@ namespace MedAdmin
 
                 if (arquivo != "")
                 {
-                    // se o arquivo foi gerado e salvo na pasta do servidor, faz a solicitação de download para o cliente
+                    // se o arquivo foi gerado faz a solicitação de download para o cliente
                     var file = new FileInfo(arquivo);
 
                     Response.Clear();
@@ -121,5 +126,43 @@ namespace MedAdmin
         {
             Response.Redirect("historico_mediacoes.aspx");
         }
+
+        protected void btnNovaMediacao_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(Request.QueryString["ID"].ToString());
+            if (AdicionarPessoasMediacaoSessao(id))
+                Response.Redirect("cad_mediacao.aspx");
+            else
+                Master.Alerta("Não foi possível abrir uma nova mediação a partir desta.");
+        }
+
+        protected bool AdicionarPessoasMediacaoSessao(int idMediacao)
+        {
+            // busca as pessoas daquela sessao e insere na lista
+            try
+            {                
+                List<pessoa> lista = new List<pessoa>();                
+
+                Mediacao_Model modelMed = new Mediacao_Model();
+
+                lista = modelMed.ListarPartes(idMediacao);
+
+                if (lista.Count > 0)
+                {
+                    // limpa sessão
+                    Session.Remove("mediacao_partes");
+                    // atribui a lista para a sessão novamente
+                    Session["mediacao_partes"] = lista;
+                    return true;
+                }
+                else
+                    return false;
+            }
+            catch (Exception e)
+            {
+                Master.Alerta(e.Message);
+                return false;
+            }
+        }        
     }
 }
