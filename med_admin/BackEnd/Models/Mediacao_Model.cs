@@ -77,6 +77,13 @@ namespace BackEnd.Models
             return tb;
         }
 
+        public Table<acompanhamento> getTableAcompanhamentos()
+        {
+            dbDataContext context = getDataContext();
+            Table<acompanhamento> tb = context.GetTable<acompanhamento>();
+            return tb;
+        }
+
         public mediacao Obter(int id)
         {
             dbDataContext db = new dbDataContext();
@@ -442,6 +449,79 @@ namespace BackEnd.Models
             {
                 message = e.Message;
                 return null;
+            }
+        }
+
+        public bool InserirAcompanhamento(acompanhamento a)
+        {
+            // função para cadastrar
+            try
+            {
+                a.ativo = true;
+                Table<acompanhamento> tb = getTableAcompanhamentos();
+                tb.InsertOnSubmit(a);
+                tb.Context.SubmitChanges();
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                message = e.Message;
+                return false;
+            }
+        }
+
+        public List<acompanhamento> ListarAcompanhamentos(int idMediacao)
+        {
+            try
+            {
+                using (dbDataContext db = getDataContext())
+                {
+                    String sSql = "select * from acompanhamentos where ( id_mediacao = {0} ) and ( ativo = 1 )";
+                    var query = db.ExecuteQuery<acompanhamento>(sSql, idMediacao);
+                    return query.ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                message = e.Message;
+                return null;
+            }
+        }
+
+        public bool VerificarAcompanhamentos(int idMediacao)
+        {
+            try
+            {
+                using (dbDataContext db = getDataContext())
+                {
+                    String sSql = "select * from acompanhamentos where ( id_mediacao = {0} ) and ( ativo = 1 )";
+                    var query = db.ExecuteQuery<acompanhamento>(sSql, idMediacao);
+                    return (query.ToList().Count > 0);
+                }
+            }
+            catch (Exception e)
+            {
+                message = e.Message;
+                return false;
+            }
+        }
+
+        public bool ArquivarAcompanhamento(int idAcompanhamento)
+        {
+            try
+            {
+                using (dbDataContext db = getDataContext())
+                {
+                    String sSql = "update acompanhamentos set ativo = 0 where id = {0}";
+                    int qtdRet = db.ExecuteCommand(sSql, idAcompanhamento);
+                    return (qtdRet > 0);
+                }
+            }
+            catch (Exception e)
+            {
+                message = e.Message;
+                return false;
             }
         }
     }

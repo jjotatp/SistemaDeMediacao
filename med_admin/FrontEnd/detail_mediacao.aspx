@@ -87,17 +87,74 @@
                     </div>
                 </div>  
             </asp:Panel>
+            <br />
+            <asp:Panel CssClass="" ID="pnlAcompanhamentos" runat="server" Enabled="true">
+                <h2>Acompanhamentos</h2>
+                <asp:GridView ID="gdvAcompanhamentos" runat="server" CssClass="table table-hover table-striped" GridLines="None"
+                    AutoGenerateColumns="False" DataKeyNames="id" OnRowCommand="gdvAcompanhamentos_RowCommand">
+                    <Columns>
+
+                        <asp:TemplateField HeaderText="Data do Acompanhamento">
+                            <ItemTemplate>
+                                <%#Eval("data") %>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Verificação">
+                            <ItemTemplate>
+                                <%#Eval("verificacao") %>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+                        <asp:ButtonField CommandName="Arquivar" HeaderStyle-Width="40" Text="Arquivar" runat="server">
+                            <ControlStyle CssClass="btn btn-xs btn-danger"/>                         
+                            <HeaderStyle Width="40px"></HeaderStyle>
+                        </asp:ButtonField>
+                
+                    </Columns>
+                </asp:GridView>
+            </asp:Panel>
         </div>
     </div>
     <div class="form-group">
-            <div class="container text-right">
-                <asp:Button runat="server" id="btnNovaMediacao" class="btn btn-success"
-                OnClick="btnNovaMediacao_Click" Text="Registrar Nova Mediação" />
-                <asp:Button runat="server" id="btnGerar" class="btn btn-info"
-                OnClick="btnGerar_Click" Text="Baixar Arquivo" />
-                <asp:Button runat="server" id="btnVoltar" class="btn btn-default"
-                OnClick="btnVoltar_Click" Text="Voltar" />
+        <div class="container text-right">
+            <a role="button" data-toggle="modal" data-target="#modalAcompanhamento" aria-expanded="false">
+            <span class="btn btn-success">Novo Acompanhamento</span>
+            </a>
+            <asp:Button runat="server" id="btnNovaMediacao" class="btn btn-success"
+            OnClick="btnNovaMediacao_Click" Text="Registrar Nova Mediação" />
+            <asp:Button runat="server" id="btnGerar" class="btn btn-info"
+            OnClick="btnGerar_Click" Text="Baixar Arquivo" />
+            <asp:Button runat="server" id="btnVoltar" class="btn btn-default"
+            OnClick="btnVoltar_Click" Text="Voltar" />
+        </div>
+    </div>
+</div>
+
+<!--  ============= MODAL ACOMPANHAMENTO ============  -->
+<div id="modalAcompanhamento" class="modal fade" role="dialog">                    
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">                            
+            <h3 class="modal-title">Registrar o acompanhamento</h3>
+        </div>
+            <div class="modal-body">       
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="verificacao">
+                        Detalhes do caso
+                    </label>
+                    <div class="col-md-12">                                        
+                        <textarea id="txtVerificacao" class="form-control input-md" runat="server" placeholder="" maxlength="1000" required="required"></textarea>
+                    </div>
+                </div>                                
+            </div>
+            <div class="modal-footer">
+                <asp:Button ID="btnConfirmar" runat="server" Text="Confirmar"
+                    CssClass="btn btn-success" OnClick="btnConfirmar_Click"></asp:Button>   
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
             </div>
         </div>
-</div>
+    </div>
+</div>               
+<!-- ==============  FIM MODAL ACOMPANHAMENTO ================= --> 
 </asp:Content>

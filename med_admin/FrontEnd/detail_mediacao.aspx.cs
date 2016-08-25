@@ -55,6 +55,7 @@ namespace MedAdmin
                 txtTemaConflito.Text = med.tema_conflito;
                 txtTipoRegistro.Text = med.tipo_registro.descricao;
                 txtStatus.Text = model.getStatus(med.status);
+                lstPartes.Items.Clear();
                 foreach (mediacao_parte mp in med.mediacao_partes)
                 {
                     lstPartes.Items.Add(mp.pessoa.nome);
@@ -68,7 +69,9 @@ namespace MedAdmin
 
                 // somente permite abrir uma nova mediação a partir daquela se status = pendente
                 btnNovaMediacao.Visible = (med.status == Mediacao_Model.STATUS_PENDENTE);
-                
+
+                PreencherAcompanhamentos();
+
                 return true;
             }
             catch (Exception e)
@@ -163,6 +166,73 @@ namespace MedAdmin
                 Master.Alerta(e.Message);
                 return false;
             }
-        }        
+        }
+
+        protected void gdvAcompanhamentos_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Arquivar")
+            {
+                // recupera a linha clicada no gridview
+                int linha = Convert.ToInt32(e.CommandArgument);
+                // recupera o id na linha clicada
+                Int32 id = (Int32)gdvAcompanhamentos.DataKeys[linha].Value;
+
+                Mediacao_Model model = new Mediacao_Model();
+                if (!model.ArquivarAcompanhamento(id))
+                    Master.Alerta(model.message);
+                else
+                    PreencherAcompanhamentos();
+            }
+        }
+
+        protected void PreencherAcompanhamentos()
+        {
+            Mediacao_Model model = new Mediacao_Model();
+            int id = int.Parse(Request.QueryString["ID"].ToString());
+
+            // limpa o texto do acompanhamento para quando for inserir um novo acompanhamento
+            txtVerificacao.Value = "";
+
+            // verifica se a mediação tem acompanhamentos
+            if (model.VerificarAcompanhamentos(id))
+            {
+                pnlAcompanhamentos.Visible = true;
+
+                gdvAcompanhamentos.DataSource = model.ListarAcompanhamentos(id);
+                gdvAcompanhamentos.DataBind();
+
+                if (gdvAcompanhamentos.Rows.Count > 0)
+                {
+                    gdvAcompanhamentos.UseAccessibleHeader = true;
+                    gdvAcompanhamentos.HeaderRow.TableSection = TableRowSection.TableHeader;
+                }
+            }
+            else
+                pnlAcompanhamentos.Visible = false;
+        }
+
+        protected void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            if (txtVerificacao.Value != "")
+            {
+                Mediacao_Model model = new Mediacao_Model();
+                int id = int.Parse(Request.QueryString["ID"].ToString());
+                acompanhamento a = new acompanhamento();
+
+                a.id_mediacao = id;
+                a.id_mediador = Master.GetLogado().id;
+                a.verificacao = txtVerificacao.Value;
+                a.data = DateTime.Now;
+
+                if (model.InserirAcompanhamento(a))
+                    PreencherAcompanhamentos();
+                else
+                    Master.Alerta(model.message);
+            }
+            else
+            {
+                Master.Alerta("Descrição do acompanhamento é obrigatório.");
+            }
+        }
     }
 }

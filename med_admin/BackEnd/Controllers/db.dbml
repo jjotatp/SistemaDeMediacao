@@ -9,7 +9,7 @@
       <Association Name="cidade_pessoa1" Member="pessoas1" ThisKey="id" OtherKey="nascimento_cidade" Type="pessoa" />
       <Association Name="cidade_solicitacao" Member="solicitacaos" ThisKey="id" OtherKey="id_cidade_abertura" Type="solicitacao" />
       <Association Name="cidade_mediacao" Member="mediacaos" ThisKey="id" OtherKey="id_cidade" Type="mediacao" />
-      <Association Name="cidade_locai" Member="locals" ThisKey="id" OtherKey="id_cidade" Type="local" />
+      <Association Name="cidade_local" Member="locals" ThisKey="id" OtherKey="id_cidade" Type="local" />
     </Type>
   </Table>
   <Table Name="dbo.mediacao_partes" Member="mediacao_partes">
@@ -100,8 +100,8 @@
       <Column Name="prioridade" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="mediador_noticia" Member="mediadore" ThisKey="id_mediador" OtherKey="id" Type="mediador" IsForeignKey="true" />
       <Association Name="mediador_noticia1" Member="mediador" ThisKey="id_mediador_edicao" OtherKey="id" Type="mediador" IsForeignKey="true" />
-      <Association Name="locai_noticia" Member="locai" ThisKey="id_local" OtherKey="id" Type="local" IsForeignKey="true" />
-      <Association Name="locai_noticia1" Member="local" ThisKey="id_local_edicao" OtherKey="id" Type="local" IsForeignKey="true" />
+      <Association Name="local_noticia" Member="locai" ThisKey="id_local" OtherKey="id" Type="local" IsForeignKey="true" />
+      <Association Name="local_noticia1" Member="local" ThisKey="id_local_edicao" OtherKey="id" Type="local" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.configuracoes" Member="configuracaos">
@@ -131,7 +131,7 @@
       <Column Name="ativo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="solicitacao_agendamento" Member="agendamentos" ThisKey="id" OtherKey="id_solicitacao" Type="agendamento" />
       <Association Name="cidade_solicitacao" Member="cidade" ThisKey="id_cidade_abertura" OtherKey="id" Type="cidade" IsForeignKey="true" />
-      <Association Name="locai_solicitacao" Member="local" ThisKey="id_local" OtherKey="id" Type="local" IsForeignKey="true" />
+      <Association Name="local_solicitacao" Member="local" ThisKey="id_local" OtherKey="id" Type="local" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.v_solicitacoes" Member="v_solicitacaos">
@@ -160,11 +160,12 @@
       <Column Name="id_agendamento" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="id_cidade" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="mediacao_mediacao_parte" Member="mediacao_partes" ThisKey="id" OtherKey="mediacao_id" Type="mediacao_parte" />
+      <Association Name="mediacao_acompanhamento" Member="acompanhamentos" ThisKey="id" OtherKey="id_mediacao" Type="acompanhamento" />
       <Association Name="cidade_mediacao" Member="cidade" ThisKey="id_cidade" OtherKey="id" Type="cidade" IsForeignKey="true" />
       <Association Name="tipo_registro_mediacao" Member="tipo_registro" ThisKey="id_tipo_registro" OtherKey="id" Type="tipo_registro" IsForeignKey="true" />
       <Association Name="agendamento_mediacao" Member="agendamento" ThisKey="id_agendamento" OtherKey="id" Type="agendamento" IsForeignKey="true" />
       <Association Name="mediador_mediacao" Member="mediador" ThisKey="id_mediador" OtherKey="id" Type="mediador" IsForeignKey="true" />
-      <Association Name="locai_mediacao" Member="local" ThisKey="id_local" OtherKey="id" Type="local" IsForeignKey="true" />
+      <Association Name="local_mediacao" Member="local" ThisKey="id_local" OtherKey="id" Type="local" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.v_historico_mediacoes" Member="v_historico_mediacaos">
@@ -193,7 +194,7 @@
       <Association Name="agendamento_mediacao" Member="mediacaos" ThisKey="id" OtherKey="id_agendamento" Type="mediacao" />
       <Association Name="solicitacao_agendamento" Member="solicitacao" ThisKey="id_solicitacao" OtherKey="id" Type="solicitacao" IsForeignKey="true" />
       <Association Name="mediador_agendamento" Member="mediador" ThisKey="id_mediador" OtherKey="id" Type="mediador" IsForeignKey="true" />
-      <Association Name="locai_agendamento" Member="local" ThisKey="id_local" OtherKey="id" Type="local" IsForeignKey="true" />
+      <Association Name="local_agendamento" Member="local" ThisKey="id_local" OtherKey="id" Type="local" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.v_mediadores" Member="v_mediadors">
@@ -225,7 +226,8 @@
       <Association Name="mediador_noticia1" Member="noticias1" ThisKey="id" OtherKey="id_mediador_edicao" Type="noticia" />
       <Association Name="mediador_mediacao" Member="mediacaos" ThisKey="id" OtherKey="id_mediador" Type="mediacao" />
       <Association Name="mediador_agendamento" Member="agendamentos" ThisKey="id" OtherKey="id_mediador" Type="agendamento" />
-      <Association Name="locai_mediador" Member="local" ThisKey="id_local" OtherKey="id" Type="local" IsForeignKey="true" />
+      <Association Name="mediador_acompanhamento" Member="acompanhamentos" ThisKey="id" OtherKey="id_mediador" Type="acompanhamento" />
+      <Association Name="local_mediador" Member="local" ThisKey="id_local" OtherKey="id" Type="local" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.locais" Member="locals">
@@ -242,13 +244,13 @@
       <Column Name="ativo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="telefone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="numero_opm" Type="System.String" DbType="VarChar(9) NOT NULL" CanBeNull="false" />
-      <Association Name="locai_noticia" Member="noticias" ThisKey="id" OtherKey="id_local" Type="noticia" />
-      <Association Name="locai_noticia1" Member="noticias1" ThisKey="id" OtherKey="id_local_edicao" Type="noticia" />
-      <Association Name="locai_solicitacao" Member="solicitacaos" ThisKey="id" OtherKey="id_local" Type="solicitacao" />
-      <Association Name="locai_mediacao" Member="mediacaos" ThisKey="id" OtherKey="id_local" Type="mediacao" />
-      <Association Name="locai_agendamento" Member="agendamentos" ThisKey="id" OtherKey="id_local" Type="agendamento" />
-      <Association Name="locai_mediador" Member="mediadors" ThisKey="id" OtherKey="id_local" Type="mediador" />
-      <Association Name="cidade_locai" Member="cidade" ThisKey="id_cidade" OtherKey="id" Type="cidade" IsForeignKey="true" />
+      <Association Name="local_noticia" Member="noticias" ThisKey="id" OtherKey="id_local" Type="noticia" />
+      <Association Name="local_noticia1" Member="noticias1" ThisKey="id" OtherKey="id_local_edicao" Type="noticia" />
+      <Association Name="local_solicitacao" Member="solicitacaos" ThisKey="id" OtherKey="id_local" Type="solicitacao" />
+      <Association Name="local_mediacao" Member="mediacaos" ThisKey="id" OtherKey="id_local" Type="mediacao" />
+      <Association Name="local_agendamento" Member="agendamentos" ThisKey="id" OtherKey="id_local" Type="agendamento" />
+      <Association Name="local_mediador" Member="mediadors" ThisKey="id" OtherKey="id_local" Type="mediador" />
+      <Association Name="cidade_local" Member="cidade" ThisKey="id_cidade" OtherKey="id" Type="cidade" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.v_locais_endereco" Member="v_locais_enderecos">
@@ -270,6 +272,18 @@
       <Column Name="Telefone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Numero" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="ativo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="db_datareader.acompanhamentos" Member="acompanhamentos">
+    <Type Name="acompanhamento">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_mediacao" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="data" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="verificacao" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="id_mediador" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ativo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="mediacao_acompanhamento" Member="mediacao" ThisKey="id_mediacao" OtherKey="id" Type="mediacao" IsForeignKey="true" />
+      <Association Name="mediador_acompanhamento" Member="mediador" ThisKey="id_mediador" OtherKey="id" Type="mediador" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.alteraCidade" Method="alteraCidade">

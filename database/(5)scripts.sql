@@ -329,3 +329,16 @@ select * from v_locais_endereco
 --= Modificar a constraint CHECK do STATUS para ([status]=(0) OR [status]=(1)) tabela MEDIACOES ===
 --=================================================================================================
 
+
+------------- ACOMPANHAMENTOS -------------
+
+create table acompanhamentos
+(
+	id int not null primary key identity,
+	id_mediacao int not null references mediacoes(id),
+	data datetime not null,
+	verificacao varchar(1000),
+	id_mediador int not null references mediadores(id),
+	ativo bit not null default 1
+);
+
