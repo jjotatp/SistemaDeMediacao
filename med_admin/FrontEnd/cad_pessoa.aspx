@@ -168,10 +168,11 @@ CodeBehind="cad_pessoa.aspx.cs" Inherits="MedAdmin.cad_pessoa" %>
         </div>
         <div class="form-group">
             <div class="container text-right">
-                <asp:button id="btnNovaPessoa" runat="server" cssclass="btn btn-success"
-                text="Salvar e registrar uma outra parte" OnClick="btnNovaPessoa_Click" />
                 <asp:Button id="btnMediacao" runat="server" CssClass="btn btn-purple"
                 Text="Salvar e ir para a mediação" OnClick="btnMediacao_Click" />
+                <a id="btnMediacaoDireto" runat="server" class="btn btn-primary" href="cad_mediacao.aspx">Ir para a mediação</a>
+                <asp:button id="btnNovaPessoa" runat="server" cssclass="btn btn-success"
+                text="Salvar e registrar uma outra parte" OnClick="btnNovaPessoa_Click" />
             </div>
         </div>
     </div>

@@ -14,20 +14,23 @@ namespace FrontEnd
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Local_Model l = new Local_Model();
-            ddLocal.DataSource = l.ListarComEnderecoNaDesc();
-            ddLocal.DataValueField = "ID";
-            ddLocal.DataTextField = "DESCRICAO";
-            ddLocal.DataBind();
-            ddLocal.SelectedIndex = 0;
+            if (!IsPostBack)
+            {
+                Local_Model l = new Local_Model();
+                ddLocal.DataSource = l.ListarComEnderecoNaDesc();
+                ddLocal.DataValueField = "ID";
+                ddLocal.DataTextField = "DESCRICAO";
+                ddLocal.DataBind();
+                ddLocal.SelectedIndex = 0;
 
-            // ATRIBUIR O MAXLENGTH PARA OS CAMPOS
-            txtDescCaso.MaxLength = 250;
-            txtNome.MaxLength = 100;
-            txtTelefone.MaxLength = 20;
-            txtEndereco.MaxLength = 100;
-            txtEmail.MaxLength = 50;
-            txtDadosPartes.MaxLength = 200;
+                // ATRIBUIR O MAXLENGTH PARA OS CAMPOS
+                txtDescCaso.MaxLength = 250;
+                txtNome.MaxLength = 100;
+                txtTelefone.MaxLength = 20;
+                txtEndereco.MaxLength = 100;
+                txtEmail.MaxLength = 50;
+                txtDadosPartes.MaxLength = 200;
+            }
         }
 
         protected void btnFinalizarSolicitacao_Click(object sender, EventArgs e)

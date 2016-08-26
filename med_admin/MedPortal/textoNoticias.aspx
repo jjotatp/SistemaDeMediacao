@@ -29,8 +29,8 @@
                                         { %><%: ntc.data_edicao.ToString() %><% }
                                 else { %><%: ntc.data_postagem.ToString() %><% } %></small>  
                     </div>
-                    <div class="col-md-7 espaco">
-                            <p class="texto"><%: ntc.corpo_noticia %></p>
+                    <div class="col-md-7 texto">
+                            <p style="font-size:large"><%: ntc.corpo_noticia %></p>
                     </div>
                 </div>
             </div>

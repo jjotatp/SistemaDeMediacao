@@ -7,7 +7,7 @@
                 <div class="col-md-12 text-center">
                     <div class="jumbotron wow flipInX data-wow-duration="3s"">
                         <h1>Contato</h1>
-                        <p>Entre em contato com os locais que você pode fazer a sua Mediação...</p>
+                        <p>Entre em contato com os núcleos que você pode fazer a sua Mediação...</p>
                     </div>
                 </div>
 

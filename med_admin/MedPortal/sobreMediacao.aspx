@@ -18,20 +18,27 @@
         <!-- /.row -->
     </header>
 
-    <div class="void"> &nbsp; </div>
-
     <div class="col-md-10 col-md-offset-1 text-center">
-        <h1 class="titulo-artigo">Lorem ipsum dolor sit amet</h1><hr>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas rhoncus dignissim tempus. Ut mollis hendrerit nisi ut tincidunt. Nam ornare auctor dictum. Ut efficitur felis et libero rutrum vehicula. Vivamus quis congue elit. Nullam auctor sem vitae mauris molestie.</p>
+        <h1 class="titulo-artigo">A mediação comunitária de conflitos</h1><hr>            
     </div>
 
-    <div class="container">
-                            <div class="col-md-10 col-md-offset-1 texto-artigo">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas rhoncus dignissim tempus. Ut mollis hendrerit nisi ut tincidunt. Nam ornare auctor dictum. Ut efficitur felis et libero rutrum vehicula. Vivamus quis congue elit. Nullam auctor sem vitae mauris molestie, eu sollicitudin est iaculis. Maecenas tincidunt libero pulvinar turpis scelerisque sollicitudin. Nunc sit amet turpis ut sapien consequat consequat consequat sit amet lorem. Maecenas ut tincidunt tortor, non sodales ligula. Donec quis ultrices nisi. Aenean quis dapibus diam. Phasellus justo velit, maximus vel varius et, bibendum nec magna. Cras vel nulla nec arcu pretium cursus sed ut diam. Praesent lacinia, enim ut ultrices tempor, augue orci vestibulum nunc, sit amet auctor eros diam non eros. Cras a libero quis turpis commodo sollicitudin eget eu felis. Vestibulum volutpat neque nunc, non finibus justo varius in. </p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas rhoncus dignissim tempus. Ut mollis hendrerit nisi ut tincidunt. Nam ornare auctor dictum. Ut efficitur felis et libero rutrum vehicula. Vivamus quis congue elit. Nullam auctor sem vitae mauris molestie, eu sollicitudin est iaculis. Maecenas tincidunt libero pulvinar turpis scelerisque sollicitudin. Nunc sit amet turpis ut sapien consequat consequat consequat sit amet lorem. Maecenas ut tincidunt tortor, non sodales ligula. Donec quis ultrices nisi. Aenean quis dapibus diam. Phasellus justo velit, maximus vel varius et, bibendum nec magna. Cras vel nulla nec arcu pretium cursus sed ut diam. Praesent lacinia, enim ut ultrices tempor, augue orci vestibulum nunc, sit amet auctor eros diam non eros. Cras a libero quis turpis commodo sollicitudin eget eu felis. Vestibulum volutpat neque nunc, non finibus justo varius in. </p>
-                            </div>
-                        </div>
-
-    <div class="void"> &nbsp; </div>    
+    <div class="container">        
+        <div class="col-md-12 texto">
+            <p style="font-size:large">
+                A mediação tem como propositura a desconstrução dos conflitos, sejam eles atuais ou potenciais, restaurando a relação entre as pessoas e a construção de uma solução entre as partes. Trata-se de atividade comunicativa e pacificadora, tendo amplo alcance social, fomentando a cidadania e a contenção de conflitos interpessoais na sua origem (na comunidade), evitando a eclosão de violência e crimes graves. Em suma, evitando-se pequenos desentendimentos, evita-se a escalada da violência.<br />
+                <br />
+                Basicamente, podem ser alvo de mediação:<br />
+                · conflitos envolvendo direitos patrimoniais disponíveis<br />
+                · conflitos de vizinhança<br />
+                · conflitos familiares, desde que observadas as peculiaridades previstas em lei, tais como Lei “Maria da Penha”, Estatuto do Idoso e Estatuto da Criança e do Adolescente
+            </p>
+        </div>    
+        <br />
+        <div style="text-align: center;" class="col-md-10 col-md-offset-1">
+            <h1 class="titulo">Deseja solicitar uma Mediação?</h1>
+            <p><a href="solicitacao.aspx" class="btn btn-danger" role="button">Solicitação</a> </p>
+            <br>
+        </div>    
+    </div> 
 
 </asp:Content>

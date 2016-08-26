@@ -69,6 +69,7 @@ namespace MedAdmin
 
                 // somente permite abrir uma nova mediação a partir daquela se status = pendente
                 btnNovaMediacao.Visible = (med.status == Mediacao_Model.STATUS_PENDENTE);
+                
 
                 PreencherAcompanhamentos();
 

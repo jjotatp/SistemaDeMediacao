@@ -90,38 +90,38 @@
             <br />
             <asp:Panel CssClass="" ID="pnlAcompanhamentos" runat="server" Enabled="true">
                 <!--  ============= MODAL ACOMPANHAMENTO ============  -->
-    <div id="modalAcompanhamento" class="modal fade" role="dialog">                    
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">                            
-                <h3 class="modal-title">Registrar o acompanhamento</h3>
-            </div>
-                <div class="modal-body">       
-                    <div class="form-group">
-                        <label class="col-md-3 control-label" for="verificacao">
-                            Detalhes do caso
-                        </label>
-                        <div class="col-md-12">                                        
-                            <textarea id="txtVerificacao" class="form-control input-md" runat="server" placeholder="" maxlength="1000"></textarea>
+                <div id="modalAcompanhamento" class="modal fade" role="dialog">                    
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">                            
+                            <h3 class="modal-title">Registrar o acompanhamento</h3>
                         </div>
-                    </div>                                
-                </div>
-                <div class="modal-footer">
-                    <asp:Button ID="btnConfirmar" runat="server" Text="Confirmar"
-                        CssClass="btn btn-success" OnClick="btnConfirmar_Click"></asp:Button>   
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                </div>
-            </div>
-        </div>
-    </div> 
-<!-- ==============  FIM MODAL ACOMPANHAMENTO ================= --> 
+                            <div class="modal-body">       
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="verificacao">
+                                        Detalhes do caso
+                                    </label>
+                                    <div class="col-md-12">                                        
+                                        <textarea id="txtVerificacao" class="form-control input-md" runat="server" placeholder="" maxlength="1000"></textarea>
+                                    </div>
+                                </div>                                
+                            </div>
+                            <div class="modal-footer">
+                                <asp:Button ID="btnConfirmar" runat="server" Text="Confirmar"
+                                    CssClass="btn btn-success" OnClick="btnConfirmar_Click"></asp:Button>   
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <!-- ==============  FIM MODAL ACOMPANHAMENTO ================= --> 
                 <h2>Acompanhamentos</h2>
                 <asp:GridView ID="gdvAcompanhamentos" runat="server" CssClass="table table-hover table-striped" GridLines="None"
                     AutoGenerateColumns="False" DataKeyNames="id" OnRowCommand="gdvAcompanhamentos_RowCommand" >
                     <Columns>
 
-                        <asp:TemplateField HeaderText="Data do Acompanhamento">
+                        <asp:TemplateField HeaderText="Data">
                             <ItemTemplate>
                                 <%#Eval("data") %>
                             </ItemTemplate>
@@ -146,10 +146,10 @@
                         </asp:TemplateField>                
                     </Columns>
                 </asp:GridView>                
+                <a role="button" data-toggle="modal" data-target="#modalAcompanhamento" aria-expanded="false">
+                <span class="btn btn-success">Novo Acompanhamento</span>
+                </a>
             </asp:Panel>
-            <a role="button" data-toggle="modal" data-target="#modalAcompanhamento" aria-expanded="false">
-            <span class="btn btn-success">Novo Acompanhamento</span>
-            </a>
         </div>
     </div>     
     <div class="form-group">

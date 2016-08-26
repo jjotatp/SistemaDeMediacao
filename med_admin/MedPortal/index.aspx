@@ -9,7 +9,7 @@
                 <div class="col-md-12 text-center">
                     <div class="jumbotron wow flipInX data-wow-duration="3s"">
                         <h1>Solicite sua Mediação</h1>
-                        <p>Em poucos passos você consegue resolver o seu problema...</p>
+                        <p>Em apenas três passos você consegue resolver o seu problema...</p>
                         <p>Preencha nosso formulário que em breve um mediador entrará em contato</p>
                         <p><a class="btn btn-danger btn-lg" href="solicitacao.aspx" role="button">Solicite uma Mediação!</a></p>
                     </div>
@@ -59,7 +59,7 @@
                     <div class="col-sm-4 wow fadeIn data-wow-duration="6s" data-wow-delay="0.9s"">
                         <div class="panel panel-danger">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><span class="glyphicon glyphicon-map-marker"></span> Pontos de Mediação</h3>
+                                <h3 class="panel-title"><span class="glyphicon glyphicon-map-marker"></span> Núcleos de Mediação</h3>
                             </div>
                             <div class="panel-body">
                                 <p style="text-align: center;"> Conheça o que tem mais próximo de você...</p>

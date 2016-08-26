@@ -59,8 +59,9 @@ namespace BackEnd.Models
         {
             using (dbDataContext db = getDataContext())
             {
-                Table<cidade> tabelaCidade = getTable();
-                return tabelaCidade.ToList();
+                String sSql = "select * from cidades order by nome";
+                var query = db.ExecuteQuery<cidade>(sSql);
+                return query.ToList();
             }
         }
 

@@ -56,13 +56,13 @@
                                 <p>Seus Dados Essenciais</p>
                                 <fieldset>
                                     <!-- Text input-->
-                                    <div class="form-group col-md-8 ">
+                                    <div class="form-group col-md-8 ">                                        
                                         <label class="control-label" for="nome">Nome *</label>
                                         <input name="nome" class="form-control input-md" id="txtNome" type="text" placeholder="Escreva o seu nome" runat="server" required="required">
                                         <br>
                                         <label class=" control-label" for="endereco">Endereço</label>
-                                        <input name="endereco" class="form-control input-md" id="txtEndereco" type="text" placeholder="Rua Exemplo, n 111, Bairro exemplo, Mirassol" runat="server">
-                                        <br>
+                                        <input name="endereco" class="form-control input-md" id="txtEndereco" type="text" placeholder="Rua Exemplo, n 111, Bairro exemplo" runat="server">
+                                        <br>                                        
                                         <label class="col-md-4 control-label" for="telefone">Telefone *</label>
                                         <input name="telefone" class="form-control input-md" id="txtTelefone" type="text" placeholder="(xx)1111-1111" runat="server" required="required" onkeypress="formataTelefone(this,event);">
                                         <br>

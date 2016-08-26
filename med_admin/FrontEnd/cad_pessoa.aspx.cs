@@ -45,8 +45,12 @@ namespace MedAdmin
                 ddCidadeNatal.DataBind();
                 ddCidadeNatal.SelectedIndex = 0;
 
+                btnMediacao.Visible = true;
+                btnMediacaoDireto.Visible = true;
                 if (Request.QueryString["NEXT"] == null)
                 {
+                    btnMediacao.Visible = false;
+                    btnMediacaoDireto.Visible = false;
                     // se for a primeira pessoa a ser cadastrada, ou seja, 
                     // o parâmetro NEXT não existir ou for 0, remove a sessão
                     Session.Remove("mediacao_partes");
