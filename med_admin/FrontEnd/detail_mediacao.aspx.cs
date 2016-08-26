@@ -68,8 +68,7 @@ namespace MedAdmin
                 txtMediador.Text = med.mediador.nome;
 
                 // somente permite abrir uma nova mediação a partir daquela se status = pendente
-                btnNovaMediacao.Visible = (med.status == Mediacao_Model.STATUS_PENDENTE);
-                
+                btnNovaMediacao.Visible = (med.status == Mediacao_Model.STATUS_PENDENTE);                
 
                 PreencherAcompanhamentos();
 
@@ -194,7 +193,8 @@ namespace MedAdmin
             // verifica se a mediação tem acompanhamentos
             if (model.VerificarAcompanhamentos(id))
             {
-                pnlAcompanhamentos.Visible = true;
+                gdvAcompanhamentos.Visible = true;
+                lblTituloAcomp.Visible = true;
 
                 gdvAcompanhamentos.DataSource = model.ListarAcompanhamentos(id);
                 gdvAcompanhamentos.DataBind();
@@ -206,7 +206,10 @@ namespace MedAdmin
                 }
             }
             else
-                pnlAcompanhamentos.Visible = false;
+            {
+                gdvAcompanhamentos.Visible = false;
+                lblTituloAcomp.Visible = false;
+            }                
         }
 
         protected void btnConfirmar_Click(object sender, EventArgs e)

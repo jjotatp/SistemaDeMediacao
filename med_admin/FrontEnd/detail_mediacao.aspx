@@ -116,7 +116,7 @@
                     </div>
                 </div> 
                 <!-- ==============  FIM MODAL ACOMPANHAMENTO ================= --> 
-                <h2>Acompanhamentos</h2>
+                <h2><asp:Label runat="server" ID="lblTituloAcomp" Text="Acompanhamentos"></asp:Label></h2>
                 <asp:GridView ID="gdvAcompanhamentos" runat="server" CssClass="table table-hover table-striped" GridLines="None"
                     AutoGenerateColumns="False" DataKeyNames="id" OnRowCommand="gdvAcompanhamentos_RowCommand" >
                     <Columns>
