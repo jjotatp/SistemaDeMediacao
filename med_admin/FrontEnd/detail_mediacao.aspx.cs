@@ -190,9 +190,6 @@ namespace MedAdmin
             Mediacao_Model model = new Mediacao_Model();
             int id = int.Parse(Request.QueryString["ID"].ToString());
 
-            // limpa o texto do acompanhamento para quando for inserir um novo acompanhamento
-            txtVerificacao.Value = "";
-
             // verifica se a mediação tem acompanhamentos
             if (model.VerificarAcompanhamentos(id))
             {
@@ -212,27 +209,25 @@ namespace MedAdmin
         }
 
         protected void btnConfirmar_Click(object sender, EventArgs e)
-        {
-            if (txtVerificacao.Value != "")
+        {            
+            Mediacao_Model model = new Mediacao_Model();
+            int id = int.Parse(Request.QueryString["ID"].ToString());
+            acompanhamento a = new acompanhamento();
+
+            a.id_mediacao = id;
+            a.id_mediador = Master.GetLogado().id;
+            a.verificacao = txtVerificacao.Value;
+            a.data = DateTime.Now;
+
+            if (model.InserirAcompanhamento(a))
             {
-                Mediacao_Model model = new Mediacao_Model();
-                int id = int.Parse(Request.QueryString["ID"].ToString());
-                acompanhamento a = new acompanhamento();
+                PreencherAcompanhamentos();
 
-                a.id_mediacao = id;
-                a.id_mediador = Master.GetLogado().id;
-                a.verificacao = txtVerificacao.Value;
-                a.data = DateTime.Now;
-
-                if (model.InserirAcompanhamento(a))
-                    PreencherAcompanhamentos();
-                else
-                    Master.Alerta(model.message);
+                // limpa o texto do acompanhamento para quando for inserir um novo acompanhamento
+                txtVerificacao.Value = "";
             }
             else
-            {
-                Master.Alerta("Descrição do acompanhamento é obrigatório.");
-            }
-        }
+                Master.Alerta(model.message);
+        }        
     }
 }

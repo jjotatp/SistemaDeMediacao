@@ -121,6 +121,24 @@ namespace MedAdmin {
         protected global::System.Web.UI.WebControls.Panel pnlAcompanhamentos;
         
         /// <summary>
+        /// txtVerificacao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtVerificacao;
+        
+        /// <summary>
+        /// btnConfirmar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnConfirmar;
+        
+        /// <summary>
         /// gdvAcompanhamentos control.
         /// </summary>
         /// <remarks>
@@ -155,24 +173,6 @@ namespace MedAdmin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnVoltar;
-        
-        /// <summary>
-        /// txtVerificacao control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtVerificacao;
-        
-        /// <summary>
-        /// btnConfirmar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnConfirmar;
         
         /// <summary>
         /// Master property.

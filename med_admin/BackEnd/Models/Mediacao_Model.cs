@@ -327,6 +327,27 @@ namespace BackEnd.Models
                     p3.AppendLine(md.mediador.nome).Bold();
                     p3.AppendLine(md.mediador.patente + " - Mediador").Alignment = Alignment.right;
 
+                    // ACOMPANHAMENTOS
+                    
+
+                    List<acompanhamento> listAcomp = new List<acompanhamento>();
+
+                    listAcomp = ListarAcompanhamentos(md.id);
+
+                    if (listAcomp.Count > 0)
+                    {
+                        Paragraph p4 = document.InsertParagraph();
+                        p4.InsertPageBreakBeforeSelf();
+
+                        foreach (acompanhamento acp in listAcomp)
+                        {
+                            p4.AppendLine("Acompanhamento do mediador:").Bold().AppendLine();
+                            p4.AppendLine("Data: " + acp.data.ToString());
+                            p4.AppendLine("Verificação: " + acp.verificacao).AppendLine();
+                            p4.AppendLine("Assinatura/Carimbo: ").AppendLine();
+                        }
+                    }
+
                     // salva o documento                                        
                     document.SaveAs(nomeArquivo);
                 }

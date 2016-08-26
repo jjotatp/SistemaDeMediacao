@@ -156,10 +156,5 @@
             </div>                                                                                
         </div>
     </div>                 	        
-    <script type="text/javascript"> 
-        $(".deleteLink").click(function() {
-          return confirm('Tem certeza que deseja excluir o agendamento?');
-        });
-</script>
 </asp:Content>
 
