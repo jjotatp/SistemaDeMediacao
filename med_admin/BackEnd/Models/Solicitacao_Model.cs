@@ -28,6 +28,7 @@ namespace BackEnd.Models
             // função para cadastrar cidade
             try
             {
+                a.ativo = true;
                 Table<solicitacao> tb = getTable();
                 tb.InsertOnSubmit(a);
                 tb.Context.SubmitChanges();
